@@ -1,0 +1,413 @@
+Dependencies for Project 'project', Target 'Open1788': (DO NOT MODIFY !)
+F (..\User\EX_SDRAM\EX_SDRAM.c)(0x5D68CAC7)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\ex_sdram.o --omf_browse .\output\ex_sdram.crf --depend .\output\ex_sdram.d)
+I (..\User\EX_SDRAM/EX_SDRAM.H)(0x5D6CA399)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc_types.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\system_LPC177x_8x.h)(0x5029ACB2)
+I (..\User\timer.h)(0x5996F7D2)
+F (..\User\main.c)(0x5C1C4CC8)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\main.o --omf_browse .\output\main.crf --depend .\output\main.d)
+I (..\Libraries\Drivers\include\lpc177x_8x_gpio.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc_types.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc177x_8x_clkpwr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\system_LPC177x_8x.h)(0x5029ACB2)
+I (..\User\EX_SDRAM/EX_SDRAM.H)(0x5D6CA399)
+I (..\User\LCD/lpc177x_8x_lcd.h)(0x5D68DFB2)
+I (..\User\LCD/logo.h)(0x5029ACB0)
+I (..\User\TouchPanel/TouchPanel.h)(0x5B641C61)
+I (..\Libraries\Drivers\include\lpc177x_8x_ssp.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc177x_8x_pinsel.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\debug_frmwrk.h)(0x5D7F4A82)
+I (..\User\Globalvalue/GlobalValue.h)(0x5D633CD4)
+I (..\Libraries\Drivers\include\lpc177x_8x_uart.h)(0x5029ACB2)
+I (..\User\UseDisp/Use_Disp.h)(0x5D7F22EE)
+I (..\User\Key/key.h)(0x5C46BB22)
+I (C:\Keil\ARM\ARMCC\include\stdio.h)(0x51C7C554)
+I (..\User\Globalvalue\TypeDefine.h)(0x5B615D95)
+I (..\User\test/Test.h)(0x5B73C93E)
+I (..\Libraries\Drivers\include\lpc177x_8x_eeprom.h)(0x5029ACB2)
+I (..\User\Include\usbhost_main.h)(0x5A1D79CE)
+I (..\User\Include\usbhost_inc.h)(0x5A1AD4BC)
+I (..\User\Include\usbhost_err.h)(0x5029ACA0)
+I (..\User\Include\../Host/usbhost_lpc17xx.h)(0x5A1AD540)
+I (..\User\Include\../MassStorage/usbhost_ms.h)(0x5B8C8592)
+I (..\User\Include\../Fat/usbhost_fat.h)(0x5A1D75D2)
+I (..\User\pwm\pwm.h)(0x5B63FBC2)
+I (..\User\spi_ad_da/spi_da_ad.h)(0x5D7F5386)
+F (..\User\timer.c)(0x5C42B77A)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\timer.o --omf_browse .\output\timer.crf --depend .\output\timer.d)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc_types.h)(0x5029ACB2)
+I (..\User\timer.h)(0x5996F7D2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\system_LPC177x_8x.h)(0x5029ACB2)
+I (..\User\Key/key.h)(0x5C46BB22)
+I (..\User\Globalvalue\GlobalValue.h)(0x5D633CD4)
+F (..\User\LCD\lpc177x_8x_lcd.c)(0x5D68E58B)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\lpc177x_8x_lcd.o --omf_browse .\output\lpc177x_8x_lcd.crf --depend .\output\lpc177x_8x_lcd.d)
+I (..\User\LCD/lpc177x_8x_lcd.h)(0x5D68DFB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc_types.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\system_LPC177x_8x.h)(0x5029ACB2)
+I (..\User\EX_SDRAM/EX_SDRAM.H)(0x5D6CA399)
+I (..\User\LCD/AsciiLib.h)(0x5C6D0E2C)
+I (C:\Keil\ARM\ARMCC\include\string.h)(0x51C7C554)
+I (..\User\Globalvalue/globalvalue.h)(0x5D633CD4)
+I (..\User\hzk.h)(0x5C8F33E2)
+F (..\User\LCD\logo.c)(0x5029ACB0)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\logo.o --omf_browse .\output\logo.crf --depend .\output\logo.d)
+I (..\User\LCD\logo.h)(0x5029ACB0)
+I (..\User\LCD/lpc177x_8x_lcd.h)(0x5D68DFB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc_types.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\system_LPC177x_8x.h)(0x5029ACB2)
+F (..\User\LCD\AsciiLib.c)(0x5C6D11A5)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\asciilib.o --omf_browse .\output\asciilib.crf --depend .\output\asciilib.d)
+I (..\User\LCD/AsciiLib.h)(0x5C6D0E2C)
+I (C:\Keil\ARM\ARMCC\include\string.h)(0x51C7C554)
+F (..\User\TouchPanel\TouchPanel.c)(0x5D68D492)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\touchpanel.o --omf_browse .\output\touchpanel.crf --depend .\output\touchpanel.d)
+I (..\User\TouchPanel/TouchPanel.h)(0x5B641C61)
+I (..\Libraries\Drivers\include\lpc177x_8x_ssp.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc_types.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc177x_8x_clkpwr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\system_LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc177x_8x_pinsel.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc177x_8x_gpio.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\debug_frmwrk.h)(0x5D7F4A82)
+I (..\User\Globalvalue/GlobalValue.h)(0x5D633CD4)
+I (..\Libraries\Drivers\include\lpc177x_8x_uart.h)(0x5029ACB2)
+I (..\User\main.h)(0x5029ACB0)
+I (..\User\LCD/lpc177x_8x_lcd.h)(0x5D68DFB2)
+I (..\User\EX_SDRAM/EX_SDRAM.H)(0x5D6CA399)
+F (..\User\UseDisp\use_disp.c)(0x5D7F22EE)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\use_disp.o --omf_browse .\output\use_disp.crf --depend .\output\use_disp.d)
+I (..\User\LCD/lpc177x_8x_lcd.h)(0x5D68DFB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc_types.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\system_LPC177x_8x.h)(0x5029ACB2)
+I (..\User\EX_SDRAM/EX_SDRAM.H)(0x5D6CA399)
+I (..\User\LCD/AsciiLib.h)(0x5C6D0E2C)
+I (C:\Keil\ARM\ARMCC\include\string.h)(0x51C7C554)
+I (..\User\UseDisp\use_disp.h)(0x5D7F22EE)
+I (..\User\Globalvalue/globalvalue.h)(0x5D633CD4)
+I (C:\Keil\ARM\ARMCC\include\stdio.h)(0x51C7C554)
+I (..\User\Key/key.h)(0x5C46BB22)
+I (..\User\test/Test.h)(0x5B73C93E)
+I (..\Libraries\Drivers\include\lpc177x_8x_eeprom.h)(0x5029ACB2)
+I (..\User\timer.h)(0x5996F7D2)
+I (C:\Keil\ARM\ARMCC\include\math.h)(0x51C7C554)
+I (..\Libraries\Drivers\include\lpc177x_8x_rtc.h)(0x5029ACB2)
+I (..\User\Touch.h)(0x5D71F3EC)
+I (..\User\Host\usbhost_lpc17xx.h)(0x5A1AD540)
+I (..\User\Include\usbhost_inc.h)(0x5A1AD4BC)
+I (..\User\Include\usbhost_err.h)(0x5029ACA0)
+I (..\User\Include\../Host/usbhost_lpc17xx.h)(0x5A1AD540)
+I (..\User\Include\../MassStorage/usbhost_ms.h)(0x5B8C8592)
+I (..\User\Include\../Fat/usbhost_fat.h)(0x5A1D75D2)
+F (..\User\Key\key.c)(0x5D7EE22F)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\key.o --omf_browse .\output\key.crf --depend .\output\key.d)
+I (..\User\Key/key.h)(0x5C46BB22)
+I (..\Libraries\Drivers\include\lpc177x_8x_gpio.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc_types.h)(0x5029ACB2)
+I (..\User\Globalvalue\GlobalValue.h)(0x5D633CD4)
+F (..\User\Test\test.c)(0x5D807C68)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\test.o --omf_browse .\output\test.crf --depend .\output\test.d)
+I (..\User\Test\test.h)(0x5B73C93E)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\User\Globalvalue/globalvalue.h)(0x5D633CD4)
+I (..\User\LCD/lpc177x_8x_lcd.h)(0x5D68DFB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc_types.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\system_LPC177x_8x.h)(0x5029ACB2)
+I (..\User\UseDisp\use_disp.h)(0x5D7F22EE)
+I (..\User\EX_SDRAM/EX_SDRAM.H)(0x5D6CA399)
+I (..\User\key/key.h)(0x5C46BB22)
+I (..\User\timer.h)(0x5996F7D2)
+I (..\Libraries\Drivers\include\lpc177x_8x_eeprom.h)(0x5029ACB2)
+I (C:\Keil\ARM\ARMCC\include\math.h)(0x51C7C554)
+I (..\User\Fat\usbhost_fat.h)(0x5A1D75D2)
+I (..\User\Include\usbhost_inc.h)(0x5A1AD4BC)
+I (..\User\Include\usbhost_err.h)(0x5029ACA0)
+I (..\User\Include\../Host/usbhost_lpc17xx.h)(0x5A1AD540)
+I (..\User\Include\../MassStorage/usbhost_ms.h)(0x5B8C8592)
+I (..\User\Include\../Fat/usbhost_fat.h)(0x5A1D75D2)
+I (C:\Keil\ARM\ARMCC\include\stdio.h)(0x51C7C554)
+I (..\Libraries\Drivers\include\lpc177x_8x_clkpwr.h)(0x5029ACB2)
+I (..\User\LCD/logo.h)(0x5029ACB0)
+I (..\Libraries\Drivers\include\debug_frmwrk.h)(0x5D7F4A82)
+I (..\Libraries\Drivers\include\lpc177x_8x_uart.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc177x_8x_gpio.h)(0x5029ACB2)
+I (C:\Keil\ARM\ARMCC\include\string.h)(0x51C7C554)
+I (..\User\spi_ad_da/spi_da_ad.h)(0x5D7F5386)
+I (..\Libraries\Drivers\include\lpc177x_8x_rtc.h)(0x5029ACB2)
+I (..\User\FATFS_V0.08A\src\ff.h)(0x5B889882)
+I (..\User\FATFS_V0.08A\src\integer.h)(0x4BD31212)
+I (..\User\FATFS_V0.08A\src\ffconf.h)(0x5B84A7CA)
+I (..\User\touch.h)(0x5D71F3EC)
+F (..\User\Globalvalue\GlobalValue.c)(0x5C6B638F)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\globalvalue.o --omf_browse .\output\globalvalue.crf --depend .\output\globalvalue.d)
+I (..\User\Globalvalue\TypeDefine.h)(0x5B615D95)
+I (..\User\Globalvalue/GlobalValue.h)(0x5D633CD4)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Drivers\include\lpc_types.h)(0x5029ACB2)
+F (..\User\pwm\pwm.c)(0x5B67AB2C)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\pwm.o --omf_browse .\output\pwm.crf --depend .\output\pwm.d)
+I (..\Libraries\Drivers\include\lpc177x_8x_pwm.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc_types.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc177x_8x_clkpwr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\system_LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc177x_8x_pinsel.h)(0x5029ACB2)
+I (..\User\pwm\pwm.h)(0x5B63FBC2)
+F (..\User\spi_ad_da\spi_da_ad.c)(0x5D7F46F6)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\spi_da_ad.o --omf_browse .\output\spi_da_ad.crf --depend .\output\spi_da_ad.d)
+I (..\Libraries\Drivers\include\lpc177x_8x_gpio.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc_types.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc177x_8x_pwm.h)(0x5029ACB2)
+I (..\User\TouchPanel/TouchPanel.h)(0x5B641C61)
+I (..\Libraries\Drivers\include\lpc177x_8x_ssp.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc177x_8x_clkpwr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\system_LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc177x_8x_pinsel.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\debug_frmwrk.h)(0x5D7F4A82)
+I (..\User\Globalvalue/GlobalValue.h)(0x5D633CD4)
+I (..\Libraries\Drivers\include\lpc177x_8x_uart.h)(0x5029ACB2)
+I (..\User\spi_ad_da/spi_da_ad.h)(0x5D7F5386)
+I (..\User\pwm\pwm.h)(0x5B63FBC2)
+F (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\startup\arm\startup_LPC177x_8x.s)(0x5B8DEF5F)(--cpu Cortex-M3 -g --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x--list .\listing\startup_lpc177x_8x.lst --xref -o .\output\startup_lpc177x_8x.o --depend .\output\startup_lpc177x_8x.d)
+F (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\system_LPC177x_8x.c)(0x5029ACB2)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\system_lpc177x_8x.o --omf_browse .\output\system_lpc177x_8x.crf --depend .\output\system_lpc177x_8x.d)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\system_LPC177x_8x.h)(0x5029ACB2)
+F (..\Libraries\Core\CM3\CoreSupport\core_cm3.c)(0x5029ACB2)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\core_cm3.o --omf_browse .\output\core_cm3.crf --depend .\output\core_cm3.d)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+F (..\Libraries\Drivers\source\lpc177x_8x_gpio.c)(0x5D71F7CC)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\lpc177x_8x_gpio.o --omf_browse .\output\lpc177x_8x_gpio.crf --depend .\output\lpc177x_8x_gpio.d)
+I (..\Libraries\Drivers\include\lpc177x_8x_gpio.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc_types.h)(0x5029ACB2)
+F (..\Libraries\Drivers\source\lpc177x_8x_systick.c)(0x5029ACB2)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\lpc177x_8x_systick.o --omf_browse .\output\lpc177x_8x_systick.crf --depend .\output\lpc177x_8x_systick.d)
+I (..\Libraries\Drivers\include\lpc177x_8x_systick.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc_types.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc177x_8x_clkpwr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\system_LPC177x_8x.h)(0x5029ACB2)
+F (..\Libraries\Drivers\source\lpc177x_8x_clkpwr.c)(0x5029ACB2)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\lpc177x_8x_clkpwr.o --omf_browse .\output\lpc177x_8x_clkpwr.crf --depend .\output\lpc177x_8x_clkpwr.d)
+I (..\Libraries\Drivers\include\lpc177x_8x_clkpwr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc_types.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\system_LPC177x_8x.h)(0x5029ACB2)
+F (..\Libraries\Drivers\source\lpc177x_8x_ssp.c)(0x5029ACB2)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\lpc177x_8x_ssp.o --omf_browse .\output\lpc177x_8x_ssp.crf --depend .\output\lpc177x_8x_ssp.d)
+I (..\Libraries\Drivers\include\lpc177x_8x_ssp.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc_types.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc177x_8x_clkpwr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\system_LPC177x_8x.h)(0x5029ACB2)
+F (..\Libraries\Drivers\source\lpc177x_8x_uart.c)(0x5A16BC20)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\lpc177x_8x_uart.o --omf_browse .\output\lpc177x_8x_uart.crf --depend .\output\lpc177x_8x_uart.d)
+I (..\Libraries\Drivers\include\lpc177x_8x_uart.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc_types.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc177x_8x_clkpwr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\system_LPC177x_8x.h)(0x5029ACB2)
+F (..\Libraries\Drivers\source\debug_frmwrk.c)(0x5D7F4B37)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\debug_frmwrk.o --omf_browse .\output\debug_frmwrk.crf --depend .\output\debug_frmwrk.d)
+I (..\Libraries\Drivers\include\debug_frmwrk.h)(0x5D7F4A82)
+I (..\User\Globalvalue/GlobalValue.h)(0x5D633CD4)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Drivers\include\lpc177x_8x_uart.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc_types.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc177x_8x_pinsel.h)(0x5029ACB2)
+I (..\User\Key/key.h)(0x5C46BB22)
+I (C:\Keil\ARM\ARMCC\include\stdarg.h)(0x51C7C554)
+I (C:\Keil\ARM\ARMCC\include\assert.h)(0x51C7C554)
+F (..\Libraries\Drivers\source\lpc177x_8x_pinsel.c)(0x5029ACB2)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\lpc177x_8x_pinsel.o --omf_browse .\output\lpc177x_8x_pinsel.crf --depend .\output\lpc177x_8x_pinsel.d)
+I (..\Libraries\Drivers\include\lpc177x_8x_pinsel.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc_types.h)(0x5029ACB2)
+F (..\Libraries\Drivers\source\lpc177x_8x_eeprom.c)(0x5B6B9E47)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\lpc177x_8x_eeprom.o --omf_browse .\output\lpc177x_8x_eeprom.crf --depend .\output\lpc177x_8x_eeprom.d)
+I (..\Libraries\Drivers\include\lpc177x_8x_eeprom.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc_types.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc177x_8x_clkpwr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\system_LPC177x_8x.h)(0x5029ACB2)
+F (..\Libraries\Drivers\source\lpc177x_8x_rtc.c)(0x5029ACB2)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\lpc177x_8x_rtc.o --omf_browse .\output\lpc177x_8x_rtc.crf --depend .\output\lpc177x_8x_rtc.d)
+I (..\Libraries\Drivers\include\lpc177x_8x_rtc.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc_types.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc177x_8x_clkpwr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\system_LPC177x_8x.h)(0x5029ACB2)
+F (..\Libraries\Drivers\source\lpc177x_8x_pwm.c)(0x5B17E9F8)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\lpc177x_8x_pwm.o --omf_browse .\output\lpc177x_8x_pwm.crf --depend .\output\lpc177x_8x_pwm.d)
+I (..\Libraries\Drivers\include\lpc177x_8x_pwm.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc_types.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc177x_8x_clkpwr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\system_LPC177x_8x.h)(0x5029ACB2)
+F (..\User\Fat\usbhost_fat.c)(0x5B63FBC2)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\usbhost_fat.o --omf_browse .\output\usbhost_fat.crf --depend .\output\usbhost_fat.d)
+I (..\User\Fat\usbhost_fat.h)(0x5A1D75D2)
+I (..\User\Include\usbhost_inc.h)(0x5A1AD4BC)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\User\Include\usbhost_err.h)(0x5029ACA0)
+I (..\User\Include\../Host/usbhost_lpc17xx.h)(0x5A1AD540)
+I (..\User\Include\../MassStorage/usbhost_ms.h)(0x5B8C8592)
+I (..\User\Include\../Fat/usbhost_fat.h)(0x5A1D75D2)
+I (C:\Keil\ARM\ARMCC\include\stdio.h)(0x51C7C554)
+F (..\User\Host\usbhost_lpc17xx.c)(0x5C6BA500)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\usbhost_lpc17xx.o --omf_browse .\output\usbhost_lpc17xx.crf --depend .\output\usbhost_lpc17xx.d)
+I (..\User\Host\usbhost_lpc17xx.h)(0x5A1AD540)
+I (..\User\Include\usbhost_inc.h)(0x5A1AD4BC)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\User\Include\usbhost_err.h)(0x5029ACA0)
+I (..\User\Include\../Host/usbhost_lpc17xx.h)(0x5A1AD540)
+I (..\User\Include\../MassStorage/usbhost_ms.h)(0x5B8C8592)
+I (..\User\Include\../Fat/usbhost_fat.h)(0x5A1D75D2)
+I (C:\Keil\ARM\ARMCC\include\stdio.h)(0x51C7C554)
+I (..\User\Globalvalue/GlobalValue.h)(0x5D633CD4)
+F (..\User\MassStorage\usbhost_ms.c)(0x5B8C8592)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\usbhost_ms.o --omf_browse .\output\usbhost_ms.crf --depend .\output\usbhost_ms.d)
+I (..\User\MassStorage\usbhost_ms.h)(0x5B8C8592)
+I (..\User\Include\usbhost_inc.h)(0x5A1AD4BC)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\User\Include\usbhost_err.h)(0x5029ACA0)
+I (..\User\Include\../Host/usbhost_lpc17xx.h)(0x5A1AD540)
+I (..\User\Include\../MassStorage/usbhost_ms.h)(0x5B8C8592)
+I (..\User\Include\../Fat/usbhost_fat.h)(0x5A1D75D2)
+I (C:\Keil\ARM\ARMCC\include\stdio.h)(0x51C7C554)
+F (..\User\FATFS_V0.08A\src\diskio.c)(0x5B88D661)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\diskio.o --omf_browse .\output\diskio.crf --depend .\output\diskio.d)
+I (..\User\FATFS_V0.08A\src\diskio.h)(0x5B8644CE)
+I (..\User\FATFS_V0.08A\src\integer.h)(0x4BD31212)
+I (..\User\MassStorage\usbhost_ms.h)(0x5B8C8592)
+I (..\User\Include\usbhost_inc.h)(0x5A1AD4BC)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\User\Include\usbhost_err.h)(0x5029ACA0)
+I (..\User\Include\../Host/usbhost_lpc17xx.h)(0x5A1AD540)
+I (..\User\Include\../MassStorage/usbhost_ms.h)(0x5B8C8592)
+I (..\User\Include\../Fat/usbhost_fat.h)(0x5A1D75D2)
+I (C:\Keil\ARM\ARMCC\include\stdio.h)(0x51C7C554)
+I (C:\Keil\ARM\ARMCC\include\string.h)(0x51C7C554)
+F (..\User\FATFS_V0.08A\src\ff.c)(0x5B866761)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\ff.o --omf_browse .\output\ff.crf --depend .\output\ff.d)
+I (..\User\FATFS_V0.08A\src\ff.h)(0x5B889882)
+I (..\User\FATFS_V0.08A\src\integer.h)(0x4BD31212)
+I (..\User\FATFS_V0.08A\src\ffconf.h)(0x5B84A7CA)
+I (..\User\Host\usbhost_lpc17xx.h)(0x5A1AD540)
+I (..\User\Include\usbhost_inc.h)(0x5A1AD4BC)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\User\Include\usbhost_err.h)(0x5029ACA0)
+I (..\User\Include\../Host/usbhost_lpc17xx.h)(0x5A1AD540)
+I (..\User\Include\../MassStorage/usbhost_ms.h)(0x5B8C8592)
+I (..\User\Include\../Fat/usbhost_fat.h)(0x5A1D75D2)
+I (C:\Keil\ARM\ARMCC\include\stdio.h)(0x51C7C554)
+I (..\User\FATFS_V0.08A\src\diskio.h)(0x5B8644CE)
+F (..\User\Touch.c)(0x5D71F3EC)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Libraries\Core\CM3\CoreSupport -I..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I..\Libraries\Drivers\include -I..\User -I..\Libraries\BoardSupport -I..\User\UseDisp -I..\User\Globalvalue -I..\Libraries\Drivers\include -I..\User\Include -I..\User\Fat -I..\User\Host -I..\User\MassStorage -I..\User\pwm -I..\User\spi_ad_da -I..\User\FATFS_V0.08A\src -I..\User\touch-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC177x_8x-o .\output\touch.o --omf_browse .\output\touch.crf --depend .\output\touch.d)
+I (..\User\touch.h)(0x5D71F3EC)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x5C8F2936)
+I (..\User\Key/key.h)(0x5C46BB22)
+I (C:\Keil\ARM\ARMCC\include\stdlib.h)(0x51C7C554)
+I (C:\Keil\ARM\ARMCC\include\math.h)(0x51C7C554)
+I (..\User\LCD/lpc177x_8x_lcd.h)(0x5D68DFB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x5942A6E4)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc_types.h)(0x5029ACB2)
+I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\system_LPC177x_8x.h)(0x5029ACB2)
+I (..\User\EX_SDRAM/EX_SDRAM.H)(0x5D6CA399)
+I (..\Libraries\Drivers\include\lpc177x_8x_ssp.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc177x_8x_clkpwr.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc177x_8x_pinsel.h)(0x5029ACB2)
+I (..\Libraries\Drivers\include\lpc177x_8x_gpio.h)(0x5029ACB2)
+I (..\User\Globalvalue\GlobalValue.h)(0x5D633CD4)
+I (..\User\UseDisp\use_disp.h)(0x5D7F22EE)
