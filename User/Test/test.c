@@ -24,6 +24,8 @@
 #include    "cpld.h"
 #include    "stdbool.h"
 #include    "AT45DB.h"
+#include "scpi/scpi.h"
+#include "scpi-def.h"
 //#ifdef ZC5520 
 // #include "5520.h"
 // #else
@@ -63,6 +65,62 @@ const uint8_t USB_dISPVALUE[][9]=
 };
 
 uint32_t keynum;
+uint8_t pageflag;
+
+size_t SCPI_Write(scpi_t * context, const char * data, size_t len) {
+    (void) context;	
+	if (len > 0)
+	{	
+		for(int i = 0;i < len;i++)
+		{
+			UARTPutChar(LPC_UART3,*(data+i) );
+		}
+//		for (int i = 0;i < len;i++)
+//		{
+//			osMessageQueuePut(cmdTxQueueHandle,&data[i],NULL,0U);
+//		}
+//		LL_USART_EnableIT_TXE(USART1);
+	}
+	return len;
+}
+
+scpi_result_t SCPI_Flush(scpi_t * context) {
+    (void) context;
+
+    return SCPI_RES_OK;
+}
+
+int SCPI_Error(scpi_t * context, int_fast16_t err) {
+    (void) context;
+
+//    printf("**ERROR: %d, \"%s\"\r\n", (int16_t) err, SCPI_ErrorTranslate(err));
+    return 0;
+}
+
+scpi_result_t SCPI_Control(scpi_t * context, scpi_ctrl_name_t ctrl, scpi_reg_val_t val) {
+    (void) context;
+
+    if (SCPI_CTRL_SRQ == ctrl) {
+//        printf("**SRQ: 0x%X (%d)\r\n", val, val);
+    } else {
+//        printf("**CTRL %02x: 0x%X (%d)\r\n", ctrl, val, val);
+    }
+    return SCPI_RES_OK;
+}
+
+scpi_result_t SCPI_Reset(scpi_t * context) {
+    (void) context;
+
+//    printf("**Reset\r\n");
+    return SCPI_RES_OK;
+}
+
+scpi_result_t SCPI_SystemCommTcpipControlQ(scpi_t * context) {
+    (void) context;
+
+    return SCPI_RES_ERR;
+}
+
 const u8 DOT_POS[6]=
 {	
 	2,
@@ -134,8 +192,8 @@ void Power_Process(void)
 //	u8 rc;
 	u32 i;
 	u8 temp[4];
-    u32 FlashID;
-    Pc_Sendflag=0;
+		u32 FlashID;
+		Pc_Sendflag=0;
 	HW_keyInt();
 	 //Key_Init();
 	GPIO_Led_Configuration();
@@ -144,7 +202,9 @@ void Power_Process(void)
 //	GPIO_Key_Configuration();
 //	HV_Out_Gpioint();//高压输出控制引脚
 	debug_frmwrk_init();
+	Uart3_init(9600);
 	SDRAM_Init();
+//	Uart3_init(0);
 //	GLCD_Ctrl (FALSE);
 //	GLCD_Init (LogoPic.pPicStream, NULL);
 //	GLCD_Ctrl (TRUE);
@@ -246,6 +306,13 @@ void Power_Process(void)
     GUI_UC_SetEncodeUTF8();
     
     FMC_Int();
+	SCPI_Init(&scpi_context,
+					scpi_commands,
+					&scpi_interface,
+					scpi_units_def,
+					SCPI_IDN1, SCPI_IDN2, SCPI_IDN3, SCPI_IDN4,
+					scpi_input_buffer, SCPI_INPUT_BUFFER_LENGTH,
+					scpi_error_queue_data, SCPI_ERROR_QUEUE_SIZE);
     i=0;
 	while(GetSystemStatus()==SYS_STATUS_POWER)
 	{
@@ -359,14 +426,16 @@ void Idem_Process(void)
     Range_Control(0);
     for(i=0;i<10;i++)//保存的测试结果
     {
-        Save_TestValue[i].text_flag=0xff;
+        Save_TestValue[i].text_flag=15;
         Save_TestValue[i].Text_value=0;
         Save_TestValue[i].Text_vot=0;
-        
+        Save_TestValue[i].Text_time=0;
+		Save_TestValue[i].text_unit=0;
     }
     keyvalue=KEY_NONE;
     U9001_save.current_step=1;
     Test_mid.set_item=U9001_save.U9001_Setup[U9001_save.current_step].parameter;//当前参数
+	pageflag = 0;//测量显示
 	while(GetSystemStatus()==SYS_STATUS_IDEM)
 	{
         Disp_Time( );
@@ -387,11 +456,13 @@ void Idem_Process(void)
 			GUI_SetColor(GUI_WHITE);
             if(U9001_save.disp)
             {
+				pageflag = 1;//列表显示
                 Disp_Idel_list();
                 disp_TestMSG(GetSystemMessage());
             }
             else
             {
+				pageflag = 0;//测量显示
                 Disp_Idel_Item();
                 Disp_Testvalue(0);   
             }
@@ -832,10 +903,38 @@ void Test_Process(void)
         
         
 		Get_Result();//计算测试值	
+		//分选判别
+		if(f_switch==FALSE)//非量程切换标志
+		{
+			if(Test_mid.set_item==IR_SETUP)//绝缘电阻
+			{
+                if(GetSystemMessage()==MSG_TEST )
+                {
+                    if(Test_Value.Time>=Test_mid.set_time)//判别延时
+                        f_sort=TRUE;//分选标志
+                    
+                }
+			}
+			else
+			{
+//                 if(GetSystemMessage()==MSG_TEST )
+//                {
+//                    if(Test_Value.Time>=SORT_TIME_MIN)//判别延时
+//                        f_sort=TRUE;//分选标志
+//                    
+//                }
+				if(sortT>=SORT_TIME_MIN)//超过最小时间后才开始分选
+					f_sort=TRUE;//分选标志
+			}
+		}//上下限判别
 		if(F_100ms==TRUE)//100ms定时处理
 		{
+			
 			F_100ms=FALSE;
-			f_disp=TRUE;//显示更新
+			if(GetSystemMessage()!=MSG_DROP)
+			{
+				f_disp=TRUE;//显示更新
+			}
 
 			if(sortT<9999)sortT++;
 
@@ -878,8 +977,15 @@ void Test_Process(void)
                     
                         SetSystemMessage(MSG_PASS);
                          Save_TestValue[U9001_save.current_step-1].text_flag=GetSystemMessage();
-                        Save_TestValue[U9001_save.current_step-1].Text_value=Resistance;
+						if(Test_mid.set_item==IR_SETUP)
+                        {
+							Save_TestValue[U9001_save.current_step-1].Text_value=Resistance;
+							Save_TestValue[U9001_save.current_step-1].text_unit=test_value.uint;
+						}else{
+							Save_TestValue[U9001_save.current_step-1].Text_value=Current;
+						}
                         Save_TestValue[U9001_save.current_step-1].Text_vot=Test_Value.Vol;
+						Save_TestValue[U9001_save.current_step-1].Text_time=Test_Value.Time;
                         Test_Value.Time=0;
                         
                         if(Test_mid.set_drop)//下降时间
@@ -891,7 +997,7 @@ void Test_Process(void)
                                 stepT=0;//步进时间计时
                                 if(TestOut>DropStepFd)
                                 TestOut-=DropStepFd;//测试输出值计算
-
+ 
                             }
                             SetSystemMessage(MSG_DROP);
                         }else
@@ -938,8 +1044,9 @@ void Test_Process(void)
                 }
                 if(Test_Value.Time>=Test_mid.set_drop)//缓升时间判别
                 {
+					Save_TestValue[U9001_save.current_step-1].Text_time+=Test_Value.Time;
                     Test_Value.Time=0;//测试时间清零
-                   Test_Value.Vol=0;
+//                    Test_Value.Vol=0;
                     SetSystemStatus(SYS_STATUS_TEST_PAUSE);//测试暂停状态
                     SetSystemMessage(MSG_PASS);//系统信息-测试合格
                     f_msgdisp=TRUE;//消息显示标志
@@ -1122,29 +1229,29 @@ void Test_Process(void)
 		}
         
         //分选判别
-		if(f_switch==FALSE)//非量程切换标志
-		{
-			if(Test_mid.set_item==IR_SETUP)//绝缘电阻
-			{
-                if(GetSystemMessage()==MSG_TEST )
-                {
-                    if(Test_Value.Time>=Test_mid.set_time)//判别延时
-                        f_sort=TRUE;//分选标志
-                    
-                }
-			}
-			else
-			{
-//                 if(GetSystemMessage()==MSG_TEST )
+//		if(f_switch==FALSE)//非量程切换标志
+//		{
+//			if(Test_mid.set_item==IR_SETUP)//绝缘电阻
+//			{
+//                if(GetSystemMessage()==MSG_TEST )
 //                {
-//                    if(Test_Value.Time>=SORT_TIME_MIN)//判别延时
+//                    if(Test_Value.Time>=Test_mid.set_time)//判别延时
 //                        f_sort=TRUE;//分选标志
 //                    
 //                }
-				if(sortT>=SORT_TIME_MIN)//超过最小时间后才开始分选
-					f_sort=TRUE;//分选标志
-			}
-		}//上下限判别
+//			}
+//			else
+//			{
+////                 if(GetSystemMessage()==MSG_TEST )
+////                {
+////                    if(Test_Value.Time>=SORT_TIME_MIN)//判别延时
+////                        f_sort=TRUE;//分选标志
+////                    
+////                }
+//				if(sortT>=SORT_TIME_MIN)//超过最小时间后才开始分选
+//					f_sort=TRUE;//分选标志
+//			}
+//		}//上下限判别
 //		if((f_sort==TRUE) && (AdCount>=AD_BUF_LENGTH))//非换挡
         if(f_sort==TRUE)
 		{
@@ -1162,7 +1269,7 @@ void Test_Process(void)
 		
 				case IR_SETUP:
                     Test_Value.I_R*=pow(10,Range-1);
-                Test_Value.I_R/=100;
+					Test_Value.I_R/=100;
 					dat=Resistance;
 					if((dat>Test_mid.set_high)&&(Test_mid.set_high!=0))//超上限
 						SetSystemMessage(MSG_HIGH);
@@ -1189,8 +1296,10 @@ void Test_Process(void)
 				(GetSystemMessage()==MSG_ARC)||(GetSystemMessage()==MSG_OVER)||(GetSystemMessage()==MSG_SHORT)
         ||(GetSystemMessage()==MSG_GIF)||(GetSystemMessage()==MSG_ARC))
 		{
-             Save_TestValue[U9001_save.current_step-1].text_flag=GetSystemMessage();
-            Save_TestValue[U9001_save.current_step-1].Text_value=Resistance;
+            Save_TestValue[U9001_save.current_step-1].text_flag=GetSystemMessage();
+            Save_TestValue[U9001_save.current_step-1].Text_value=dat;
+			Save_TestValue[U9001_save.current_step-1].text_unit=test_value.uint;
+			Save_TestValue[U9001_save.current_step-1].Text_time=Test_Value.Time;
             Save_TestValue[U9001_save.current_step-1].Text_vot=Test_Value.Vol;
 			F_Fail=TRUE;//测试失败标志
 			SetSystemStatus(SYS_STATUS_TEST_PAUSE);//系统状态-测试暂停
@@ -1348,17 +1457,17 @@ void Setup_Process(void)
     
 
     DISP_FLAG=TRUE;
-
+	pageflag = 2;//测量设置
  	while(GetSystemStatus()==SYS_STATUS_SETUPTEST)
 	{
 	    
 		if(DISP_FLAG==TRUE)
 		{
 //             item=list*(MAX_SETP[U9001_save.U9001_Setup[U9001_save.current_step].parameter]+1)/2+line;
-            if(line==0)
-                item=0;
-            else
-                item=2*line-list;
+//            if(line==0)
+//                item=0;
+//            else
+//                item=2*line-list;
             
             if(item>=MAX_SETP[U9001_save.U9001_Setup[U9001_save.current_step].parameter])
             {
@@ -1918,25 +2027,34 @@ void Setup_Process(void)
                     
                     break;
                     case Key_RIGHT:
-                        list=0;						
+                        if(item%2 == 1)
+						{
+							item++;
+						}							
                     break;
                     case Key_LEFT:
-                        list=1;                   
+                        if(item%2 == 0)
+						{
+							item--;
+						}                  
                     break;
                     case Key_DOWN:
-                        if(line<(MAX_SETP[U9001_save.U9001_Setup[U9001_save.current_step].parameter]+1)/2)
-                            line++;                    
-                        
+						if(item != 0)
+						{
+							item += 2; 
+						}else{
+							item += 1;
+						}							
                     break;
                     case Key_UP:
-                        if(line)
-                        {
-                            line--;
-                                              
-                        }
-                        if(line==0)
-                           list=0;
-                       
+                        if(item == 1)
+						{
+							item -= 1; 
+						}else if(item == 0){
+							
+						}else{
+							item -= 2;
+						}
                         
                     break;
 
@@ -2168,6 +2286,7 @@ void Setup_config_Process(void)
 
     DISP_FLAG=TRUE;
     num=sizeof(U9001_Testconfg_Typedef)/2;
+	pageflag = 3;//测量配置
  	while(GetSystemStatus()==SYS_STATUS_CLEAR)
 	{
 	    

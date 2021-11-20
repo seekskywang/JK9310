@@ -30,6 +30,8 @@
 #include "string.h"
 #include "GlobalValue.h"
 #include <assert.h>
+#include "scpi/scpi.h"
+#include "scpi-def.h"
 Com_TypeDef ComBuf;
 Com_TypeDef ComBuf3;
 Com_TypeDef FacBuf;
@@ -488,49 +490,53 @@ void  _printf (const  char *format, ...)
 void debug_frmwrk_init(void)
 {
 	UART_CFG_Type UARTConfigStruct;
-	u32 data;
-#if (USED_UART_DEBUG_PORT == 0)
-	/*
-	 * Initialize UART0 pin connect
-	 * P0.2: TXD
-	 * P0.3: RXD
-	 */
-	PINSEL_ConfigPin (0, 2, 1);
-	PINSEL_ConfigPin (0, 3, 1);
-#elif (USED_UART_DEBUG_PORT == 1)
-	/*
-	 * Initialize UART1 pin connect
-	 * P2.0: TXD
-	 * P2.1: RXD
-	 */
-	PINSEL_ConfigPin(2, 0, 2);
-	PINSEL_ConfigPin(2, 1, 2);
-#elif (USED_UART_DEBUG_PORT == 2)
-	/*
-	 * Initialize UART2 pin connect
-	 * P0.10: TXD
-	 * P0.11: RXD
-	 */
-	PINSEL_ConfigPin(0, 10, 1);
-	PINSEL_ConfigPin(0, 11, 1);
-#elif (USED_UART_DEBUG_PORT == 3)
-	/*
-	 * Initialize UART3 pin connect
-	 * P0.0: TXD
-	 * P0.1: RXD
-	 */
+
+//#if (USED_UART_DEBUG_PORT == 0)
+//	/*
+//	 * Initialize UART0 pin connect
+//	 * P0.2: TXD
+//	 * P0.3: RXD
+//	 */
+	
 	PINSEL_ConfigPin(0, 0, 4);
 	PINSEL_ConfigPin(0, 1, 4);
-#elif (USED_UART_DEBUG_PORT == 4)
-	/*
-	 * Initialize UART4 pin connect
-	 * P0.22: TXD
-	 * P2.9: RXD
-	 */
-	PINSEL_ConfigPin(0, 22, 3);
-	PINSEL_ConfigPin(2, 9, 3);
+	
+//	PINSEL_ConfigPin (0, 2, 1);
+//	PINSEL_ConfigPin (0, 3, 1);
+//#elif (USED_UART_DEBUG_PORT == 1)
+//	/*
+//	 * Initialize UART1 pin connect
+//	 * P2.0: TXD
+//	 * P2.1: RXD
+//	 */
+//	PINSEL_ConfigPin(2, 0, 2);
+//	PINSEL_ConfigPin(2, 1, 2);
+//#elif (USED_UART_DEBUG_PORT == 2)
+//	/*
+//	 * Initialize UART2 pin connect
+//	 * P0.10: TXD
+//	 * P0.11: RXD
+//	 */
+//	PINSEL_ConfigPin(0, 10, 1);
+//	PINSEL_ConfigPin(0, 11, 1);
+//#elif (USED_UART_DEBUG_PORT == 3)
+//	/*
+//	 * Initialize UART3 pin connect
+//	 * P0.2: TXD
+//	 * P0.3: RXD
+//	 */
+//	PINSEL_ConfigPin(0, 2, 2);
+//	PINSEL_ConfigPin(0, 3, 2);
+//#elif (USED_UART_DEBUG_PORT == 4)
+//	/*
+//	 * Initialize UART4 pin connect
+//	 * P0.22: TXD
+//	 * P2.9: RXD
+//	 */
+//	PINSEL_ConfigPin(0, 22, 3);
+//	PINSEL_ConfigPin(2, 9, 3);
 
-#endif
+//#endif
 
 	/* Initialize UART Configuration parameter structure to default state:
 	 * Baudrate = 9600bps
@@ -538,33 +544,10 @@ void debug_frmwrk_init(void)
 	 * 1 Stop bit
 	 * None parity
 	 */
-//	 switch(Tft_5520.Sys_Set.Buad)
-//	{
-//		case 0:
-//			data=9600;
-//		break;
-//		case 1:
-//			data=14400;
-//		break;
-//		case 2:
-//			data=19200;
-//		break;
-//		case 3:
-//			data=56000;
-//		break;
-//		case 4:
-//			data=115200;
-//		break ;
-//		default:
-//			data=9600;
-//		break ;
-//	
-//	
-//	}
 	UART_ConfigStructInit(&UARTConfigStruct);
 	// Re-configure baudrate to 115200bps
-	UARTConfigStruct.Baud_rate = 9600;//data;//115200;
-
+	UARTConfigStruct.Baud_rate = 9600;
+//	UARTConfigStruct.Baud_rate = 9600;
 	// Initialize DEBUG_UART_PORT peripheral with given to corresponding parameter
 	UART_Init(LPC_UART0, &UARTConfigStruct);//|UART_INTCFG_THRE
 	UART_IntConfig(LPC_UART0,UART_INTCFG_RBR,ENABLE);
@@ -589,23 +572,19 @@ void debug_frmwrk_init(void)
 	_db_get_val = UARTGetValue;
 }
 
+
 void Uart3_init(uint32_t freq)//wlan
 {
 	UART_CFG_Type UARTConfigStruct;
-	vu32 data;
+
 
 	/*
 	 * Initialize UART3 pin connect
-	 * P0.0: TXD
-	 * P0.1: RXD
+	 * P0.2: TXD
+	 * P0.3: RXD
 	 */
-	PINSEL_ConfigPin(0, 0, 2);
-	PINSEL_ConfigPin(0, 1, 2);
-	GPIO_WAN_Config();
-	
-	
-
-
+	PINSEL_ConfigPin (0, 2, 2);
+	PINSEL_ConfigPin (0, 3, 2);
 
 	/* Initialize UART Configuration parameter structure to default state:
 	 * Baudrate = 9600bps
@@ -615,38 +594,30 @@ void Uart3_init(uint32_t freq)//wlan
 	 */
 	UART_ConfigStructInit(&UARTConfigStruct);
 	// Re-configure baudrate to 115200bps
-	switch(freq)
-	{
-		case 0:
-			data=9600;
-		break;
-		case 1:
-			data=14400;
-		break;
-		case 2:
-			data=19200;
-		break;
-		case 3:
-			data=56000;
-		break;
-		case 4:
-			data=115200;
-		break ;
-		default:
-			data=9600;
-		break ;
-	
-	
-	}
-	UARTConfigStruct.Baud_rate = data;
-
+	UARTConfigStruct.Baud_rate = 9600;
+//	UARTConfigStruct.Baud_rate = 9600;
 	// Initialize DEBUG_UART_PORT peripheral with given to corresponding parameter
 	UART_Init(LPC_UART3, &UARTConfigStruct);//|UART_INTCFG_THRE
 	UART_IntConfig(LPC_UART3,UART_INTCFG_RBR,ENABLE);
-//	NVIC_SetPriority(UART3_IRQn, ((0x01<<3)|0x02));//??UART2?????
+	//NVIC_SetPriority(UART0_IRQn, ((0x01<<3)|0x01));//??UART2?????
 	 NVIC_EnableIRQ(UART3_IRQn);
 	// Enable UART Transmit
 	UART_TxCmd(LPC_UART3, ENABLE);
+
+	_db_msg	= UARTPuts;
+	_db_msg_ = UARTPuts_;
+	_db_char = UARTPutChar;
+	_db_hex = UARTPutHex;
+	_db_hex_16 = UARTPutHex16;
+	_db_hex_32 = UARTPutHex32;
+	_db_hex_ = UARTPutHex_;
+	_db_hex_16_ = UARTPutHex16_;
+	_db_hex_32_ = UARTPutHex32_;
+	_db_dec = UARTPutDec;
+	_db_dec_16 = UARTPutDec16;
+	_db_dec_32 = UARTPutDec32;
+	_db_get_char = UARTGetChar;
+	_db_get_val = UARTGetValue;
 
 	
 }
@@ -685,408 +656,30 @@ void Uart0RecTimeOut(void)
 //修改日期：2015.10.26 10:02
 //备注说明：无
 //==========================================================
-//vu8 Uart_Process(void)
-//{
-//	vu8 kind=0xff;
-//    Send_Testvalue_Typedef *pt;
-//		if (ComBuf.rec.end)//接收数据结束
-//		{
-//				kind=ComBuf.rec.buf[PFRAMEKIND];//命令字
-//			//准备接收下一帧数据sprintf
-//			ComBuf.rec.end=0;//接收缓冲可读标志复位
-//			ComBuf.rec.ptr=0;//接收指针清零
-//            memset(ComBuf.rec.buf,0,5);
-//            
-//		}
-//	ComBuf.rec.end=0;
-//	return kind;
-//}
-
+//==========================================================
+//函数名称：Uart_Process
+//函数功能：串口处理 读按键
+//入口参数：无
+//出口参数：无
+//创建日期：2015.10.26 
+//修改日期：2015.10.26 10:02
+//备注说明：无
+//==========================================================
 vu8 Uart_Process(void)
 {
-//	u8 strbuff[8];
-	u8 sec_king,i;
-#if HW_UART_SUPPORT
-	u8 kind=0xff;
-	u8 lenth = 0;
-	u8 recbuf[30];
-#if DEBUG_SUPPORT
-	 u8 str[(FRAME_LEN_MAX-FRAME_LEN_MIN)+1];//收发数据缓冲
-#else
-	 u8 str[(FRAME_LEN_MAX-FRAME_LEN_MIN)+1];//收发数据缓冲
-#endif
-if(FacBuf.rec.end)//通讯协议选择
-{
-	U9001_Save_sys.U9001_SYS.pselect	= FacBuf.rec.buf[2];
-//	SaveData.devaddr = FacBuf.rec.buf[3];
-	memset(FacBuf.rec.buf,'\0',30);//清空缓冲
-	FacBuf.rec.end=FALSE;//接收缓冲可读标志复位
-	FacBuf.rec.ptr=0;//接收指针清零
-	
-	SavePselect();
-//	Saveaddr();
-}
-if(U9001_Save_sys.U9001_SYS.pselect == 0)//通讯协议1
-{
-	//	if(SaveData.System.Uart)//串口有效
-	//	{
-			if (ComBuf.rec.end)//接收数据结束
-			{
-				memset(str,'\0',(FRAME_LEN_MAX-FRAME_LEN_MIN+1));//清空缓冲
-				{
-					memcpy(str,&ComBuf.rec.buf[PDATASTART],(FRAME_LEN_MAX-FRAME_LEN_MIN)+1);//ComBuf.send.len-FRAME_LEN_MIN);//数据包
-					kind=ComBuf.rec.buf[PFRAMEKIND];//命令字
-					sec_king=ComBuf.rec.buf[PDATASTART];
-				}
-				//准备接收下一帧数据
-				ComBuf.rec.end=FALSE;//接收缓冲可读标志复位
-				ComBuf.rec.ptr=0;//接收指针清零
-	//		}
-	//	}
-
-		switch(kind)
+	vu8 kind=0xff;
+    Send_Testvalue_Typedef *pt;
+		if (ComBuf.rec.end)//接收数据结束
 		{
-			case FRAME_READ_RESULT://读取结果
-				//串口发送测试数据:电压(5)+电阻(6)+时间(4)+分选(1)=16字节
-				switch (GetSystemMessage())//系统信息
-				{
-					case MSG_IDLE:
-						memcpy(strbuff,"----",5);
-						break;
-					case MSG_PAUSE:
-						memcpy(strbuff,"----",5);
-						//kind=0x9B;//测试中止
-						break;
-					case MSG_PASS:
-						//kind=0x91;//测试通过
-						memcpy(strbuff,"PASS",5);
-						break;
-					case MSG_HIGH:
-						//kind=0x92;//上限报警
-						memcpy(strbuff,"HIGH",5);
-						break;
-					case MSG_LOW:
-						//kind=0x92;//下限报警
-						memcpy(strbuff,"LOW ",5);
-						break;
-					case MSG_OVER:
-						memcpy(strbuff,"BRK ",5);
-						break;
-					case MSG_ARC:
-						memcpy(strbuff,"ARC ",5);
-						break;
-					case MSG_OFL://过流报警
-						memcpy(strbuff,"HIGH",5);
-						break;
-					default:
-						//kind=0x90;//正常测试
-						memcpy(strbuff,"TEST",5);
-						break;
-				}	
-				
-				
-
-				if(SaveData.Setup.Group_Item == W_ISETUP || SaveData.Setup.Group_Item == I_WSETUP)
-				{
-					if(sendflag == 0)
-					{
-						sendflag = 1;
-						memset(ComBuf.send.buf,0,40);
-		//				ComBuf.send.buf[0]=0xAA;
-		//				ComBuf.send.begin=FALSE;
-						if(GetSystemMessage() == MSG_IDLE)
-						{
-							strcat((char*)ComBuf.send.buf,(char*)sendbuff);
-	//						memcpy(&ComBuf.send.buf[0],sendbuff,14);
-							strcat((char*)ComBuf.send.buf,(char*)strbuff);
-						}else{
-							if(multstep == 1)
-							{
-								strcat((char*)ComBuf.send.buf,(char*)sendbuff);
-	//							memcpy(&ComBuf.send.buf[0],sendbuff,14);
-								if(SaveData.Setup.Group_Item == W_ISETUP)
-								{
-									strcat((char*)ComBuf.send.buf,(char*)strbuff);
-								}else if(SaveData.Setup.Group_Item == I_WSETUP){
-									strcat((char*)ComBuf.send.buf,"----");
-								}
-							}else{
-								if(SaveData.Setup.Group_Item == W_ISETUP)
-								{
-									if(sendbuff[13] == 0x3b)
-									{
-										memcpy(&sendbuff[14],"PASS",4);
-									}else if(sendbuff[14] == 0x3b){
-										memcpy(&sendbuff[15],"PASS",4);
-									}
-//									strcat((char*)sendbuff,"PASS");
-									memcpy(&ComBuf.send.buf[0],sendbuff,18);
-								}else if(SaveData.Setup.Group_Item == I_WSETUP){
-//									strcat((char*)sendbuff,"mA;");
-									if(sendbuff[13] == 0x3b)
-									{
-										memcpy(&sendbuff[14],strbuff,4);
-									}else if(sendbuff[14] == 0x3b){
-										memcpy(&sendbuff[15],strbuff,4);
-									}
-//									strcat((char*)sendbuff,(char*)strbuff);
-									strcat((char*)ComBuf.send.buf,(char*)sendbuff);
-//									memcpy(&ComBuf.send.buf[0],sendbuff,18);
-								}							
-							}
-						}
-	//					memset(ComBuf1.send.buf,0,21);
-	//					ComBuf1.send.buf[0]=0xAA;
-	//					ComBuf1.send.begin=FALSE;
-	//					memcpy(&ComBuf1.send.buf[1],sendbuff1,16);
-						
-						strcat((char*)ComBuf.send.buf,";");
-						strcat((char*)ComBuf.send.buf,(char*)sendbuff1);
-						if(multstep == 1)
-						{
-	//						strcat((char*)ComBuf.send.buf,"----");
-							if(SaveData.Setup.Group_Item == W_ISETUP)
-							{
-								strcat((char*)ComBuf.send.buf,"----");
-							}else if(SaveData.Setup.Group_Item == I_WSETUP){
-								strcat((char*)ComBuf.send.buf,(char*)strbuff);
-							}
-						}else{
-							if(SaveData.Setup.Group_Item == W_ISETUP)
-							{
-								strcat((char*)ComBuf.send.buf,(char*)strbuff);
-							}else if(SaveData.Setup.Group_Item == I_WSETUP){
-								strcat((char*)ComBuf.send.buf,"PASS");
-							}
-							
-						}
-						strcat((char*)ComBuf.send.buf,(char*)sendend);//尾部增加回车和换行符
-						for(i=0;i<39;i++)
-						{
-							USART_SendData(USART1, ComBuf.send.buf[i]);
-							while(USART_GetFlagStatus(USART1,USART_FLAG_TXE)==RESET);
-						}
-						ComBuf.rec.end=FALSE;//接收缓冲可读标志复位
-	//					USART_SendData(USART1, 0xBB);
-	//					while(USART_GetFlagStatus(USART1,USART_FLAG_TXE)==RESET);
-
-	//					break;
-					}else{
-						for(i=0;i<39;i++)
-						{
-							USART_SendData(USART1, ComBuf.send.buf[i]);
-							while(USART_GetFlagStatus(USART1,USART_FLAG_TXE)==RESET);
-						}
-						ComBuf.rec.end=FALSE;//接收缓冲可读标志复位
-					}
-				}else{
-					if(sendflag == 0)
-					{
-						sendflag = 1;
-						memset(ComBuf.send.buf,0,40);
-		//				ComBuf.send.buf[0]=0xAA;
-		//				ComBuf.send.begin=FALSE;
-						memcpy(&ComBuf.send.buf[0],sendbuff,14);
-						strcat((char*)ComBuf.send.buf,(char*)strbuff);
-						
-						strcat((char*)ComBuf.send.buf,(char*)sendend);//尾部增加回车和换行符
-						
-						for(i=0;i<20;i++)
-						{
-							USART_SendData(USART1, ComBuf.send.buf[i]);
-							while(USART_GetFlagStatus(USART1,USART_FLAG_TXE)==RESET);
-						}
-					}else{
-						for(i=0;i<20;i++)
-						{
-							USART_SendData(USART1, ComBuf.send.buf[i]);
-							while(USART_GetFlagStatus(USART1,USART_FLAG_TXE)==RESET);
-						}
-					}
-				}
-				
-
-				
-				
-				
-				break;
-			
-			case FRAME_START://启动
-				run_stemp=0;
-				SetSystemStatus(SYS_STATUS_START);//系统状态-启动测试
-				break;
-
-			case FRAME_RESET://复位
-				if(GetSystemStatus() == SYS_STATUS_TEST){
-					SetSystemMessage(MSG_PAUSE);//系统信息-暂停测试
-					SetSystemStatus(SYS_STATUS_TEST_PAUSE);//系统状态-待机
-					Plc_Start_Off();
-				}else{
-					SetSystemStatus(SYS_STATUS_IDLE);//系统状态-待机
-				}
-				break;
-
-			case FRAME_WRITE_SN://写序列号
-				break;
-			
-			case FRAME_CLR_BOOT_NUM://清开机次数
-				break;
-			case FRAME_ITEM://设置测试项目
-				switch(sec_king)
-				{
-					case 0x00:
-						SaveData.Setup.Group_Item=0;
-						break;
-					case 0x01:
-						SaveData.Setup.Group_Item=1;
-						break;
-					case 0x10:
-						SaveData.Setup.Group_Item=2;
-						break;
-					case 0x11:
-						SaveData.Setup.Group_Item=3;
-						break;
-					default:
-						break;
-				}
-				SaveGroup();//保存组别
-				Store_set_flash();
-				Disp_Idle_Menu();//显示待测界面
-				break;
-			case FRAME_DATA://数据帧
-				SaveData.Group=str[1]-1;
-				switch(sec_king)
-				{
-					case 0xAC:
-						SaveData.Setup.Item=0;
-						SaveData.Setup.Output=(u16)BCDtoHex1(str[2],1)*100+BCDtoHex1(str[3],1);
-						SaveData.Setup.High=(u16)BCDtoHex1(str[4],1)*100+BCDtoHex1(str[5],1);
-						SaveData.Setup.Low=(u16)BCDtoHex1(str[6],1)*100+BCDtoHex1(str[7],1);
-						SaveData.Setup.RampDelay=(u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
-						SaveData.Setup.TestTime=(u16)BCDtoHex1(str[10],1)*100+BCDtoHex1(str[11],1);
-						SaveData.Setup.Arc=str[12];
-						if(str[13]==0x50)
-							SaveData.Setup.Freq=0;
-						else
-							SaveData.Setup.Freq=1;
-						break;
-					case 0xDC:
-						SaveData.Setup.Item=1;
-						SaveData.Setup.Output=(u16)BCDtoHex1(str[2],1)*100+BCDtoHex1(str[3],1);
-						SaveData.Setup.High=(u16)BCDtoHex1(str[4],1)*100+BCDtoHex1(str[5],1);
-						SaveData.Setup.Low=(u16)BCDtoHex1(str[6],1)*100+BCDtoHex1(str[7],1);
-						SaveData.Setup.RampDelay=(u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
-						SaveData.Setup.TestTime=(u16)BCDtoHex1(str[10],1)*100+BCDtoHex1(str[11],1);
-						SaveData.Setup.Arc=str[12];
-						break;
-					case 0xAD:
-						SaveData.Setup.I_Volt=(u16)BCDtoHex1(str[2],1)*100+BCDtoHex1(str[3],1);
-						SaveData.Setup.I_High=(u16)BCDtoHex1(str[4],1)*100+BCDtoHex1(str[5],1);
-						SaveData.Setup.I_Low=(u16)BCDtoHex1(str[6],1)*100+BCDtoHex1(str[7],1);
-						SaveData.Setup.I_Delay=(u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
-						
-						break;
-					
-				
-				}
-				SaveGroup();//保存组别
-				Store_set_flash();
-				Disp_Idle_Menu();//显示待测界面
-				break;
-			case FRAME_SELECT_GROUP:
-				SaveData.Group=sec_king-1;
-				SaveGroup();
-				SetSystemStatus(SYS_STATUS_IDLE);//待机状态
-				ReadSetByGroup();
-				Parameter_valuecomp();//比较设置参数
-				Disp_Idle_Menu();//显示待测界面
-				break;		
-			default:
-				break;
-			
+				kind=ComBuf.rec.buf[PFRAMEKIND];//命令字
+			//准备接收下一帧数据sprintf
+			ComBuf.rec.end=0;//接收缓冲可读标志复位
+			ComBuf.rec.ptr=0;//接收指针清零
+            memset(ComBuf.rec.buf,0,5);
+            
 		}
-//	Disp_Idle_Menu();//显示待测界面
-	}
-}else if(SaveData.pselect == 1){//通讯协议2
-	if (ComBuf.rec.end)//接收数据结束
-	{
-		memcpy(recbuf,&ComBuf.rec.buf[0],30);
-		lenth=recbuf[2];//数据长度
-		kind=recbuf[3];//命令字
-		ComBuf.rec.end=FALSE;//接收缓冲可读标志复位
-		ComBuf.rec.ptr=0;//接收指针清零
-	}
-	
-	switch(kind)
-	{
-		case TEST_RST://测试/复位命令
-		{
-			if(lenth == 2)
-			{
-				if(recbuf[4] == 'T')//测试命令
-				{
-					run_stemp=0;
-					SetSystemStatus(SYS_STATUS_START);//系统状态-启动测试
-					respond = 1;
-				}else if(recbuf[4] == 'R'){//复位命令
-					if(GetSystemStatus() == SYS_STATUS_TEST){
-						SetSystemMessage(MSG_PAUSE);//系统信息-暂停测试
-						SetSystemStatus(SYS_STATUS_TEST_PAUSE);//系统状态-待机
-						Plc_Start_Off();
-						respond = 1;
-					}else{
-						SetSystemStatus(SYS_STATUS_IDLE);//系统状态-待机
-					}
-				}else if(recbuf[4] == 'S'){//读数据命令
-					SendRes();
-				}
-			}else if(lenth == 3){
-				if(recbuf[4] == 't')//选择组别并测试命令
-				{
-					run_stemp=0;
-					SaveData.Group=recbuf[5];
-					SaveGroup();
-					SetSystemStatus(SYS_STATUS_IDLE);//待机状态
-					ReadSetByGroup();
-					Parameter_valuecomp();//比较设置参数					
-					SetSystemStatus(SYS_STATUS_START);//系统状态-启动测试
-				}
-			}
-		}break;
-		case GROUPSET://组别设置
-		{
-			SaveData.Group=recbuf[4];
-			SaveGroup();
-			SetSystemStatus(SYS_STATUS_IDLE);//待机状态
-			ReadSetByGroup();
-			Parameter_valuecomp();//比较设置参数
-			Disp_Idle_Menu();//显示待测界面
-		}break;
-		case BASICSET:	//设置组别参数
-		{
-			U2.w_ma = recbuf[4];
-			SaveData.Setup.Group_Item = U2.BIT_FLAG.item;//测试项目
-			SaveData.Setup.Item = U2.BIT_FLAG.ACDC;//交直流
-			SaveData.Setup.Freq = U2.BIT_FLAG.ACWF;//频率
-			SaveData.Setup.Arc = U2.BIT_FLAG.ARC;//电弧
-			
-			SaveData.Setup.I_Volt = recbuf[5];//绝缘测试输出电压
-			SaveData.Setup.Output = (u16)(recbuf[6]<<8) + recbuf[7];//耐压测试输出电压
-			SaveData.Setup.High=(u16)(recbuf[8]<<8) + recbuf[9];//耐压测试漏电上限
-			SaveData.Setup.Low=(u16)(recbuf[10]<<8) + recbuf[11];//耐压测试漏电下限
-			SaveData.Setup.RampDelay=(u16)(recbuf[12]<<8) + recbuf[13];//耐压缓升时间
-			SaveData.Setup.TestTime=(u16)(recbuf[14]<<8) + recbuf[15];//耐压测试时间
-			SaveData.Setup.I_High=(u16)(recbuf[16]<<8) + recbuf[17];//绝缘上限
-			SaveData.Setup.I_Low=(u16)(recbuf[18]<<8) + recbuf[19];//绝缘下限
-			SaveData.Setup.I_Delay=(u16)(recbuf[20]<<8) + recbuf[21];//延时判定
-			
-			SaveGroup();//保存组别
-			Store_set_flash();
-			Disp_Idle_Menu();//显示待测界面
-		}break;
-	}
-}
-#endif
+	ComBuf.rec.end=0;
+	return kind;
 }
 /*----------------- INTERRUPT SERVICE ROUTINES --------------------------*/
 /*********************************************************************//**
@@ -1097,185 +690,34 @@ if(U9001_Save_sys.U9001_SYS.pselect == 0)//通讯协议1
 void UART0_IRQHandler(void)//UART0_IRQn
 {
 	 uint8_t Status,dat;
-	Status=UART_GetLineStatus(LPC_UART0);//
-	Status=UART_ReceiveByte(LPC_UART0);
-    keyvalue=Status;
-	if(U9001_Save_sys.U9001_SYS.pselect == 0)//原始协议
-	{
-		if (!ComBuf.rec.end)//接收没结束
-		{
-			SetRecTimeOut(REC_TIME_OUT);//设置接收超时周期
-			dat=Status;
-			if (/*dat==(u8)(UART_REC_BEGIN)*/ComBuf.rec.ptr==0)//帧头
-			{
-				if(dat!=(u8)(UART_REC_BEGIN)) //首字节
-				{
-					ComBuf.rec.ptr=0;//重新接收 
-				}
-				else
-				{
-					ComBuf.rec.buf[ComBuf.rec.ptr++]=dat;
-				}
-			}
-			else if (dat==(u8)(UART_REC_END))//帧尾
-			{
-				ComBuf.rec.buf[ComBuf.rec.ptr++]=dat;
-				ComBuf.rec.end=TRUE;//接收结束
-				ComBuf.rec.len=ComBuf.rec.ptr;//存接收数据长度
-				ComBuf.rec.ptr=0;//指针清零重新开始新的一帧接收
-				ComBuf.rec.TimeOut=0;//接收超时清零
-			}
-			else
-			{
-				if (ComBuf.rec.ptr>=REC_LEN_MAX)//最大接收帧长度
-				{
-					ComBuf.rec.ptr=0;//重新接收
-				}
-				else
-				{
-					ComBuf.rec.buf[ComBuf.rec.ptr++]=dat;
-				}
-			}
-		}
-	}else if(U9001_Save_sys.U9001_SYS.pselect == 1){//新协议
-		if (!ComBuf.rec.end)//接收没结束
-			{
-				SetRecTimeOut(REC_TIME_OUT);//设置接收超时周期
-				dat=Status;
-				if (/*dat==(u8)(UART_REC_BEGIN20) && */ComBuf.rec.ptr == 0)//帧头1
-				{
-					if(dat!=(u8)(UART_REC_BEGIN20)) //首字节
-					{
-						ComBuf.rec.ptr=0;//重新接收 
-					}
-					else
-					{
-						ComBuf.rec.buf[ComBuf.rec.ptr++]=dat;
-					}
-				}
-				else if (/*dat==SaveData.devaddr(u8)(UART_REC_BEGIN21) && */ComBuf.rec.ptr == 1)//帧头2
-				{
-					if(dat!=UART_REC_BEGIN21) //第二字节
-					{
-						ComBuf.rec.ptr=0;//重新接收 
-					}
-					else
-					{
-						ComBuf.rec.buf[ComBuf.rec.ptr++]=dat;
-					}
-				}else{
-					if (ComBuf.rec.ptr>=REC_LEN_MAX)//最大接收帧长度
-					{
-						ComBuf.rec.ptr=0;//重新接收
-					}
-					else
-					{
-						ComBuf.rec.buf[ComBuf.rec.ptr++]=dat;
-						if(ComBuf.rec.ptr > 2 && (ComBuf.rec.ptr == ComBuf.rec.buf[2]+3))
-						{
-//							ComBuf.rec.buf[ComBuf.rec.ptr++]=dat;
-							ComBuf.rec.end=TRUE;//接收结束
-							ComBuf.rec.len=ComBuf.rec.ptr;//存接收数据长度
-							ComBuf.rec.ptr=0;//指针清零重新开始新的一帧接收
-							ComBuf.rec.TimeOut=0;//接收超时清零
-						}
-					}
-				}
-			}
-	}
-	
-	
-	//出厂协议设置命令
-		if(!FacBuf.rec.end)
-		{
-			SetRecTimeOut(REC_TIME_OUT);//设置接收超时周期
-			dat=USART_ReceiveData(USART1);
-			if (/*dat==0XFF*/FacBuf.rec.ptr==0)//帧头1
-			{
-				if(dat!=0XFF) //首字节
-				{
-					FacBuf.rec.ptr=0;//重新接收 
-				}
-				else
-				{
-					FacBuf.rec.buf[FacBuf.rec.ptr++]=dat;
-				}
-			}
-			else if (/*dat==0XEE*/FacBuf.rec.ptr==1)//帧头2
-			{
-				if(dat!=0XEE) //第二字节
-				{
-					FacBuf.rec.ptr=0;//重新接收 
-				}
-				else
-				{
-					FacBuf.rec.buf[FacBuf.rec.ptr++]=dat;
-				}
-			}else if (/*dat==0XDD*/FacBuf.rec.ptr==4)//帧尾
-			{
-				if(dat!=0XDD) //第五字节
-				{
-					FacBuf.rec.ptr=0;//重新接收 
-				}else{
-					FacBuf.rec.buf[FacBuf.rec.ptr++]=dat;
-					FacBuf.rec.end=TRUE;//接收结束
-					FacBuf.rec.len=FacBuf.rec.ptr;//存接收数据长度
-					FacBuf.rec.ptr=0;//指针清零重新开始新的一帧接收
-					FacBuf.rec.TimeOut=0;//接收超时清零	
-				}					
-				
-			}
-			else
-			{
-				if (FacBuf.rec.ptr>=REC_LEN_MAX)//最大接收帧长度
-				{
-					FacBuf.rec.ptr=0;//重新接收
-				}
-				else
-				{
-					FacBuf.rec.buf[FacBuf.rec.ptr++]=dat;
-				}
-			}
-		}
-			
-	   }
-	if (!ComBuf.rec.end)//接收没结束
-		{
-			SetRecTimeOut(REC_TIME_OUT);//设置接收超时周期
-			dat=Status;
-			if (dat==(vu8)(UART_REC_BEGIN))//帧头
-			{
-				if(ComBuf.rec.ptr!=0) //首字节
-				{
-					ComBuf.rec.ptr=0;//重新接收 
-				}
-				else
-				{
-					ComBuf.rec.buf[ComBuf.rec.ptr++]=dat;
-				}
-			}
-			else if (dat==(vu8)(UART_REC_END))//帧尾
-			{
-				ComBuf.rec.buf[ComBuf.rec.ptr++]=dat;
-				ComBuf.rec.end=TRUE;//接收结束
-				ComBuf.rec.len=ComBuf.rec.ptr;//存接收数据长度
-				ComBuf.rec.ptr=0;//指针清零重新开始新的一帧接收
-				ComBuf.rec.TimeOut=0;//接收超时清零
-                keyvalue=Uart_Process();
-			}
-			else
-			{
-				if (ComBuf.rec.ptr>=REC_LEN_MAX)//最大接收帧长度
-				{
-					ComBuf.rec.ptr=0;//重新接收
-				}
-				else
-				{
-					ComBuf.rec.buf[ComBuf.rec.ptr++]=dat;
-				}
-			}
-		}
+	 Status=UART_GetLineStatus(LPC_UART0);//
+	 Status=UART_ReceiveByte(LPC_UART0);
+     keyvalue=Status;
 }
+
+/*********************************************************************//**
+ * @brief		UART3 interrupt handler sub-routine
+ * @param[in]	None
+ * @return 		None
+ **********************************************************************/
+void UART3_IRQHandler(void)//UART3_IRQn
+{
+	 uint8_t Status,Res;
+	 Status=UART_GetLineStatus(LPC_UART3);//
+	 Res=UART_ReceiveByte(LPC_UART3);
+	 SCPI_Input(&scpi_context, &Res, 1);
+}
+
+//void UART0_IRQHandler(void)//UART0_IRQn
+//{
+//	uint8_t Status,dat;
+//	Status=UART_GetLineStatus(LPC_UART0);//
+//	Status=UART_ReceiveByte(LPC_UART0);
+//    keyvalue=Status;
+//	
+//	SCPI_Input(&scpi_context, &Status, 1);
+//}
+
 //void UART3_IRQHandler(void)
 //{
 //	uint8_t Status;
@@ -1334,10 +776,11 @@ void Uart0_Send(u8 king)
     for(i=0;i<(sizeof(Send_Testvalue[0]));i++)
     {
 		UARTPutChar(LPC_UART0,*(pt+i) );
-        
     }
 
 }
+
+
 //UARTPuts( LPC_UART0, Send_buff);
 
 

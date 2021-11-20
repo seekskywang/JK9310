@@ -22,6 +22,7 @@ extern GUI_CONST_STORAGE GUI_FONT GUI_FontGUI_FONTXBFFON16;
 extern GUI_CONST_STORAGE GUI_FONT GUI_FontGUI_FONTXBFFON50;
 extern GUI_CONST_STORAGE GUI_FONT GUI_FontHZMCRBLK16;
 Test_Value_Typedef Test_Value;
+UnitNum_typedef test_value;
 const u8 MAX_SETP[4]={9,11,10,5};
 
 //=======================================================================
@@ -325,23 +326,23 @@ const char TEST_UNIT[][2][8]=
 };
 const char DISP_COMP[][2][15]=
 {
-    {"uA","kΩ"},
-    {"mA","MΩ"},
-    {" A","GΩ"},
-    {"合格","PASS"},
-    {"合格","PASS"},
-    {"合格","PASS"},
-    {"下限失败","LOFAIL"},
+    {"uA","kΩ"},//0
+    {"mA","MΩ"},//1
+    {" A","GΩ"},//2
+    {"合格","PASS"},//3
+    {"合格","PASS"},//4
+    {"合格","PASS"},//5
+    {"下限失败","LOFAIL"},//6
     
-    {"下限失败","LOFAIL"},
-    {"上限失败","HIFAIL"},
-     {"短路失败","SHORT"},
-    {"上限失败","HIFAIL"},
-    {"上限失败","HIFAIL"},
-    {"电弧失败","ARCFAIL"},
-    {"上限失败","HIFAIL"},
-    {"GIF失败","GIFFAIL"}
-
+    {"下限失败","LOFAIL"},//7
+    {"上限失败","HIFAIL"},//8
+    {"短路失败","SHORT"},//9
+    {"上限失败","HIFAIL"},//10
+    {"上限失败","HIFAIL"},//11
+    {"电弧失败","ARCFAIL"},//12
+    {"上限失败","HIFAIL"},//13
+    {"GIF失败","GIFFAIL"},//14
+	{"待测","IDLE"}//15
 };
 const char SetupConfig_Tab[][2][15]=
 {
@@ -1833,7 +1834,7 @@ const u8 Test_dot[][7]=
 };
 void Disp_Test_List(u8 i)
 {
-    UnitNum_typedef test_value;
+    
     GUI_SetColor(GUI_LIGHTYELLOW);
     GUI_SetBkColor(LCD_COLOR_TEST_BACK);
     GUI_SetFont(&GUI_FontGUI_FONTXBFFON16);
@@ -1843,11 +1844,11 @@ void Disp_Test_List(u8 i)
     
     GUI_DispStringAt(DispBuf,80,40+20*(i));//TEST_UNIT
     
-    if(Test_Value.I_R==0xffff)
+    if(Resistance==0xffff)
         memcpy(DispBuf,"UPPER",6); 
     else
     {  
-        test_value=IntToStr(Test_Value.I_R);
+        test_value=IntToStr(Resistance);
         //                Hex_Format(test_value.num,test_value.dot,4,0);
         Hex_Format(test_value.num,Test_dot[U9001_save.U9001_Setup[U9001_save.current_step].parameter][Range],4,0);
     }
@@ -6312,5 +6313,5 @@ void Disp_DelayTime(u8 item)
 }
 void Disp_Comp(void)
 {
-    GUI_DispStringAt(DISP_COMP[Save_TestValue[U9001_save.current_step-1].text_flag][U9001_Save_sys.U9001_SYS.language],260,60);
+    GUI_DispStringAt(DISP_COMP[Save_TestValue[U9001_save.current_step-1].text_flag][U9001_Save_sys.U9001_SYS.language],260,60+20*(U9001_save.current_step-1));
 }

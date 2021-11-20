@@ -276,7 +276,10 @@ extern uint8_t V_Range;
 extern uint8_t DISP_FLAG;
 extern char U_Storebuff[50];
 extern u8 _4094_databuff[_4094NUM];
-
+extern char Resbuf[500];
+extern const char TestPara[][8];
+extern const char DISP_COMP[][2][15];
+extern const u8 Test_IRUINT[][6];
 //========================================================
 extern uint8_t keyvalue,key_x;//按键值
 extern uint32_t background;//背景色
@@ -636,7 +639,9 @@ typedef struct
 {
     u32 Text_vot;
     u32 Text_value;
+	u32 Text_time;
     u8 text_flag;
+	u8 text_unit;
 
 }Save_TestValue_Typedef;
 extern Save_TestValue_Typedef Save_TestValue[];
@@ -883,6 +888,8 @@ extern uint8_t Pc_Sendflag;
 extern  uint32_t  rebuff_v[4];
 extern float receive;
 extern uint8_t  F_100ms;//100ms定时标志
+extern uint8_t pageflag;
+extern UnitNum_typedef test_value;
 //extern  vu16 Voltage;//测试电压
 //extern  vu16 Current;//测试电流
 //extern  vu16 Resistance,xxxx;//测试电阻

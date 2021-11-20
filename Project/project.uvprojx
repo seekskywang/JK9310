@@ -323,7 +323,7 @@
             <wLevel>0</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
-            <uC99>0</uC99>
+            <uC99>1</uC99>
             <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>1</v6Lang>
@@ -335,9 +335,9 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls>--locale=english</MiscControls>
-              <Define></Define>
+              <Define>USE_FULL_LL_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Libraries\Core\CM3\CoreSupport;..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x;..\Libraries\Drivers\include;..\User;..\Libraries\BoardSupport;..\User\UseDisp;..\User\Globalvalue;..\Libraries\Drivers\include;..\User\Include;..\User\Fat;..\User\Host;..\User\MassStorage;..\User\pwm;..\User\spi_ad_da;..\User\FATFS_V0.08A\src;..\User\touch;..\emWin\Config;..\emWin\Header;..\emWin\Library;..\emWin;..\User\flash;..\User\Test</IncludePath>
+              <IncludePath>..\Libraries\Core\CM3\CoreSupport;..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x;..\Libraries\Drivers\include;..\User;..\Libraries\BoardSupport;..\User\UseDisp;..\User\Globalvalue;..\Libraries\Drivers\include;..\User\Include;..\User\Fat;..\User\Host;..\User\MassStorage;..\User\pwm;..\User\spi_ad_da;..\User\FATFS_V0.08A\src;..\User\touch;..\emWin\Config;..\emWin\Header;..\emWin\Library;..\emWin;..\User\flash;..\User\Test;..\libscpi\inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -521,6 +521,11 @@
               <FileName>HZMCRBLK16.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\HZMCRBLK16.c</FilePath>
+            </File>
+            <File>
+              <FileName>scpi-def.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\scpi-def.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1019,6 +1024,76 @@
               <FileName>AT45DB.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\flash\AT45DB.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>libscpi</GroupName>
+          <Files>
+            <File>
+              <FileName>error.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\libscpi\src\error.c</FilePath>
+            </File>
+            <File>
+              <FileName>expression.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\libscpi\src\expression.c</FilePath>
+            </File>
+            <File>
+              <FileName>fifo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\libscpi\src\fifo.c</FilePath>
+            </File>
+            <File>
+              <FileName>fifo_private.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\libscpi\src\fifo_private.h</FilePath>
+            </File>
+            <File>
+              <FileName>ieee488.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\libscpi\src\ieee488.c</FilePath>
+            </File>
+            <File>
+              <FileName>lexer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\libscpi\src\lexer.c</FilePath>
+            </File>
+            <File>
+              <FileName>lexer_private.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\libscpi\src\lexer_private.h</FilePath>
+            </File>
+            <File>
+              <FileName>minimal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\libscpi\src\minimal.c</FilePath>
+            </File>
+            <File>
+              <FileName>parser.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\libscpi\src\parser.c</FilePath>
+            </File>
+            <File>
+              <FileName>parser_private.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\libscpi\src\parser_private.h</FilePath>
+            </File>
+            <File>
+              <FileName>units.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\libscpi\src\units.c</FilePath>
+            </File>
+            <File>
+              <FileName>utils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\libscpi\src\utils.c</FilePath>
+            </File>
+            <File>
+              <FileName>utils_private.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\libscpi\src\utils_private.h</FilePath>
             </File>
           </Files>
         </Group>

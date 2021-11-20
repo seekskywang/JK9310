@@ -91,7 +91,6 @@ int main(void)
     while(1)
     {  		
 		switch(GetSystemStatus())
-
 		{
 			case SYS_STATUS_POWER:
 				
@@ -129,7 +128,6 @@ int main(void)
 
 
 			case SYS_STATUS_SYS://系统信息显示
-				
 				Sys_Process();
 				break;
 

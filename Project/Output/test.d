@@ -48,3 +48,17 @@
 .\output\test.o: ..\User\flash\AT45DB.h
 .\output\test.o: ..\Libraries\Drivers\include\lpc177x_8x_pinsel.h
 .\output\test.o: ..\Libraries\Drivers\include\lpc177x_8x_ssp.h
+.\output\test.o: ..\libscpi\inc\scpi/scpi.h
+.\output\test.o: ..\libscpi\inc\scpi/parser.h
+.\output\test.o: ..\libscpi\inc\scpi/types.h
+.\output\test.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\output\test.o: ..\libscpi\inc\scpi/config.h
+.\output\test.o: ..\libscpi\inc\scpi/cc.h
+.\output\test.o: ..\libscpi\inc\scpi/ieee488.h
+.\output\test.o: ..\libscpi\inc\scpi/error.h
+.\output\test.o: ..\libscpi\inc\scpi/constants.h
+.\output\test.o: ..\libscpi\inc\scpi/minimal.h
+.\output\test.o: ..\libscpi\inc\scpi/units.h
+.\output\test.o: ..\libscpi\inc\scpi/utils.h
+.\output\test.o: ..\libscpi\inc\scpi/expression.h
+.\output\test.o: ..\User\scpi-def.h

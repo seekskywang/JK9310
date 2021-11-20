@@ -21,254 +21,56 @@ Target DLL:      Segger\JL2CM3.dll V2.99.29.0
 Dialog DLL:      TARMP1.DLL V1.26.0.0
  
 <h2>Project:</h2>
-F:\9310\JK9310\Project\project.uvprojx
-Project File Date:  11/02/2021
+F:\JK9310\Project\project.uvprojx
+Project File Date:  11/12/2021
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'E:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Open1788'
-compiling EX_SDRAM.c...
 compiling main.c...
 ..\User\Key/key.h(13): warning:  #47-D: incompatible redefinition of macro "TICKS_PER_SEC"  (declared at line 92 of "..\Libraries\Drivers\include\debug_frmwrk.h")
   #define TICKS_PER_SEC 100     //????????????????????100x10mS(T0)=1S
 ..\User\Test\Debug.h(28): warning:  #1-D: last line of file ends without a newline
   //==========================================================
-..\User\main.c(213): warning:  #177-D: variable "i"  was declared but never referenced
+..\User\main.c(211): warning:  #177-D: variable "i"  was declared but never referenced
       static uint16_t i=0;
 ..\User\main.c: 3 warnings, 0 errors
-compiling lpc177x_8x_lcd.c...
-compiling logo.c...
-compiling use_disp.c...
-..\User\UseDisp\use_disp.c(1856): warning:  #167-D: argument of type "const u8 *" is incompatible with parameter of type "const char *restrict"
-          strcat(DispBuf,Test_IRUINT[test_value.uint]);
-..\User\UseDisp\use_disp.c(2174): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
-                  strcat(DispBuf,Disp_Unit[Disp_Value.uint]);
-..\User\UseDisp\use_disp.c(2362): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
-        WriteString_16(LIST1+DATA_SPACE1+8, FIRSTLINE+SPACE1*2, DispBuf,  0);
-..\User\UseDisp\use_disp.c(2381): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
-        WriteString_16(LIST1+DATA_SPACE1+8, FIRSTLINE+SPACE1*3, DispBuf,  0);
-..\User\UseDisp\use_disp.c(2417): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
-        WriteString_16(LIST2+DATA_SPACE1+10+8, FIRSTLINE+SPACE1*2, DispBuf,  0);
-..\User\UseDisp\use_disp.c(2434): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
-        WriteString_16(LIST2+DATA_SPACE1+8, FIRSTLINE+SPACE1*3, DispBuf,  0);
-..\User\UseDisp\use_disp.c(2722): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
-                  strcat(DispBuf,Disp_Unit[Disp_Value.uint]);
-..\User\UseDisp\use_disp.c(2444): warning:  #177-D: variable "num"  was declared but never referenced
-      u8 num=(MAX_SETP[U9001_save.U9001_Setup[U9001_save.current_step].parameter]+1)/2;
-..\User\UseDisp\use_disp.c(2745): warning:  #177-D: variable "Black_Select"  was declared but never referenced
-        vu32 Black_Select;
-..\User\UseDisp\use_disp.c(2829): warning:  #177-D: variable "i"  was declared but never referenced
-        vu32 i;
-..\User\UseDisp\use_disp.c(2861): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
-        WriteString_16(LIST1+160+160, FIRSTLINE+SPACE1*(list+1), DispBuf,  1);
-..\User\UseDisp\use_disp.c(2885): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
-          WriteString_16(LIST1+160, FIRSTLINE+SPACE1*(i+2), DispBuf,  1);
-..\User\UseDisp\use_disp.c(3037): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *"
-      GUI_DispStringAt(U9001_Save_sys.U9001_SYS.password,LISTVALUE1,FIRSTLINE+5*SPACE1);
-..\User\UseDisp\use_disp.c(3748): warning:  #167-D: argument of type "const u8 *" is incompatible with parameter of type "const char *"
-              GUI_DispStringAt(Test_IRUINT[test_value.uint],DISP_V_XPOS+50+5*25,DISP_V_YPOS+50);
-..\User\UseDisp\use_disp.c(3770): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *"
-              GUI_DispStringAt(Disp_Unit[test_value.uint],DISP_V_XPOS+50+6*25,DISP_V_YPOS+50);
-..\User\UseDisp\use_disp.c(3955): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
-                WriteString_12(LIST2+140, 58+i*15, DispBuf,  1);//?????????????€?  ??????????????€????????????
-..\User\UseDisp\use_disp.c(4195): warning:  #177-D: variable "j"  was declared but never referenced
-        vu16 j,i;
-..\User\UseDisp\use_disp.c(4195): warning:  #177-D: variable "i"  was declared but never referenced
-        vu16 j,i;
-..\User\UseDisp\use_disp.c(4196): warning:  #177-D: variable "pt"  was declared but never referenced
-        vu8 *pt;
-..\User\UseDisp\use_disp.c(4197): warning:  #177-D: variable "ppt"  was declared but never referenced
-      uint16_t *ppt;
-..\User\UseDisp\use_disp.c(4437): warning:  #550-D: variable "addr"  was set but never used
-        LcdAddr_TypeDef addr;//???????????€??????
-..\User\UseDisp\use_disp.c(5078): warning:  #69-D: integer conversion resulted in truncation
-        lcd_Clear(LCD_COLOR_TEST_BACK);
-..\User\UseDisp\use_disp.c(5769): warning:  #111-D: statement is unreachable
-                        break;
-..\User\UseDisp\use_disp.c(5592): warning:  #550-D: variable "set_arc"  was set but never used
-        vu8 set_arc;//?????????????????????
-..\User\UseDisp\use_disp.c(5922): warning:  #177-D: variable "keynum"  was declared but never referenced
-        vu32 keynum=0;
-..\User\UseDisp\use_disp.c: 25 warnings, 0 errors
 compiling test.c...
 ..\Libraries\Drivers\include\debug_frmwrk.h(92): warning:  #47-D: incompatible redefinition of macro "TICKS_PER_SEC"  (declared at line 13 of "..\User\key/key.h")
   #define TICKS_PER_SEC 1000    //????????????????????100x10mS(T0)=1S
-..\User\Test\test.c(137): warning:  #177-D: variable "FlashID"  was declared but never referenced
-      u32 FlashID;
-..\User\Test\test.c(631): warning:  #177-D: variable "key"  was declared but never referenced
+..\User\Test\test.c(195): warning:  #177-D: variable "FlashID"  was declared but never referenced
+                u32 FlashID;
+..\User\Test\test.c(702): warning:  #177-D: variable "key"  was declared but never referenced
         vu8 key;
-..\User\Test\test.c(724): warning:  #550-D: variable "Range_IR"  was set but never used
+..\User\Test\test.c(795): warning:  #550-D: variable "Range_IR"  was set but never used
       u8 Range_IR=0;
-..\User\Test\test.c(732): warning:  #550-D: variable "temp"  was set but never used
+..\User\Test\test.c(803): warning:  #550-D: variable "temp"  was set but never used
         vu32 temp;
-..\User\Test\test.c(1331): warning:  #177-D: variable "pt"  was declared but never referenced
+..\User\Test\test.c(1440): warning:  #177-D: variable "pt"  was declared but never referenced
       vu16 *pt;
-..\User\Test\test.c(2158): warning:  #177-D: variable "select_num"  was declared but never referenced
+..\User\Test\test.c(1441): warning:  #550-D: variable "list"  was set but never used
+        u8 list=1;//????????0  ??????1??
+..\User\Test\test.c(2276): warning:  #177-D: variable "select_num"  was declared but never referenced
       u8 select_num=0;
-..\User\Test\test.c(4318): warning:  #111-D: statement is unreachable
+..\User\Test\test.c(4421): warning:  #188-D: enumerated type mixed with another type
+        f_disp=FALSE;//????????
+..\User\Test\test.c(4437): warning:  #111-D: statement is unreachable
                   break;
-..\User\Test\test.c(4295): warning:  #177-D: variable "i"  was declared but never referenced
+..\User\Test\test.c(4414): warning:  #177-D: variable "i"  was declared but never referenced
         u8 i;
-..\User\Test\test.c(4296): warning:  #177-D: variable "key"  was declared but never referenced
+..\User\Test\test.c(4415): warning:  #177-D: variable "key"  was declared but never referenced
         u8 key;
-..\User\Test\test.c(4298): warning:  #177-D: variable "item"  was declared but never referenced
+..\User\Test\test.c(4417): warning:  #177-D: variable "item"  was declared but never referenced
         u8 item;
-..\User\Test\test.c(4299): warning:  #550-D: variable "time"  was set but never used
+..\User\Test\test.c(4418): warning:  #550-D: variable "time"  was set but never used
         u16 time;//????????????
-..\User\Test\test.c(4300): warning:  #550-D: variable "f_disp"  was set but never used
+..\User\Test\test.c(4419): warning:  #550-D: variable "f_disp"  was set but never used
         Bool f_disp;//????????
-..\User\Test\test.c: 13 warnings, 0 errors
-compiling Debug.c...
-..\Libraries\Drivers\include\debug_frmwrk.h(92): warning:  #47-D: incompatible redefinition of macro "TICKS_PER_SEC"  (declared at line 13 of "..\User\key/key.h")
-  #define TICKS_PER_SEC 1000    //????????????????????100x10mS(T0)=1S
-..\User\Test\Debug.h(28): warning:  #1-D: last line of file ends without a newline
-  //==========================================================
-..\User\Test\Debug.c(71): warning:  #177-D: variable "key"  was declared but never referenced
-        u8 key;
-..\User\Test\Debug.c(202): warning:  #111-D: statement is unreachable
-                                break;
-..\User\Test\Debug.c(212): warning:  #111-D: statement is unreachable
-                                break;
-..\User\Test\Debug.c(167): warning:  #177-D: variable "key"  was declared but never referenced
-        u8 key;
-..\User\Test\Debug.c(306): warning:  #111-D: statement is unreachable
-                      break;
-..\User\Test\Debug.c(260): warning:  #177-D: variable "key"  was declared but never referenced
-        u8 key;
-..\User\Test\Debug.c(417): warning:  #111-D: statement is unreachable
-                      break;
-..\User\Test\Debug.c(365): warning:  #177-D: variable "key"  was declared but never referenced
-        u8 key;
-..\User\Test\Debug.c(535): warning:  #111-D: statement is unreachable
-                      break;
-..\User\Test\Debug.c(482): warning:  #177-D: variable "key"  was declared but never referenced
-        u8 key;
-..\User\Test\Debug.c(842): warning:  #111-D: statement is unreachable
-                        break;
-..\User\Test\Debug.c(1235): warning:  #111-D: statement is unreachable
-                                break;
-..\User\Test\Debug.c(698): warning:  #550-D: variable "dat"  was set but never used
-        vu16 dat;
-..\User\Test\Debug.c(699): warning:  #177-D: variable "temp"  was declared but never referenced
-        vu32 temp;
-..\User\Test\Debug.c(704): warning:  #177-D: variable "f_upper"  was declared but never referenced
-        bool f_upper=FALSE;//??????????????????
-..\User\Test\Debug.c(705): warning:  #177-D: variable "f_below"  was declared but never referenced
-        bool f_below=FALSE;//??????????????????
-..\User\Test\Debug.c(706): warning:  #177-D: variable "f_switch"  was declared but never referenced
-        bool f_switch=FALSE;//??????????????????
-..\User\Test\Debug.c(712): warning:  #550-D: variable "ad_high"  was set but never used
-        vu16 ad_high;//AD?€???????
-..\User\Test\Debug.c(713): warning:  #550-D: variable "ad_low"  was set but never used
-        vu16 ad_low;//AD?€???????
-..\User\Test\Debug.c(714): warning:  #550-D: variable "TestTime"  was set but never used
-      u16 TestTime;
-..\User\Test\Debug.c: 22 warnings, 0 errors
-compiling debug_frmwrk.c...
-..\User\Key/key.h(13): warning:  #47-D: incompatible redefinition of macro "TICKS_PER_SEC"  (declared at line 92 of "..\Libraries\Drivers\include\debug_frmwrk.h")
-  #define TICKS_PER_SEC 100     //????????????????????100x10mS(T0)=1S
-..\Libraries\Drivers\source\debug_frmwrk.c(477): warning:  #223-D: function "vsprintf" declared implicitly
-      vsprintf((char *)buffer, (char const *)format, vArgs);
-..\Libraries\Drivers\source\debug_frmwrk.c(491): warning:  #177-D: variable "data"  was declared but never referenced
-        u32 data;
-..\Libraries\Drivers\source\debug_frmwrk.c(726): warning:  #223-D: function "SavePselect" declared implicitly
-        SavePselect();
-..\Libraries\Drivers\source\debug_frmwrk.c(789): error:  #20: identifier "SaveData" is undefined
-                                if(SaveData.Setup.Group_Item == W_ISETUP || SaveData.Setup.Group_Item == I_WSETUP)
-..\Libraries\Drivers\source\debug_frmwrk.c(789): error:  #20: identifier "W_ISETUP" is undefined
-                                if(SaveData.Setup.Group_Item == W_ISETUP || SaveData.Setup.Group_Item == I_WSETUP)
-..\Libraries\Drivers\source\debug_frmwrk.c(789): error:  #20: identifier "I_WSETUP" is undefined
-                                if(SaveData.Setup.Group_Item == W_ISETUP || SaveData.Setup.Group_Item == I_WSETUP)
-..\Libraries\Drivers\source\debug_frmwrk.c(791): error:  #20: identifier "sendflag" is undefined
-                                        if(sendflag == 0)
-..\Libraries\Drivers\source\debug_frmwrk.c(799): error:  #20: identifier "sendbuff" is undefined
-                                                        strcat((char*)ComBuf.send.buf,(char*)sendbuff);
-..\Libraries\Drivers\source\debug_frmwrk.c(803): error:  #20: identifier "multstep" is undefined
-                                                        if(multstep == 1)
-..\Libraries\Drivers\source\debug_frmwrk.c(805): error:  #20: identifier "sendbuff" is undefined
-                                                                strcat((char*)ComBuf.send.buf,(char*)sendbuff);
-..\Libraries\Drivers\source\debug_frmwrk.c(816): error:  #20: identifier "sendbuff" is undefined
-                                                                        if(sendbuff[13] == 0x3b)
-..\Libraries\Drivers\source\debug_frmwrk.c(826): error:  #20: identifier "sendbuff" is undefined
-                                                                        if(sendbuff[13] == 0x3b)
-..\Libraries\Drivers\source\debug_frmwrk.c(844): error:  #20: identifier "sendbuff1" is undefined
-                                                strcat((char*)ComBuf.send.buf,(char*)sendbuff1);
-..\Libraries\Drivers\source\debug_frmwrk.c(845): error:  #20: identifier "multstep" is undefined
-                                                if(multstep == 1)
-..\Libraries\Drivers\source\debug_frmwrk.c(863): error:  #20: identifier "sendend" is undefined
-                                                strcat((char*)ComBuf.send.buf,(char*)sendend);//????????????????????
-..\Libraries\Drivers\source\debug_frmwrk.c(866): warning:  #223-D: function "USART_SendData" declared implicitly
-                                                        USART_SendData(USART1, ComBuf.send.buf[i]);
-..\Libraries\Drivers\source\debug_frmwrk.c(866): error:  #20: identifier "USART1" is undefined
-                                                        USART_SendData(USART1, ComBuf.send.buf[i]);
-..\Libraries\Drivers\source\debug_frmwrk.c(867): warning:  #223-D: function "USART_GetFlagStatus" declared implicitly
-                                                        while(USART_GetFlagStatus(USART1,USART_FLAG_TXE)==RESET);
-..\Libraries\Drivers\source\debug_frmwrk.c(867): error:  #20: identifier "USART_FLAG_TXE" is undefined
-                                                        while(USART_GetFlagStatus(USART1,USART_FLAG_TXE)==RESET);
-..\Libraries\Drivers\source\debug_frmwrk.c(877): warning:  #223-D: function "USART_SendData" declared implicitly
-                                                        USART_SendData(USART1, ComBuf.send.buf[i]);
-..\Libraries\Drivers\source\debug_frmwrk.c(877): error:  #20: identifier "USART1" is undefined
-                                                        USART_SendData(USART1, ComBuf.send.buf[i]);
-..\Libraries\Drivers\source\debug_frmwrk.c(878): warning:  #223-D: function "USART_GetFlagStatus" declared implicitly
-                                                        while(USART_GetFlagStatus(USART1,USART_FLAG_TXE)==RESET);
-..\Libraries\Drivers\source\debug_frmwrk.c(878): error:  #20: identifier "USART_FLAG_TXE" is undefined
-                                                        while(USART_GetFlagStatus(USART1,USART_FLAG_TXE)==RESET);
-..\Libraries\Drivers\source\debug_frmwrk.c(883): error:  #20: identifier "sendflag" is undefined
-                                        if(sendflag == 0)
-..\Libraries\Drivers\source\debug_frmwrk.c(889): error:  #20: identifier "sendbuff" is undefined
-                                                memcpy(&ComBuf.send.buf[0],sendbuff,14);
-..\Libraries\Drivers\source\debug_frmwrk.c(892): error:  #20: identifier "sendend" is undefined
-                                                strcat((char*)ComBuf.send.buf,(char*)sendend);//????????????????????
-..\Libraries\Drivers\source\debug_frmwrk.c(896): warning:  #223-D: function "USART_SendData" declared implicitly
-                                                        USART_SendData(USART1, ComBuf.send.buf[i]);
-..\Libraries\Drivers\source\debug_frmwrk.c(896): error:  #20: identifier "USART1" is undefined
-                                                        USART_SendData(USART1, ComBuf.send.buf[i]);
-..\Libraries\Drivers\source\debug_frmwrk.c(897): warning:  #223-D: function "USART_GetFlagStatus" declared implicitly
-                                                        while(USART_GetFlagStatus(USART1,USART_FLAG_TXE)==RESET);
-..\Libraries\Drivers\source\debug_frmwrk.c(897): error:  #20: identifier "USART_FLAG_TXE" is undefined
-                                                        while(USART_GetFlagStatus(USART1,USART_FLAG_TXE)==RESET);
-..\Libraries\Drivers\source\debug_frmwrk.c(902): warning:  #223-D: function "USART_SendData" declared implicitly
-                                                        USART_SendData(USART1, ComBuf.send.buf[i]);
-..\Libraries\Drivers\source\debug_frmwrk.c(902): error:  #20: identifier "USART1" is undefined
-                                                        USART_SendData(USART1, ComBuf.send.buf[i]);
-..\Libraries\Drivers\source\debug_frmwrk.c(903): warning:  #223-D: function "USART_GetFlagStatus" declared implicitly
-                                                        while(USART_GetFlagStatus(USART1,USART_FLAG_TXE)==RESET);
-..\Libraries\Drivers\source\debug_frmwrk.c(903): error:  #20: identifier "USART_FLAG_TXE" is undefined
-                                                        while(USART_GetFlagStatus(USART1,USART_FLAG_TXE)==RESET);
-..\Libraries\Drivers\source\debug_frmwrk.c(915): error:  #20: identifier "run_stemp" is undefined
-                                run_stemp=0;
-..\Libraries\Drivers\source\debug_frmwrk.c(923): warning:  #223-D: function "Plc_Start_Off" declared implicitly
-                                        Plc_Start_Off();
-..\Libraries\Drivers\source\debug_frmwrk.c(925): error:  #20: identifier "SYS_STATUS_IDLE" is undefined
-                                        SetSystemStatus(SYS_STATUS_IDLE);//????????-????
-..\Libraries\Drivers\source\debug_frmwrk.c(952): warning:  #223-D: function "SaveGroup" declared implicitly
-                                SaveGroup();//????????
-..\Libraries\Drivers\source\debug_frmwrk.c(953): warning:  #223-D: function "Store_set_flash" declared implicitly
-                                Store_set_flash();
-..\Libraries\Drivers\source\debug_frmwrk.c(954): warning:  #223-D: function "Disp_Idle_Menu" declared implicitly
-                                Disp_Idle_Menu();//????????????
-..\Libraries\Drivers\source\debug_frmwrk.c(962): warning:  #223-D: function "BCDtoHex1" declared implicitly
-                                                SaveData.Setup.Output=(u16)BCDtoHex1(str[2],1)*100+BCDtoHex1(str[3],1);
-..\Libraries\Drivers\source\debug_frmwrk.c(999): error:  #20: identifier "SYS_STATUS_IDLE" is undefined
-                                SetSystemStatus(SYS_STATUS_IDLE);//????????
-..\Libraries\Drivers\source\debug_frmwrk.c(1000): warning:  #223-D: function "ReadSetByGroup" declared implicitly
-                                ReadSetByGroup();
-..\Libraries\Drivers\source\debug_frmwrk.c(1001): warning:  #223-D: function "Parameter_valuecomp" declared implicitly
-                                Parameter_valuecomp();//????????????
-..\Libraries\Drivers\source\debug_frmwrk.c(1010): error:  #20: identifier "SaveData" is undefined
-  }else if(SaveData.pselect == 1){//????????2
-..\Libraries\Drivers\source\debug_frmwrk.c(1028): error:  #20: identifier "run_stemp" is undefined
-                                        run_stemp=0;
-..\Libraries\Drivers\source\debug_frmwrk.c(1030): error:  #20: identifier "respond" is undefined
-                                        respond = 1;
-..\Libraries\Drivers\source\debug_frmwrk.c(1035): warning:  #223-D: function "Plc_Start_Off" declared implicitly
-                                                Plc_Start_Off();
-..\Libraries\Drivers\source\debug_frmwrk.c(1036): error:  #20: identifier "respond" is undefined
-                                                respond = 1;
-..\Libraries\Drivers\source\debug_frmwrk.c: 20 warnings, 30 errors
-compiling GUIConf.c...
-compiling LCDConf.c...
-".\Output\project.axf" - 30 Error(s), 83 Warning(s).
+..\User\Test\test.c: 15 warnings, 0 errors
+linking...
+Program Size: Code=148440 RO-data=126116 RW-data=776 ZI-data=8768  
+FromELF: creating hex file...
+".\Output\project.axf" - 0 Error(s), 18 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -291,8 +93,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.4.0
-Target not created.
-Build Time Elapsed:  00:00:11
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>
