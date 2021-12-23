@@ -327,13 +327,13 @@ void V_DA_out(u16 date)
         else
             Set_Spi_out(0);
         date<<=1;
-//        delayMs(0,1);
+//        delayMs(1,1);
         Set_Cpld_clk(1);
-//        delayMs(0,1);
+//        delayMs(1,1);
         Set_Cpld_clk(0);
         
     }
-//    delayMs(0,1);
+//    delayMs(1,1);
 	
 	DA_CS(1);
 }
@@ -356,9 +356,9 @@ void V_DA_out(u16 date)
 //        if(GPIO_ReadValue(2)&(1<<26))
 //            re+=1;
 //        re<<=1;
-////        delayMs(0,1);
+////        delayMs(1,1);
 //        Set_Cpld_clk(1);
-////        delayMs(0,1);
+////        delayMs(1,1);
 //        Set_Cpld_clk(0);
 //        
 //    }

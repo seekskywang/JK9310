@@ -452,7 +452,7 @@ void Save_fileDate(u8 Group)
     
 //    SPI_FLASH_BulkErase();
     SPI_FLASH_SectorErase(addr);
-//    delayMs(0,100);
+//    delayMs(1,100);
 //    AT45DBXX_Read_ID(temp);
 //for(i=0;i<0xffffff;i++)	
     ;

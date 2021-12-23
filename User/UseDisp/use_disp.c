@@ -24,7 +24,7 @@ extern GUI_CONST_STORAGE GUI_FONT GUI_FontHZMCRBLK16;
 Test_Value_Typedef Test_Value;
 UnitNum_typedef test_value;
 const u8 MAX_SETP[4]={9,11,10,5};
-
+u32 savesize;
 //=======================================================================
 //项目
 const u8 ItemTab[][15]=
@@ -38,24 +38,25 @@ const u8 ItemTab[][15]=
 };
 const char Test_List_Tab[][2][16]=
 {
-    {"电压","OFF"},//U9001_Save_sys
+    {"电压","OFF"},//U9001_save_sys
     {"测量","ON "},
     {"结果","ON "},
 };
 const char SYS_Set_Tab[][2][16]=
 {
-    {"语言    ：","OFF"},//U9001_Save_sys
-    {"总线模式:","ON "},
-    {"合格讯响：","ON "},
-    {"总线地址：","ON "},
+    {"语言    ：","OFF"},//U9001_save_sys
+	{"合格讯响：","ON "},
 	{"失败讯响：","OFF"},
+	{"按键音  ：","ON "},
+    {"总线模式:","ON "},
+    {"总线地址：","ON "},	
     {"波特率  ：","ON "},
-    {"按键音  ：","ON "},
-    {"数据位数：","ON "},
-    {"报警音量：","ON "},
-    {"停止位数：","ON "},
-	 {"密码   ：","OFF"},   
-    {"奇偶校验：","ON "},
+    
+//    {"数据位数：","ON "},
+//    {"报警音量：","ON "},
+//    {"停止位数：","ON "},
+//	 {"密码   ：","OFF"},   
+//    {"奇偶校验：","ON "},
 };
 const char SYS_Disp_Tab[][2][16]=
 {
@@ -70,24 +71,32 @@ const char SYS_DispButton_Tab[][2][16]=
 {
     {"系统设置","OFF"},
     {"系统信息","ON "},
-    {"固件升级","ON "},
+    {"","ON "},
      {""," "},
      {""," "},
 
 };
 const char TEST_TIMEDISP[][2][16]=
 {
-    {"等待测试","OFF"},
-    {"测试中...","ON "},
-    {"暂停测试","ON "},
-    {"测试合格","ON "},
-    {"电压上升","OFF"},
+    {"等待测试","IDLE"},//0
+    {"测试中...","TEST..."},//1
+    {"暂停终止","ABORT"},//2
+    {"测试合格","PASS"},//3
+    {"电压上升","RAMP"},//4
     
-    {"电压下降","ON "},
+    {"电压下降","DROP"},//5
     
-    {"等待  "," "},
-    {"    "," "},
-
+    {"下限失败","LOFAIL"},//6
+    
+    {"等待","WAIT"},//7
+    {"上限失败","HIFAIL"},//8
+    {"短路失败","SHORT"},//9
+    {"失败","FAIL"},//10
+    {"OVER","OVER"},//11
+    {"电弧失败","ARCFAIL"},//12
+    {"暂停","PAUSE"},//13
+    {"GIF失败","GIFFAIL"},//14
+	{"OFL失败","OFLFAIL"},//14
 };
 
 const char DELAY_TIMEDISP[][2][16]=
@@ -137,7 +146,7 @@ const char Idel_Tab[][11][2][14]=
 };
 const char SetupACButton_Tab[][2][5][14]=
 {
-    {{"测量设置","测量配置","        ","        ","        ",},{"  ","  ","  ","  ","  "}},
+    {{"测量设置","测量配置","系统设置","系统信息","        ",},{"  ","  ","  ","  ","  "}},
     {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ","  ","  ","  ","  "}},
     {{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "},{"  ","  ","  ","  ","  "}},
     {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","  关闭  "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
@@ -166,19 +175,19 @@ const char SetupACButton_Tab[][2][5][14]=
 };
 const char SysSetButton_Tab[][2][5][14]=
 {
-    {{"系统设置","系统信息","固件升级","        ","        ",},{"  ","  ","  ","  ","  "}},
-    {{"中文","ENGLISH","  复制  "," ","  "},{"  ","  ","  ","  ","  "}},
-    {{"连续","间断","关闭 ","  "," "},{"  ","  ","  ","  ","  "}},
-    {{"连续","间断","关闭 ","  "," "},{"  ","  ","  ","  ","  "}},
-    {{"关闭","打开","   ","   ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
-    {{"低音","中音","高音","   ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
-    {{"关闭 ","系统","文件","修改","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
+    {{"系统设置","系统信息","        ","        ","        ",},{"  ","  ","  ","  ","  "}},
+    {{"  中文  ","ENGLISH","        "," ","  "},{"  ","  ","  ","  ","  "}},
+    {{"  连续  ","  间断  ","  关闭  ","  "," "},{"  ","  ","  ","  ","  "}},
+    {{"  连续  ","  间断  ","  关闭  ","  "," "},{"  ","  ","  ","  ","  "}},
+    {{"  关闭  ","  打开  ","   ","   ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
+//    {{"  低音  ","  中音  ","  高音  ","   ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
+//    {{"  关闭  ","  系统  ","  文件  ","  修改  ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
     {{"RS232C"," ","    ","    ","    "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
     {{"   ↑+ ","   ↓ - ","       ","          ","    "},{"   ↑+ ","   ↓ - ","       ","          ","  关闭  "}},
     {{"4800","9600","19200","38400","115200"},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
-    {{"8","7","       ","          ","    "},{"   ↑+ ","   ↓ - ","       ","          ","  关闭  "}},
-    {{"1 ","2","       ","          ","    "},{"   ↑+ ","   ↓ - ","       ","          ","  关闭  "}},
-    {{"无 ","奇","偶","          ","    "},{"   ↑+ ","   ↓ - ","       ","          ","  关闭  "}},
+//    {{"8","7","       ","          ","    "},{"   ↑+ ","   ↓ - ","       ","          ","  关闭  "}},
+//    {{"1 ","2","       ","          ","    "},{"   ↑+ ","   ↓ - ","       ","          ","  关闭  "}},
+//    {{"无 ","奇","偶","          ","    "},{"   ↑+ ","   ↓ - ","       ","          ","  关闭  "}},
     
 
 
@@ -262,8 +271,8 @@ const char SetupPAButton_Tab[][2][5][14]=
 const char Sys_SetValue[][2][5][14]=
 {
     {{"中文","ENGLISH"},{"中文","英文"}},
-    {{"连续","间断"},{"",""}},
-    {{"连续","间断"},{"",""}},
+    {{"连续","间断","关闭"},{"",""}},
+    {{"连续","间断","关闭"},{"",""}},
     {{"关闭","打开"},{"",""}},
     {{"低音","中音","高音"},{"","",""}},
     {{"关闭","中音","高音"},{"","",""}},
@@ -369,7 +378,7 @@ const char IdelButton_Tab[][2][15]=
 {
     {"测量显示",""},
     {"列表显示",""},
-    {" ",""},
+    {"",""},
     {" ",""},
     {"统计显示",""},
 
@@ -461,7 +470,6 @@ const uint8_t Lp_Button_Tip2[][7+1]=  //测试参数选择时候的下面的提�
     {"    "},
     {"    "},
     {"RETURN "},
-
 
 };
 
@@ -1643,7 +1651,7 @@ void Disp_Fastset_Disp(uint8_t num)
         Rect.y0=TOP_BAR_HIGH+i*FASTBUTTON_HIGH+6*i;
         Rect.x1=FASTBUTTON_END;
         Rect.y1=TOP_BAR_HIGH+(i+1)*FASTBUTTON_HIGH+6*i;
-//        GUI_DispStringAt(TFT5520_NAME[i][U9001_Save_sys.U9001_SYS.language],FASTBUTTON_START, TOP_BAR_HIGH+i*FASTBUTTON_HIGH+i*2+15);
+//        GUI_DispStringAt(TFT5520_NAME[i][U9001_save_sys.U9001_SYS.language],FASTBUTTON_START, TOP_BAR_HIGH+i*FASTBUTTON_HIGH+i*2+15);
         GUI_DispStringInRect(TFT5520_NAME[i][U9001_Save_sys.U9001_SYS.language],&Rect,GUI_TA_HCENTER|GUI_TA_VCENTER);
     }
 }
@@ -1761,26 +1769,19 @@ void Disp_SYS_Set_Item(void)
     GUI_SetColor(White);
 	GUI_SetBkColor(LCD_COLOR_TEST_BACK);
 //    U9001_save.U9001_Setup[U9001_save.current_step].parameter=1;
-    for(i=0;i<(sizeof(SYS_Set_Tab)/(sizeof(SYS_Set_Tab[0])));i++)
+    for(i=0;i<7;i++)
     {
-        if((i%2)==0)
+        if(i<4)
         {
-            
-            
-            GUI_DispStringAt(SYS_Set_Tab[i][U9001_Save_sys.U9001_SYS.language],LIST1, FIRSTLINE+SPACE1*((i+1)/2));
-
+            GUI_DispStringAt(SYS_Set_Tab[i][U9001_Save_sys.U9001_SYS.language],LIST1, FIRSTLINE+SPACE1*i);
         }
         else
         {
-
-            
-             GUI_DispStringAt(SYS_Set_Tab[i][U9001_Save_sys.U9001_SYS.language],LIST2, FIRSTLINE+SPACE1*((i-1)/2));
-            
-            
+             GUI_DispStringAt(SYS_Set_Tab[i][U9001_Save_sys.U9001_SYS.language],LIST2, FIRSTLINE+SPACE1*(i-4));
         }	
     }
-	for(i=0;i<2;i++)
-		GUI_DispStringAt(SYS_SetTime_Tab[i][U9001_Save_sys.U9001_SYS.language],LIST1, FIRSTLINE+SPACE1*((i+6)));
+//	for(i=0;i<2;i++)
+//		GUI_DispStringAt(SYS_SetTime_Tab[i][U9001_save_sys.U9001_SYS.language],LIST1, FIRSTLINE+SPACE1*((i+6)));
   
 	
 
@@ -2028,7 +2029,7 @@ void Disp_Idel_Item(void)
 //            else
 //            {
 //            
-//                GUI_DispStringAt(Switch_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+3*SPACE1);
+//                GUI_DispStringAt(Switch_Tab[0][U9001_save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+3*SPACE1);
 //            }
     
 //            if(U9001_save.U9001_Setup[U9001_save.current_step].drop_time!=0)
@@ -2040,7 +2041,7 @@ void Disp_Idel_Item(void)
 //            else
 //            {
 //            
-//                GUI_DispStringAt(Switch_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+4*SPACE1);
+//                GUI_DispStringAt(Switch_Tab[0][U9001_save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+4*SPACE1);
 //            }
 //            if(U9001_save.U9001_Setup[U9001_save.current_step].check)
 //            {
@@ -2050,7 +2051,7 @@ void Disp_Idel_Item(void)
 //            
 //            }
 //            else
-//                GUI_DispStringAt(Switch_Tab[U9001_save.U9001_Setup[U9001_save.current_step].check][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+5*SPACE1);
+//                GUI_DispStringAt(Switch_Tab[U9001_save.U9001_Setup[U9001_save.current_step].check][U9001_save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+5*SPACE1);
             Disp_Value=IntToStr_mA(U9001_save.U9001_Setup[U9001_save.current_step].Upper);
             Hex_Format(Disp_Value.num,Disp_Value.dot,4,FALSE);
             strcat(DispBuf,TEST_UNIT[1][0]);
@@ -2096,7 +2097,7 @@ void Disp_Idel_Item(void)
 //                GUI_DispStringAt(DispBuf,LISTVALUE2,4*SPACE1);
 //            }else
 //            {
-//                GUI_DispStringAt(Switch_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE2,FIRSTLINE+4*SPACE1);
+//                GUI_DispStringAt(Switch_Tab[0][U9001_save_sys.U9001_SYS.language],LISTVALUE2,FIRSTLINE+4*SPACE1);
 //            }
             
             GUI_SetColor(GUI_YELLOW);
@@ -2142,9 +2143,9 @@ void Disp_Idel_Item(void)
             strcat(DispBuf,TEST_UNIT[Disp_Value.uint][1]);
             GUI_DispStringAt(DispBuf,LISTVALUE2,FIRSTLINE+2*SPACE1);//下限
            
-//            GUI_DispStringAt(Setup_Range_Tab[U9001_Save_sys.U9001_SYS.language][U9001_save.U9001_Setup[U9001_save.current_step].range_arc],LISTVALUE2,3*SPACE1);
+//            GUI_DispStringAt(Setup_Range_Tab[U9001_save_sys.U9001_SYS.language][U9001_save.U9001_Setup[U9001_save.current_step].range_arc],LISTVALUE2,3*SPACE1);
 //       
-//           GUI_DispStringAt(Switch_Tab[U9001_save.U9001_Setup[U9001_save.current_step].equa_last][U9001_Save_sys.U9001_SYS.language],LISTVALUE2,4*SPACE1);
+//           GUI_DispStringAt(Switch_Tab[U9001_save.U9001_Setup[U9001_save.current_step].equa_last][U9001_save_sys.U9001_SYS.language],LISTVALUE2,4*SPACE1);
              GUI_SetColor(GUI_YELLOW);
             GUI_SetBkColor(LCD_COLOR_TEST_BACK);
             GUI_SetTextMode(GUI_TEXTMODE_NORMAL);
@@ -2837,9 +2838,9 @@ void DispSYSConfig_value(void)
  
     GUI_DispStringAt(SYS_NAME_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+2*SPACE1);//合格保持时间  delay_time
     
-    Hex_Format(U9001_Save_sys.U9001_Testconfg.delay_time,1,3,FALSE);
-    strcat(DispBuf,"s");
-    GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+3*SPACE1);//合格保持时间  delay_time
+//    Hex_Format(U9001_save_sys.U9001_Testconfg.delay_time,1,3,FALSE);
+//    strcat(DispBuf,"s");
+//    GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+3*SPACE1);//合格保持时间  delay_time
     
     GUI_DispStringAt(SYS_NAME_Tab[1][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+4*SPACE1);//下降时间时间 
 
@@ -3007,7 +3008,7 @@ void Disp_SysSet_value(uint8_t list)
 	vu32 i;
 //	vu32 Black_Select;
     u8 num;
-    num=sizeof(SYS_Set_Tab)/sizeof(SYS_Set_Tab[0]);
+    num=7;
     for(i=1;i<num+1;i++)
     {
         if(i==list)
@@ -3018,10 +3019,10 @@ void Disp_SysSet_value(uint8_t list)
         {
              GUI_SetColor(LCD_COLOR_TEST_BACK);
         }//
-        if(i<=(num+1)/2)
+        if(i<=4)
             GUI_FillRect(LISTVALU_RETC,FIRSTLINE_RETC+SPACE1*((i-1)),LISTVALU_RETC+70,FIRSTLINE_RETC+SPACE1*((i)));
         else
-            GUI_FillRect(LISTVALUE2_RETC,FIRSTLINE_RETC+SPACE1*((i-(num+1)/2)-1),LISTVALUE2_RETC+70,FIRSTLINE_RETC+SPACE1*((i-(num+1)/2+1-1)));
+            GUI_FillRect(LISTVALUE2_RETC,FIRSTLINE_RETC+SPACE1*(i-5),LISTVALUE2_RETC+70,FIRSTLINE_RETC+SPACE1*(i-4));
             
         
         
@@ -3034,15 +3035,15 @@ void Disp_SysSet_value(uint8_t list)
     GUI_DispStringAt(Sys_SetValue[1][U9001_Save_sys.U9001_SYS.language][U9001_Save_sys.U9001_SYS.pass_beep],LISTVALUE1,FIRSTLINE+1*SPACE1);//合格讯响
     GUI_DispStringAt(Sys_SetValue[2][U9001_Save_sys.U9001_SYS.language][U9001_Save_sys.U9001_SYS.fail_beep],LISTVALUE1,FIRSTLINE+2*SPACE1);//合格讯响
     GUI_DispStringAt(Sys_SetValue[3][U9001_Save_sys.U9001_SYS.language][U9001_Save_sys.U9001_SYS.key_beep],LISTVALUE1,FIRSTLINE+3*SPACE1);
-    GUI_DispStringAt(Sys_SetValue[4][U9001_Save_sys.U9001_SYS.language][U9001_Save_sys.U9001_SYS.beep],LISTVALUE1,FIRSTLINE+4*SPACE1);
-    GUI_DispStringAt(U9001_Save_sys.U9001_SYS.password,LISTVALUE1,FIRSTLINE+5*SPACE1);
+//    GUI_DispStringAt(Sys_SetValue[4][U9001_save_sys.U9001_SYS.language][U9001_save_sys.U9001_SYS.beep],LISTVALUE1,FIRSTLINE+4*SPACE1);
+//    GUI_DispStringAt(U9001_save_sys.U9001_SYS.password,LISTVALUE1,FIRSTLINE+5*SPACE1);
     
     GUI_DispStringAt(Sys_SetValue[6][U9001_Save_sys.U9001_SYS.bussmode][U9001_Save_sys.U9001_SYS.language],LISTVALUE2,FIRSTLINE);//语言
     GUI_DispDecAt(U9001_Save_sys.U9001_SYS.buss_addr,LISTVALUE2,FIRSTLINE+1*SPACE1,3);
-    GUI_DispStringAt(Sys_SetValue[8][U9001_Save_sys.U9001_SYS.language][U9001_Save_sys.U9001_SYS.buard],LISTVALUE2,FIRSTLINE+2*SPACE1);//合格讯响
-    GUI_DispStringAt(Sys_SetValue[10][U9001_Save_sys.U9001_SYS.language][U9001_Save_sys.U9001_SYS.date_bit],LISTVALUE2,FIRSTLINE+3*SPACE1);
-    GUI_DispStringAt(Sys_SetValue[9][U9001_Save_sys.U9001_SYS.language][U9001_Save_sys.U9001_SYS.stop_bit],LISTVALUE2,FIRSTLINE+4*SPACE1);
-    GUI_DispStringAt(Sys_SetValue[10][U9001_Save_sys.U9001_SYS.language][U9001_Save_sys.U9001_SYS.ord_bit],LISTVALUE2,FIRSTLINE+5*SPACE1);
+    GUI_DispStringAt(Sys_SetValue[8][U9001_Save_sys.U9001_SYS.language][U9001_Save_sys.U9001_SYS.buard],LISTVALUE2,FIRSTLINE+2*SPACE1);
+//    GUI_DispStringAt(Sys_SetValue[10][U9001_save_sys.U9001_SYS.language][U9001_save_sys.U9001_SYS.date_bit],LISTVALUE2,FIRSTLINE+3*SPACE1);
+//    GUI_DispStringAt(Sys_SetValue[9][U9001_save_sys.U9001_SYS.language][U9001_save_sys.U9001_SYS.stop_bit],LISTVALUE2,FIRSTLINE+4*SPACE1);
+//    GUI_DispStringAt(Sys_SetValue[10][U9001_save_sys.U9001_SYS.language][U9001_save_sys.U9001_SYS.ord_bit],LISTVALUE2,FIRSTLINE+5*SPACE1);
 
     
     dispSYSSetButtonvalue(list);
@@ -3983,21 +3984,24 @@ void Savetoeeprom(void)
 {
 	//Saveeeprom
 	u8 *pt;
-
+	u8 *pt1;
 	
 	pt=(u8*)&U9001_Save_sys;
-	
+	pt1=(u8*)&U9001_save;
+	savesize = sizeof(U9001_save);
 	EEPROM_Write(0, 1, pt, MODE_8_BIT, sizeof(U9001_Save_sys));
-
-
+	EEPROM_Write(5, 0, pt1, MODE_8_BIT, sizeof(U9001_save));
 }
 void ReadSavedata(void)
-{
+{	
 //	u8 i;
 	U9001_Save_sysTypedef *pt;
+	U9001_save_Typedef *pt1;
 	//Saveeeprom_Typedef 
 	pt=&U9001_Save_sys;
+	pt1=&U9001_save;
 	EEPROM_Read(0, 1, (u8 *)pt, MODE_8_BIT, sizeof(U9001_Save_sys));
+	EEPROM_Read(5, 0, (u8 *)pt1, MODE_8_BIT, sizeof(U9001_save));
 }
 
 const vu16 Set_Data_Comp[][2]=
@@ -5369,14 +5373,15 @@ void dispSetupButtonvalue(u8 item,u8 list)
                     
             }
         }
-
+ 
 }
 void dispSYSSetButtonvalue(u8 list)
 {
     u8 i;
     GUI_RECT Rect;
-     GUI_SetBkColor(LCD_COLOR_TEST_BUTON);
-    GUI_SetTextMode(GUI_TEXTMODE_NORMAL);
+	Disp_Fastbutton(1);
+//     GUI_SetBkColor(LCD_COLOR_TEST_BUTON);
+    GUI_SetTextMode(GUI_TEXTMODE_TRANS);
     GUI_SetColor(GUI_WHITE);
     
             for(i=0;i<MAXBUTTONNUM;i++)
@@ -5390,19 +5395,19 @@ void dispSYSSetButtonvalue(u8 list)
 //                switch(item)
 //                {
 //                    case AC:   
-//                        GUI_DispStringInRect(SetupACButton_Tab[list][U9001_Save_sys.U9001_SYS.language][i],&Rect,GUI_TA_HCENTER|GUI_TA_VCENTER);            
+//                        GUI_DispStringInRect(SetupACButton_Tab[list][U9001_save_sys.U9001_SYS.language][i],&Rect,GUI_TA_HCENTER|GUI_TA_VCENTER);            
 //                        break;
 //                    case DC:
-//                        GUI_DispStringInRect(SetupDCButton_Tab[list][U9001_Save_sys.U9001_SYS.language][i],&Rect,GUI_TA_HCENTER|GUI_TA_VCENTER); 
+//                        GUI_DispStringInRect(SetupDCButton_Tab[list][U9001_save_sys.U9001_SYS.language][i],&Rect,GUI_TA_HCENTER|GUI_TA_VCENTER); 
 //                        break;
 //                    case IR:
-//                        GUI_DispStringInRect(SetupIRButton_Tab[list][U9001_Save_sys.U9001_SYS.language][i],&Rect,GUI_TA_HCENTER|GUI_TA_VCENTER); 
+//                        GUI_DispStringInRect(SetupIRButton_Tab[list][U9001_save_sys.U9001_SYS.language][i],&Rect,GUI_TA_HCENTER|GUI_TA_VCENTER); 
 //                        break;
 //                    case OS:
-//                        GUI_DispStringInRect(SetupOSButton_Tab[list][U9001_Save_sys.U9001_SYS.language][i],&Rect,GUI_TA_HCENTER|GUI_TA_VCENTER); 
+//                        GUI_DispStringInRect(SetupOSButton_Tab[list][U9001_save_sys.U9001_SYS.language][i],&Rect,GUI_TA_HCENTER|GUI_TA_VCENTER); 
 //                        break;
 //                    case PA:
-//                        GUI_DispStringInRect(SetupPAButton_Tab[list][U9001_Save_sys.U9001_SYS.language][i],&Rect,GUI_TA_HCENTER|GUI_TA_VCENTER); 
+//                        GUI_DispStringInRect(SetupPAButton_Tab[list][U9001_save_sys.U9001_SYS.language][i],&Rect,GUI_TA_HCENTER|GUI_TA_VCENTER); 
 //                        break;
 //                        
 //                }
@@ -5413,8 +5418,10 @@ void dispSYSButtonvalue(void)
 {
     u8 i;
     GUI_RECT Rect;
-     GUI_SetBkColor(LCD_COLOR_TEST_BUTON);
-    GUI_SetTextMode(GUI_TEXTMODE_NORMAL);
+	Disp_Fastbutton(1);
+	 GUI_SetTextMode(GUI_TEXTMODE_TRANS);
+//     GUI_SetBkColor(LCD_COLOR_TEST_BUTON);
+//    GUI_SetTextMode(GUI_TEXTMODE_NORMAL);
     GUI_SetColor(GUI_WHITE);
     for(i=0;i<MAXBUTTONNUM;i++)
     {
@@ -6315,3 +6322,9 @@ void Disp_Comp(void)
 {
     GUI_DispStringAt(DISP_COMP[Save_TestValue[U9001_save.current_step-1].text_flag][U9001_Save_sys.U9001_SYS.language],260,60+20*(U9001_save.current_step-1));
 }
+
+void Disp_CompTest(void)
+{
+    GUI_DispStringAt(DISP_COMP[Save_TestValue[U9001_save.current_step-1].text_flag][U9001_Save_sys.U9001_SYS.language],260,250);
+}
+

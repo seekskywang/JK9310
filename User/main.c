@@ -211,22 +211,23 @@ void  GPIO_IRQHandler(void)
     static uint16_t i=0;
 
     
-    if(GPIO_GetIntStatus(0, 5, 1))//ARC中断
+	 if(GPIO_GetIntStatus(0, 6, 0))//short中断
       {
-
-        SetSystemMessage(MSG_ARC);
+		  SetSystemMessage(MSG_SHORT);
+		  GPIO_ClearInt(0, 1<<6);
        
-        GPIO_ClearInt(0, 1<<5);
+      }
+	  
+    if(GPIO_GetIntStatus(0, 5, 0))//ARC中断
+      {
+		  SetSystemMessage(MSG_ARC);
+		  GPIO_ClearInt(0, 1<<5);
+       
+       
       }
       
-       if(GPIO_GetIntStatus(0, 6, 1))//short中断
-      {
-
-        SetSystemMessage(MSG_SHORT);
-       
-        GPIO_ClearInt(0, 1<<6);
-      }
       
+      GPIO_ClearInt(0, 1<<7);
        if(GPIO_GetIntStatus(0, 7, 1))//GFI中断
       {
 
@@ -234,10 +235,10 @@ void  GPIO_IRQHandler(void)
        SetSystemMessage(MSG_GIF);
         GPIO_ClearInt(0, 1<<7);
       }
-        V_DA_out(0);
-        Sing_out_C(0);
-        Short_out(0);
-        FRB_out(0);
+//        V_DA_out(0);
+//        Sing_out_C(0);
+//        Short_out(0);
+//        FRB_out(0);
 //      Save_TestValue[U9001_save.current_step-1].text_flag=GetSystemMessage();
 //      SetSystemStatus(SYS_STATUS_TEST_PAUSE);
 }

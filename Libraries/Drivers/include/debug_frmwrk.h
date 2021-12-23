@@ -116,8 +116,8 @@ extern Com_TypeDef ComBuf3;
 //起始符  总长度  目标地址  命令字  数据包  累加和  结束符
 //1字节	  1字节	  1字节	    1字节	N字节   1字节   1字节
 //==========================================================
-#define UART_SEND_BEGIN 		(0xAB)
-#define UART_SEND_END 			(0xAF)
+#define UART_SEND_BEGIN 		(0xAA)
+#define UART_SEND_END 			(0xBF)
 #define FRAME_LEN_MAX 			(REC_LEN_MAX)//一帧最大字节
 #define FRAME_LEN_MIN 			(3)	//一帧最小字节
 #define UART_REC_BEGIN 			(0xAA)

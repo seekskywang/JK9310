@@ -305,26 +305,26 @@ extern int Voltage;//µÁ—π
 enum SysMessageEnum
 {
 	MSG_IDLE=0 ,
-	MSG_TEST , 
-	MSG_ABORT ,
-	MSG_PASS ,
-    MSG_RAMP,
-    MSG_DROP,
-    MSG_LOW ,
+	MSG_TEST , //1
+	MSG_ABORT ,//2
+	MSG_PASS ,//3
+    MSG_RAMP,//4
+    MSG_DROP,//5
+    MSG_LOW ,//6
     
-	MSG_WAIT ,
+	MSG_WAIT ,//7
     
-	MSG_HIGH ,
+	MSG_HIGH ,//8
     
-	MSG_SHORT,
+	MSG_SHORT,//9
 		
 		
-	MSG_FAIL ,
-    MSG_OVER , 
-    MSG_ARC,
-    MSG_PAUSE,
-    MSG_GIF,
-    MSG_OFL ,
+	MSG_FAIL ,//10
+    MSG_OVER , //11
+    MSG_ARC,//12
+    MSG_PAUSE,//13
+    MSG_GIF,//14
+    MSG_OFL ,//15
 };
 enum Setup_Group_Item
 {
@@ -722,7 +722,7 @@ typedef struct
     
     U9001_Setup_Typedef  U9001_Setup[11];
     U9001_Count_Typedef  U9001_Count;
-
+	
 
 }U9001_save_Typedef;
 extern  U9001_save_Typedef U9001_save;
@@ -763,7 +763,6 @@ typedef struct
     U9001_SYS_Typedef U9001_SYS;
     U9001_Testconfg_Typedef U9001_Testconfg;
     U9001_Calibrate_TypeDef U9001_Calibrate;
-
 }U9001_Save_sysTypedef;
 extern U9001_Save_sysTypedef U9001_Save_sys;
 typedef struct

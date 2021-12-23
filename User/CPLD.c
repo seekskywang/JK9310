@@ -16,7 +16,14 @@ void CPLD_GPIO(void)
 	GPIO_SetDir(0, (1<<5), GPIO_DIRECTION_INPUT);//ARC
     GPIO_SetDir(0, (1<<6), GPIO_DIRECTION_INPUT);//SHORT
     GPIO_SetDir(0, (1<<7), GPIO_DIRECTION_INPUT);//GFI
-    
+//    
+//	GPIO_IntCmd(0, 1<<5, 0);//p0_29 ???μ???D??
+//    GPIO_IntCmd(0, 1<<6, 0);//p0_29 ???μ???D??
+//    GPIO_IntCmd(0, 1<<7, 0);//p0_29 ???μ???D??
+	NVIC_SetPriority(GPIO_IRQn, 0);
+//	NVIC_EnableIRQ(GPIO_IRQn);
+//	NVIC_DisableIRQ(GPIO_IRQn);
+	
 //	GPIO_IntCmd(0, 1<<5, 1);//下降沿中断
 //    GPIO_IntCmd(0, 1<<6, 1);//下降沿中断
 //    GPIO_IntCmd(0, 1<<6, 1);//下降沿中断

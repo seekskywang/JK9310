@@ -85,6 +85,7 @@ void Disp_button_Num_Input(vu8 page);
 Sort_TypeDef Input_Set_Cov(Sort_TypeDef *Input_Ref);
 void Disp_Cp(void);
 void Disp_Comp(void);
+void Disp_CompTest(void);
 
 void Disp_Cp_Rp(void);
 void Disp_Cs_Rs(void);

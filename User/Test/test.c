@@ -54,6 +54,7 @@ char sendbuff1[20];
 char sendbuff2[20];
 char sendbuff3[20];
 const u8 IR_Range_dot[5]={3,2,1,0,0};
+uint8_t inputselnum;
 const uint8_t USB_dISPVALUE[][9]=
 {
 	"RH_FAIL ",
@@ -217,11 +218,7 @@ void Power_Process(void)
     Sing_out_C(0);
     Short_out(0);
     FRB_out(0);
-	GPIO_IntCmd(0, 1<<5, 1);//p0_29 ???μ???D??
-    GPIO_IntCmd(0, 1<<6, 1);//p0_29 ???μ???D??
-    GPIO_IntCmd(0, 1<<7, 1);//p0_29 ???μ???D??
-	NVIC_SetPriority(GPIO_IRQn, 0);
-	NVIC_EnableIRQ(GPIO_IRQn);
+	
 	Beep_on();
     Sing_out_C(0);
 //	HW_Sendvalueto164(0);
@@ -242,14 +239,15 @@ void Power_Process(void)
     SSPIx_Init();
     AT45DBXX_Read_ID(temp);
 //    FlashID = SPI_FLASH_ReadID();
-    Read_FileDate(0);
+//    Read_FileDate(0);
     SetDate_Comp();
 	SetData_High_Low_Comp();//待改
 
 
 	Host_Init(); 
     Host_EnumDev();
-	
+	ARC_out(1);
+	ARC_out(0);
 //	if(usb_oenflag)	
 //	{
 //		res=f_mount(0,&fs);
@@ -294,6 +292,21 @@ void Power_Process(void)
 		//RTC_SetFullTime (LPC_RTC, &RtcSet);
 	
 	}
+//	LPC_GPIOINT->IO0IntEnR |= (0<<5);//使能IO口上升沿触发
+//	GPIO_ClearInt(0, 1<<5);
+//	LPC_GPIOINT->IO0IntEnR |= (0<<6);//使能IO口上升沿触发
+//	GPIO_ClearInt(0, 1<<6);
+//	LPC_GPIOINT->IO0IntEnR |= (0<<7);//使能IO口上升沿触发
+//	GPIO_ClearInt(0, 1<<7);
+	GPIO_IntCmd(0, 1<<5, 0);//p0_29 ???μ???D??
+	GPIO_ClearInt(0, 1<<5);
+    GPIO_IntCmd(0, 1<<6, 0);//p0_29 ???μ???D??
+	GPIO_ClearInt(0, 1<<6);
+    GPIO_IntCmd(0, 1<<7, 0);//p0_29 ???μ???D??
+	GPIO_ClearInt(0, 1<<7);
+	NVIC_SetPriority(GPIO_IRQn, 0);
+////	NVIC_DisableIRQ(GPIO_IRQn);
+//	NVIC_EnableIRQ(GPIO_IRQn);
 //	tp_dev.init();	
 	Beep_Off();
     Delay(20);
@@ -314,6 +327,7 @@ void Power_Process(void)
 					scpi_input_buffer, SCPI_INPUT_BUFFER_LENGTH,
 					scpi_error_queue_data, SCPI_ERROR_QUEUE_SIZE);
     i=0;
+	U9001_Save_sys.U9001_Testconfg.breakover = 0;
 	while(GetSystemStatus()==SYS_STATUS_POWER)
 	{
 
@@ -350,7 +364,6 @@ void Power_Process(void)
 			case Key_DOWN:		//下键
 //			case L_KEY_DOWN:	//长按下键
 				Tft_5520.Touch_Save.passeord=0X00;
-	
 				break;
 //	
 //			case KEY_LEFT:		//左键
@@ -436,6 +449,7 @@ void Idem_Process(void)
     U9001_save.current_step=1;
     Test_mid.set_item=U9001_save.U9001_Setup[U9001_save.current_step].parameter;//当前参数
 	pageflag = 0;//测量显示
+	 Uart0_Send(0x02);
 	while(GetSystemStatus()==SYS_STATUS_IDEM)
 	{
         Disp_Time( );
@@ -498,7 +512,7 @@ void Idem_Process(void)
 			switch(keyvalue)
 			{
                 case Key_LOCK:
-                   SetSystemStatus(SYS_STATUS_USERDEBUG);
+//                   SetSystemStatus(SYS_STATUS_USERDEBUG);
                     break;
                 case Key_SAVE://保存
                     if(save_flag)
@@ -559,10 +573,10 @@ void Idem_Process(void)
                     
                 break;
 				case Key_SYST://
-					SetSystemStatus(SYS_STATUS_SYSSET);
+//					SetSystemStatus(SYS_STATUS_SYSSET);
 					break;
                 case Key_FILE://
-					SetSystemStatus(SYS_STATUS_FILE);
+//					SetSystemStatus(SYS_STATUS_FILE);
 					break;
 				case Key_SETUP://
 					SetSystemStatus(SYS_STATUS_SETUPTEST);
@@ -576,7 +590,7 @@ void Idem_Process(void)
 					U9001_save.disp=1;
 					break;
 				case Key_F5://
-					SetSystemStatus(SYS_STATUS_RANGE);
+//					SetSystemStatus(SYS_STATUS_RANGE);
 					break;
 				default:
 				break;
@@ -887,6 +901,7 @@ void Test_Process(void)
 //	Range=2;
 //	Range_Control(Range);
     Test_Value.Time=0;
+	
 	while(GetSystemStatus()==SYS_STATUS_TEST)
 	{
         if(READ_STOP()==0)
@@ -900,7 +915,7 @@ void Test_Process(void)
         }
         Read_Ad();//读取AD值
 		Ad_Filter();//AD值滤波
-        
+       
         
 		Get_Result();//计算测试值	
 		//分选判别
@@ -937,7 +952,11 @@ void Test_Process(void)
 			}
 
 			if(sortT<9999)sortT++;
-
+			
+//			if(Test_Value.Time > 3)
+//			{
+//				NVIC_EnableIRQ(GPIO_IRQn);
+//			}
 			if(GetSystemMessage()==MSG_RAMP )//系统信息-缓升
 			{
 				stepT++;//步进时间计时
@@ -1067,7 +1086,7 @@ void Test_Process(void)
 			//测试灯闪烁控制
 			blinkT++;//闪烁时间计时
 			blinkT%=9;
-
+			
 		}
 
 		if(Current>rangr_limit_high)//高于量程上限
@@ -1296,6 +1315,10 @@ void Test_Process(void)
 				(GetSystemMessage()==MSG_ARC)||(GetSystemMessage()==MSG_OVER)||(GetSystemMessage()==MSG_SHORT)
         ||(GetSystemMessage()==MSG_GIF)||(GetSystemMessage()==MSG_ARC))
 		{
+			V_DA_out(0);
+			Sing_out_C(0);
+			Short_out(0);
+			FRB_out(0);
             Save_TestValue[U9001_save.current_step-1].text_flag=GetSystemMessage();
             Save_TestValue[U9001_save.current_step-1].Text_value=dat;
 			Save_TestValue[U9001_save.current_step-1].text_unit=test_value.uint;
@@ -1443,7 +1466,7 @@ void Setup_Process(void)
     u8 item=0;
     u8 disp_all=1;
     u8 key_count;
-    u8 lenth=5;
+//    u8 lenth=5;
     u8 Disp_buff[8];
     u8 input_flag=0;
     u8 select_num=0;
@@ -1477,7 +1500,7 @@ void Setup_Process(void)
 //                line=item-list*(MAX_SETP[U9001_save.U9001_Setup[U9001_save.current_step].parameter]+1)/2;
                 
             }
-			select_num=ITEM_S[U9001_save.U9001_Setup[U9001_save.current_step].parameter][item];
+			inputselnum=ITEM_S[U9001_save.U9001_Setup[U9001_save.current_step].parameter][item];
             if(disp_all)
             {
 //                
@@ -1534,14 +1557,14 @@ void Setup_Process(void)
                         else
                         {
                              memset(Disp_buff,0,6);
-                            if(key_count<lenth)
+                            if(key_count<5)
                             {
                                 Disp_buff[key_count]=keyvalue;
                                 key_count++;
 
                             }
                             input_flag=1;
-                            Disp_Pre_Uint(select_num);
+                            Disp_Pre_Uint(inputselnum);
                             DISP_FLAG=TRUE;
                         }
                         break;
@@ -1735,7 +1758,7 @@ void Setup_Process(void)
                         switch(item)//第几项
                         {
                             case 0:
-                                
+                                SetSystemStatus(SYS_STATUS_SYSSET);
                                 break;
                             case 1:
 
@@ -1841,7 +1864,7 @@ void Setup_Process(void)
                         switch(item)//第几项
                         {
                             case 0:
-                                
+                                SetSystemStatus(SYS_STATUS_SYS);
                                 break;
                             case 1:
                                 
@@ -2013,7 +2036,7 @@ void Setup_Process(void)
                     break;
                     
                     case Key_Disp:
-                        Save_fileDate(0);
+                        
                             //SetSystemStatus(SYS_STATUS_TEST);
                         SetSystemStatus(SYS_STATUS_IDEM);
                     break;
@@ -2068,10 +2091,10 @@ void Setup_Process(void)
                                 
                     break;
                     case Key_SYST:
-                        SetSystemStatus(SYS_STATUS_SYSSET);
+                        
                         break;
                     case Key_FILE:
-                        SetSystemStatus(SYS_STATUS_FILE);
+//                        SetSystemStatus(SYS_STATUS_FILE);
                         break;
     //				case Key_EXIT:
     //                    SetSystemStatus(SYS_STATUS_IDEM);
@@ -2225,7 +2248,7 @@ void Setup_Process(void)
                     case Key_NUM8:
                     case Key_NUM9:
                     case Key_DOT:                       
-                        if(key_count<lenth)
+                        if(key_count<5)
                         {
                             Disp_buff[key_count]=keyvalue;
                             key_count++;
@@ -2259,6 +2282,7 @@ void Setup_Process(void)
 	else
 		Range=MAX_R_RANGE-1;
 	Savetoeeprom();
+//	Save_fileDate(0);
 //	lcd_Clear(LCD_COLOR_TEST_BACK);
 }
 
@@ -2369,7 +2393,7 @@ void Setup_config_Process(void)
                             SetSystemStatus(SYS_STATUS_SETUPTEST);
                             break;
                         case 1:
-//                            if(U9001_Save_sys.U9001_Testconfg.pass_time)
+//                            if(U9001_save_sys.U9001_Testconfg.pass_time)
                            //ParameterLimit
                             
                         case 2:
@@ -2828,14 +2852,14 @@ void Sys_Process(void)
 			
 		}
 
-		keyvalue=Key_Read_WithTimeOut(TICKS_PER_SEC_SOFTTIMER/10);
+//		keyvalue=Key_Read_WithTimeOut(TICKS_PER_SEC_SOFTTIMER/10);
 		if(keyvalue!=KEY_NONE)
 		{
 			DISP_FLAG=1;
             Key_Beep();
 			switch(keyvalue)
 			{
-                case Key_RIGHT:
+                case Key_F1:
                     SetSystemStatus(SYS_STATUS_SYSSET);
                 break;
 				case  Key_LEFT:
@@ -2898,10 +2922,10 @@ void Use_SysSetProcess(void)
 	{
 	  	if(DISP_FLAG==TRUE)
 		{
-            if(line==0)
-                list=0;
-            if(line<7)
-                item=list*6+line;
+//            if(line==0)
+//                list=0;
+//            if(line<7)
+//                item=list*6+line;
            
             if(disp_all)
             {
@@ -2912,7 +2936,7 @@ void Use_SysSetProcess(void)
                 Disp_SYS_Set_Item();
                 disp_all=0;
             }
-            Disp_SysSet_value(item);
+            Disp_SysSet_value(line);
 			DISP_FLAG=FALSE;
 		
 		}
@@ -2933,38 +2957,158 @@ void Use_SysSetProcess(void)
 			Key_Beep();
 			switch(keyvalue)
 			{
+				case Key_F1:
+					switch(line)
+					{
+						case 0:
+						{
+//							SetSystemStatus(SYS_STATUS_SYS);
+						}break;
+						case 1:
+						{
+							U9001_Save_sys.U9001_SYS.language = 0;
+						}break;
+						case 2:
+						{
+							U9001_Save_sys.U9001_SYS.pass_beep = 0;
+						}break;
+						case 3:
+						{
+							U9001_Save_sys.U9001_SYS.fail_beep = 0;
+						}break;
+						case 4:
+						{
+							U9001_Save_sys.U9001_SYS.key_beep = 0;
+						}break;
+//						case 5:
+//						{
+//							U9001_save_sys.U9001_SYS.key_beep = 0;
+//						}break;
+						case 7:
+						{
+							U9001_Save_sys.U9001_SYS.buard = 0;
+						}break;
+						default:break;
+					}
+				break;
 				case Key_F2:
-					SetSystemStatus(SYS_STATUS_SYS);
+					switch(line)
+					{
+						case 0:
+						{
+							SetSystemStatus(SYS_STATUS_SYS);
+						}break;
+						case 1:
+						{
+							U9001_Save_sys.U9001_SYS.language = 1;
+						}break;
+						case 2:
+						{
+							U9001_Save_sys.U9001_SYS.pass_beep = 1;
+						}break;
+						case 3:
+						{
+							U9001_Save_sys.U9001_SYS.fail_beep = 1;
+						}break;
+						case 4:
+						{
+							U9001_Save_sys.U9001_SYS.key_beep = 1;
+						}break;
+//						case 5:
+//						{
+//							U9001_save_sys.U9001_SYS.key_beep = 1;
+//						}break;
+						case 7:
+						{
+							U9001_Save_sys.U9001_SYS.buard = 1;
+						}break;
+						default:break;
+					}
+				break;
+				case Key_F3:
+					switch(line)
+					{
+						case 0:
+						{
+//							SetSystemStatus(SYS_STATUS_SYS);
+						}break;
+						case 1:
+						{
+//							U9001_save_sys.U9001_SYS.language = 1;
+						}break;
+						case 2:
+						{
+							U9001_Save_sys.U9001_SYS.pass_beep = 2;
+						}break;
+						case 3:
+						{
+							U9001_Save_sys.U9001_SYS.fail_beep = 2;
+						}break;
+						case 4:
+						{
+//							U9001_save_sys.U9001_SYS.key_beep = 1;
+						}break;
+//						case 5:
+//						{
+//							U9001_save_sys.U9001_SYS.key_beep = 1;
+//						}break;
+						case 7:
+						{
+							U9001_Save_sys.U9001_SYS.buard = 2;
+						}break;
+						default:break;
+					}
+				break;
+				case Key_F4:
+					switch(line)
+					{
+						case 7:
+						{
+							U9001_Save_sys.U9001_SYS.buard = 3;
+						}break;
+						default:break;
+					}
+				break;
+				case Key_F5:
+					switch(line)
+					{
+						case 7:
+						{
+							U9001_Save_sys.U9001_SYS.buard = 4;
+						}break;
+						default:break;
+					}
 				break;
 				case Key_Disp:
                     SetSystemStatus(SYS_STATUS_IDEM);
 				break;
 				case Key_SETUP:
-                    //SetSystemStatus(SYS_STATUS_SETUPTEST);
+                    SetSystemStatus(SYS_STATUS_SETUPTEST);
 				break;
 				case Key_FAST:
 				break;
 				case Key_LEFT:
-                    if(line)
-                    list--;
+                   if(line > 4)
+					{
+						line-=4;
+					}
 				break;
 				case Key_RIGHT:
-                    if(line<7)
-                        list=1;
-                    else if(line<3)
-                        line++;
+                    if(line < 4)
+					{
+						line+=4;
+					}else if(line == 4){
+						line = 7;
+					}
 				break;
 //                case Key_LEFT:
                     
 				case Key_DOWN:
-					if(line<8)
-					
+					if(line<7)
 						line++;
-						
 				break;
 				case Key_UP:
 					if(line)
-
 						line--;
 				break;
 				
@@ -4422,8 +4566,8 @@ void TestPause_Process(void)
     ARC_out(0);
     if(U9001_save.disp)//显示分选结果
         Disp_Comp();
-    else
-        ;
+//    else
+//		Disp_CompTest();
                 //Disp_Test_List(U9001_save.current_step);
     if(GetSystemMessage()==MSG_PASS)
         SetSoftTimer(PASS_SOFTTIMER,U9001_Save_sys.U9001_Testconfg.pass_time*10);//设置按键延时周期(即软定时器设置)
