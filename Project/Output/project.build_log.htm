@@ -27,6 +27,17 @@ Project File Date:  01/25/2022
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'E:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Open1788'
+compiling EX_SDRAM.c...
+compiling main.c...
+..\User\Key/key.h(13): warning:  #47-D: incompatible redefinition of macro "TICKS_PER_SEC"  (declared at line 92 of "..\Libraries\Drivers\include\debug_frmwrk.h")
+  #define TICKS_PER_SEC 100     //????????????????????100x10mS(T0)=1S
+..\User\Test\Debug.h(28): warning:  #1-D: last line of file ends without a newline
+  //==========================================================
+..\User\main.c(211): warning:  #177-D: variable "i"  was declared but never referenced
+      static uint16_t i=0;
+..\User\main.c: 3 warnings, 0 errors
+compiling lpc177x_8x_lcd.c...
+compiling logo.c...
 compiling use_disp.c...
 ..\User\UseDisp\use_disp.c(1903): warning:  #167-D: argument of type "const u8 *" is incompatible with parameter of type "const char *restrict"
                                 strcat(DispBuf,Test_IRUINT[test_value.uint]);
@@ -81,10 +92,100 @@ compiling use_disp.c...
 ..\User\UseDisp\use_disp.c(6204): warning:  #177-D: variable "keynum"  was declared but never referenced
         vu32 keynum=0;
 ..\User\UseDisp\use_disp.c: 26 warnings, 0 errors
+compiling test.c...
+..\Libraries\Drivers\include\debug_frmwrk.h(92): warning:  #47-D: incompatible redefinition of macro "TICKS_PER_SEC"  (declared at line 13 of "..\User\key/key.h")
+  #define TICKS_PER_SEC 1000    //????????????????????100x10mS(T0)=1S
+..\User\Test\test.c(199): warning:  #177-D: variable "temp"  was declared but never referenced
+        u8 temp[4];
+..\User\Test\test.c(200): warning:  #177-D: variable "FlashID"  was declared but never referenced
+                u32 FlashID;
+..\User\Test\test.c(733): warning:  #177-D: variable "key"  was declared but never referenced
+        vu8 key;
+..\User\Test\test.c(828): warning:  #550-D: variable "Range_IR"  was set but never used
+      u8 Range_IR=0;
+..\User\Test\test.c(836): warning:  #550-D: variable "temp"  was set but never used
+        vu32 temp;
+..\User\Test\test.c(837): warning:  #177-D: variable "value"  was declared but never referenced
+      float value;
+..\User\Test\test.c(838): warning:  #177-D: variable "F_x"  was declared but never referenced
+      float F_x;
+..\User\Test\test.c(1568): warning:  #177-D: variable "pt"  was declared but never referenced
+      vu16 *pt;
+..\User\Test\test.c(1569): warning:  #550-D: variable "list"  was set but never used
+        u8 list=1;//????????0  ??????1??
+..\User\Test\test.c(1577): warning:  #177-D: variable "select_num"  was declared but never referenced
+      u8 select_num=0;
+..\User\Test\test.c(2668): warning:  #177-D: variable "select_num"  was declared but never referenced
+      u8 select_num=0;
+..\User\Test\test.c(3302): warning:  #177-D: variable "list"  was declared but never referenced
+        u8 list=0;//??
+..\User\Test\test.c(3304): warning:  #177-D: variable "item"  was declared but never referenced
+      u8 item=0;
+..\User\Test\test.c(4967): warning:  #188-D: enumerated type mixed with another type
+        f_disp=FALSE;//????????
+..\User\Test\test.c(4960): warning:  #177-D: variable "i"  was declared but never referenced
+        u8 i;
+..\User\Test\test.c(4961): warning:  #177-D: variable "key"  was declared but never referenced
+        u8 key;
+..\User\Test\test.c(4963): warning:  #177-D: variable "item"  was declared but never referenced
+        u8 item;
+..\User\Test\test.c(4964): warning:  #550-D: variable "time"  was set but never used
+        u16 time;//????????????
+..\User\Test\test.c(4965): warning:  #550-D: variable "f_disp"  was set but never used
+        Bool f_disp;//????????
+..\User\Test\test.c: 20 warnings, 0 errors
+compiling Debug.c...
+..\Libraries\Drivers\include\debug_frmwrk.h(92): warning:  #47-D: incompatible redefinition of macro "TICKS_PER_SEC"  (declared at line 13 of "..\User\key/key.h")
+  #define TICKS_PER_SEC 1000    //????????????????????100x10mS(T0)=1S
+..\User\Test\Debug.h(28): warning:  #1-D: last line of file ends without a newline
+  //==========================================================
+..\User\Test\Debug.c(71): warning:  #177-D: variable "key"  was declared but never referenced
+        u8 key;
+..\User\Test\Debug.c(202): warning:  #111-D: statement is unreachable
+                                break;
+..\User\Test\Debug.c(212): warning:  #111-D: statement is unreachable
+                                break;
+..\User\Test\Debug.c(167): warning:  #177-D: variable "key"  was declared but never referenced
+        u8 key;
+..\User\Test\Debug.c(306): warning:  #111-D: statement is unreachable
+                      break;
+..\User\Test\Debug.c(260): warning:  #177-D: variable "key"  was declared but never referenced
+        u8 key;
+..\User\Test\Debug.c(417): warning:  #111-D: statement is unreachable
+                      break;
+..\User\Test\Debug.c(365): warning:  #177-D: variable "key"  was declared but never referenced
+        u8 key;
+..\User\Test\Debug.c(535): warning:  #111-D: statement is unreachable
+                      break;
+..\User\Test\Debug.c(482): warning:  #177-D: variable "key"  was declared but never referenced
+        u8 key;
+..\User\Test\Debug.c(842): warning:  #111-D: statement is unreachable
+                        break;
+..\User\Test\Debug.c(1235): warning:  #111-D: statement is unreachable
+                                break;
+..\User\Test\Debug.c(698): warning:  #550-D: variable "dat"  was set but never used
+        vu16 dat;
+..\User\Test\Debug.c(699): warning:  #177-D: variable "temp"  was declared but never referenced
+        vu32 temp;
+..\User\Test\Debug.c(704): warning:  #177-D: variable "f_upper"  was declared but never referenced
+        bool f_upper=FALSE;//??????????????????
+..\User\Test\Debug.c(705): warning:  #177-D: variable "f_below"  was declared but never referenced
+        bool f_below=FALSE;//??????????????????
+..\User\Test\Debug.c(706): warning:  #177-D: variable "f_switch"  was declared but never referenced
+        bool f_switch=FALSE;//??????????????????
+..\User\Test\Debug.c(712): warning:  #550-D: variable "ad_high"  was set but never used
+        vu16 ad_high;//AD?€???????
+..\User\Test\Debug.c(713): warning:  #550-D: variable "ad_low"  was set but never used
+        vu16 ad_low;//AD?€???????
+..\User\Test\Debug.c(714): warning:  #550-D: variable "TestTime"  was set but never used
+      u16 TestTime;
+..\User\Test\Debug.c: 22 warnings, 0 errors
+compiling GUIConf.c...
+compiling LCDConf.c...
 linking...
-Program Size: Code=154388 RO-data=122928 RW-data=804 ZI-data=8796  
+Program Size: Code=154440 RO-data=122924 RW-data=804 ZI-data=8796  
 FromELF: creating hex file...
-".\Output\project.axf" - 0 Error(s), 26 Warning(s).
+".\Output\project.axf" - 0 Error(s), 71 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -107,7 +208,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.4.0
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:06
 </pre>
 </body>
 </html>
