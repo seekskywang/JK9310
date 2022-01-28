@@ -49,6 +49,7 @@ typedef unsigned           int vu32;
 #define TEST_SOFTTIMER 		(2) //测试延时软定时器
 #define PASS_SOFTTIMER      (3) //合格延时软定时器
 #define DELAY_SOFTTIMER      (4) //间隔延时软定时器
+#define DIS_SOFTTIMER        (5) //放电时间软定时器
 //==========================================================
 //仿真调试
 //#define DEBUG_SUPPORT			(_DEBUG_CONFIG_TRUE)
@@ -91,7 +92,7 @@ typedef unsigned           int vu32;
 
 #define AD_BUF_LENGTH		(8)//A/D值缓冲区长度
 
-#define MAX_R_RANGE			(5)//电阻最大量程
+#define MAX_R_RANGE			(6)//电阻最大量程
 
 #define BUTTOM_X_VALUE		(84)//显示下面提示显示的第一个X位置
 
@@ -108,7 +109,7 @@ typedef unsigned           int vu32;
 #define SYS_MAX				(11)
 #define GROUP_MAX           (5)
 #define MAX_TEXT_STEP       (10)
-#define MAXTSOFTTIMER (5)		//软定时器数目
+#define MAXTSOFTTIMER (6)		//软定时器数目
 
 #define USBSENDLENTH        (27)
 
@@ -138,8 +139,10 @@ typedef unsigned           int vu32;
 #define _4094NUM    2
 
 //测试值最大值
-#define ACW_CURRENT_MAX		(2000)
-#define DCW_CURRENT_MAX		(2000)
+//#define ACW_CURRENT_MAX		(2000)
+//#define DCW_CURRENT_MAX		(2000)
+#define ACW_CURRENT_MAX		(3000)
+#define DCW_CURRENT_MAX		(3000)
 #define IR_RESISTANCE_MAX	(9999)
 #define GND_RESISTANCE_MAX	(310)
 //测试值溢出
@@ -325,6 +328,7 @@ enum SysMessageEnum
     MSG_PAUSE,//13
     MSG_GIF,//14
     MSG_OFL ,//15
+	MSG_OPEN ,//16
 };
 enum Setup_Group_Item
 {
@@ -722,10 +726,11 @@ typedef struct
     
     U9001_Setup_Typedef  U9001_Setup[11];
     U9001_Count_Typedef  U9001_Count;
-	
+	u8 start_step;
+	u16 clearvalue[10];
 
 }U9001_save_Typedef;
-extern  U9001_save_Typedef U9001_save;
+//extern  U9001_save_Typedef U9001_Save_sys.U9001_save;
 typedef struct 
 {
 	Cal_TypeDef AcwVol[1];//交流耐压电压值-1档
@@ -738,6 +743,7 @@ typedef struct
 	Cal_TypeDef GndCur[1];//接地电阻电流值-1档
 	
 }U9001_Calibrate_TypeDef;
+extern U9001_Calibrate_TypeDef U9001_Calibrate;
 typedef struct
 {
     u16 pass_time;
@@ -762,7 +768,8 @@ typedef struct
    
     U9001_SYS_Typedef U9001_SYS;
     U9001_Testconfg_Typedef U9001_Testconfg;
-    U9001_Calibrate_TypeDef U9001_Calibrate;
+	U9001_save_Typedef U9001_save;
+//    U9001_Calibrate_TypeDef U9001_Calibrate;
 }U9001_Save_sysTypedef;
 extern U9001_Save_sysTypedef U9001_Save_sys;
 typedef struct

@@ -185,13 +185,21 @@ void Sin_Clk_Disable(void)//Êä³öÕýÏÒ²¨ÆµÂÊ
 void Sin_out(u8 date)//0  50  1 60 2 400 Ð´ÆµÂÊ×Ö
 {
     cpld_value&=HW_50HZ;
-     if(date==1)
+     if(date==1)//60Hz
     {
         cpld_value|=HW_400HZ;
-    }else if(date==2)
+    }else if(date==2)//400Hz
     {
         cpld_value|=HW_60HZ;
+    }else if(date==3)//50Hz
+    {
+        cpld_value&=HW_400HZ;
+    }else if(date==4)//600Hz
+    {
+//        cpld_value&=HW_60HZ;
+		cpld_value = 0x300;
     }
+	
 //    cpld_value=0X000F;
     Write_Cpld(cpld_value);
 }
@@ -216,17 +224,29 @@ void FRB_out(u8 date)//0  Í£Ö¹  1  AC  2 DC
     }else if(date==1)
     {
         cpld_value&=HW_ACDC_START;
+//		cpld_value|=HW_DC_OFF;
+//        cpld_value&=HW_AC_ON;
         cpld_value&=HW_DC_ON;
         cpld_value|=HW_AC_OFF;
         cpld_value&=HW__5053_A_L;
         
         
-    }else
+    }else if(date==2)
     {
         cpld_value&=HW_ACDC_START;
+//		cpld_value&=HW_DC_ON;
+//        cpld_value|=HW_AC_OFF;
         cpld_value|=HW_DC_OFF;
         cpld_value&=HW_AC_ON;
         cpld_value&=HW__5053_A_L;
+    }else if(date==3)
+    {
+        cpld_value&=HW_ACDC_START;
+//		cpld_value&=HW_DC_ON;
+//        cpld_value|=HW_AC_OFF;
+        cpld_value&=HW_DC_ON;
+        cpld_value|=HW_AC_OFF;
+        cpld_value|=HW__5053_A_H;
     }
  
     

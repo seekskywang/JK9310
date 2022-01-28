@@ -67,30 +67,30 @@ void UartRes(void)
 {
 	u8 i;
 	char stepbuf[50];
-	for(i=0;i<U9001_save.all_step;i++)
+	for(i=0;i<U9001_Save_sys.U9001_save.all_step;i++)
 	{
-		if(U9001_save.U9001_Setup[i+1].parameter == AC ||
-		   U9001_save.U9001_Setup[i+1].parameter == DC)
+		if(U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter == AC ||
+		   U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter == DC)
 		{
 			sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,%.3fmA,%.1fs;",
 			i+1,
-			TestPara[U9001_save.U9001_Setup[i+1].parameter],
+			TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],
 			DISP_COMP[Save_TestValue[i].text_flag][1],
 			(double)Save_TestValue[i].Text_vot/1000,
 			(double)Save_TestValue[i].Text_value/1000,
 			(double)Save_TestValue[i].Text_time/10);
-		}else if(U9001_save.U9001_Setup[i+1].parameter == OS){
+		}else if(U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter == OS){
 			sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,%.1f,%.1fs;",
 			i+1,
-			TestPara[U9001_save.U9001_Setup[i+1].parameter],
+			TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],
 			DISP_COMP[Save_TestValue[i].text_flag][1],
 			(double)Save_TestValue[i].Text_vot/1000,
 			(double)Save_TestValue[i].Text_value/10,
 			(double)Save_TestValue[i].Text_time/10);
-		}else if(U9001_save.U9001_Setup[i+1].parameter == IR){
+		}else if(U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter == IR){
 			sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,%.3f%sΩ,%.1fs;",
 			i+1,
-			TestPara[U9001_save.U9001_Setup[i+1].parameter],
+			TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],
 			DISP_COMP[Save_TestValue[i].text_flag][1],
 			(double)Save_TestValue[i].Text_vot/1000,
 			(double)Save_TestValue[i].Text_value/1000,
@@ -157,12 +157,12 @@ static scpi_result_t PageSet(scpi_t * context) {
 			{
 				case 0:
 					DISP_FLAG = TRUE;
-					U9001_save.disp = 0; 
+					U9001_Save_sys.U9001_save.disp = 0; 
 					SetSystemStatus(SYS_STATUS_IDEM);
 				break;
 				case 1:
 					DISP_FLAG = TRUE;
-					U9001_save.disp = 1;
+					U9001_Save_sys.U9001_save.disp = 1;
 					SetSystemStatus(SYS_STATUS_IDEM);		
 				break;
 				case 2:
@@ -184,7 +184,7 @@ static scpi_result_t PageSet(scpi_t * context) {
 static scpi_result_t VoltageAcQ1(scpi_t * context) {
 //    fprintf(stderr, "\tP2=%s\r\n", bf);
 
-    SCPI_ResultDouble(context, U9001_save.U9001_Setup[U9001_save.current_step].V_out);
+    SCPI_ResultDouble(context, U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out);
 
     return SCPI_RES_OK;
 }
@@ -196,7 +196,7 @@ static scpi_result_t VoltageAcS1(scpi_t * context) {
     if (!SCPI_ParamUInt32(context,&param, FALSE)) {
 		return SCPI_RES_ERR;
     }
-	U9001_save.U9001_Setup[U9001_save.current_step].V_out = param;
+	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out = param;
 	Save_fileDate(0);
     return SCPI_RES_OK;
 }
@@ -204,11 +204,11 @@ static scpi_result_t VoltageAcS1(scpi_t * context) {
 //查询AC电流上限1
 static scpi_result_t CUpperAcQ1(scpi_t * context) {
 //    fprintf(stderr, "\tP2=%s\r\n", bf);
-	if(U9001_save.U9001_Setup[U9001_save.current_step].parameter == IR)
+	if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter == IR)
 	{
-		SCPI_ResultFloat(context, (float)U9001_save.U9001_Setup[U9001_save.current_step].Upper/10);
+		SCPI_ResultFloat(context, (float)U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper/10);
 	}else{
-		SCPI_ResultFloat(context, (float)U9001_save.U9001_Setup[U9001_save.current_step].Upper/1000);
+		SCPI_ResultFloat(context, (float)U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper/1000);
 	}
 
     return SCPI_RES_OK;
@@ -221,11 +221,11 @@ static scpi_result_t CUpperAcS1(scpi_t * context) {
     if (!SCPI_ParamFloat(context,&param, FALSE)) {
 		return SCPI_RES_ERR;
     }
-	if(U9001_save.U9001_Setup[U9001_save.current_step].parameter == IR)
+	if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter == IR)
 	{
-		U9001_save.U9001_Setup[U9001_save.current_step].Upper = param*10;
+		U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper = param*10;
 	}else {
-		U9001_save.U9001_Setup[U9001_save.current_step].Upper = param*1000;
+		U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper = param*1000;
 	}
 	Save_fileDate(0);
     return SCPI_RES_OK;
@@ -234,11 +234,11 @@ static scpi_result_t CUpperAcS1(scpi_t * context) {
 //查询AC电流下限1
 static scpi_result_t CLOWAcQ1(scpi_t * context) {
 //    fprintf(stderr, "\tP2=%s\r\n", bf);
-	if(U9001_save.U9001_Setup[U9001_save.current_step].parameter == IR)
+	if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter == IR)
 	{
-		SCPI_ResultFloat(context, (float)U9001_save.U9001_Setup[U9001_save.current_step].lower/10);
+		SCPI_ResultFloat(context, (float)U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower/10);
 	}else{
-		SCPI_ResultFloat(context, (float)U9001_save.U9001_Setup[U9001_save.current_step].lower/1000);
+		SCPI_ResultFloat(context, (float)U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower/1000);
 	}
 
     return SCPI_RES_OK;
@@ -251,11 +251,11 @@ static scpi_result_t CLOWAcS1(scpi_t * context) {
     if (!SCPI_ParamFloat(context,&param, FALSE)) {
 		return SCPI_RES_ERR;
     }
-	if(U9001_save.U9001_Setup[U9001_save.current_step].parameter == IR)
+	if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter == IR)
 	{
-		SCPI_ResultFloat(context, (float)U9001_save.U9001_Setup[U9001_save.current_step].lower/10);
+		SCPI_ResultFloat(context, (float)U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower/10);
 	}else{
-		SCPI_ResultFloat(context, (float)U9001_save.U9001_Setup[U9001_save.current_step].lower/1000);
+		SCPI_ResultFloat(context, (float)U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower/1000);
 	}
 	Save_fileDate(0);
     return SCPI_RES_OK;
@@ -265,7 +265,7 @@ static scpi_result_t CLOWAcS1(scpi_t * context) {
 static scpi_result_t TTIMQ1(scpi_t * context) {
 //    fprintf(stderr, "\tP2=%s\r\n", bf);
 
-    SCPI_ResultFloat(context, (float)U9001_save.U9001_Setup[U9001_save.current_step].time/10);
+    SCPI_ResultFloat(context, (float)U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time/10);
 
     return SCPI_RES_OK;
 }
@@ -277,7 +277,7 @@ static scpi_result_t TTIMS1(scpi_t * context) {
     if (!SCPI_ParamFloat(context,&param, FALSE)) {
 		return SCPI_RES_ERR;
     }
-	U9001_save.U9001_Setup[U9001_save.current_step].time = param*10;
+	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time = param*10;
 	Save_fileDate(0);
     return SCPI_RES_OK;
 }
@@ -286,7 +286,7 @@ static scpi_result_t TTIMS1(scpi_t * context) {
 static scpi_result_t RTIMQ1(scpi_t * context) {
 //    fprintf(stderr, "\tP2=%s\r\n", bf);
 
-    SCPI_ResultFloat(context, (float)U9001_save.U9001_Setup[U9001_save.current_step].rise_time/10);
+    SCPI_ResultFloat(context, (float)U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time/10);
 
     return SCPI_RES_OK;
 }
@@ -298,7 +298,7 @@ static scpi_result_t RTIMS1(scpi_t * context) {
     if (!SCPI_ParamFloat(context,&param, FALSE)) {
 		return SCPI_RES_ERR;
     }
-	U9001_save.U9001_Setup[U9001_save.current_step].rise_time = param*10;
+	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time = param*10;
 	Save_fileDate(0);
     return SCPI_RES_OK;
 }
@@ -307,7 +307,7 @@ static scpi_result_t RTIMS1(scpi_t * context) {
 static scpi_result_t FTIMQ1(scpi_t * context) {
 //    fprintf(stderr, "\tP2=%s\r\n", bf);
 
-    SCPI_ResultFloat(context, (float)U9001_save.U9001_Setup[U9001_save.current_step].drop_time/10);
+    SCPI_ResultFloat(context, (float)U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time/10);
 
     return SCPI_RES_OK;
 }
@@ -319,7 +319,7 @@ static scpi_result_t FTIMS1(scpi_t * context) {
     if (!SCPI_ParamFloat(context,&param, FALSE)) {
 		return SCPI_RES_ERR;
     }
-	U9001_save.U9001_Setup[U9001_save.current_step].drop_time = param*10;
+	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time = param*10;
 	Save_fileDate(0);
     return SCPI_RES_OK;
 }
@@ -328,7 +328,7 @@ static scpi_result_t FTIMS1(scpi_t * context) {
 static scpi_result_t ARCQ1(scpi_t * context) {
 //    fprintf(stderr, "\tP2=%s\r\n", bf);
 
-    SCPI_ResultFloat(context, (float)U9001_save.U9001_Setup[U9001_save.current_step].range_arc/10);
+    SCPI_ResultFloat(context, (float)U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc/10);
 
     return SCPI_RES_OK;
 }
@@ -340,7 +340,7 @@ static scpi_result_t ARCS1(scpi_t * context) {
     if (!SCPI_ParamFloat(context,&param, FALSE)) {
 		return SCPI_RES_ERR;
     }
-	U9001_save.U9001_Setup[U9001_save.current_step].range_arc = param*10;
+	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc = param*10;
 	Save_fileDate(0);
     return SCPI_RES_OK;
 }
@@ -378,7 +378,7 @@ static scpi_result_t FREQS1(scpi_t * context) {
 //查询开路比率
 static scpi_result_t OPENQ1(scpi_t * context) {
 //    fprintf(stderr, "\tP2=%s\r\n", bf);
-	SCPI_ResultFloat(context, (float)U9001_save.U9001_Setup[U9001_save.current_step].lower);
+	SCPI_ResultFloat(context, (float)U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower);
 
     return SCPI_RES_OK;
 }
@@ -390,7 +390,7 @@ static scpi_result_t OPENS1(scpi_t * context) {
     if (!SCPI_ParamFloat(context,&param, FALSE)) {
 		return SCPI_RES_ERR;
     }
-	U9001_save.U9001_Setup[U9001_save.current_step].lower = param;
+	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower = param;
 	Save_fileDate(0);
     return SCPI_RES_OK;
 }
@@ -398,7 +398,7 @@ static scpi_result_t OPENS1(scpi_t * context) {
 //查询短路比率
 static scpi_result_t SHORTQ1(scpi_t * context) {
 //    fprintf(stderr, "\tP2=%s\r\n", bf);
-	SCPI_ResultFloat(context, (float)U9001_save.U9001_Setup[U9001_save.current_step].Upper);
+	SCPI_ResultFloat(context, (float)U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper);
 
     return SCPI_RES_OK;
 }
@@ -410,7 +410,7 @@ static scpi_result_t SHORTS1(scpi_t * context) {
     if (!SCPI_ParamFloat(context,&param, FALSE)) {
 		return SCPI_RES_ERR;
     }
-	U9001_save.U9001_Setup[U9001_save.current_step].Upper = param;
+	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper = param;
 	Save_fileDate(0);
     return SCPI_RES_OK;
 }
@@ -484,7 +484,7 @@ static scpi_result_t SetStep(scpi_t * context) {
     if (!SCPI_ParamUInt32(context,&param, FALSE)) {
 		return SCPI_RES_ERR;
     }
-	U9001_save.current_step = param;
+	U9001_Save_sys.U9001_save.current_step = param;
 	Savetoeeprom();
 	 
     return SCPI_RES_OK;
@@ -498,7 +498,7 @@ static scpi_result_t SetTSteps(scpi_t * context) {
     if (!SCPI_ParamUInt32(context,&param, FALSE)) {
 		return SCPI_RES_ERR;
     }
-	U9001_save.all_step = param;
+	U9001_Save_sys.U9001_save.all_step = param;
 	Savetoeeprom();
 	 
     return SCPI_RES_OK;
@@ -507,7 +507,7 @@ static scpi_result_t SetTSteps(scpi_t * context) {
 //AC
 static scpi_result_t ACMode(scpi_t * context) {
     
-	U9001_save.U9001_Setup[U9001_save.current_step].parameter = AC;
+	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter = AC;
 	Savetoeeprom();
 	 
     return SCPI_RES_OK;
@@ -516,7 +516,7 @@ static scpi_result_t ACMode(scpi_t * context) {
 //DC
 static scpi_result_t DCMode(scpi_t * context) {
     
-	U9001_save.U9001_Setup[U9001_save.current_step].parameter = AC;
+	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter = AC;
 	Savetoeeprom();
 	 
     return SCPI_RES_OK;
@@ -525,7 +525,7 @@ static scpi_result_t DCMode(scpi_t * context) {
 //IR
 static scpi_result_t IRMode(scpi_t * context) {
     
-	U9001_save.U9001_Setup[U9001_save.current_step].parameter = IR;
+	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter = IR;
 	Savetoeeprom();
 	 
     return SCPI_RES_OK;
@@ -534,7 +534,7 @@ static scpi_result_t IRMode(scpi_t * context) {
 //OS
 static scpi_result_t OSMode(scpi_t * context) {
     
-	U9001_save.U9001_Setup[U9001_save.current_step].parameter = OS;
+	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter = OS;
 	Savetoeeprom();
 	 
     return SCPI_RES_OK;
@@ -544,7 +544,7 @@ static scpi_result_t OSMode(scpi_t * context) {
 static scpi_result_t ReadRes(scpi_t * context) {
     
 	
-//	Save_TestValue[U9001_save.current_step-1]
+//	Save_TestValue[U9001_Save_sys.U9001_save.current_step-1]
 	UartRes();
 	SCPI_ResultCharacters(context, Resbuf,strlen(Resbuf));
 	memset(Resbuf,0,sizeof(Resbuf));
@@ -555,7 +555,7 @@ static scpi_result_t ReadRes(scpi_t * context) {
 static scpi_result_t VoltageDcQ1(scpi_t * context) {
 //    fprintf(stderr, "\tP2=%s\r\n", bf);
 
-    SCPI_ResultDouble(context, U9001_save.U9001_Setup[1].V_out);
+    SCPI_ResultDouble(context, U9001_Save_sys.U9001_save.U9001_Setup[1].V_out);
 
     return SCPI_RES_OK;
 }

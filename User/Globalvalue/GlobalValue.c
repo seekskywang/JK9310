@@ -142,7 +142,7 @@ const vu16 DefaultCalibrate[]=
 //校准值上、下限
 const u16 CalibrateLimit[][2]=
 {
-	 4100,3800, 2100,1900, 1200, 800, 1300,1100, 2200, 1800, 2400,2000, //ACW
+	 4100,3800, 2100,1900, 1200, 800, 1300,900/*1100*/, 2200, 1800, 2400,2000, //ACW
 	 4100,3800, 2400,2000, 800, 500, 900,600, 2200, 1800, 2600,2200, //DCW
 	 1200, 800, 650, 450, 520,490, 2600,2200, 5200,4900, 2600,2200, //IR
 	 5200,4900, 2600,2200, 5200,4900, 2600,2200, 5200,4900, 2600,2200, //IR
@@ -160,7 +160,7 @@ const u8 CalibrateLimitOffset[]=
 {
 	0,
 	3,
-	3+3,
+	3+3, 
 	3+3+5,
 };
 //==========================================================
@@ -171,13 +171,13 @@ void LoadDefaultCalibrate(void)
 	u8 i;
 	u8 *pt,*pt2;
 
-	pt =(u8*)&(U9001_Save_sys.U9001_Calibrate);
+	pt =(u8*)&(U9001_Calibrate);
 	pt2=(u8*)&(DefaultCalibrate);
 	for(i=0;i<sizeof(DefaultCalibrate);i++)
 	{
 		*pt++=*pt2++;
 	}
-	Savetoeeprom();//保存校准值
+	SaveCal();//保存校准值
 }
 //
 // vu16 Voltage;//电压
@@ -239,7 +239,7 @@ void Check_Calibrate_Limit(void)
 	u8 j;
 	vu16 *pt;
 
-	pt=(vu16 *)&U9001_Save_sys.U9001_Calibrate;
+	pt=(vu16 *)&U9001_Calibrate;
 	j=sizeof(CalibrateLimit)/4;
 	for(i=0;i<j;i++)//共j项
 	{
@@ -477,8 +477,9 @@ uint32_t Get_SorftTime(uint8_t id)
 {
     return SoftTimer[id];
 }
-U9001_save_Typedef U9001_save;
+//U9001_save_Typedef U9001_Save_sys.U9001_save;
 U9001_Save_sysTypedef U9001_Save_sys;
+U9001_Calibrate_TypeDef U9001_Calibrate;
 //==========================================================
 //END
 //==========================================================

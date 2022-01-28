@@ -22,65 +22,69 @@ Dialog DLL:      TARMP1.DLL V1.26.0.0
  
 <h2>Project:</h2>
 F:\JK9310\Project\project.uvprojx
-Project File Date:  12/23/2021
+Project File Date:  01/25/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'E:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Open1788'
 compiling use_disp.c...
-..\User\UseDisp\use_disp.c(1858): warning:  #167-D: argument of type "const u8 *" is incompatible with parameter of type "const char *restrict"
-          strcat(DispBuf,Test_IRUINT[test_value.uint]);
-..\User\UseDisp\use_disp.c(2176): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
-                  strcat(DispBuf,Disp_Unit[Disp_Value.uint]);
-..\User\UseDisp\use_disp.c(2364): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+..\User\UseDisp\use_disp.c(1903): warning:  #167-D: argument of type "const u8 *" is incompatible with parameter of type "const char *restrict"
+                                strcat(DispBuf,Test_IRUINT[test_value.uint]);
+..\User\UseDisp\use_disp.c(1919): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
+                        strcat(DispBuf,Disp_Unit[test_value.uint]);
+..\User\UseDisp\use_disp.c(2254): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
+                  strcat(DispBuf,Disp_Unit[1]);
+..\User\UseDisp\use_disp.c(2455): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
         WriteString_16(LIST1+DATA_SPACE1+8, FIRSTLINE+SPACE1*2, DispBuf,  0);
-..\User\UseDisp\use_disp.c(2383): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+..\User\UseDisp\use_disp.c(2474): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
         WriteString_16(LIST1+DATA_SPACE1+8, FIRSTLINE+SPACE1*3, DispBuf,  0);
-..\User\UseDisp\use_disp.c(2419): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+..\User\UseDisp\use_disp.c(2510): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
         WriteString_16(LIST2+DATA_SPACE1+10+8, FIRSTLINE+SPACE1*2, DispBuf,  0);
-..\User\UseDisp\use_disp.c(2436): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+..\User\UseDisp\use_disp.c(2527): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
         WriteString_16(LIST2+DATA_SPACE1+8, FIRSTLINE+SPACE1*3, DispBuf,  0);
-..\User\UseDisp\use_disp.c(2724): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
-                  strcat(DispBuf,Disp_Unit[Disp_Value.uint]);
-..\User\UseDisp\use_disp.c(2446): warning:  #177-D: variable "num"  was declared but never referenced
-      u8 num=(MAX_SETP[U9001_save.U9001_Setup[U9001_save.current_step].parameter]+1)/2;
-..\User\UseDisp\use_disp.c(2747): warning:  #177-D: variable "Black_Select"  was declared but never referenced
+..\User\UseDisp\use_disp.c(2821): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
+                  strcat(DispBuf,Disp_Unit[1]);
+..\User\UseDisp\use_disp.c(2537): warning:  #177-D: variable "num"  was declared but never referenced
+      u8 num=(MAX_SETP[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter]+1)/2;
+..\User\UseDisp\use_disp.c(2857): warning:  #177-D: variable "Black_Select"  was declared but never referenced
         vu32 Black_Select;
-..\User\UseDisp\use_disp.c(2831): warning:  #177-D: variable "i"  was declared but never referenced
+..\User\UseDisp\use_disp.c(2945): warning:  #177-D: variable "i"  was declared but never referenced
         vu32 i;
-..\User\UseDisp\use_disp.c(2863): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+..\User\UseDisp\use_disp.c(2977): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
         WriteString_16(LIST1+160+160, FIRSTLINE+SPACE1*(list+1), DispBuf,  1);
-..\User\UseDisp\use_disp.c(2887): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+..\User\UseDisp\use_disp.c(3001): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
           WriteString_16(LIST1+160, FIRSTLINE+SPACE1*(i+2), DispBuf,  1);
-..\User\UseDisp\use_disp.c(3750): warning:  #167-D: argument of type "const u8 *" is incompatible with parameter of type "const char *"
-              GUI_DispStringAt(Test_IRUINT[test_value.uint],DISP_V_XPOS+50+5*25,DISP_V_YPOS+50);
-..\User\UseDisp\use_disp.c(3772): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *"
-              GUI_DispStringAt(Disp_Unit[test_value.uint],DISP_V_XPOS+50+6*25,DISP_V_YPOS+50);
-..\User\UseDisp\use_disp.c(3957): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+..\User\UseDisp\use_disp.c(3899): warning:  #167-D: argument of type "const u8 *" is incompatible with parameter of type "const char *"
+                                         GUI_DispStringAt(Test_IRUINT[test_value.uint],DISP_V_XPOS+50+6*25,DISP_V_YPOS+50);
+..\User\UseDisp\use_disp.c(3934): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *"
+              GUI_DispStringAt(Disp_Unit[1],DISP_V_XPOS+50+6*25,DISP_V_YPOS+50);
+..\User\UseDisp\use_disp.c(4119): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
                 WriteString_12(LIST2+140, 58+i*15, DispBuf,  1);//?????????????€?  ??????????????€????????????
-..\User\UseDisp\use_disp.c(4200): warning:  #177-D: variable "j"  was declared but never referenced
+..\User\UseDisp\use_disp.c(4398): warning:  #111-D: statement is unreachable
+                  break;
+..\User\UseDisp\use_disp.c(4434): warning:  #177-D: variable "j"  was declared but never referenced
         vu16 j,i;
-..\User\UseDisp\use_disp.c(4200): warning:  #177-D: variable "i"  was declared but never referenced
+..\User\UseDisp\use_disp.c(4434): warning:  #177-D: variable "i"  was declared but never referenced
         vu16 j,i;
-..\User\UseDisp\use_disp.c(4201): warning:  #177-D: variable "pt"  was declared but never referenced
+..\User\UseDisp\use_disp.c(4435): warning:  #177-D: variable "pt"  was declared but never referenced
         vu8 *pt;
-..\User\UseDisp\use_disp.c(4202): warning:  #177-D: variable "ppt"  was declared but never referenced
+..\User\UseDisp\use_disp.c(4436): warning:  #177-D: variable "ppt"  was declared but never referenced
       uint16_t *ppt;
-..\User\UseDisp\use_disp.c(4442): warning:  #550-D: variable "addr"  was set but never used
+..\User\UseDisp\use_disp.c(4676): warning:  #550-D: variable "addr"  was set but never used
         LcdAddr_TypeDef addr;//???????????€??????
-..\User\UseDisp\use_disp.c(5083): warning:  #69-D: integer conversion resulted in truncation
+..\User\UseDisp\use_disp.c(5317): warning:  #69-D: integer conversion resulted in truncation
         lcd_Clear(LCD_COLOR_TEST_BACK);
-..\User\UseDisp\use_disp.c(5777): warning:  #111-D: statement is unreachable
+..\User\UseDisp\use_disp.c(6033): warning:  #111-D: statement is unreachable
                         break;
-..\User\UseDisp\use_disp.c(5600): warning:  #550-D: variable "set_arc"  was set but never used
+..\User\UseDisp\use_disp.c(5834): warning:  #550-D: variable "set_arc"  was set but never used
         vu8 set_arc;//?????????????????????
-..\User\UseDisp\use_disp.c(5930): warning:  #177-D: variable "keynum"  was declared but never referenced
+..\User\UseDisp\use_disp.c(6204): warning:  #177-D: variable "keynum"  was declared but never referenced
         vu32 keynum=0;
-..\User\UseDisp\use_disp.c: 24 warnings, 0 errors
+..\User\UseDisp\use_disp.c: 26 warnings, 0 errors
 linking...
-Program Size: Code=148628 RO-data=125592 RW-data=784 ZI-data=8768  
+Program Size: Code=154388 RO-data=122928 RW-data=804 ZI-data=8796  
 FromELF: creating hex file...
-".\Output\project.axf" - 0 Error(s), 24 Warning(s).
+".\Output\project.axf" - 0 Error(s), 26 Warning(s).
 
 <h2>Software Packages used:</h2>
 

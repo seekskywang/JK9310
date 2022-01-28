@@ -733,23 +733,23 @@ void CalTest_Process(void)
 	if(set_item==ACW_SETUP)
 	{
 		i=3;//ACW的校准项数
-		pt=(u8*)(&U9001_Save_sys.U9001_Calibrate.AcwVol);//校准值首地址
+		pt=(u8*)(&U9001_Calibrate.AcwVol);//校准值首地址
         
 	}
 	else if(set_item==DCW_SETUP)
 	{
 		i=3;//DCW
-		pt=(u8*)(&U9001_Save_sys.U9001_Calibrate.DcwVol);//校准值首地址
+		pt=(u8*)(&U9001_Calibrate.DcwVol);//校准值首地址
 	}
 	else if(set_item==IR_SETUP)
 	{
 		i=6;//IR
-		pt=(u8*)(&U9001_Save_sys.U9001_Calibrate.IrVol);//校准值首地址
+		pt=(u8*)(&U9001_Calibrate.IrVol);//校准值首地址
 	}
 	else
 	{
 		i=2;//GND
-		pt=(u8*)(&U9001_Save_sys.U9001_Calibrate.GndVol);//校准值首地址
+		pt=(u8*)(&U9001_Calibrate.GndVol);//校准值首地址
 	}
 	pt2=(u8*)(&Cal);//更新通用校准值
 	key=i*sizeof(Cal_TypeDef);
@@ -1206,17 +1206,17 @@ void CalTest_Process(void)
 				if(set_item==ACW_SETUP)
 				{
 					i=3;//ACW的校准项数
-					pt=(u8*)(&U9001_Save_sys.U9001_Calibrate.AcwVol);//校准值首地址
+					pt=(u8*)(&U9001_Calibrate.AcwVol);//校准值首地址
 				}
 				else if(set_item==DCW_SETUP)
 				{
 					i=3;//DCW
-					pt=(u8*)(&U9001_Save_sys.U9001_Calibrate.DcwVol);//校准值首地址
+					pt=(u8*)(&U9001_Calibrate.DcwVol);//校准值首地址
 				}
 				else if(set_item==IR_SETUP)
 				{
 					i=6;//IR
-					pt=(u8*)(&U9001_Save_sys.U9001_Calibrate.IrVol);//校准值首地址
+					pt=(u8*)(&U9001_Calibrate.IrVol);//校准值首地址
 				}
 				else
 				{
@@ -1230,7 +1230,7 @@ void CalTest_Process(void)
 					*pt++=*pt2++;
 				}
 				//校验和保存校准数据
-				Savetoeeprom();//保存校准值
+				SaveCal();//保存校准值
 				return;
 				break;
                 

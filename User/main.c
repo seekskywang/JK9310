@@ -76,7 +76,7 @@ extern Coordinate  display ;
 int main(void)
 {
 
-	uint32_t cclk = CLKPWR_GetCLK(CLKPWR_CLKTYPE_CPU);
+		uint32_t cclk = CLKPWR_GetCLK(CLKPWR_CLKTYPE_CPU);
 	softswitch=0;
 	SysTick_Config(cclk/100000 - 1); 
 	EEPROM_Init();
@@ -227,8 +227,8 @@ void  GPIO_IRQHandler(void)
       }
       
       
-      GPIO_ClearInt(0, 1<<7);
-       if(GPIO_GetIntStatus(0, 7, 1))//GFIÖÐ¶Ï
+//      GPIO_ClearInt(0, 1<<7);
+       if(GPIO_GetIntStatus(0, 7, 0))//GFIÖÐ¶Ï
       {
 
         
@@ -239,7 +239,7 @@ void  GPIO_IRQHandler(void)
 //        Sing_out_C(0);
 //        Short_out(0);
 //        FRB_out(0);
-//      Save_TestValue[U9001_save.current_step-1].text_flag=GetSystemMessage();
+//      Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_flag=GetSystemMessage();
 //      SetSystemStatus(SYS_STATUS_TEST_PAUSE);
 }
 

@@ -135,6 +135,8 @@ void Disp_Test_Unit_mA(uint32_t x,uint32_t y);
 void Send_UartClear(void);//清零命令
 void Savetoeeprom(void);
 void ReadSavedata(void);
+void SaveCal(void);
+void ReadCal(void);
 void Disp_G_B(void);
 void SetData_High_Low_Comp(void);
 void SetDate_Comp(void);
@@ -184,6 +186,7 @@ void dispSYSSetButtonvalue(u8 list);
 UnitNum_typedef IntToStr(u32 value);
 UnitNum_typedef IntToStr_mA(u32 value);
 UnitNum_typedef FToStr(u32 value);
+UnitNum_typedef IntToStr_nF(u32 value);
 void Disp_SetupConfig_Button(u8 list);
 void DispSetup_ConfigButtonvalue(u8 list);
 //u16 Read_Ad(u16 channel);
@@ -191,7 +194,7 @@ vu8 Range_Changecomp(void);
 void ACW_Select(void);
 void Short_out(u8 date);
 void ARC_out(u8 start);
-extern const u8 MAX_SETP[4];
+extern const u8 MAX_SETP[5];
 void Test_Init(void);
 void Get_Result(void);
 void ACW_Select(void);//交流选择

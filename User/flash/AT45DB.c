@@ -456,7 +456,7 @@ void Save_fileDate(u8 Group)
 //    AT45DBXX_Read_ID(temp);
 //for(i=0;i<0xffffff;i++)	
     ;
-    SPI_FLASH_BufferWrite((u8*)&U9001_save, addr, sizeof(U9001_save));
+    SPI_FLASH_BufferWrite((u8*)&U9001_Save_sys, addr, sizeof(U9001_Save_sys));
 //    SPI_FLASH_BufferWrite(Tx_Buffer, addr, sizeof(Tx_Buffer));
 ////    SPI_FLASH_PageWrite(Tx_Buffer, addr, sizeof(Tx_Buffer));
 ////    SPI_FLASH_BufferRead(Rx_Buffer, addr, sizeof(Rx_Buffer));
@@ -468,5 +468,5 @@ void Read_FileDate(u8 Group)
 {
     u32 addr;
     addr=4096*Group;
-    SPI_FLASH_BufferRead((u8*)&U9001_save, addr, sizeof(U9001_save));
+    SPI_FLASH_BufferRead((u8*)&U9001_Save_sys, addr, sizeof(U9001_Save_sys));
 }
