@@ -27,71 +27,6 @@ Project File Date:  01/25/2022
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'E:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Open1788'
-compiling EX_SDRAM.c...
-compiling main.c...
-..\User\Key/key.h(13): warning:  #47-D: incompatible redefinition of macro "TICKS_PER_SEC"  (declared at line 92 of "..\Libraries\Drivers\include\debug_frmwrk.h")
-  #define TICKS_PER_SEC 100     //????????????????????100x10mS(T0)=1S
-..\User\Test\Debug.h(28): warning:  #1-D: last line of file ends without a newline
-  //==========================================================
-..\User\main.c(211): warning:  #177-D: variable "i"  was declared but never referenced
-      static uint16_t i=0;
-..\User\main.c: 3 warnings, 0 errors
-compiling lpc177x_8x_lcd.c...
-compiling logo.c...
-compiling use_disp.c...
-..\User\UseDisp\use_disp.c(1903): warning:  #167-D: argument of type "const u8 *" is incompatible with parameter of type "const char *restrict"
-                                strcat(DispBuf,Test_IRUINT[test_value.uint]);
-..\User\UseDisp\use_disp.c(1919): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
-                        strcat(DispBuf,Disp_Unit[test_value.uint]);
-..\User\UseDisp\use_disp.c(2254): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
-                  strcat(DispBuf,Disp_Unit[1]);
-..\User\UseDisp\use_disp.c(2455): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
-        WriteString_16(LIST1+DATA_SPACE1+8, FIRSTLINE+SPACE1*2, DispBuf,  0);
-..\User\UseDisp\use_disp.c(2474): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
-        WriteString_16(LIST1+DATA_SPACE1+8, FIRSTLINE+SPACE1*3, DispBuf,  0);
-..\User\UseDisp\use_disp.c(2510): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
-        WriteString_16(LIST2+DATA_SPACE1+10+8, FIRSTLINE+SPACE1*2, DispBuf,  0);
-..\User\UseDisp\use_disp.c(2527): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
-        WriteString_16(LIST2+DATA_SPACE1+8, FIRSTLINE+SPACE1*3, DispBuf,  0);
-..\User\UseDisp\use_disp.c(2821): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
-                  strcat(DispBuf,Disp_Unit[1]);
-..\User\UseDisp\use_disp.c(2537): warning:  #177-D: variable "num"  was declared but never referenced
-      u8 num=(MAX_SETP[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter]+1)/2;
-..\User\UseDisp\use_disp.c(2857): warning:  #177-D: variable "Black_Select"  was declared but never referenced
-        vu32 Black_Select;
-..\User\UseDisp\use_disp.c(2945): warning:  #177-D: variable "i"  was declared but never referenced
-        vu32 i;
-..\User\UseDisp\use_disp.c(2977): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
-        WriteString_16(LIST1+160+160, FIRSTLINE+SPACE1*(list+1), DispBuf,  1);
-..\User\UseDisp\use_disp.c(3001): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
-          WriteString_16(LIST1+160, FIRSTLINE+SPACE1*(i+2), DispBuf,  1);
-..\User\UseDisp\use_disp.c(3899): warning:  #167-D: argument of type "const u8 *" is incompatible with parameter of type "const char *"
-                                         GUI_DispStringAt(Test_IRUINT[test_value.uint],DISP_V_XPOS+50+6*25,DISP_V_YPOS+50);
-..\User\UseDisp\use_disp.c(3934): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *"
-              GUI_DispStringAt(Disp_Unit[1],DISP_V_XPOS+50+6*25,DISP_V_YPOS+50);
-..\User\UseDisp\use_disp.c(4119): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
-                WriteString_12(LIST2+140, 58+i*15, DispBuf,  1);//?????????????€?  ??????????????€????????????
-..\User\UseDisp\use_disp.c(4398): warning:  #111-D: statement is unreachable
-                  break;
-..\User\UseDisp\use_disp.c(4434): warning:  #177-D: variable "j"  was declared but never referenced
-        vu16 j,i;
-..\User\UseDisp\use_disp.c(4434): warning:  #177-D: variable "i"  was declared but never referenced
-        vu16 j,i;
-..\User\UseDisp\use_disp.c(4435): warning:  #177-D: variable "pt"  was declared but never referenced
-        vu8 *pt;
-..\User\UseDisp\use_disp.c(4436): warning:  #177-D: variable "ppt"  was declared but never referenced
-      uint16_t *ppt;
-..\User\UseDisp\use_disp.c(4676): warning:  #550-D: variable "addr"  was set but never used
-        LcdAddr_TypeDef addr;//???????????€??????
-..\User\UseDisp\use_disp.c(5317): warning:  #69-D: integer conversion resulted in truncation
-        lcd_Clear(LCD_COLOR_TEST_BACK);
-..\User\UseDisp\use_disp.c(6033): warning:  #111-D: statement is unreachable
-                        break;
-..\User\UseDisp\use_disp.c(5834): warning:  #550-D: variable "set_arc"  was set but never used
-        vu8 set_arc;//?????????????????????
-..\User\UseDisp\use_disp.c(6204): warning:  #177-D: variable "keynum"  was declared but never referenced
-        vu32 keynum=0;
-..\User\UseDisp\use_disp.c: 26 warnings, 0 errors
 compiling test.c...
 ..\Libraries\Drivers\include\debug_frmwrk.h(92): warning:  #47-D: incompatible redefinition of macro "TICKS_PER_SEC"  (declared at line 13 of "..\User\key/key.h")
   #define TICKS_PER_SEC 1000    //????????????????????100x10mS(T0)=1S
@@ -115,77 +50,29 @@ compiling test.c...
         u8 list=1;//????????0  ??????1??
 ..\User\Test\test.c(1577): warning:  #177-D: variable "select_num"  was declared but never referenced
       u8 select_num=0;
-..\User\Test\test.c(2668): warning:  #177-D: variable "select_num"  was declared but never referenced
+..\User\Test\test.c(2836): warning:  #177-D: variable "select_num"  was declared but never referenced
       u8 select_num=0;
-..\User\Test\test.c(3302): warning:  #177-D: variable "list"  was declared but never referenced
+..\User\Test\test.c(3470): warning:  #177-D: variable "list"  was declared but never referenced
         u8 list=0;//??
-..\User\Test\test.c(3304): warning:  #177-D: variable "item"  was declared but never referenced
+..\User\Test\test.c(3472): warning:  #177-D: variable "item"  was declared but never referenced
       u8 item=0;
-..\User\Test\test.c(4967): warning:  #188-D: enumerated type mixed with another type
+..\User\Test\test.c(5135): warning:  #188-D: enumerated type mixed with another type
         f_disp=FALSE;//????????
-..\User\Test\test.c(4960): warning:  #177-D: variable "i"  was declared but never referenced
+..\User\Test\test.c(5128): warning:  #177-D: variable "i"  was declared but never referenced
         u8 i;
-..\User\Test\test.c(4961): warning:  #177-D: variable "key"  was declared but never referenced
+..\User\Test\test.c(5129): warning:  #177-D: variable "key"  was declared but never referenced
         u8 key;
-..\User\Test\test.c(4963): warning:  #177-D: variable "item"  was declared but never referenced
+..\User\Test\test.c(5131): warning:  #177-D: variable "item"  was declared but never referenced
         u8 item;
-..\User\Test\test.c(4964): warning:  #550-D: variable "time"  was set but never used
+..\User\Test\test.c(5132): warning:  #550-D: variable "time"  was set but never used
         u16 time;//????????????
-..\User\Test\test.c(4965): warning:  #550-D: variable "f_disp"  was set but never used
+..\User\Test\test.c(5133): warning:  #550-D: variable "f_disp"  was set but never used
         Bool f_disp;//????????
 ..\User\Test\test.c: 20 warnings, 0 errors
-compiling Debug.c...
-..\Libraries\Drivers\include\debug_frmwrk.h(92): warning:  #47-D: incompatible redefinition of macro "TICKS_PER_SEC"  (declared at line 13 of "..\User\key/key.h")
-  #define TICKS_PER_SEC 1000    //????????????????????100x10mS(T0)=1S
-..\User\Test\Debug.h(28): warning:  #1-D: last line of file ends without a newline
-  //==========================================================
-..\User\Test\Debug.c(71): warning:  #177-D: variable "key"  was declared but never referenced
-        u8 key;
-..\User\Test\Debug.c(202): warning:  #111-D: statement is unreachable
-                                break;
-..\User\Test\Debug.c(212): warning:  #111-D: statement is unreachable
-                                break;
-..\User\Test\Debug.c(167): warning:  #177-D: variable "key"  was declared but never referenced
-        u8 key;
-..\User\Test\Debug.c(306): warning:  #111-D: statement is unreachable
-                      break;
-..\User\Test\Debug.c(260): warning:  #177-D: variable "key"  was declared but never referenced
-        u8 key;
-..\User\Test\Debug.c(417): warning:  #111-D: statement is unreachable
-                      break;
-..\User\Test\Debug.c(365): warning:  #177-D: variable "key"  was declared but never referenced
-        u8 key;
-..\User\Test\Debug.c(535): warning:  #111-D: statement is unreachable
-                      break;
-..\User\Test\Debug.c(482): warning:  #177-D: variable "key"  was declared but never referenced
-        u8 key;
-..\User\Test\Debug.c(842): warning:  #111-D: statement is unreachable
-                        break;
-..\User\Test\Debug.c(1235): warning:  #111-D: statement is unreachable
-                                break;
-..\User\Test\Debug.c(698): warning:  #550-D: variable "dat"  was set but never used
-        vu16 dat;
-..\User\Test\Debug.c(699): warning:  #177-D: variable "temp"  was declared but never referenced
-        vu32 temp;
-..\User\Test\Debug.c(704): warning:  #177-D: variable "f_upper"  was declared but never referenced
-        bool f_upper=FALSE;//??????????????????
-..\User\Test\Debug.c(705): warning:  #177-D: variable "f_below"  was declared but never referenced
-        bool f_below=FALSE;//??????????????????
-..\User\Test\Debug.c(706): warning:  #177-D: variable "f_switch"  was declared but never referenced
-        bool f_switch=FALSE;//??????????????????
-..\User\Test\Debug.c(712): warning:  #550-D: variable "ad_high"  was set but never used
-        vu16 ad_high;//AD?€???????
-..\User\Test\Debug.c(713): warning:  #550-D: variable "ad_low"  was set but never used
-        vu16 ad_low;//AD?€???????
-..\User\Test\Debug.c(714): warning:  #550-D: variable "TestTime"  was set but never used
-      u16 TestTime;
-..\User\Test\Debug.c: 22 warnings, 0 errors
-compiling GUIConf.c...
-compiling LCDConf.c...
 linking...
-Program Size: Code=154440 RO-data=122924 RW-data=804 ZI-data=8796  
+Program Size: Code=156320 RO-data=122924 RW-data=804 ZI-data=8796  
 FromELF: creating hex file...
-".\Output\project.axf" - 0 Error(s), 71 Warning(s).
+".\Output\project.axf" - 0 Error(s), 20 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -208,7 +95,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.4.0
-Build Time Elapsed:  00:00:06
+Build Time Elapsed:  00:00:10
 </pre>
 </body>
 </html>

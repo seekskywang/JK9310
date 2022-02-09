@@ -120,7 +120,6 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>猬遷极s</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -404,6 +403,11 @@
           <count>47</count>
           <WinNumber>1</WinNumber>
           <ItemText>Test_mid,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>48</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>keyvalue</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>

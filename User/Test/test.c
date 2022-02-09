@@ -1575,6 +1575,7 @@ void Setup_Process(void)
     u8 Disp_buff[8];
     u8 input_flag=0;
     u8 select_num=0;
+	u16 presscount=0;//长按计数
     float setvalue;
 //	vu8 key;
 	DISP_FLAG=TRUE;
@@ -1727,6 +1728,7 @@ void Setup_Process(void)
                         DISP_FLAG=TRUE;
                         break;
                     case Key_F1:
+						presscount=0;
                         switch(item)//第几项
                         {
                             case 0:
@@ -1864,7 +1866,171 @@ void Setup_Process(void)
                             
                         }
                         break;
+					case L_Key_F1:
+						presscount++;
+                        switch(item)//第几项
+                        {
+                            case 0:
+                                
+                                
+                                break;
+                            case 1:
+                                if(U9001_Save_sys.U9001_save.all_step<10)
+                                {
+                                    U9001_Save_sys.U9001_save.all_step++;
+                                    U9001_Save_sys.U9001_save.current_step++;
+                                    disp_all=1;
+                                    SetDate_Comp();
+                                }
+                                break;
+                            case 2:
+                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter=0;
+								U9001_Save_sys.U9001_save.clearvalue[U9001_Save_sys.U9001_save.current_step-1]=0;
+                                SetDate_Comp();
+                                disp_all=1;
+                                break;
+                            case 3:
+                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
+                                {
+                                    
+									if(presscount>28)//步进计数器
+									{
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=30;
+									}
+									else if(presscount>19)//步进计数器
+									{
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=20;
+									}
+									else if(presscount>10)//步进计数器
+									{
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=10;
+									}
+//                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=10;
+                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>=100)
+                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=100;
+                                }
+                                else
+                                {
+									if(presscount>28)//步进计数器
+									{
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out+=300;
+									}
+									else if(presscount>19)//步进计数器
+									{
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out+=200;
+									}
+									else if(presscount>10)//步进计数器
+									{
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out+=100;
+									}
+//                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out+=100;
+                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out>Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
+                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out=Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+                                }
+                                break;
+                            case 4:
+                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+								{
+									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 10000)
+									{
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
+									}else{
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=1000;
+									}
+								}else if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP){
+									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last=0;
+								}else if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==PA_SETUP){
+									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=0;
+								}
+								else{
+                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
+								}
+								SetDate_Comp();
+//                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
+//                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+                                break;
+                            case 5:
+                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
+                                {
+                                    
+                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
+                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>=500)
+                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=500;
+                                }
+                                else{
+									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time+=10;
+									SetDate_Comp();
+								}
+								
+    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num>High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num=High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+                                break;
+                            case 6:
+								if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+								{
+									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower < 10000)
+									{
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=100;
+									}else{
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=1000;
+									}
+									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>
+									   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper)
+									{
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper
+									   =U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower;
+									}
+								}else{
+									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=100;
+									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>
+									   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper)
+									{
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper;
+									}
+								}
+								SetDate_Comp();
+                                break;
+                            case 7:
+                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time+=10;
+								SetDate_Comp();
+                                break;
+                            case 8: 
+                                 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR)
+                                {
+                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc<MAX_R_RANGE)
+                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc++;
+                                }
+                                else
+                                 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc++;
+								SetDate_Comp();
+                                break;
+                            case 9:
+                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time+=10;
+								SetDate_Comp();
+                                break;
+                            case 10:
+                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==DC)
+                                {
+                                   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last+=10; 
+                                }else
+                                {
+                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=0;
+                                }
+								SetDate_Comp();
+                                break;
+                            case 11:
+                                
+                                   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check+=10;
+									SetDate_Comp();
+                                break;
+                            default:
+                                break;
+                            
+                        }
+                        break;
                     case Key_F2:
+						presscount=0;
                         switch(item)//第几项
                         {
                             case 0:
@@ -2028,6 +2194,7 @@ void Setup_Process(void)
                         }
                         break;
                     case Key_F3:
+						presscount=0;
                         switch(item)//第几项
                         {
                             case 0:
@@ -2172,6 +2339,7 @@ void Setup_Process(void)
                         }
                         break;
                     case Key_F4:
+						presscount=0;
                         switch(item)//第几项
                         {
                             case 0:

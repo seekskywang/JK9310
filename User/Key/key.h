@@ -59,6 +59,10 @@ extern Key_TypeDef Keyboard;//¼üÂë½á¹¹Ìå
 #define		Key_SAVE	(0x13)
 #define		Key_FILE	(0x22)
 
+#define 	L_Key_F1  	(LONG_PRESS | Key_F1)
+#define		L_Key_F2  	(LONG_PRESS | Key_F2)
+#define 	L_Key_F3  	(LONG_PRESS | Key_F3)
+#define 	L_Key_F4  	(LONG_PRESS | Key_F4)
 
 #define		Key_ADJ0	(0X0F)
 #define		Key_BIAS	(23)
