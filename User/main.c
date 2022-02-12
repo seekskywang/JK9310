@@ -76,10 +76,14 @@ extern Coordinate  display ;
 int main(void)
 {
 
+//	Delay(200);
 		uint32_t cclk = CLKPWR_GetCLK(CLKPWR_CLKTYPE_CPU);
 	softswitch=0;
+	NVIC_EnableIRQ(MCI_IRQn);
+	__enable_irq();
 	SysTick_Config(cclk/100000 - 1); 
 	EEPROM_Init();
+	
 //	HW_keyInt();
 //	pwm_intt(306);//120 500k
 	SetSystemStatus(SYS_STATUS_POWER);//开机上电状态

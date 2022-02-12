@@ -22,57 +22,24 @@ Dialog DLL:      TARMP1.DLL V1.26.0.0
  
 <h2>Project:</h2>
 F:\JK9310\Project\project.uvprojx
-Project File Date:  01/25/2022
+Project File Date:  02/11/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'E:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Open1788'
-compiling test.c...
-..\Libraries\Drivers\include\debug_frmwrk.h(92): warning:  #47-D: incompatible redefinition of macro "TICKS_PER_SEC"  (declared at line 13 of "..\User\key/key.h")
-  #define TICKS_PER_SEC 1000    //????????????????????100x10mS(T0)=1S
-..\User\Test\test.c(199): warning:  #177-D: variable "temp"  was declared but never referenced
-        u8 temp[4];
-..\User\Test\test.c(200): warning:  #177-D: variable "FlashID"  was declared but never referenced
-                u32 FlashID;
-..\User\Test\test.c(733): warning:  #177-D: variable "key"  was declared but never referenced
-        vu8 key;
-..\User\Test\test.c(828): warning:  #550-D: variable "Range_IR"  was set but never used
-      u8 Range_IR=0;
-..\User\Test\test.c(836): warning:  #550-D: variable "temp"  was set but never used
-        vu32 temp;
-..\User\Test\test.c(837): warning:  #177-D: variable "value"  was declared but never referenced
-      float value;
-..\User\Test\test.c(838): warning:  #177-D: variable "F_x"  was declared but never referenced
-      float F_x;
-..\User\Test\test.c(1568): warning:  #177-D: variable "pt"  was declared but never referenced
-      vu16 *pt;
-..\User\Test\test.c(1569): warning:  #550-D: variable "list"  was set but never used
-        u8 list=1;//????????0  ??????1??
-..\User\Test\test.c(1577): warning:  #177-D: variable "select_num"  was declared but never referenced
-      u8 select_num=0;
-..\User\Test\test.c(2836): warning:  #177-D: variable "select_num"  was declared but never referenced
-      u8 select_num=0;
-..\User\Test\test.c(3470): warning:  #177-D: variable "list"  was declared but never referenced
-        u8 list=0;//??
-..\User\Test\test.c(3472): warning:  #177-D: variable "item"  was declared but never referenced
-      u8 item=0;
-..\User\Test\test.c(5135): warning:  #188-D: enumerated type mixed with another type
-        f_disp=FALSE;//????????
-..\User\Test\test.c(5128): warning:  #177-D: variable "i"  was declared but never referenced
-        u8 i;
-..\User\Test\test.c(5129): warning:  #177-D: variable "key"  was declared but never referenced
-        u8 key;
-..\User\Test\test.c(5131): warning:  #177-D: variable "item"  was declared but never referenced
-        u8 item;
-..\User\Test\test.c(5132): warning:  #550-D: variable "time"  was set but never used
-        u16 time;//????????????
-..\User\Test\test.c(5133): warning:  #550-D: variable "f_disp"  was set but never used
-        Bool f_disp;//????????
-..\User\Test\test.c: 20 warnings, 0 errors
+compiling main.c...
+..\User\Key/key.h(13): warning:  #47-D: incompatible redefinition of macro "TICKS_PER_SEC"  (declared at line 92 of "..\Libraries\Drivers\include\debug_frmwrk.h")
+  #define TICKS_PER_SEC 100     //????????????????????100x10mS(T0)=1S
+..\User\Test\Debug.h(28): warning:  #1-D: last line of file ends without a newline
+  //==========================================================
+..\User\main.c(215): warning:  #177-D: variable "i"  was declared but never referenced
+      static uint16_t i=0;
+..\User\main.c: 3 warnings, 0 errors
 linking...
-Program Size: Code=156320 RO-data=122924 RW-data=804 ZI-data=8796  
+Program Size: Code=156340 RO-data=122928 RW-data=804 ZI-data=8796  
 FromELF: creating hex file...
-".\Output\project.axf" - 0 Error(s), 20 Warning(s).
+After Build - User command #1: E:\Keil_v5\ARM\ARMCC\bin\fromelf.exe --bin  -o ..\update\update.bin Output\project.axf
+".\Output\project.axf" - 0 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -95,7 +62,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.4.0
-Build Time Elapsed:  00:00:10
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>
