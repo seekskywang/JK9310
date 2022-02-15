@@ -525,13 +525,14 @@ void Idem_Process(void)
 //		if(key!=KEY_NONE)
 		{	
 			DISP_FLAG=TRUE;
-			Key_Beep();
+			
 			switch(keyvalue)
 			{
                 case Key_LOCK:
 //                   SetSystemStatus(SYS_STATUS_USERDEBUG);
                     break;
                 case Key_SAVE://保存
+					Key_Beep();
                     if(save_flag)
                     {
                         save_flag=0;
@@ -552,10 +553,12 @@ void Idem_Process(void)
                    
 				break;
 				case Key_RIGHT:
+					Key_Beep();
                     DISP_FLAG=TRUE;
                     
 				break;
 				case Key_LEFT:
+					Key_Beep();
                      DISP_FLAG=TRUE;
                    
 				break;
@@ -566,6 +569,7 @@ void Idem_Process(void)
 
 				break;
 				case Key_PAGE://翻页
+					Key_Beep();
                     SetSystemStatus(SYS_STATUS_SETUPTEST);
 				break;
 				case Key_STOP:
@@ -596,13 +600,16 @@ void Idem_Process(void)
 //					SetSystemStatus(SYS_STATUS_FILE);
 					break;
 				case Key_SETUP://
+					Key_Beep();
 					SetSystemStatus(SYS_STATUS_SETUPTEST);
 					break;
                 case Key_F1://
+					Key_Beep();
                     DISP_FLAG=TRUE;
 					U9001_Save_sys.U9001_save.disp=0;
 					break;
                 case Key_F2://
+					Key_Beep();
                     DISP_FLAG=TRUE;
 					U9001_Save_sys.U9001_save.disp=1;
 					break;
@@ -746,23 +753,23 @@ void Finsh_Process(void)
 //	else if(res == FR_EXIST)
     FRB_out(0);//反馈点接零
 //	Disp_Usbflag(usb_oenflag);
-	if(Tft_5520.Sys_Set.U_Switch)
-	{
-		res = f_open( &fsrc , "0:/ZC/ZC5520.xls" ,  FA_WRITE|FA_OPEN_ALWAYS);
-		if(res == FR_OK)
-		{
-			f_lseek (&fsrc,fsrc.fsize);
-			res = f_write(&fsrc, U_Storebuff, strlen(U_Storebuff)+1, &br);  
-			//UserBuffer
-			f_close(&fsrc);
-			usb_oenflag=1;
-		}
-		else
-			usb_oenflag=2;
-	
-	}
-	else
-		usb_oenflag=0;
+//	if(Tft_5520.Sys_Set.U_Switch)
+//	{
+//		res = f_open( &fsrc , "0:/ZC/ZC5520.xls" ,  FA_WRITE|FA_OPEN_ALWAYS);
+//		if(res == FR_OK)
+//		{
+//			f_lseek (&fsrc,fsrc.fsize);
+//			res = f_write(&fsrc, U_Storebuff, strlen(U_Storebuff)+1, &br);  
+//			//UserBuffer
+//			f_close(&fsrc);
+//			usb_oenflag=1;
+//		}
+//		else
+//			usb_oenflag=2;
+//	
+//	}
+//	else
+//		usb_oenflag=0;
 //	else
 //		f_close(&fsrc);
 	
@@ -1640,7 +1647,7 @@ void Setup_Process(void)
 		{	
             DISP_FLAG=TRUE;
 			
-			Key_Beep();
+			
             if(input_flag==0)
             {
                 key_count=0;
@@ -1657,6 +1664,7 @@ void Setup_Process(void)
                     case Key_NUM8:
                     case Key_NUM9:
                     case Key_DOT:  
+						Key_Beep();
                         if((item<=2)/*||(item==8)*/)
                         {
                         }
@@ -1728,6 +1736,7 @@ void Setup_Process(void)
                         DISP_FLAG=TRUE;
                         break;
                     case Key_F1:
+						Key_Beep();
 						presscount=0;
                         switch(item)//第几项
                         {
@@ -1877,8 +1886,11 @@ void Setup_Process(void)
                             case 1:
                                 if(U9001_Save_sys.U9001_save.all_step<10)
                                 {
-                                    U9001_Save_sys.U9001_save.all_step++;
-                                    U9001_Save_sys.U9001_save.current_step++;
+									if(presscount>LKEY1)//步进计数器
+									{
+										U9001_Save_sys.U9001_save.all_step++;
+										U9001_Save_sys.U9001_save.current_step++;
+									}
                                     disp_all=1;
                                     SetDate_Comp();
                                 }
@@ -1893,16 +1905,19 @@ void Setup_Process(void)
                                 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
                                 {
                                     
-									if(presscount>28)//步进计数器
+									if(presscount>LKEY3)//步进计数器
 									{
+										Key_Beep();
 										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=30;
 									}
-									else if(presscount>19)//步进计数器
+									else if(presscount>LKEY2)//步进计数器
 									{
+										Key_Beep();
 										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=20;
 									}
-									else if(presscount>10)//步进计数器
+									else if(presscount>LKEY1)//步进计数器
 									{
+										Key_Beep();
 										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=10;
 									}
 //                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=10;
@@ -1911,16 +1926,19 @@ void Setup_Process(void)
                                 }
                                 else
                                 {
-									if(presscount>28)//步进计数器
+									if(presscount>LKEY3)//步进计数器
 									{
+										Key_Beep();
 										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out+=300;
 									}
-									else if(presscount>19)//步进计数器
+									else if(presscount>LKEY2)//步进计数器
 									{
+										Key_Beep();
 										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out+=200;
 									}
-									else if(presscount>10)//步进计数器
+									else if(presscount>LKEY1)//步进计数器
 									{
+										Key_Beep();
 										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out+=100;
 									}
 //                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out+=100;
@@ -1933,9 +1951,39 @@ void Setup_Process(void)
 								{
 									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 10000)
 									{
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
+										if(presscount>LKEY3)//步进计数器
+										{
+											Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=300;
+										}
+										else if(presscount>LKEY2)//步进计数器
+										{
+											Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=200;
+										}
+										else if(presscount>LKEY1)//步进计数器
+										{
+											Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
+										}
+//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
 									}else{
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=1000;
+										if(presscount>LKEY3)//步进计数器
+										{
+											Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=3000;
+										}
+										else if(presscount>LKEY2)//步进计数器
+										{
+											Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=2000;
+										}
+										else if(presscount>LKEY1)//步进计数器
+										{
+											Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=1000;
+										}
+//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=1000;
 									}
 								}else if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP){
 									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last=0;
@@ -1943,7 +1991,22 @@ void Setup_Process(void)
 									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=0;
 								}
 								else{
-                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
+									if(presscount>LKEY3)//步进计数器
+									{
+										Key_Beep();
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=300;
+									}
+									else if(presscount>LKEY2)//步进计数器
+									{
+										Key_Beep();
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=200;
+									}
+									else if(presscount>LKEY1)//步进计数器
+									{
+										Key_Beep();
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
+									}
+//                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
 								}
 								SetDate_Comp();
 //                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
@@ -1952,12 +2015,41 @@ void Setup_Process(void)
                             case 5:
                                 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
                                 {
-                                    
-                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
+                                    if(presscount>LKEY3)//步进计数器
+									{
+										Key_Beep();
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=300;
+									}
+									else if(presscount>LKEY2)//步进计数器
+									{
+										Key_Beep();
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=200;
+									}
+									else if(presscount>LKEY1)//步进计数器
+									{
+										Key_Beep();
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
+									}
+//                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
                                     if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>=500)
                                         U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=500;
                                 }
                                 else{
+									if(presscount>LKEY3)//步进计数器
+									{
+										Key_Beep();
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time+=30;
+									}
+									else if(presscount>LKEY2)//步进计数器
+									{
+										Key_Beep();
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time+=20;
+									}
+									else if(presscount>LKEY1)//步进计数器
+									{
+										Key_Beep();
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time+=10;
+									}
 									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time+=10;
 									SetDate_Comp();
 								}
@@ -1970,9 +2062,39 @@ void Setup_Process(void)
 								{
 									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower < 10000)
 									{
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=100;
+										if(presscount>LKEY3)//步进计数器
+										{
+											Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=300;
+										}
+										else if(presscount>LKEY2)//步进计数器
+										{
+											Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=200;
+										}
+										else if(presscount>LKEY1)//步进计数器
+										{
+											Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=100;
+										}
+//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=100;
 									}else{
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=1000;
+										if(presscount>LKEY3)//步进计数器
+										{
+											Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=3000;
+										}
+										else if(presscount>LKEY2)//步进计数器
+										{
+											Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=2000;
+										}
+										else if(presscount>LKEY1)//步进计数器
+										{
+											Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=1000;
+										}
+//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=1000;
 									}
 									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>
 									   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper)
@@ -1981,7 +2103,22 @@ void Setup_Process(void)
 									   =U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower;
 									}
 								}else{
-									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=100;
+									if(presscount>LKEY3)//步进计数器
+									{
+										Key_Beep();
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=300;
+									}
+									else if(presscount>LKEY2)//步进计数器
+									{
+										Key_Beep();
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=200;
+									}
+									else if(presscount>LKEY1)//步进计数器
+									{
+										Key_Beep();
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=100;
+									}
+//									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=100;
 									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>
 									   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper)
 									{
@@ -1992,27 +2129,59 @@ void Setup_Process(void)
 								SetDate_Comp();
                                 break;
                             case 7:
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time+=10;
+								if(presscount>LKEY3)//步进计数器
+								{
+									Key_Beep();
+									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time+=30;
+								}
+								else if(presscount>LKEY2)//步进计数器
+								{
+									Key_Beep();
+									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time+=20;
+								}
+								else if(presscount>LKEY1)//步进计数器
+								{
+									Key_Beep();
+									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time+=10;
+								}
+//                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time+=10;
 								SetDate_Comp();
                                 break;
                             case 8: 
                                  if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR)
                                 {
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc<MAX_R_RANGE)
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc++;
+									if(presscount>LKEY1)//步进计数器
+									{
+										Key_Beep();
+										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc<MAX_R_RANGE)
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc++;
+									}
                                 }
-                                else
-                                 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc++;
+                                else{
+									if(presscount>LKEY1)//步进计数器
+									{
+										Key_Beep();
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc++;
+									}
+								}
 								SetDate_Comp();
                                 break;
                             case 9:
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time+=10;
+								if(presscount>LKEY1)//步进计数器
+								{
+									Key_Beep();
+									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time+=10;
+								}
 								SetDate_Comp();
                                 break;
                             case 10:
                                 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==DC)
                                 {
-                                   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last+=10; 
+									if(presscount>LKEY1)//步进计数器
+									{
+										Key_Beep();
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last+=10; 
+									}
                                 }else
                                 {
                                     U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=0;
@@ -2020,8 +2189,11 @@ void Setup_Process(void)
 								SetDate_Comp();
                                 break;
                             case 11:
-                                
-                                   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check+=10;
+								  if(presscount>LKEY1)//步进计数器
+								  {
+									  Key_Beep();
+									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check+=10;
+								  }
 									SetDate_Comp();
                                 break;
                             default:
@@ -2030,6 +2202,7 @@ void Setup_Process(void)
                         }
                         break;
                     case Key_F2:
+						Key_Beep();
 						presscount=0;
                         switch(item)//第几项
                         {
@@ -2087,7 +2260,12 @@ void Setup_Process(void)
 								}else if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==PA_SETUP){
 									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=1;
 								}else{
-                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=1;
+									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 2000)
+									{
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=1;
+									}else{
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=10;
+									}
 								}
                                  
 								SetDate_Comp();
@@ -2145,7 +2323,12 @@ void Setup_Process(void)
 									   =U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower;
 									}
 								}else{
-									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=1;
+									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower < 2000)
+									{
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=1;
+									}else{
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=10;
+									}
 									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>
 									   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper)
 									{
@@ -2193,7 +2376,320 @@ void Setup_Process(void)
                             
                         }
                         break;
+					case L_Key_F2:
+						presscount++;
+                        switch(item)//第几项
+                        {
+                            case 0:
+                                SetSystemStatus(SYS_STATUS_CLEAR);
+                                break;
+                            case 1:
+                                if(U9001_Save_sys.U9001_save.all_step>1)
+                                {
+                                    U9001_Save_sys.U9001_save.all_step--;
+                                    if(U9001_Save_sys.U9001_save.current_step>1)
+                                        U9001_Save_sys.U9001_save.current_step--;
+                                    disp_all=1;
+                                
+                                }
+                                break;
+                            case 2:
+                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter=1;
+                                SetDate_Comp();
+                                disp_all=1;
+                                break;
+                            case 3:
+                                 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
+                                {
+                                    if(presscount>LKEY2)//步进计数器
+									{
+										Key_Beep();
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=10;
+									}
+									else if(presscount>LKEY1)//步进计数器
+									{
+										Key_Beep();
+										 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower++;
+									}
+//                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower++;
+                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>=100)
+                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=100;
+                                }
+                                else
+								{
+									if(presscount>LKEY2)//步进计数器
+									{
+										Key_Beep();
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out+=10;
+									}
+									else if(presscount>LKEY1)//步进计数器
+									{
+										Key_Beep();
+										 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out++;
+									}
+//                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out+=1;
+                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out>Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
+                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out=Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+                                }
+                                
+
+
+                                break;
+                            case 4:
+								if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+								{
+									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 10000)
+									{
+										if(presscount>LKEY2)//步进计数器
+										{
+											Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=10;
+										}
+										else if(presscount>LKEY1)//步进计数器
+										{
+											Key_Beep();
+											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper++;
+										}
+//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=1;
+									}else{
+										if(presscount>LKEY2)//步进计数器
+										{
+											Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=1000;
+										}
+										else if(presscount>LKEY1)//步进计数器
+										{
+											Key_Beep();
+											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
+										}
+//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
+									}
+									
+								}else if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP){
+									osgetflag = 1;
+									osgetstart = 1;
+									SetSystemStatus(SYS_STATUS_IDEM);
+									
+								}else if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==PA_SETUP){
+									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=1;
+								}else{
+									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 2000)
+									{
+										if(presscount>LKEY2)//步进计数器
+										{
+											Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=10;
+										}
+										else if(presscount>LKEY1)//步进计数器
+										{
+											Key_Beep();
+											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=1;
+										}
+//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=1;
+									}else{
+										if(presscount>LKEY2)//步进计数器
+										{
+											Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
+										}
+										else if(presscount>LKEY1)//步进计数器
+										{
+											Key_Beep();
+											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=10;
+										}
+//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=10;
+									}
+								}
+                                 
+								SetDate_Comp();
+    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+                                break;
+                            case 5:
+                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
+                                {
+                                    if(presscount>LKEY2)//步进计数器
+									{
+										Key_Beep();
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
+									}
+									else if(presscount>LKEY1)//步进计数器
+									{
+										Key_Beep();
+										 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=10;
+									}
+//                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=10;
+                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper<100)
+                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=100;
+                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>=500)
+                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=500;
+                                }
+                                else{
+									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter == ACW_SETUP
+									 ||U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter == IR_SETUP
+									 ||U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter == PA_SETUP)
+									{
+										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time == 0)
+										{
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time = 3;
+										}else{
+											if(presscount>LKEY1)//步进计数器
+											{
+												Key_Beep();
+												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time+=1;
+											}
+//											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time+=1;
+										}
+									}else if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter == DCW_SETUP){
+										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time == 0)
+										{
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time = 2;
+										}else{
+											if(presscount>LKEY1)//步进计数器
+											{
+												Key_Beep();
+												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time+=1;
+											}
+//											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time+=1;
+										}
+									}
+									
+									SetDate_Comp();
+								}
+    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num>High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num=High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+                                break;
+                            case 6:
+								if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+								{
+									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower < 10000)
+									{
+										if(presscount>LKEY2)//步进计数器
+										{
+											Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=10;
+										}
+										else if(presscount>LKEY1)//步进计数器
+										{
+											Key_Beep();
+											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=1;
+										}
+//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=1;
+									}else{
+										if(presscount>LKEY2)//步进计数器
+										{
+											Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=1000;
+										}
+										else if(presscount>LKEY1)//步进计数器
+										{
+											Key_Beep();
+											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=100;
+										}
+//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=100;
+									}
+									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>
+									   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper)
+									{
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper
+									   =U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower;
+									}
+								}else{
+									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 2000)
+									{
+										if(presscount>LKEY2)//步进计数器
+										{
+											Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=10;
+										}
+										else if(presscount>LKEY1)//步进计数器
+										{
+											Key_Beep();
+											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=1;
+										}
+//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=1;
+									}else{
+										if(presscount>LKEY2)//步进计数器
+										{
+											Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=100;
+										}
+										else if(presscount>LKEY1)//步进计数器
+										{
+											Key_Beep();
+											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=10;
+										}
+//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=10;
+									}
+									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>
+									   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper)
+									{
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper;
+									}
+								}
+								SetDate_Comp();
+                                break;
+                            case 7:
+								if(presscount>LKEY1)//步进计数器
+								{
+									Key_Beep();
+									 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=1;
+								}
+//                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time+=1;
+								SetDate_Comp();
+                                break;
+                            case 8:
+//                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR)
+//                                {
+								if(presscount>LKEY1)//步进计数器
+								{
+									Key_Beep();
+                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc)
+                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc--;
+								}
+//                                }
+//                                else
+//                                 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc++;
+									SetDate_Comp();
+                                break;
+                            case 9:
+								if(presscount>LKEY1)//步进计数器
+								{
+									Key_Beep();
+									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time+=1;
+								}
+								SetDate_Comp();
+                                break;
+                            case 10:
+                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==DC)
+                                {
+									if(presscount>LKEY1)//步进计数器
+									{
+										Key_Beep();
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last+=1; 
+									}
+                                }else
+                                {
+                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=1;
+                                }
+								SetDate_Comp();
+                                break;
+                            case 11:
+                                if(presscount>LKEY1)//步进计数器
+								{
+									Key_Beep();
+                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check+=1;
+								}
+									SetDate_Comp();
+                                break;
+                            default:
+                                break;
+                            
+                        }
+                        break;	
                     case Key_F3:
+						Key_Beep();
 						presscount=0;
                         switch(item)//第几项
                         {
@@ -2223,7 +2719,7 @@ void Setup_Process(void)
                                     U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower--;
                                 }
                                 else
-                              U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out--;
+								U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out--;
 								SetDate_Comp();
     //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out>Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
     //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out=Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
@@ -2245,10 +2741,19 @@ void Setup_Process(void)
 //											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
 									 }
 								}else{
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>1)
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=1;
-									 else
-										 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 2000)
+									{
+										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>1)
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=1;
+										 else
+											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+									}else{
+										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>10)
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=10;
+										 else
+											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=10;
+									}
+                                    
 								}
                                  
                             
@@ -2293,10 +2798,15 @@ void Setup_Process(void)
 //											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
 									 }
 								}else{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>1)
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=1;
-									else
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=0;
+									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 2000)
+									{
+										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>1)
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=1;
+										else
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=0;
+									}else{
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=10;
+									}
 								}
                                     
                                 break;
@@ -2338,7 +2848,297 @@ void Setup_Process(void)
                             
                         }
                         break;
+					case L_Key_F3:
+						presscount++;
+                        switch(item)//第几项
+                        {
+                            case 0:
+                                SetSystemStatus(SYS_STATUS_SYSSET);
+                                break;
+                            case 1:
+
+                            if(U9001_Save_sys.U9001_save.current_step<U9001_Save_sys.U9001_save.all_step)
+                            {
+                                disp_all=1;
+								if(presscount>LKEY1)//步进计数器
+									U9001_Save_sys.U9001_save.current_step++;
+                                memcpy(&U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step],&U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step+1],sizeof(U9001_Setup_Typedef));
+                                
+                            }
+                                
+                                break;
+                            case 2:
+                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter=2;
+								SetDate_Comp();
+                                disp_all=1;
+                                break;
+                            case 3:
+                                 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
+                                {
+                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>10)
+									{
+										if(presscount>LKEY1)//步进计数器
+										{
+											Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower--;
+										}
+									}
+                                }
+                                else{
+									if(presscount>LKEY2)//步进计数器
+									{
+										Key_Beep();
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out-=10;
+									}else if(presscount>LKEY1)//步进计数器
+									{
+										Key_Beep();
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out--;
+									}
+								}
+								SetDate_Comp();
+    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out>Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out=Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+                                break;
+                            case 4:
+								
+								if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+								{
+									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 10000)
+									{
+										if(presscount>LKEY2)//步进计数器
+										{
+											Key_Beep();
+											 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>10)
+												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=10;
+											 else
+												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+										}else if(presscount>LKEY1)//步进计数器
+										{
+											Key_Beep();
+											 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>1)
+												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=1;
+											 else
+												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+										}
+										
+									 }else{
+//										 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>100)
+											if(presscount>LKEY2)//步进计数器
+											{
+												Key_Beep();
+												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=1000;
+											}else if(presscount>LKEY1)//步进计数器
+											{
+												Key_Beep();
+												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=100;
+											}
+//										 else
+//											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+									 }
+								}else{
+									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 2000)
+									{
+										if(presscount>LKEY2)//步进计数器
+										{
+											Key_Beep();
+											 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>10)
+												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=10;
+											 else
+												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+										}else if(presscount>LKEY1)//步进计数器
+										{
+											Key_Beep();
+											 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>1)
+												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=1;
+											 else
+												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+										}
+//										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>1)
+//											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=1;
+//										 else
+//											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+									}else{
+										if(presscount>LKEY2)//步进计数器
+										{
+											Key_Beep();
+											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=100;
+										}else if(presscount>LKEY1)//步进计数器
+										{
+											Key_Beep();
+											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=10;
+										}
+//										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>10)
+//											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=10;
+//										 else
+//											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=10;
+									}
+                                    
+								}
+                                 
+                            
+                            
+                            
+    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+                                break;
+                             case 5:
+                                 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
+                                {
+									if(presscount>LKEY1)//步进计数器
+									{
+										Key_Beep();
+										 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>=100)
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=10;
+										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper<100)
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=0;
+									}
+//                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>=100)
+//                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=10;
+//                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper<100)
+//                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=0;
+                                }
+                                else
+                                {
+									if(presscount>LKEY1)//步进计数器
+									{
+										Key_Beep();
+										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time>1)
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time--;
+									}
+									 SetDate_Comp();
+								 }
+								
+    //                             else
+    //                                 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time=0;
+    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num>High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num=High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+                                break;
+                            case 6:
+								if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+								{
+									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower < 10000)
+									{
+										if(presscount>LKEY2)//步进计数器
+										{
+											Key_Beep();
+											 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>10)
+												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=10;
+											 else
+												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=1;
+										}else if(presscount>LKEY1)//步进计数器
+										{
+											Key_Beep();
+											if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>1)
+												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=1;
+											 else
+												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=1;
+										}
+//										 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>1)
+//											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=1;
+//										 else
+//											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=1;
+									 }else{
+										 if(presscount>LKEY2)//步进计数器
+										{
+											Key_Beep();
+											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=1000;
+										}else if(presscount>LKEY1)//步进计数器
+										{
+											Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=100;
+										}
+//										 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>100)
+											
+//											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+									 }
+								}else{
+									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 2000)
+									{
+										if(presscount>LKEY2)//步进计数器
+										{
+											Key_Beep();
+											 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>10)
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=10;
+										else
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=0;
+										}else if(presscount>LKEY1)//步进计数器
+										{
+											Key_Beep();
+											if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>1)
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=1;
+										else
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=0;
+										}
+									}else{
+										if(presscount>LKEY2)//步进计数器
+										{
+											Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=100;
+										}else if(presscount>LKEY1)//步进计数器
+										{
+											Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=10;
+										}
+										
+									}
+								}
+                                    
+                                break;
+                            case 7:
+								if(presscount>LKEY1)//步进计数器
+								{
+									Key_Beep();
+									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time)
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time--;
+								}
+                                break;
+                            case 8:
+                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR)
+                                {
+									 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc=0;
+//                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc)
+//                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc--;
+                                }
+    //                            else
+    //                             U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc--;
+                                break;
+                            case 9:
+								if(presscount>LKEY1)//步进计数器
+								{
+									Key_Beep();
+									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time)
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time--;
+								}
+                                break;
+                            case 10:
+                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==DC)
+                                {
+									if(presscount>LKEY1)//步进计数器
+									{
+										Key_Beep();
+										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last)
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last--; 
+									}
+                                }else{
+                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=1;
+                                }
+                                break;
+                            case 11:
+								if(presscount>LKEY1)//步进计数器
+								{
+									Key_Beep();
+                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check)
+                                   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check--;
+								}
+                                
+                                break;
+                            default:
+                                break;
+                            
+                        }
+                        break;
                     case Key_F4:
+						Key_Beep();
 						presscount=0;
                         switch(item)//第几项
                         {
@@ -2356,7 +3156,7 @@ void Setup_Process(void)
                             case 2:
                                 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter=3;
                                 SetDate_Comp();
-                            disp_all=1;
+								disp_all=1;
                                 break;
                             case 3:
                                 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
@@ -2487,6 +3287,281 @@ void Setup_Process(void)
                             
                         }
                         break;
+					 case L_Key_F4:
+						 
+						presscount++;
+                        switch(item)//第几项
+                        {
+                            case 0:
+                                SetSystemStatus(SYS_STATUS_SYS);
+                                break;
+                            case 1:
+                                if(presscount>LKEY1)
+								{
+									if(U9001_Save_sys.U9001_save.current_step>1)
+										U9001_Save_sys.U9001_save.current_step--;
+								}
+                                disp_all=1;
+                            
+                                
+                                break;
+                            case 2:
+                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter=3;
+                                SetDate_Comp();
+								disp_all=1;
+                                break;
+                            case 3:
+                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
+                                {
+                                     if(presscount>LKEY1)
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=10;
+                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower<=10)
+                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=10;
+                                }
+                                else
+                                {
+									 if(presscount>LKEY3)
+									 {
+										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out>=150)
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out-=300;
+									 }else if(presscount>LKEY2){
+										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out>=150)
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out-=200;
+									 }else if(presscount>LKEY1){
+										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out>=150)
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out-=100;
+									 }
+                                }
+    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out>Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out=Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+                                break;
+                            case 4:
+								if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+								{
+									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 10000)
+									{
+										 if(presscount>LKEY3)
+										 {
+											 Key_Beep();
+											if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>300)
+												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=300;
+											else
+												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+										 }else if(presscount>LKEY2){
+											 Key_Beep();
+											if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>200)
+												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=200;
+											else
+												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+										 }else if(presscount>LKEY1){
+											 Key_Beep();
+											if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>100)
+												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=100;
+											else
+												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+										 }
+										 
+									 }else{
+//										 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>1000)
+										 if(presscount>LKEY3)
+										 {
+											 Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=3000;
+										 }else if(presscount>LKEY2){
+											 Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=2000;
+										 }else if(presscount>LKEY1){
+											 Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=1000;
+										 }
+											
+//										 else
+//											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+									 }
+								}else{
+									if(presscount>LKEY3)
+									 {
+										 Key_Beep();
+										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>300)
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=300;
+										else
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+									 }else if(presscount>LKEY2){
+										 Key_Beep();
+										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>200)
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=200;
+										else
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+									 }else if(presscount>LKEY1){
+										 Key_Beep();
+										  if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>100)
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=100;
+										else
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+									 }
+                                 
+								}
+                                
+                                
+    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+                                break;
+                            case 5:
+                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
+                                {
+									if(presscount>LKEY1){
+										Key_Beep();
+										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>=100)
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=100;
+										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper<100)
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=0;
+									}
+                                }
+                                else
+                                {
+									if(presscount>LKEY1){
+										Key_Beep();
+										 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time>10)
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time-=10;
+										 else
+											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time=0;
+									 }
+									 SetDate_Comp();
+                                 }
+								
+    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num>High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num=High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+                                break;
+                            case 6:
+								if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+								{
+									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower < 10000)
+									{
+										if(presscount>LKEY3)
+										 {
+											 Key_Beep();
+											if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>300)
+												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=300;
+											 else
+												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=1;
+										 }else if(presscount>LKEY2){
+											 Key_Beep();
+											if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>200)
+												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=200;
+											 else
+												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=1;
+										 }else if(presscount>LKEY1){
+											 Key_Beep();
+											if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>100)
+												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=100;
+											 else
+												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=1;
+										 }
+										 
+									 }else{
+										 if(presscount>LKEY3)
+										 {
+											 Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=3000;
+										 }else if(presscount>LKEY2){
+											 Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=2000;
+										 }else if(presscount>LKEY1){
+											 Key_Beep();
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=1000;
+										 }
+//										 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>1000)
+//											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=1000;
+//										 else
+//											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+									 }
+								}else{
+									if(presscount>LKEY3)
+										 {
+											 Key_Beep();
+											if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>300)
+												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=300;
+											 else
+												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=0;
+										 }else if(presscount>LKEY2){
+											 Key_Beep();
+											if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>200)
+												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=200;
+											 else
+												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=0;
+										 }else if(presscount>LKEY1){
+											 Key_Beep();
+											if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>100)
+												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=100;
+											 else
+												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=0;
+										 }
+//									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>100)
+//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=100;
+//									else
+//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=0;
+								}
+                                break;
+                            case 7:
+								if(presscount>LKEY1){
+									Key_Beep();
+									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time>10)
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time-=10;
+									else
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time=0;
+								}
+                                break;
+                            case 8:
+                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR)
+                                {
+									if(presscount>LKEY1){
+										Key_Beep();
+										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc)
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc--;
+									}
+                                }
+    //                            else
+    //                             U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc--;
+                                break;
+                            case 9:
+								if(presscount>LKEY1){
+									Key_Beep();
+									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time>10)
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time-=10;
+									else
+										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time=0;
+								}
+                                break;
+                            case 10:
+                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==DC)
+                                {
+									if(presscount>LKEY1){
+										Key_Beep();
+										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last>10)
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last-=10; 
+										else
+											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last=0;
+									}
+                                }else
+                                {
+                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=1;
+                                }
+                                break;
+                            case 11:
+								if(presscount>LKEY1){
+									Key_Beep();
+                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check>10)
+                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check-=10;
+                                    else
+                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=0;
+								}
+                                
+                                break;
+                            default:
+                                break;
+                            
+                        }
+                        break;
                     case Key_F5:
                         switch(item)//第几项
                         {
@@ -2550,7 +3625,7 @@ void Setup_Process(void)
                     break;
                     
                     case Key_Disp:
-                        
+                        Key_Beep();
                             //SetSystemStatus(SYS_STATUS_TEST);
                         SetSystemStatus(SYS_STATUS_IDEM);
                     break;
@@ -2564,18 +3639,21 @@ void Setup_Process(void)
                     
                     break;
                     case Key_RIGHT:
+						Key_Beep();
                         if(item%2 == 1)
 						{
 							item++;
 						}							
                     break;
                     case Key_LEFT:
+						Key_Beep();
                         if(item%2 == 0)
 						{
 							item--;
 						}                  
                     break;
                     case Key_DOWN:
+						Key_Beep();
 						if(item != 0)
 						{
 							item += 2; 
@@ -2584,6 +3662,7 @@ void Setup_Process(void)
 						}							
                     break;
                     case Key_UP:
+						Key_Beep();
                         if(item == 1)
 						{
 							item -= 1; 
@@ -2597,6 +3676,7 @@ void Setup_Process(void)
 
 
                     case Key_PAGE://翻页
+						Key_Beep();
                         SetSystemStatus(SYS_STATUS_SYSSET);
                     break;
                     
@@ -2896,7 +3976,7 @@ void Setup_config_Process(void)
 		{	
             DISP_FLAG=TRUE;
 			
-			Key_Beep();
+			
             if(input_flag==0)
             {
 			switch(keyvalue)
@@ -2911,7 +3991,8 @@ void Setup_config_Process(void)
                     case Key_NUM7:
                     case Key_NUM8:
                     case Key_NUM9:
-                    case Key_DOT:    
+                    case Key_DOT: 
+						Key_Beep();
                          memset(Disp_buff,0,6);
                         if(key_count<lenth)
                         {
@@ -2931,6 +4012,7 @@ void Setup_config_Process(void)
                     switch(item)//第几项
                     {
                         case 0:
+							Key_Beep();
                             SetSystemStatus(SYS_STATUS_SETUPTEST);
                             break;
                         case 1:
@@ -2941,6 +4023,7 @@ void Setup_config_Process(void)
                             
                         case 3:
                         case 7:
+							Key_Beep();
                             if(*(pt+(item-1))<ParameterLimit[item-1][1])
                                 *(pt+(item-1))+=10;
                             if(*(pt+(item-1))>=ParameterLimit[item-1][1])
@@ -2960,9 +4043,11 @@ void Setup_config_Process(void)
                         case 12:
                         case 13:
                         case 14:
+							Key_Beep();
                             *(pt+(item-1))=0;
                             break;
                         case 15:
+							Key_Beep();
                             if(*(pt+(item-1))<ParameterLimit[item-1][1])
                                 *(pt+(item-1))+=1;
                             break;
@@ -2982,6 +4067,7 @@ void Setup_config_Process(void)
                             
                         case 3:
                         case 7:
+							Key_Beep();
                             if(*(pt+(item-1))<ParameterLimit[item-1][1])
                                 *(pt+(item-1))+=1;
                             break;
@@ -2999,9 +4085,11 @@ void Setup_config_Process(void)
                         case 12:
                         case 13:
                         case 14:
+							Key_Beep();
                             *(pt+(item-1))=1;
                             break;
                         case 15:
+							Key_Beep();
                             if(*(pt+(item-1)))
                                 *(pt+(item-1))-=1;
                             break;
@@ -3021,6 +4109,7 @@ void Setup_config_Process(void)
                             
                         case 3:
                         case 7:
+							Key_Beep();
                             if(*(pt+(item-1)))
                                 *(pt+(item-1))-=1;
 							if(*(pt+(item-1))<ParameterLimit[item-1][0])
@@ -3038,11 +4127,13 @@ void Setup_config_Process(void)
                         case 10:
                             break;
                         case 11:
+							Key_Beep();
                             *(pt+(item-1))=2;
                         case 12:
                         case 13:
 							break;
                         case 14:
+							Key_Beep();
 							*(pt+(item-1))=0;
 							U9001_Save_sys.U9001_save.disp=1;
 							clearflag=1;
@@ -3072,6 +4163,7 @@ void Setup_config_Process(void)
                             
                         case 3:
                         case 7:
+							Key_Beep();
                             if(*(pt+(item-1))>10)
                                 *(pt+(item-1))-=10;
                             else
@@ -3091,6 +4183,7 @@ void Setup_config_Process(void)
                         case 10:
                             break;
                         case 11:
+							Key_Beep();
                             *(pt+(item-1))=2;
                         case 12:
                         case 13:
@@ -3114,11 +4207,12 @@ void Setup_config_Process(void)
                         case 3:
                             break;
                         case 2:
+							Key_Beep();
                             *(pt+(item-1))=1000;
                         break;
                         case 7:
-                            
-                                *(pt+(item-1))=0;
+                            Key_Beep();
+                             *(pt+(item-1))=0;
                             break; 
                         case 4:
                             break;
@@ -3146,6 +4240,7 @@ void Setup_config_Process(void)
                 break;
 				
 				case Key_Disp:
+					Key_Beep();
                         //SetSystemStatus(SYS_STATUS_TEST);
 					SetSystemStatus(SYS_STATUS_IDEM);
 				break;
@@ -3154,20 +4249,23 @@ void Setup_config_Process(void)
 					
 				break;
 				case Key_RIGHT:
+					Key_Beep();
                     list=1;
                     						
 				break;
 				case Key_LEFT:
+					Key_Beep();
                     list=0;
 
 				break;
 				case Key_DOWN:
-
+					Key_Beep();
 					if(line<(num+1)/2)
                         line++;
 					
 				break;
 				case Key_UP:
+					Key_Beep();
                     if(line)
                         line--;
                     if(line==0)
@@ -3176,6 +4274,7 @@ void Setup_config_Process(void)
 				
 
 				case Key_PAGE://翻页
+					Key_Beep();
                     SetSystemStatus(SYS_STATUS_SYSSET);
 				break;
 				
@@ -3197,10 +4296,12 @@ void Setup_config_Process(void)
                 switch(keyvalue)
                 {
                     case Key_RIGHT:
+						Key_Beep();
                         input_flag=0;
                         list=0;						
                     break;
                     case Key_LEFT:
+						Key_Beep();
                         input_flag=0;
                         list=1;                   
                     break;
@@ -3222,13 +4323,16 @@ void Setup_config_Process(void)
                         
                     break;
                     case Key_SETUP:
+						Key_Beep();
                         input_flag=0;
 					
                         break;
                     case Key_Disp:
+						Key_Beep();
                         SetSystemStatus(SYS_STATUS_ITEM);
                         break;
                     case Key_F1:
+						Key_Beep();
 						if(item != 7)
 						{
 							input_flag=0;
@@ -3275,6 +4379,7 @@ void Setup_config_Process(void)
                     case Key_F3:
                         break;
                     case Key_F5:
+						Key_Beep();
                         input_flag=0;
                         
                         break;
@@ -3288,7 +4393,8 @@ void Setup_config_Process(void)
                     case Key_NUM7:
                     case Key_NUM8:
                     case Key_NUM9:
-                    case Key_DOT:                       
+                    case Key_DOT:  
+						Key_Beep();						
                         if(key_count<lenth)
                         {
                             Disp_buff[key_count]=keyvalue;
@@ -3300,12 +4406,11 @@ void Setup_config_Process(void)
                         DISP_FLAG=TRUE;
                     break;
                     case Key_BACK:
+						Key_Beep();
                          if(key_count)
                         {	
                             key_count--;
                             Disp_buff[key_count]=' ';
-
-                        
                         }
                 }
             
@@ -3426,10 +4531,11 @@ void Sys_Process(void)
 		if(keyvalue!=KEY_NONE)
 		{
 			DISP_FLAG=1;
-            Key_Beep();
+            
 			switch(keyvalue)
 			{
                 case Key_F1:
+					Key_Beep();
                     SetSystemStatus(SYS_STATUS_SYSSET);
                 break;
 				case  Key_LEFT:
@@ -3440,6 +4546,7 @@ void Sys_Process(void)
 				
 				
 				case Key_Disp:
+					Key_Beep();
                     SetSystemStatus(SYS_STATUS_IDEM);
 				break;
 				case Key_SETUP:
@@ -3524,10 +4631,11 @@ void Use_SysSetProcess(void)
 		if(keyvalue!=KEY_NONE)
 		{
 			DISP_FLAG=1;
-			Key_Beep();
+			
 			switch(keyvalue)
 			{
 				case Key_F1:
+					Key_Beep();
 					switch(line)
 					{
 						case 0:
@@ -3562,6 +4670,7 @@ void Use_SysSetProcess(void)
 					}
 				break;
 				case Key_F2:
+					Key_Beep();
 					switch(line)
 					{
 						case 0:
@@ -3596,6 +4705,7 @@ void Use_SysSetProcess(void)
 					}
 				break;
 				case Key_F3:
+					Key_Beep();
 					switch(line)
 					{
 						case 0:
@@ -3630,6 +4740,7 @@ void Use_SysSetProcess(void)
 					}
 				break;
 				case Key_F4:
+					Key_Beep();
 					switch(line)
 					{
 						case 7:
@@ -3640,6 +4751,7 @@ void Use_SysSetProcess(void)
 					}
 				break;
 				case Key_F5:
+					Key_Beep();
 					switch(line)
 					{
 						case 7:
@@ -3650,20 +4762,24 @@ void Use_SysSetProcess(void)
 					}
 				break;
 				case Key_Disp:
+					Key_Beep();
                     SetSystemStatus(SYS_STATUS_IDEM);
 				break;
 				case Key_SETUP:
+					Key_Beep();
                     SetSystemStatus(SYS_STATUS_SETUPTEST);
 				break;
 				case Key_FAST:
 				break;
 				case Key_LEFT:
+					Key_Beep();
                    if(line > 4)
 					{
 						line-=4;
 					}
 				break;
 				case Key_RIGHT:
+					Key_Beep();
                     if(line < 4)
 					{
 						line+=4;
@@ -3674,15 +4790,18 @@ void Use_SysSetProcess(void)
 //                case Key_LEFT:
                     
 				case Key_DOWN:
+					Key_Beep();
 					if(line<7)
 						line++;
 				break;
 				case Key_UP:
+					Key_Beep();
 					if(line)
 						line--;
 				break;
 				
 				case Key_PAGE://翻页
+					Key_Beep();
                     SetSystemStatus(SYS_STATUS_SYS);
 				break;
 
@@ -5162,6 +6281,12 @@ void TestPause_Process(void)
 						if(F_Fail == TRUE)
 						{
 							Uart0_Send(0xa5);//FAIL灯
+							if(U9001_Save_sys.U9001_SYS.fail_beep == 0)
+							{
+								BeepCon();
+							}else if(U9001_Save_sys.U9001_SYS.fail_beep == 1){
+								BeepGap();
+							}
 							SetSystemStatus(SYS_STATUS_FINISH);//测试结束 
 							
 							return;
@@ -5200,8 +6325,20 @@ void TestPause_Process(void)
 					if(F_Fail == TRUE)
 					{
 						Uart0_Send(0xa5);//FAIL灯
+						if(U9001_Save_sys.U9001_SYS.fail_beep == 0)
+						{
+							BeepCon();
+						}else if(U9001_Save_sys.U9001_SYS.fail_beep == 1){
+							BeepGap();
+						}
 					}else{
 						Uart0_Send(0xa4);//PASS灯
+						if(U9001_Save_sys.U9001_SYS.pass_beep == 0)
+						{
+							BeepCon();
+						}else if(U9001_Save_sys.U9001_SYS.pass_beep == 1){
+							BeepGap();
+						}
 					}
 					SetSystemStatus(SYS_STATUS_FINISH);//测试结束 
 					return;
@@ -5214,8 +6351,20 @@ void TestPause_Process(void)
 					if(F_Fail == TRUE)
 					{
 						Uart0_Send(0xa5);//FAIL灯
+						if(U9001_Save_sys.U9001_SYS.fail_beep == 0)
+						{
+							BeepCon();
+						}else if(U9001_Save_sys.U9001_SYS.fail_beep == 1){
+							BeepGap();
+						}
 					}else{
 						Uart0_Send(0xa4);//PASS灯
+						if(U9001_Save_sys.U9001_SYS.pass_beep == 0)
+						{
+							BeepCon();
+						}else if(U9001_Save_sys.U9001_SYS.pass_beep == 1){
+							BeepGap();
+						}
 					}
 					SetSystemStatus(SYS_STATUS_FINISH);//测试结束 
 					return;
@@ -5232,6 +6381,12 @@ void TestPause_Process(void)
 						if(F_Fail == TRUE)
 						{
 							Uart0_Send(0xa5);//FAIL灯
+							if(U9001_Save_sys.U9001_SYS.fail_beep == 0)
+							{
+								BeepCon();
+							}else if(U9001_Save_sys.U9001_SYS.fail_beep == 1){
+								BeepGap();
+							}
 							SetSystemStatus(SYS_STATUS_FINISH);//测试结束 
 							return;
 						}else{
@@ -5269,8 +6424,20 @@ void TestPause_Process(void)
 					if(F_Fail == TRUE)
 					{
 						Uart0_Send(0xa5);//FAIL灯
+						if(U9001_Save_sys.U9001_SYS.fail_beep == 0)
+						{
+							BeepCon();
+						}else if(U9001_Save_sys.U9001_SYS.fail_beep == 1){
+							BeepGap();
+						}
 					}else{
 						Uart0_Send(0xa4);//PASS灯
+						if(U9001_Save_sys.U9001_SYS.pass_beep == 0)
+						{
+							BeepCon();
+						}else if(U9001_Save_sys.U9001_SYS.pass_beep == 1){
+							BeepGap();
+						}
 					}
 					SetSystemStatus(SYS_STATUS_FINISH);//测试结束 
 					return;
@@ -5283,8 +6450,20 @@ void TestPause_Process(void)
 					if(F_Fail == TRUE)
 					{
 						Uart0_Send(0xa5);//FAIL灯
+						if(U9001_Save_sys.U9001_SYS.fail_beep == 0)
+						{
+							BeepCon();
+						}else if(U9001_Save_sys.U9001_SYS.fail_beep == 1){
+							BeepGap();
+						}
 					}else{
 						Uart0_Send(0xa4);//PASS灯
+						if(U9001_Save_sys.U9001_SYS.pass_beep == 0)
+						{
+							BeepCon();
+						}else if(U9001_Save_sys.U9001_SYS.pass_beep == 1){
+							BeepGap();
+						}
 					}
 					SetSystemStatus(SYS_STATUS_FINISH);//测试结束 
 					return;

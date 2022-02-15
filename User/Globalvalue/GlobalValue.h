@@ -138,6 +138,9 @@ typedef unsigned           int vu32;
 
 #define _4094NUM    2
 
+#define LKEY1    5
+#define LKEY2    15
+#define LKEY3    26
 //测试值最大值
 //#define ACW_CURRENT_MAX		(2000)
 //#define DCW_CURRENT_MAX		(2000)

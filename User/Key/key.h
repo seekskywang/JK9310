@@ -119,6 +119,8 @@ void Turnon_backlight(void);
 
 void Key_Beep(void);
 void Start_Lowdc(void);
+void BeepCon(void);
+void BeepGap(void);
 
 void GPIO_LPC_Configration(void);
 

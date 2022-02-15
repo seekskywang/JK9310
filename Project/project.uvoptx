@@ -119,11 +119,6 @@
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
-          <Key>DLGUARM</Key>
-          <Name>猬杦勨?勨?趏?</Name>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
           <Key>PWSTATINFO</Key>
           <Name>200,50,700</Name>
         </SetRegEntry>
@@ -409,6 +404,11 @@
           <count>48</count>
           <WinNumber>1</WinNumber>
           <ItemText>keyvalue</ItemText>
+        </Ww>
+        <Ww>
+          <count>49</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>U9001_Save_sys.U9001_save.U9001_Setup,0x0A</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>

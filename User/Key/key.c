@@ -327,9 +327,38 @@ void Delay_Key(void)
 void Key_Beep(void)
 {
 	Beep_on();
-	Delay(200);
+	Delay(500);
 	Beep_Off();
 
+}
+void BeepCon(void)
+{
+	Beep_on();
+	Delay(50000);
+	Beep_Off();
+
+}
+void BeepGap(void)
+{
+	Beep_on();
+	Delay(1500);
+	Beep_Off();
+	Delay(10000);
+	Beep_on();
+	Delay(1500);
+	Beep_Off();
+	Delay(10000);
+	Beep_on();
+	Delay(1500);
+	Beep_Off();
+	Delay(10000);
+	Beep_on();
+	Delay(1500);
+	Beep_Off();
+	Delay(10000);
+	Beep_on();
+	Delay(1500);
+	Beep_Off();
 }
 void Touch_beep(void)
 {
