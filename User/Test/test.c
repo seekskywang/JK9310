@@ -793,6 +793,7 @@ void Finsh_Process(void)
         }
         if(READ_STOP()==0)
         {
+			Beep_Off();
             SetSystemStatus(SYS_STATUS_IDEM);
 			SetSystemMessage(MSG_IDLE);
             V_DA_out(0);
@@ -3586,9 +3587,10 @@ void Setup_Process(void)
     //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out=Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
                                 break;
                             case 4:
-    //                             U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num+=100;
-    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num>High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
-    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num=High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+								if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter == IR_SETUP)
+								{
+									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=0;
+								}
                                 break;
                             case 5:
                                 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time=0;
@@ -6522,6 +6524,7 @@ void TestPause_Process(void)
 		}
         if(READ_STOP()==0)
         {
+			Beep_Off();
             V_DA_out(0);
             Sing_out_C(0);
             Short_out(0);

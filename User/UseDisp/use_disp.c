@@ -4479,7 +4479,7 @@ void SetData_High_Low_Comp(void)
     if(U9001_Save_sys.U9001_SYS.language>Sys_Data_Comp[11][1])
         U9001_Save_sys.U9001_SYS.ord_bit=Sys_Data_Comp[11][0];
     
-    Check_Calibrate_Limit();
+//    Check_Calibrate_Limit();
     
     
 //	for(i=0;i<5;i++)
@@ -5806,7 +5806,7 @@ void ARC_out(u8 start)//0  停止  1  启动
         _4094_databuff[1]&=0xC0;
         if(U9001_Save_sys.U9001_Testconfg.ARC_mode)//等级模式
         {
-            _4094_databuff[1]=ARC_Range[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc];
+            _4094_databuff[1]|=ARC_Range[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc];
         }else
         {
             if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc)
@@ -5978,7 +5978,7 @@ void Test_Init(void)
 			if(U9001_Save_sys.U9001_Testconfg.hz)
 				Sin_out(1);//输出频率控制
 			else
-				Sin_out(3);//输出频率控制
+				Sin_out(0);//输出频率控制
             if(U9001_Save_sys.U9001_Testconfg.Autorange == 0)
 			{
 				if(Test_mid.set_high < 3000)

@@ -334,8 +334,8 @@ void Key_Beep(void)
 void BeepCon(void)
 {
 	Beep_on();
-	Delay(50000);
-	Beep_Off();
+//	Delay(50000);
+//	Beep_Off();
 
 }
 void BeepGap(void)
