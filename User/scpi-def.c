@@ -58,7 +58,9 @@ static const char IRUNIT[][3]={
     {"G"},//
 };
 
-
+static const char Respond[][5]={
+	{"OK"}
+};
 char Resbuf[500];
 
 
@@ -185,7 +187,7 @@ static scpi_result_t VoltageAcQ1(scpi_t * context) {
 //    fprintf(stderr, "\tP2=%s\r\n", bf);
 
     SCPI_ResultDouble(context, U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out);
-
+	
     return SCPI_RES_OK;
 }
 
@@ -197,7 +199,9 @@ static scpi_result_t VoltageAcS1(scpi_t * context) {
 		return SCPI_RES_ERR;
     }
 	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out = param;
-	Save_fileDate(0);
+	SetDate_Comp();
+	Savetoeeprom();
+	SCPI_ResultCharacters(context, Respond[0],2);
     return SCPI_RES_OK;
 }
 
@@ -227,7 +231,9 @@ static scpi_result_t CUpperAcS1(scpi_t * context) {
 	}else {
 		U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper = param*1000;
 	}
-	Save_fileDate(0);
+	SetDate_Comp();
+	Savetoeeprom();
+	SCPI_ResultCharacters(context, Respond[0],2);
     return SCPI_RES_OK;
 }
 
@@ -257,7 +263,9 @@ static scpi_result_t CLOWAcS1(scpi_t * context) {
 	}else{
 		SCPI_ResultFloat(context, (float)U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower/1000);
 	}
-	Save_fileDate(0);
+	SetDate_Comp();
+	Savetoeeprom();
+	SCPI_ResultCharacters(context, Respond[0],2);
     return SCPI_RES_OK;
 }
 
@@ -278,7 +286,9 @@ static scpi_result_t TTIMS1(scpi_t * context) {
 		return SCPI_RES_ERR;
     }
 	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time = param*10;
-	Save_fileDate(0);
+	SetDate_Comp();
+	Savetoeeprom();
+	SCPI_ResultCharacters(context, Respond[0],2);
     return SCPI_RES_OK;
 }
 
@@ -299,7 +309,9 @@ static scpi_result_t RTIMS1(scpi_t * context) {
 		return SCPI_RES_ERR;
     }
 	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time = param*10;
-	Save_fileDate(0);
+	SetDate_Comp();
+	Savetoeeprom();
+	SCPI_ResultCharacters(context, Respond[0],2);
     return SCPI_RES_OK;
 }
 
@@ -320,7 +332,9 @@ static scpi_result_t FTIMS1(scpi_t * context) {
 		return SCPI_RES_ERR;
     }
 	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time = param*10;
-	Save_fileDate(0);
+	SetDate_Comp();
+	Savetoeeprom();
+	SCPI_ResultCharacters(context, Respond[0],2);
     return SCPI_RES_OK;
 }
 
@@ -341,7 +355,9 @@ static scpi_result_t ARCS1(scpi_t * context) {
 		return SCPI_RES_ERR;
     }
 	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc = param*10;
-	Save_fileDate(0);
+	SetDate_Comp();
+	Savetoeeprom();
+	SCPI_ResultCharacters(context, Respond[0],2);
     return SCPI_RES_OK;
 }
 
@@ -372,6 +388,7 @@ static scpi_result_t FREQS1(scpi_t * context) {
 		U9001_Save_sys.U9001_Testconfg.hz = 1;
 	}
 	Savetoeeprom();
+	SCPI_ResultCharacters(context, Respond[0],2);
     return SCPI_RES_OK;
 }
 
@@ -391,7 +408,9 @@ static scpi_result_t OPENS1(scpi_t * context) {
 		return SCPI_RES_ERR;
     }
 	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower = param;
-	Save_fileDate(0);
+	SetDate_Comp();
+	Savetoeeprom();
+	SCPI_ResultCharacters(context, Respond[0],2);
     return SCPI_RES_OK;
 }
 
@@ -411,7 +430,9 @@ static scpi_result_t SHORTS1(scpi_t * context) {
 		return SCPI_RES_ERR;
     }
 	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper = param;
-	Save_fileDate(0);
+	SetDate_Comp();
+	Savetoeeprom();
+	SCPI_ResultCharacters(context, Respond[0],2);
     return SCPI_RES_OK;
 }
 //ø™ º≤‚ ‘
@@ -419,6 +440,7 @@ static scpi_result_t StartT(scpi_t * context) {
     SetSystemStatus(SYS_STATUS_START);
     SetSystemMessage(MSG_RAMP);
     Uart0_Send(0xa1);
+	SCPI_ResultCharacters(context, Respond[0],2);
     return SCPI_RES_OK;
 }
 
@@ -427,6 +449,7 @@ static scpi_result_t StopT(scpi_t * context) {
 	switch(GetSystemStatus())
 	{
 		case SYS_STATUS_FINISH:
+			Beep_Off();
 			SetSystemStatus(SYS_STATUS_IDEM);
 			SetSystemMessage(MSG_IDLE);
             V_DA_out(0);
@@ -436,6 +459,7 @@ static scpi_result_t StopT(scpi_t * context) {
             Uart0_Send(0xa0);
 		break;
 		case SYS_STATUS_IDEM:
+			Beep_Off();
 			V_DA_out(0);
             Sing_out_C(0);
             Short_out(0);
@@ -443,6 +467,7 @@ static scpi_result_t StopT(scpi_t * context) {
             Uart0_Send(0xa0);
 		break;
 		case SYS_STATUS_TEST_PAUSE:
+			Beep_Off();
 			V_DA_out(0);
             Sing_out_C(0);
             Short_out(0);
@@ -452,10 +477,12 @@ static scpi_result_t StopT(scpi_t * context) {
             Uart0_Send(0xa0);
 		break;
 		case SYS_STATUS_ABORT:
+			Beep_Off();
 			SetSystemMessage(MSG_IDLE);//œµÕ≥–≈œ¢-‘›Õ£≤‚ ‘
 			SetSystemStatus(SYS_STATUS_IDEM);//œµÕ≥◊¥Ã¨-‘›Õ£≤‚ ‘
 		break;
 		case SYS_STATUS_TEST:
+			Beep_Off();
 			V_DA_out(0);
             Sing_out_C(0);
             Short_out(0);
@@ -463,6 +490,7 @@ static scpi_result_t StopT(scpi_t * context) {
             SetSystemStatus(SYS_STATUS_TEST_PAUSE);
 		break;
 		case SYS_STATUS_START:   
+			Beep_Off();
             SetSystemMessage(MSG_PAUSE);//œµÕ≥–≈œ¢-‘›Õ£≤‚ ‘
             SetSystemStatus(SYS_STATUS_ABORT);//œµÕ≥◊¥Ã¨-‘›Õ£≤‚ ‘
             Uart0_Send(0xa0);
@@ -473,6 +501,7 @@ static scpi_result_t StopT(scpi_t * context) {
 	Short_out(0);
 	FRB_out(0);
 	Uart0_Send(0xa0);
+	SCPI_ResultCharacters(context, Respond[0],2);
     return SCPI_RES_OK;
 }
 
@@ -486,7 +515,7 @@ static scpi_result_t SetStep(scpi_t * context) {
     }
 	U9001_Save_sys.U9001_save.current_step = param;
 	Savetoeeprom();
-	 
+	 SCPI_ResultCharacters(context, Respond[0],2);
     return SCPI_RES_OK;
 }
 
@@ -500,7 +529,7 @@ static scpi_result_t SetTSteps(scpi_t * context) {
     }
 	U9001_Save_sys.U9001_save.all_step = param;
 	Savetoeeprom();
-	 
+	 SCPI_ResultCharacters(context, Respond[0],2);
     return SCPI_RES_OK;
 }
 
@@ -509,7 +538,7 @@ static scpi_result_t ACMode(scpi_t * context) {
     
 	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter = AC;
 	Savetoeeprom();
-	 
+	 SCPI_ResultCharacters(context, Respond[0],2);
     return SCPI_RES_OK;
 }
 
@@ -518,7 +547,7 @@ static scpi_result_t DCMode(scpi_t * context) {
     
 	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter = AC;
 	Savetoeeprom();
-	 
+	 SCPI_ResultCharacters(context, Respond[0],2);
     return SCPI_RES_OK;
 }
 
@@ -527,7 +556,7 @@ static scpi_result_t IRMode(scpi_t * context) {
     
 	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter = IR;
 	Savetoeeprom();
-	 
+	 SCPI_ResultCharacters(context, Respond[0],2);
     return SCPI_RES_OK;
 }
 
@@ -536,7 +565,7 @@ static scpi_result_t OSMode(scpi_t * context) {
     
 	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter = OS;
 	Savetoeeprom();
-	 
+	 SCPI_ResultCharacters(context, Respond[0],2);
     return SCPI_RES_OK;
 }
 

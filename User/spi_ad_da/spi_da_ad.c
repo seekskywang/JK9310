@@ -421,7 +421,7 @@ u16 Read_MCP3202(u16 ch)
 		
 
 	AD_CS(0);
-	Delay(8);
+	Delay(2);
     Set_Cpld_clk(1);	//clk=0
     Delay(2);
 	//发送5位通道控制字

@@ -12,6 +12,7 @@
 #define __GlobalValue_h__
 #include "stdint.h"
 #include "stdbool.h"
+
 typedef unsigned char vu8;
 //typedef unsigned char u8;
 typedef unsigned short     int vu16;
@@ -308,6 +309,7 @@ extern vu32 Resistance;//电阻
 extern u8 save_flag;
 extern bool F_Fail;//测试失败标志
 extern int Voltage;//电压
+extern uint8_t testflag;
 enum SysMessageEnum
 {
 	MSG_IDLE=0 ,

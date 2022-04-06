@@ -6568,7 +6568,7 @@ void disp_TestMSG(u8 date)
 }
 void disp_DelayMSG(u8 date)
 {
-    GUI_DispStringAt(DELAY_TIMEDISP[date][U9001_Save_sys.U9001_SYS.language],40,272-30);
+    GUI_DispStringAt(DELAY_TIMEDISP[date][U9001_Save_sys.U9001_SYS.language],40+140,272-30);
 
 }
 void Disp_DelayTime(u8 item)
@@ -6599,7 +6599,8 @@ void Disp_DelayTime(u8 item)
             break;
     
     }
-    GUI_DispStringAt(DispBuf,DISP_V_XPOS+44,DISP_V_YPOS+100);
+	GUI_DispStringAt(DispBuf,DISP_V_XPOS+44,DISP_V_YPOS+100+23);
+//    GUI_DispStringAt(DispBuf,DISP_V_XPOS+44,DISP_V_YPOS+100);
 
 }
 void Disp_Comp(void)

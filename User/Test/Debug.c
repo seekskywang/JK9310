@@ -697,7 +697,6 @@ void CalTest_Process(void)
 	
 	vu16 dat;
 	vu32 temp;
-
 	Bool f_disp=FALSE;//显示更新标志
 
 	bool f_sort=FALSE;//分选标志
@@ -1164,7 +1163,7 @@ void CalTest_Process(void)
 				break;
 
 			case Key_F1:	//长按上键
-				count++;//步进计数器
+				count=0;//步进计数器
 //				if(count>10)//步进计数器
 					Cal[MenuSelect].Num+=10;
 //				else
@@ -1172,6 +1171,16 @@ void CalTest_Process(void)
 				if(Cal[MenuSelect].Num>9999)
 					Cal[MenuSelect].Num=0;
 				break;
+			case L_Key_F1:
+			{
+				count++;
+				if(count>10)//步进计数器
+					Cal[MenuSelect].Num+=10;
+				if(count>30)//步进计数器
+					Cal[MenuSelect].Num+=30;
+				if(Cal[MenuSelect].Num>9999)
+					Cal[MenuSelect].Num=0;
+			}break;
 	        case Key_F3:
 			case Key_DOWN:		//下键
 				count=0;//步进计数器
@@ -1183,7 +1192,7 @@ void CalTest_Process(void)
             
 
 			case Key_F4:		//
-                count++;//步进计数器
+               count=0;//步进计数器
 //				if(count>10)//步进计数器
 					Cal[MenuSelect].Num-=10;
 //				else
@@ -1191,6 +1200,16 @@ void CalTest_Process(void)
 				if(Cal[MenuSelect].Num>9999)
 					Cal[MenuSelect].Num=0;
             break;
+			case L_Key_F4:
+			{
+				count++;
+				if(count>10)//步进计数器
+					Cal[MenuSelect].Num-=10;
+				if(count>30)//步进计数器
+					Cal[MenuSelect].Num-=30;
+				if(Cal[MenuSelect].Num>9999)
+					Cal[MenuSelect].Num=0;
+			}break;
             case Key_F5:
             break;
             case Key_FAST:

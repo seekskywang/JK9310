@@ -24,11 +24,99 @@
 #include "system_LPC177x_8x.h"
 #include "Key/key.h"
 #include "GlobalValue.h"
+#include "debug_frmwrk.h"
 
 volatile uint32_t timer0_counter = 0;
 volatile uint32_t timer1_counter = 0;
 volatile uint32_t timer2_counter = 0;
 volatile uint32_t timer3_counter = 0;
+
+u32 Tick_10ms=0;
+u32 OldTick;
+extern u8 g_mods_timeout;
+
+void MODS_Poll(void)
+{
+	uint16_t addr;
+	static uint16_t crc1;
+    static u32 testi;
+	/* 超过3.5个字符时间后执行MODH_RxTimeOut()函数。全局变量 g_rtu_timeout = 1; 通知主程序开始解砿*/
+//	if (g_mods_timeout == 0)	
+//	{
+//		return;								/* 没有超时，继续接收。不要清雿g_tModS.RxCount */
+//	}
+
+    testi=g_tModS.RxCount;
+    testi=g_tModS.RxCount;
+    testi=g_tModS.RxCount;
+	if(testi>7)				/* ??????С?4???????? */
+	{
+		testi=testi;
+	}
+	testi=g_tModS.RxCount;
+    if(testi==8)				/* ??????С?4???????? */
+	{
+		testi=testi+1;
+	}
+	//??????ˇ???
+	if(OldTick!=Tick_10ms)
+  	{  
+	  OldTick=Tick_10ms;
+	   if(g_mods_timeout>0)
+      { 
+	    g_mods_timeout--;
+      }
+	  if(g_mods_timeout==0 && g_tModS.RxCount>0)   //??????
+      { 
+		// goto err_ret;
+	
+      }
+      else if(g_mods_timeout==0 && g_tModS.RxCount==0) //?????
+         return;
+      else //????ì???
+         return;
+	}
+	else   //???10msì?????
+		return;
+	//g_mods_timeout = 0;	 					/* ??? */
+
+	if (g_tModS.RxCount < 4)				/* ??????С?4???????? */
+	{
+		goto err_ret;
+	}
+
+	/* ??CRCУ?? */
+// 	crc1 = CRC16(g_tModS.RxBuf, g_tModS.RxCount);
+// 	if (crc1 != 0)
+// 	{
+// 		goto err_ret;
+// 	}
+
+// 	/* ??? (1??é */
+ 	addr = g_tModS.RxBuf[0];				/* ?1?? ?? */
+ 	if (addr != U9001_Save_sys.U9001_SYS.buss_addr)		 			/* ???????????ˇ??? */
+ 	{
+ 		goto err_ret;
+ 	}
+
+	/* 分析应用层协访*/
+//    if(g_tModS.RxBuf[2] == 0xA5)
+//    {
+//        UART_Action();
+//    }else{
+//        usartocflag = 1;
+        RecHandle();
+//    }
+							
+	
+err_ret:
+#if 0										/* 此部分为了串口打印结枿实际运用中可不要 */
+	g_tPrint.Rxlen = g_tModS.RxCount;
+	memcpy(g_tPrint.RxBuf, g_tModS.RxBuf, g_tModS.RxCount);
+#endif
+	
+ 	g_tModS.RxCount = 0;					/* 必须清零计数器，方便下次帧同歿*/
+}
 
 /*****************************************************************************
 ** Function name:		delayMs
@@ -106,6 +194,7 @@ void delayMs(uint8_t timer_num, uint32_t delayInMs)
 void TIMER0_IRQHandler (void) 
 {  
 	static u8 num=0;
+	static u8 modscount=0;
 	u8 i;
     LPC_TIM0->IR = 0x1<<0;		/* clear interrupt flag */
 	//timer0_counter++;
@@ -130,6 +219,13 @@ void TIMER0_IRQHandler (void)
 		if(num!=0)
 			num=0;
 	}	
+	modscount++;
+	if(modscount > 9)
+	{
+		modscount=0;
+		Tick_10ms ++;
+        MODS_Poll();
+	}
 	for (i=0;i<MAXTSOFTTIMER;i++)
 	{
 		if (SoftTimer[i])

@@ -10,3 +10,5 @@
 .\output\timer.o: ..\User\Key/key.h
 .\output\timer.o: ..\User\Globalvalue\GlobalValue.h
 .\output\timer.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\output\timer.o: ..\Libraries\Drivers\include\debug_frmwrk.h
+.\output\timer.o: ..\Libraries\Drivers\include\lpc177x_8x_uart.h

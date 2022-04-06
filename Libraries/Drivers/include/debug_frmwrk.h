@@ -162,6 +162,70 @@ extern Com_TypeDef ComBuf3;
 #define GROUPSET	 	 		(0x01)	//通道设置
 #define BASICSET				(0x02)	//基本设置
 
+//寄存器地址
+#define SLAVE_REG_P00		0x0000       //R_VOLU
+#define SLAVE_REG_P01		0x0001      //Load_Voltage
+#define SLAVE_REG_P02		0x0002      //Load_Current
+#define SLAVE_REG_P03		0x0003		//Change_Voltage
+#define SLAVE_REG_P04		0x0004		//Change_Current
+#define SLAVE_REG_P05		0x0005		//Load_OCP
+#define SLAVE_REG_P06		0x0006		//Change_OCP
+#define SLAVE_REG_P07		0x0007		//Short_Time
+#define SLAVE_REG_P08		0x0008		//Leak_Current
+#define SLAVE_REG_P09		0x0009		//R1_Volu
+#define SLAVE_REG_P10		0x000A		//R2_Volu
+#define SLAVE_REG_P11		0x000B		//Temper
+#define SLAVE_REG_P12		0x000C		//DHQ_Voltage
+#define SLAVE_REG_P13		0x000D		//MODE
+#define SLAVE_REG_P14		0x000E		//Load_Mode
+#define SLAVE_REG_P15		0x000F		//Load_SET_Voltage
+#define SLAVE_REG_P16		0x0010		//Load_SET_Current
+#define SLAVE_REG_P17		0x0011		//Change_SET_Voltage
+#define SLAVE_REG_P18		0x0012		//Change_SET_Current
+#define SLAVE_REG_P19		0x0013       //R_VOLU
+#define SLAVE_REG_P20		0x0014      //Load_Voltage
+#define SLAVE_REG_P21		0x0015      //Load_Current
+#define SLAVE_REG_P22		0x0016		//Change_Voltage
+#define SLAVE_REG_P23		0x0017		//Change_Current
+#define SLAVE_REG_P24		0x0018		//Load_OCP
+#define SLAVE_REG_P25		0x0019		//Change_OCP
+#define SLAVE_REG_P26		0x001A		//Short_Time
+#define SLAVE_REG_P27		0x001B		//Leak_Current
+#define SLAVE_REG_P28		0x001C		//R1_Volu
+#define SLAVE_REG_P29		0x001D		//R2_Volu
+#define SLAVE_REG_P30		0x001E		//Temper
+#define SLAVE_REG_P31		0x001F		//DHQ_Voltage
+#define SLAVE_REG_P32		0x0020		//MODE
+#define SLAVE_REG_P33		0x0021		//Load_Mode
+#define SLAVE_REG_P34		0x0022		//Load_SET_Voltage
+#define SLAVE_REG_P35		0x0023		//Load_SET_Current
+#define SLAVE_REG_P36		0x0024		//Change_SET_Voltage
+#define SLAVE_REG_P37		0x0025		//Change_SET_Current
+#define SLAVE_REG_P38		0x0026       //R_VOLU
+#define SLAVE_REG_P39		0x0027      //Load_Voltage
+#define SLAVE_REG_P40		0x0028      //Load_Current
+#define SLAVE_REG_P41		0x0029		//Change_Voltage
+#define SLAVE_REG_P42		0x002A		//Change_Current
+#define SLAVE_REG_P43		0x002B		//Load_OCP
+#define SLAVE_REG_P44		0x002C		//Change_OCP
+#define SLAVE_REG_P45		0x002D		//Short_Time
+#define SLAVE_REG_P46		0x002E		//Leak_Current
+#define SLAVE_REG_P47		0x002F		//R1_Volu
+#define SLAVE_REG_P48		0x0030		//R2_Volu
+#define SLAVE_REG_P49		0x0031		//Temper
+#define SLAVE_REG_P50		0x0032		//R2_Volu
+#define SLAVE_REG_P51		0x0033		//Temper
+
+/* RTU 应答代码 */
+#define RSP_OK				0		/* 成功 */
+#define RSP_ERR_CMD			0x01	/* 不支持的功能码 */
+#define RSP_ERR_REG_ADDR	0x02	/* 寄存器地址错误 */
+#define RSP_ERR_VALUE		0x03	/* 数据值域错误 */
+#define RSP_ERR_WRITE		0x04	/* 写入失败 */
+
+#define S_RX_BUF_SIZE		30
+#define S_TX_BUF_SIZE		128
+
 //#define UART_SEND_BEGIN 		(0xAA)
 //#define UART_SEND_END 			(0xBF)
 //#define FRAME_LEN_MAX 			(REC_LEN_MAX)//一帧最大字节
@@ -194,6 +258,18 @@ extern Com_TypeDef ComBuf3;
 //#define COM_ERR_UNDEFINE		(0x08)	//未定义错误
 //void  _printf (const  char *format, ...);
 #define SetRecTimeOut(time) (ComBuf.rec.TimeOut=time)
+extern struct MODS_T g_tModS;
+struct MODS_T
+{
+	uint8_t RxBuf[S_RX_BUF_SIZE];
+	uint8_t TxBuf[S_TX_BUF_SIZE];
+	uint8_t RxCount;
+	uint8_t RxStatus;
+	uint8_t RxNewFlag;
+	uint8_t RspCode;
+	
+	uint8_t TxCount;
+};
 
 
 extern const vu8 READDATA[7];
@@ -233,8 +309,8 @@ vu8 Uart_Process(void);
 void Uart3_Send(void);
 void Uart0_Send(u8 king);
 void UARTPutChar (LPC_UART_TypeDef *UARTx, uint8_t ch);
-
-
+void MODS_SendWithCRC(uint8_t *_pBuf, uint8_t _ucLen);
+uint16_t CRC16(uint8_t *_pBuf, uint16_t _usLen);
 //void Send_Freq(Send_Ord_Typedef *ord);
 
 #endif /* __DEBUG_FRMWRK_H_ */

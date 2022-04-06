@@ -22,24 +22,62 @@ Dialog DLL:      TARMP1.DLL V1.26.0.0
  
 <h2>Project:</h2>
 F:\JK9310\Project\project.uvprojx
-Project File Date:  02/11/2022
+Project File Date:  02/28/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'E:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Open1788'
-compiling spi_da_ad.c...
-..\User\Key/key.h(13): warning:  #47-D: incompatible redefinition of macro "TICKS_PER_SEC"  (declared at line 92 of "..\Libraries\Drivers\include\debug_frmwrk.h")
-  #define TICKS_PER_SEC 100     //????????????????????100x10mS(T0)=1S
-..\User\spi_ad_da\spi_da_ad.c(555): warning:  #223-D: function "abs" declared implicitly
-        if(abs(Voltage-LastVoltage)<2)//????????????
-..\User\spi_ad_da\spi_da_ad.c(578): warning:  #223-D: function "abs" declared implicitly
-        if(abs(Current-LastCurrent)<2)//????????????
-..\User\spi_ad_da\spi_da_ad.c: 3 warnings, 0 errors
+compiling Debug.c...
+..\Libraries\Drivers\include\debug_frmwrk.h(92): warning:  #47-D: incompatible redefinition of macro "TICKS_PER_SEC"  (declared at line 13 of "..\User\key/key.h")
+  #define TICKS_PER_SEC 1000    //????????????????????100x10mS(T0)=1S
+..\User\Test\Debug.h(28): warning:  #1-D: last line of file ends without a newline
+  //==========================================================
+..\User\Test\Debug.c(71): warning:  #177-D: variable "key"  was declared but never referenced
+        u8 key;
+..\User\Test\Debug.c(202): warning:  #111-D: statement is unreachable
+                                break;
+..\User\Test\Debug.c(212): warning:  #111-D: statement is unreachable
+                                break;
+..\User\Test\Debug.c(167): warning:  #177-D: variable "key"  was declared but never referenced
+        u8 key;
+..\User\Test\Debug.c(306): warning:  #111-D: statement is unreachable
+                      break;
+..\User\Test\Debug.c(260): warning:  #177-D: variable "key"  was declared but never referenced
+        u8 key;
+..\User\Test\Debug.c(417): warning:  #111-D: statement is unreachable
+                      break;
+..\User\Test\Debug.c(365): warning:  #177-D: variable "key"  was declared but never referenced
+        u8 key;
+..\User\Test\Debug.c(535): warning:  #111-D: statement is unreachable
+                      break;
+..\User\Test\Debug.c(482): warning:  #177-D: variable "key"  was declared but never referenced
+        u8 key;
+..\User\Test\Debug.c(841): warning:  #111-D: statement is unreachable
+                        break;
+..\User\Test\Debug.c(1254): warning:  #111-D: statement is unreachable
+                                break;
+..\User\Test\Debug.c(698): warning:  #550-D: variable "dat"  was set but never used
+        vu16 dat;
+..\User\Test\Debug.c(699): warning:  #177-D: variable "temp"  was declared but never referenced
+        vu32 temp;
+..\User\Test\Debug.c(703): warning:  #177-D: variable "f_upper"  was declared but never referenced
+        bool f_upper=FALSE;//??????????????????
+..\User\Test\Debug.c(704): warning:  #177-D: variable "f_below"  was declared but never referenced
+        bool f_below=FALSE;//??????????????????
+..\User\Test\Debug.c(705): warning:  #177-D: variable "f_switch"  was declared but never referenced
+        bool f_switch=FALSE;//??????????????????
+..\User\Test\Debug.c(711): warning:  #550-D: variable "ad_high"  was set but never used
+        vu16 ad_high;//AD?€???????
+..\User\Test\Debug.c(712): warning:  #550-D: variable "ad_low"  was set but never used
+        vu16 ad_low;//AD?€???????
+..\User\Test\Debug.c(713): warning:  #550-D: variable "TestTime"  was set but never used
+      u16 TestTime;
+..\User\Test\Debug.c: 22 warnings, 0 errors
 linking...
-Program Size: Code=158480 RO-data=122924 RW-data=788 ZI-data=8764  
+Program Size: Code=157712 RO-data=123356 RW-data=816 ZI-data=8392  
 FromELF: creating hex file...
 After Build - User command #1: E:\Keil_v5\ARM\ARMCC\bin\fromelf.exe --bin  -o ..\update\update.bin Output\project.axf
-".\Output\project.axf" - 0 Error(s), 3 Warning(s).
+".\Output\project.axf" - 0 Error(s), 22 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -62,7 +100,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.4.0
-Build Time Elapsed:  00:00:04
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>
