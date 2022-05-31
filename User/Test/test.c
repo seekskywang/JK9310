@@ -1082,14 +1082,25 @@ void Test_Process(void)
                         SetSystemMessage(MSG_PASS);
                          Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_flag=GetSystemMessage();
 						if(Test_mid.set_item==IR_SETUP)
-                        {
-							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Resistance;
+            {
+							if(Current)//电流值非零
+							{
+								temp=Voltage;//电压值
+		//						//最大值判别
+								if((Range==5)&&(Resistance>IR_RESISTANCE_MAX))//最大值判别
+									Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=TEST_VALUE_OVER;//电阻溢出
+							}
+							else
+							{
+									Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=TEST_VALUE_OVER;//电阻溢出
+							}
+//							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Resistance;
 							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit=test_value.uint;
 						}else{
 							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Current;
 						}
-                        Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_vot=Test_Value.Vol;
-						Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_time=Test_Value.Time;
+              Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_vot=Test_Value.Vol;
+							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_time=Test_Value.Time;
                         Test_Value.Time=0;
                         
                         if(Test_mid.set_drop)//下降时间
@@ -1214,7 +1225,7 @@ void Test_Process(void)
 		{
 			AdCount=0;//AD值缓冲次数
 			for(key=0;key<(AD_BUF_LENGTH);key++)
-			{
+	 		{
 				Ibuf[key]=0;//AD缓冲区清空
 			}
 			Range_Control(Range);//量程控制
@@ -1268,11 +1279,12 @@ void Test_Process(void)
 //						//最大值判别
 						if((Range==5)&&(Resistance>IR_RESISTANCE_MAX))//最大值判别
 							Resistance=TEST_VALUE_OVER;//电阻溢出
+						Test_Value.I_R=Resistance;
 					}
 					else
 					{
-						Resistance=TEST_VALUE_OVER;//电阻溢出
-                        Test_Value.I_R=Resistance;
+							Resistance=TEST_VALUE_OVER;//电阻溢出
+              Test_Value.I_R=Resistance;
 					}
                      switch(Range)
                     {
@@ -4974,6 +4986,10 @@ void Use_SysSetProcess(void)
 						{
 							U9001_Save_sys.U9001_SYS.key_beep = 0;
 						}break;
+						case 5:
+						{
+							U9001_Save_sys.U9001_SYS.bussmode = 0;
+						}break;
 						case 6:
 						{
 							U9001_Save_sys.U9001_SYS.buss_addr++;
@@ -5010,6 +5026,10 @@ void Use_SysSetProcess(void)
 						case 4:
 						{
 							U9001_Save_sys.U9001_SYS.key_beep = 1;
+						}break;
+						case 5:
+						{
+							U9001_Save_sys.U9001_SYS.bussmode = 1;
 						}break;
 						case 6:
 						{
@@ -6810,7 +6830,7 @@ void TestPause_Process(void)
         time=U9001_Save_sys.U9001_Testconfg.step_time;
 	}
 
-    GUI_DispStringAt(DispBuf,DISP_V_XPOS+44,DISP_V_YPOS+100);
+    GUI_DispStringAt(DispBuf,DISP_V_XPOS+44,DISP_V_YPOS+100+23);
     disp_TestMSG(GetSystemMessage());
     //判断是否合格 合格的时候才执行下面语句
     
@@ -6829,7 +6849,7 @@ void TestPause_Process(void)
             Disp_DelayTime(DELAY_SOFTTIMER);
 //             Hex_Format(Get_SorftTime(DELAY_SOFTTIMER),1,4,FALSE);
         
-        GUI_DispStringAt(DispBuf,DISP_V_XPOS+44,DISP_V_YPOS+100);
+        GUI_DispStringAt(DispBuf,DISP_V_XPOS+44,DISP_V_YPOS+100+23);
 //		//显示连接时间，倒计时
 
 				

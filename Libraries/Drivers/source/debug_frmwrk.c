@@ -886,18 +886,24 @@ void UART0_IRQHandler(void)//UART0_IRQn
 void UART3_IRQHandler(void)//UART3_IRQn
 {
 	uint8_t Status,Res;
-	Status=UART_GetLineStatus(LPC_UART3);//
+	
 //	Res=UART_ReceiveByte(LPC_UART3);
+	if(U9001_Save_sys.U9001_SYS.bussmode == 0)
+	{
+		Status=UART_GetLineStatus(LPC_UART3);//
     g_mods_timeout = 2;
-	if (g_tModS.RxCount < S_RX_BUF_SIZE)
-	{
-		g_tModS.RxBuf[g_tModS.RxCount++] = UART_ReceiveByte(LPC_UART3);
+		if (g_tModS.RxCount < S_RX_BUF_SIZE)
+		{
+			g_tModS.RxBuf[g_tModS.RxCount++] = UART_ReceiveByte(LPC_UART3);
+		}
+		if(g_tModS.RxCount > 7 && g_tModS.RxBuf[1] == 6)
+		{
+			MODS_SendAckOk();
+		}
+	}else if(U9001_Save_sys.U9001_SYS.bussmode == 1){
+		Res=UART_ReceiveByte(LPC_UART3);
+		SCPI_Input(&scpi_context, &Res, 1);
 	}
-	if(g_tModS.RxCount > 7 && g_tModS.RxBuf[1] == 6)
-	{
-		MODS_SendAckOk();
-	}
-//	 SCPI_Input(&scpi_context, &Res, 1);
 }
 
 //void UART0_IRQHandler(void)//UART0_IRQn

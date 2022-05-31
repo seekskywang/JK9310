@@ -147,7 +147,7 @@ typedef unsigned           int vu32;
 //#define DCW_CURRENT_MAX		(2000)
 #define ACW_CURRENT_MAX		(3000)
 #define DCW_CURRENT_MAX		(3000)
-#define IR_RESISTANCE_MAX	(9999)
+#define IR_RESISTANCE_MAX	(50000)
 #define GND_RESISTANCE_MAX	(310)
 //≤‚ ‘÷µ“Á≥ˆ
 #define TEST_VALUE_OVER		(65535)

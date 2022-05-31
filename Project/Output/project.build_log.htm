@@ -27,57 +27,55 @@ Project File Date:  02/28/2022
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'E:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Open1788'
-compiling Debug.c...
-..\Libraries\Drivers\include\debug_frmwrk.h(92): warning:  #47-D: incompatible redefinition of macro "TICKS_PER_SEC"  (declared at line 13 of "..\User\key/key.h")
-  #define TICKS_PER_SEC 1000    //????????????????????100x10mS(T0)=1S
-..\User\Test\Debug.h(28): warning:  #1-D: last line of file ends without a newline
-  //==========================================================
-..\User\Test\Debug.c(71): warning:  #177-D: variable "key"  was declared but never referenced
-        u8 key;
-..\User\Test\Debug.c(202): warning:  #111-D: statement is unreachable
-                                break;
-..\User\Test\Debug.c(212): warning:  #111-D: statement is unreachable
-                                break;
-..\User\Test\Debug.c(167): warning:  #177-D: variable "key"  was declared but never referenced
-        u8 key;
-..\User\Test\Debug.c(306): warning:  #111-D: statement is unreachable
-                      break;
-..\User\Test\Debug.c(260): warning:  #177-D: variable "key"  was declared but never referenced
-        u8 key;
-..\User\Test\Debug.c(417): warning:  #111-D: statement is unreachable
-                      break;
-..\User\Test\Debug.c(365): warning:  #177-D: variable "key"  was declared but never referenced
-        u8 key;
-..\User\Test\Debug.c(535): warning:  #111-D: statement is unreachable
-                      break;
-..\User\Test\Debug.c(482): warning:  #177-D: variable "key"  was declared but never referenced
-        u8 key;
-..\User\Test\Debug.c(841): warning:  #111-D: statement is unreachable
-                        break;
-..\User\Test\Debug.c(1254): warning:  #111-D: statement is unreachable
-                                break;
-..\User\Test\Debug.c(698): warning:  #550-D: variable "dat"  was set but never used
-        vu16 dat;
-..\User\Test\Debug.c(699): warning:  #177-D: variable "temp"  was declared but never referenced
-        vu32 temp;
-..\User\Test\Debug.c(703): warning:  #177-D: variable "f_upper"  was declared but never referenced
-        bool f_upper=FALSE;//??????????????????
-..\User\Test\Debug.c(704): warning:  #177-D: variable "f_below"  was declared but never referenced
-        bool f_below=FALSE;//??????????????????
-..\User\Test\Debug.c(705): warning:  #177-D: variable "f_switch"  was declared but never referenced
-        bool f_switch=FALSE;//??????????????????
-..\User\Test\Debug.c(711): warning:  #550-D: variable "ad_high"  was set but never used
-        vu16 ad_high;//AD?€???????
-..\User\Test\Debug.c(712): warning:  #550-D: variable "ad_low"  was set but never used
-        vu16 ad_low;//AD?€???????
-..\User\Test\Debug.c(713): warning:  #550-D: variable "TestTime"  was set but never used
-      u16 TestTime;
-..\User\Test\Debug.c: 22 warnings, 0 errors
+compiling debug_frmwrk.c...
+..\User\Key/key.h(13): warning:  #47-D: incompatible redefinition of macro "TICKS_PER_SEC"  (declared at line 92 of "..\Libraries\Drivers\include\debug_frmwrk.h")
+  #define TICKS_PER_SEC 100     //????????????????????100x10mS(T0)=1S
+..\Libraries\Drivers\source\debug_frmwrk.c(853): warning:  #177-D: variable "pt"  was declared but never referenced
+      Send_Testvalue_Typedef *pt;
+..\Libraries\Drivers\source\debug_frmwrk.c(874): warning:  #177-D: variable "count"  was declared but never referenced
+         static vu8 count = 0;
+..\Libraries\Drivers\source\debug_frmwrk.c(875): warning:  #177-D: variable "dat"  was declared but never referenced
+         uint8_t Status,dat;
+..\Libraries\Drivers\source\debug_frmwrk.c(905): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+                SCPI_Input(&scpi_context, &Res, 1);
+..\Libraries\Drivers\source\debug_frmwrk.c(888): warning:  #550-D: variable "Status"  was set but never used
+        uint8_t Status,Res;
+..\Libraries\Drivers\source\debug_frmwrk.c(983): warning:  #177-D: variable "crec"  was declared but never referenced
+      u8 crec[6];
+..\Libraries\Drivers\source\debug_frmwrk.c(984): warning:  #177-D: variable "csend"  was declared but never referenced
+      u8 *csend;
+..\Libraries\Drivers\source\debug_frmwrk.c(985): warning:  #177-D: variable "sendbuf"  was declared but never referenced
+      static u8 *sendbuf;
+..\Libraries\Drivers\source\debug_frmwrk.c(986): warning:  #177-D: variable "sendlen"  was declared but never referenced
+      u8 sendlen;
+..\Libraries\Drivers\source\debug_frmwrk.c(987): warning:  #177-D: variable "recrc"  was declared but never referenced
+      static u16 recrc;
+..\Libraries\Drivers\source\debug_frmwrk.c(988): warning:  #177-D: variable "scrc"  was declared but never referenced
+      static u16 scrc;
+..\Libraries\Drivers\source\debug_frmwrk.c(989): warning:  #177-D: variable "i"  was declared but never referenced
+      u8 i;
+..\Libraries\Drivers\source\debug_frmwrk.c(1246): warning:  #223-D: function "V_DA_out" declared implicitly
+                                                V_DA_out(0);
+..\Libraries\Drivers\source\debug_frmwrk.c(1247): warning:  #223-D: function "Sing_out_C" declared implicitly
+                                                Sing_out_C(0);
+..\Libraries\Drivers\source\debug_frmwrk.c(1248): warning:  #223-D: function "Short_out" declared implicitly
+                                                Short_out(0);
+..\Libraries\Drivers\source\debug_frmwrk.c(1249): warning:  #223-D: function "FRB_out" declared implicitly
+                                                FRB_out(0);
+..\Libraries\Drivers\source\debug_frmwrk.c(1292): warning:  #223-D: function "V_DA_out" declared implicitly
+                                V_DA_out(0);
+..\Libraries\Drivers\source\debug_frmwrk.c(1293): warning:  #223-D: function "Sing_out_C" declared implicitly
+                                Sing_out_C(0);
+..\Libraries\Drivers\source\debug_frmwrk.c(1294): warning:  #223-D: function "Short_out" declared implicitly
+                                Short_out(0);
+..\Libraries\Drivers\source\debug_frmwrk.c(1295): warning:  #223-D: function "FRB_out" declared implicitly
+                                FRB_out(0);
+..\Libraries\Drivers\source\debug_frmwrk.c: 21 warnings, 0 errors
 linking...
-Program Size: Code=157712 RO-data=123356 RW-data=816 ZI-data=8392  
+Program Size: Code=157940 RO-data=123360 RW-data=816 ZI-data=8392  
 FromELF: creating hex file...
 After Build - User command #1: E:\Keil_v5\ARM\ARMCC\bin\fromelf.exe --bin  -o ..\update\update.bin Output\project.axf
-".\Output\project.axf" - 0 Error(s), 22 Warning(s).
+".\Output\project.axf" - 0 Error(s), 21 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -100,7 +98,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.4.0
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>
