@@ -1489,7 +1489,7 @@ void Test_Process(void)
 //		Uart_Process();//´®¿Ú´¦Àí
         if(READ_STOP()==0)
         {
-			Beep_Off();
+						Beep_Off();
             V_DA_out(0);
             Sing_out_C(0);
             Short_out(0);

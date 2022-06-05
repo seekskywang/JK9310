@@ -117,8 +117,8 @@ const char DELAY_TIMEDISP[][2][16]=
 const char SYS_NAME_Tab[][2][32]=
 {
     {"耐压测试仪","OFF"},
-    {"Ver.01.001","Ver.01.001"},
-    {"www.JonK.com","Ver.01.001"},
+    {"Ver.01.002","Ver.01.002"},
+    {"www.JonK.com","Ver.01.002"},
     {"0519-","Ver.01.001"},
 
 };
@@ -186,7 +186,7 @@ const char SysSetButton_Tab[][2][5][14]=
     {{"  关闭  ","  打开  ","   ","   ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
 //    {{"  低音  ","  中音  ","  高音  ","   ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
 //    {{"  关闭  ","  系统  ","  文件  ","  修改  ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
-    {{"RS232C"," ","    ","    ","    "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
+    {{"MODBUS","SCPI ","    ","    ","    "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
     {{"   ↑+ ","   ↓ - ","       ","          ","    "},{"   ↑+ ","   ↓ - ","       ","          ","  关闭  "}},
     {{"4800","9600","19200","38400","115200"},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
 //    {{"8","7","       ","          ","    "},{"   ↑+ ","   ↓ - ","       ","          ","  关闭  "}},
@@ -281,7 +281,7 @@ const char Sys_SetValue[][2][5][14]=
     {{"关闭","打开"},{"",""}},
     {{"低音","中音","高音"},{"","",""}},
     {{"关闭","中音","高音"},{"","",""}},
-    {{"MODBUS","SCPI",""},{"","",""}},
+    {{"MODBUS","SCPI  ",""},{"","",""}},
     {{"","",""},{"","",""}},//总线地址
     {{"4800","9600","19200","38400","115200"},{"","","","",""}},
     {{"8","7","19200","38400","115200"},{"","","","",""}},
@@ -3137,7 +3137,7 @@ void Disp_SysSet_value(uint8_t list)
         if(i<=4)
             GUI_FillRect(LISTVALU_RETC,FIRSTLINE_RETC+SPACE1*((i-1)),LISTVALU_RETC+70,FIRSTLINE_RETC+SPACE1*((i)));
         else
-            GUI_FillRect(LISTVALUE2_RETC,FIRSTLINE_RETC+SPACE1*(i-5),LISTVALUE2_RETC+70,FIRSTLINE_RETC+SPACE1*(i-4));
+            GUI_FillRect(LISTVALUE2_RETC,FIRSTLINE_RETC+SPACE1*(i-5),LISTVALUE2_RETC+75,FIRSTLINE_RETC+SPACE1*(i-4));
             
         
         
@@ -3153,7 +3153,7 @@ void Disp_SysSet_value(uint8_t list)
 //    GUI_DispStringAt(Sys_SetValue[4][U9001_save_sys.U9001_SYS.language][U9001_save_sys.U9001_SYS.beep],LISTVALUE1,FIRSTLINE+4*SPACE1);
 //    GUI_DispStringAt(U9001_save_sys.U9001_SYS.password,LISTVALUE1,FIRSTLINE+5*SPACE1);
     
-    GUI_DispStringAt(Sys_SetValue[6][U9001_Save_sys.U9001_SYS.bussmode][U9001_Save_sys.U9001_SYS.language],LISTVALUE2,FIRSTLINE);//语言
+    GUI_DispStringAt(Sys_SetValue[6][U9001_Save_sys.U9001_SYS.language][U9001_Save_sys.U9001_SYS.bussmode],LISTVALUE2,FIRSTLINE);//语言
     GUI_DispDecAt(U9001_Save_sys.U9001_SYS.buss_addr,LISTVALUE2,FIRSTLINE+1*SPACE1,3);
     GUI_DispStringAt(Sys_SetValue[8][U9001_Save_sys.U9001_SYS.language][U9001_Save_sys.U9001_SYS.buard],LISTVALUE2,FIRSTLINE+2*SPACE1);
 //    GUI_DispStringAt(Sys_SetValue[10][U9001_save_sys.U9001_SYS.language][U9001_save_sys.U9001_SYS.date_bit],LISTVALUE2,FIRSTLINE+3*SPACE1);
@@ -4211,7 +4211,7 @@ const  vu16 Sys_Data_Comp[][2]=
 	{0,1},
 	{0,2},
 	{2019,2030},
-	{0,0},
+	{0,1},
 	{0,127},
 	{0,4},
 	{0,1},

@@ -219,12 +219,15 @@ void TIMER0_IRQHandler (void)
 		if(num!=0)
 			num=0;
 	}	
-	modscount++;
-	if(modscount > 9)
+	if(U9001_Save_sys.U9001_SYS.bussmode == 0)
 	{
-		modscount=0;
-		Tick_10ms ++;
-        MODS_Poll();
+		modscount++;
+		if(modscount > 9)
+		{
+			modscount=0;
+			Tick_10ms ++;
+					MODS_Poll();
+		}
 	}
 	for (i=0;i<MAXTSOFTTIMER;i++)
 	{

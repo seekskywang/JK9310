@@ -886,11 +886,11 @@ void UART0_IRQHandler(void)//UART0_IRQn
 void UART3_IRQHandler(void)//UART3_IRQn
 {
 	uint8_t Status,Res;
-	
+	Status=UART_GetLineStatus(LPC_UART3);//
 //	Res=UART_ReceiveByte(LPC_UART3);
 	if(U9001_Save_sys.U9001_SYS.bussmode == 0)
 	{
-		Status=UART_GetLineStatus(LPC_UART3);//
+		
     g_mods_timeout = 2;
 		if (g_tModS.RxCount < S_RX_BUF_SIZE)
 		{
