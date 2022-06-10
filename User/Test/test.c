@@ -446,7 +446,7 @@ void Idem_Process(void)
     Range_Control(0);
     for(i=0;i<10;i++)//保存的测试结果
     {
-        Save_TestValue[i].text_flag=15;
+        Save_TestValue[i].text_flag=0;
         Save_TestValue[i].Text_value=0;
         Save_TestValue[i].Text_vot=0;
         Save_TestValue[i].Text_time=0;
@@ -1047,12 +1047,56 @@ void Test_Process(void)
 					SetSystemMessage(MSG_TEST);//系统信息-满载测试
 					f_msgdisp=TRUE;//消息显示标志
 				}
+				Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_flag=GetSystemMessage();
+//				if(Test_mid.set_item==IR_SETUP)
+//				{
+//					if(Current)//电流值非零
+//					{
+//						temp=Voltage;//电压值
+////						//最大值判别
+//						if((Range==5)&&(Resistance>IR_RESISTANCE_MAX))//最大值判别
+//							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=TEST_VALUE_OVER;//电阻溢出
+//					}
+//					else
+//					{
+//							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=TEST_VALUE_OVER;//电阻溢出
+//					}
+////							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Resistance;
+//					Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit=test_value.uint;
+//				}else{
+//					Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Current;
+//				}
+//					Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_vot=Test_Value.Vol;
+//					Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_time=Test_Value.Time;
 			}
 			else if(GetSystemMessage()==MSG_TEST )
 			{
 				TestOut=FullOut;//测试输出值计算
+				
+				Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_flag=GetSystemMessage();
+				if(Test_mid.set_item==IR_SETUP)
+				{
+					if(Current)//电流值非零
+					{
+						temp=Voltage;//电压值
+//						//最大值判别
+						if((Range==5)&&(Resistance>IR_RESISTANCE_MAX))//最大值判别
+							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=TEST_VALUE_OVER;//电阻溢出
+					}
+					else
+					{
+							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=TEST_VALUE_OVER;//电阻溢出
+					}
+//							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Resistance;
+					Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit=test_value.uint;
+				}else{
+					Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Current;
+				}
+					Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_vot=Test_Value.Vol;
+					Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_time=Test_Value.Time;
 				if(Test_mid.set_time>0)//测试时间为0，连续测试
 				{
+					
 					if(Test_Value.Time>=Test_mid.set_time)//测试时间判别
 					{
 						if(clearflag == 1)
@@ -1079,8 +1123,8 @@ void Test_Process(void)
 //                        else
                             
                     
-                        SetSystemMessage(MSG_PASS);
-                         Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_flag=GetSystemMessage();
+            SetSystemMessage(MSG_PASS);
+            Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_flag=GetSystemMessage();
 						if(Test_mid.set_item==IR_SETUP)
             {
 							if(Current)//电流值非零
@@ -1136,6 +1180,27 @@ void Test_Process(void)
 //                 {
 //                    Test_Value.Time=Test_mid.set_drop;
 //                 }
+//							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_flag=GetSystemMessage();
+//							if(Test_mid.set_item==IR_SETUP)
+//							{
+//								if(Current)//电流值非零
+//								{
+//									temp=Voltage;//电压值
+//			//						//最大值判别
+//									if((Range==5)&&(Resistance>IR_RESISTANCE_MAX))//最大值判别
+//										Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=TEST_VALUE_OVER;//电阻溢出
+//								}
+//								else
+//								{
+//										Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=TEST_VALUE_OVER;//电阻溢出
+//								}
+//	//							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Resistance;
+//								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit=test_value.uint;
+//							}else{
+//								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Current;
+//							}
+//								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_vot=Test_Value.Vol;
+//								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_time=Test_Value.Time;
                 if(Test_mid.set_drop)//下降时间
                 {
                     stepT++;//步进时间计时
@@ -1156,12 +1221,12 @@ void Test_Process(void)
                     Sing_out_C(0);
                     Short_out(0);
                     FRB_out(0);
-					testflag=0;
+										testflag=0;
 //                    Uart0_Send(0xa4);
                 }
                 if(Test_Value.Time>=Test_mid.set_drop)//缓升时间判别
                 {
-					Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_time+=Test_Value.Time;
+										Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_time+=Test_Value.Time;
                     Test_Value.Time=0;//测试时间清零
 //                    Test_Value.Vol=0;
                     SetSystemStatus(SYS_STATUS_TEST_PAUSE);//测试暂停状态
@@ -1171,7 +1236,7 @@ void Test_Process(void)
                     Sing_out_C(0);
                     Short_out(0);
                     FRB_out(0);
-					testflag=0;
+										testflag=0;
 //                    Uart0_Send(0xa4);
                 }
             
@@ -1456,11 +1521,11 @@ void Test_Process(void)
 			Sing_out_C(0);
 			Short_out(0);
 			FRB_out(0);
-            Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_flag=GetSystemMessage();
-            Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=dat;
+      Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_flag=GetSystemMessage();
+      Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=dat;
 			Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit=test_value.uint;
 			Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_time=Test_Value.Time;
-            Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_vot=Test_Value.Vol;
+      Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_vot=Test_Value.Vol;
 			F_Fail=TRUE;//测试失败标志
 			SetSystemStatus(SYS_STATUS_TEST_PAUSE);//系统状态-测试暂停
 			f_disp=TRUE;//更新显示测试结果
@@ -4412,7 +4477,7 @@ void Setup_config_Process(void)
                     switch(item)//第几项
                     {
                         case 0:
-                            
+                            SetSystemStatus(SYS_STATUS_SYSSET);
                             break;
                          case 1:
 

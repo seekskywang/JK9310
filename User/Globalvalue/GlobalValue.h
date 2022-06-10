@@ -286,6 +286,7 @@ extern u8 _4094_databuff[_4094NUM];
 extern char Resbuf[500];
 extern const char TestPara[][8];
 extern const char DISP_COMP[][2][15];
+extern const char SEND_COMP[][2][15];
 extern const u8 Test_IRUINT[][6];
 //========================================================
 extern uint8_t keyvalue,key_x;//°´¼üÖµ

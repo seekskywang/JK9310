@@ -117,8 +117,8 @@ const char DELAY_TIMEDISP[][2][16]=
 const char SYS_NAME_Tab[][2][32]=
 {
     {"耐压测试仪","OFF"},
-    {"Ver.01.002","Ver.01.002"},
-    {"www.JonK.com","Ver.01.002"},
+    {"Ver.01.002","Ver.01.003"},
+    {"www.JonK.com","Ver.01.003"},
     {"0519-","Ver.01.001"},
 
 };
@@ -358,6 +358,31 @@ const char DISP_COMP[][2][15]=
     {"GIF失败","GIFFAIL"},//14
 	{"待测","IDLE"}//15
 };
+
+const char SEND_COMP[][2][15]=
+{
+   {"等待测试","IDLE"},//0
+    {"测试中... ","TEST"},//1
+    {"暂停终止","ABORT"},//2
+    {"测试合格","PASS"},//3
+    {"电压上升","RAMP"},//4
+    
+    {"电压下降","DROP"},//5
+    
+    {"下限失败","LOFAIL"},//6
+    
+    {"等待","WAIT"},//7
+    {"上限失败","HIFAIL"},//8
+    {"短路失败","SHORT"},//9
+    {"失败","FAIL"},//10
+    {"OVER","OVER"},//11
+    {"电弧失败","ARCFAIL"},//12
+    {"暂停","PAUSE"},//13
+    {"GIF失败","GIFFAIL"},//14
+	{"OFL失败","OFLFAIL"},//15
+	{"开路失败","OPENFAIL"},//16
+};
+
 const char SetupConfig_Tab[][2][15]=
 {
     {"合格保持",""},

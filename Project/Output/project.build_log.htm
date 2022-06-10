@@ -27,29 +27,55 @@ Project File Date:  02/28/2022
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'E:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Open1788'
-compiling scpi-def.c...
-..\User\scpi-def.c(442): warning:  #223-D: function "Uart0_Send" declared implicitly
-      Uart0_Send(0xa1);
-..\User\scpi-def.c(452): warning:  #223-D: function "Beep_Off" declared implicitly
-                        Beep_Off();
-..\User\scpi-def.c(455): warning:  #223-D: function "V_DA_out" declared implicitly
-              V_DA_out(0);
-..\User\scpi-def.c(456): warning:  #223-D: function "Sing_out_C" declared implicitly
-              Sing_out_C(0);
-..\User\scpi-def.c(458): warning:  #223-D: function "FRB_out" declared implicitly
-              FRB_out(0);
-..\User\scpi-def.c(459): warning:  #223-D: function "Uart0_Send" declared implicitly
-              Uart0_Send(0xa0);
-..\User\scpi-def.c(747): warning:  #550-D: variable "res"  was set but never used
-          scpi_expr_result_t res;
-..\User\scpi-def.c(740): warning:  #550-D: variable "array"  was set but never used
-      scpi_channel_value_t array[MAXROW * MAXCOL]; /* array which holds values in order (2D) */
-..\User\scpi-def.c: 8 warnings, 0 errors
+compiling test.c...
+..\Libraries\Drivers\include\debug_frmwrk.h(92): warning:  #47-D: incompatible redefinition of macro "TICKS_PER_SEC"  (declared at line 13 of "..\User\key/key.h")
+  #define TICKS_PER_SEC 1000    //????????????????????100x10mS(T0)=1S
+..\User\Test\test.c(200): warning:  #177-D: variable "temp"  was declared but never referenced
+        u8 temp[4];
+..\User\Test\test.c(201): warning:  #177-D: variable "FlashID"  was declared but never referenced
+                u32 FlashID;
+..\User\Test\test.c(741): warning:  #177-D: variable "key"  was declared but never referenced
+        vu8 key;
+..\User\Test\test.c(837): warning:  #550-D: variable "Range_IR"  was set but never used
+      u8 Range_IR=0;
+..\User\Test\test.c(845): warning:  #550-D: variable "temp"  was set but never used
+        vu32 temp;
+..\User\Test\test.c(846): warning:  #177-D: variable "value"  was declared but never referenced
+      float value;
+..\User\Test\test.c(847): warning:  #177-D: variable "F_x"  was declared but never referenced
+      float F_x;
+..\User\Test\test.c(1668): warning:  #177-D: variable "pt"  was declared but never referenced
+      vu16 *pt;
+..\User\Test\test.c(1669): warning:  #177-D: variable "list"  was declared but never referenced
+        u8 list=1;//????????0  ??????1??
+..\User\Test\test.c(1670): warning:  #177-D: variable "line"  was declared but never referenced
+      u8 line=0;//??
+..\User\Test\test.c(1677): warning:  #177-D: variable "select_num"  was declared but never referenced
+      u8 select_num=0;
+..\User\Test\test.c(4287): warning:  #177-D: variable "select_num"  was declared but never referenced
+      u8 select_num=0;
+..\User\Test\test.c(4969): warning:  #177-D: variable "list"  was declared but never referenced
+        u8 list=0;//??
+..\User\Test\test.c(4971): warning:  #177-D: variable "item"  was declared but never referenced
+      u8 item=0;
+..\User\Test\test.c(6665): warning:  #188-D: enumerated type mixed with another type
+        f_disp=FALSE;//????????
+..\User\Test\test.c(6658): warning:  #177-D: variable "i"  was declared but never referenced
+        u8 i;
+..\User\Test\test.c(6659): warning:  #177-D: variable "key"  was declared but never referenced
+        u8 key;
+..\User\Test\test.c(6661): warning:  #177-D: variable "item"  was declared but never referenced
+        u8 item;
+..\User\Test\test.c(6662): warning:  #550-D: variable "time"  was set but never used
+        u16 time;//????????????
+..\User\Test\test.c(6663): warning:  #550-D: variable "f_disp"  was set but never used
+        Bool f_disp;//????????
+..\User\Test\test.c: 21 warnings, 0 errors
 linking...
-Program Size: Code=157888 RO-data=123356 RW-data=816 ZI-data=8392  
+Program Size: Code=158112 RO-data=123868 RW-data=816 ZI-data=8392  
 FromELF: creating hex file...
 After Build - User command #1: E:\Keil_v5\ARM\ARMCC\bin\fromelf.exe --bin  -o ..\update\update.bin Output\project.axf
-".\Output\project.axf" - 0 Error(s), 8 Warning(s).
+".\Output\project.axf" - 0 Error(s), 21 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -72,7 +98,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.4.0
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:04
 </pre>
 </body>
 </html>

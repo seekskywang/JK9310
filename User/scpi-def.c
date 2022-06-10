@@ -77,7 +77,7 @@ void UartRes(void)
 			sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,%.3fmA,%.1fs;",
 			i+1,
 			TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],//模式
-			DISP_COMP[Save_TestValue[i].text_flag][1],//分选结果
+			SEND_COMP[Save_TestValue[i].text_flag][1],//分选结果
 			(double)Save_TestValue[i].Text_vot/1000,//电压
 			(double)Save_TestValue[i].Text_value/1000,//电流
 			(double)Save_TestValue[i].Text_time/10);//测试时间
@@ -85,7 +85,7 @@ void UartRes(void)
 			sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,%.1fnF,%.1fs;",
 			i+1,
 			TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],//模式
-			DISP_COMP[Save_TestValue[i].text_flag][1],//分选结果
+			SEND_COMP[Save_TestValue[i].text_flag][1],//分选结果
 			(double)Save_TestValue[i].Text_vot/1000,//电压
 			(double)Save_TestValue[i].Text_value/10,//电容
 			(double)Save_TestValue[i].Text_time/10);//测试时间
@@ -93,7 +93,7 @@ void UartRes(void)
 			sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,%.3f%sΩ,%.1fs;",
 			i+1,
 			TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],//模式
-			DISP_COMP[Save_TestValue[i].text_flag][1],//分选结果
+			SEND_COMP[Save_TestValue[i].text_flag][1],//分选结果
 			(double)Save_TestValue[i].Text_vot/1000,//电压
 			(double)Save_TestValue[i].Text_value/1000,//内阻
 			IRUNIT[Save_TestValue[i].text_unit],//内阻单位
