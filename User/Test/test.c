@@ -450,7 +450,7 @@ void Idem_Process(void)
         Save_TestValue[i].Text_value=0;
         Save_TestValue[i].Text_vot=0;
         Save_TestValue[i].Text_time=0;
-		Save_TestValue[i].text_unit=0;
+			  Save_TestValue[i].text_unit=0;
     }
     keyvalue=KEY_NONE;
 	if(osgetstart == 0)
@@ -484,18 +484,18 @@ void Idem_Process(void)
 			GUI_SetColor(LCD_COLOR_TEST_BACK);
 			GUI_FillRect(0,24,380,270);
 			GUI_SetColor(GUI_WHITE);
-            if(U9001_Save_sys.U9001_save.disp)
-            {
+			if(U9001_Save_sys.U9001_save.disp)
+			{
 				pageflag = 1;//列表显示
-                Disp_Idel_list();
-                disp_TestMSG(GetSystemMessage());
-            }
-            else
-            {
-				pageflag = 0;//测量显示
-                Disp_Idel_Item();
-                Disp_Testvalue(0);   
-            }
+        Disp_Idel_list();
+        disp_TestMSG(GetSystemMessage());
+			}
+			else
+			{
+					pageflag = 0;//测量显示
+					Disp_Idel_Item();
+					Disp_Testvalue(0);   
+			}
 			
 			Disp_IdelButton();
              
@@ -507,8 +507,8 @@ void Idem_Process(void)
             SetSystemStatus(SYS_STATUS_START);
             SetSystemMessage(MSG_RAMP);
             Uart0_Send(0xa1);
-			clearstart=0;
-			osgetstart=0;
+						clearstart=0;
+						osgetstart=0;
         }
         if(READ_STOP()==0)
         {
@@ -5006,7 +5006,7 @@ void Use_SysSetProcess(void)
                 disp_all=0;
             }
             Disp_SysSet_value(line);
-			DISP_FLAG=FALSE;
+					DISP_FLAG=FALSE;
 		
 		}
 //		if(DISP_FLAG==1)

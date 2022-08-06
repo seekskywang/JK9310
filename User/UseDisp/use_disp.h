@@ -36,9 +36,9 @@
 #define	BIG_HZ_W			40
 #define MAXBUTTONNUM        5
 #define LISTVALU_RETC       90
-#define LISTVALUE1          100
+#define LISTVALUE1          100+20
 #define LISTVALUE2_RETC      276
-#define LISTVALUE2          280
+#define LISTVALUE2          280+20
 extern const char DISP_COMP[][2][15];
 typedef struct
 {

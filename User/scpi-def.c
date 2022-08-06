@@ -162,7 +162,7 @@ static scpi_result_t PageSet(scpi_t * context) {
 					U9001_Save_sys.U9001_save.disp = 0; 
 					SetSystemStatus(SYS_STATUS_IDEM);
 				break;
-				case 1:
+				case  1:
 					DISP_FLAG = TRUE;
 					U9001_Save_sys.U9001_save.disp = 1;
 					SetSystemStatus(SYS_STATUS_IDEM);		
