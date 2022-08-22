@@ -499,20 +499,20 @@ u16 Read_Ad_Ch1(void)
 //==========================================================
 void Read_Ad(void)
 {
-	vu8 i;
-	vu32 vol;
-	vu32 cur;
+//	vu8 i;
+//	vu32 vol;
+//	vu32 cur;
 
-	vol=0;
-	cur=0;
-	for(i=0;i<16;i++)
-	{
-		
-		vol+=Read_Ad_Ch1();//读取通道1的A/D值
-        cur+=Read_Ad_Ch0();//读取通道0的A/D值
-	}
-	Voltage=(u16)(vol>>3);//累加平均
-	Current=(u16)(cur>>3);//累加平均
+//	vol=0;
+//	cur=0;
+//	for(i=0;i<16;i++)
+//	{
+//		
+//		vol+=Read_Ad_Ch1();//读取通道1的A/D值
+//        cur+=Read_Ad_Ch0();//读取通道0的A/D值
+//	}
+//	Voltage=(u16)(vol>>3);//累加平均
+//	Current=(u16)(cur>>3);//累加平均
 }
 //==========================================================
 //函数名称：Ad_Filter
