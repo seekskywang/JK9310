@@ -2974,7 +2974,7 @@ void DispSYSConfig_value(void)
     GUI_SetTextMode(GUI_TEXTMODE_TRANS);
     GUI_SetColor(GUI_WHITE);
     
-    GUI_DispStringAt("JK9310",LISTVALUE1,FIRSTLINE+1*SPACE1);//合格保持时间
+    GUI_DispStringAt("JK9320",LISTVALUE1,FIRSTLINE+1*SPACE1);//合格保持时间
  
     GUI_DispStringAt(SYS_NAME_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+2*SPACE1);//合格保持时间  delay_time
     
@@ -4262,9 +4262,9 @@ const u32 Set_ACW_Compvalue[][2]=
 {
     {0,4},
     {50,5000},
-    {1,99999},
+    {1,20000},
     {3,9999},
-    {0,99999},
+    {0,20000},
     {0,9999},
     {0,150},
     {0,9999},
