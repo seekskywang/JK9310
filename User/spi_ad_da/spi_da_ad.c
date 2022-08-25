@@ -421,32 +421,33 @@ u16 Read_MCP3202(u16 ch)
 		
 
 	AD_CS(0);
-	Delay(2);
-    Set_Cpld_clk(1);	//clk=0
-    Delay(2);
+//	Delay(2);
+  Set_Cpld_clk(1);	//clk=0
+	Delay(15);
+//    Delay(2);
 	//发送5位通道控制字
 	dat=ch;//通道控制字
 	i=16;
 	while(i--)
 	{
         
-        GPIO_SetValue(2,1<<26);
+     GPIO_SetValue(2,1<<26);
 		if(dat&0x8000)
 			Set_Spi_out(1);
 		else
 			Set_Spi_out(0);
         
-        if(GPIO_ReadValue(2)&(1<<26))
+    if(GPIO_ReadValue(2)&(1<<26))
 			adz+=1;
-        Delay(2);
+    Delay(1);
 		Set_Cpld_clk(0);	//clk=0
-        Delay(2);
+    Delay(1);
 
 		Set_Cpld_clk(1);	//clk=1
 		dat<<=1;
-        adz<<=1;
+    adz<<=1;
 	}
-    Delay(2);
+//    Delay(2);
 	//读取低8位AD
 //	adz=0;
 //	i=12;
@@ -467,7 +468,8 @@ u16 Read_MCP3202(u16 ch)
 //		Set_Cpld_clk(1);//clk=1
 //	}
 	AD_CS(1);	//cs=1
-    adz&=0x0fff;
+	Delay(15);
+  adz&=0x0fff;
 	
 	return (adz);
 }
@@ -499,20 +501,20 @@ u16 Read_Ad_Ch1(void)
 //==========================================================
 void Read_Ad(void)
 {
-//	vu8 i;
-//	vu32 vol;
-//	vu32 cur;
+	vu8 i;
+	vu32 vol;
+	vu32 cur;
 
-//	vol=0;
-//	cur=0;
-//	for(i=0;i<16;i++)
-//	{
-//		
-//		vol+=Read_Ad_Ch1();//读取通道1的A/D值
-//        cur+=Read_Ad_Ch0();//读取通道0的A/D值
-//	}
-//	Voltage=(u16)(vol>>3);//累加平均
-//	Current=(u16)(cur>>3);//累加平均
+	vol=0;
+	cur=0;
+	for(i=0;i<16;i++)
+	{
+		
+		vol+=Read_Ad_Ch1();//读取通道1的A/D值
+        cur+=Read_Ad_Ch0();//读取通道0的A/D值
+	}
+	Voltage=(u16)(vol>>3);//累加平均
+	Current=(u16)(cur>>3);//累加平均
 }
 //==========================================================
 //函数名称：Ad_Filter

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Output\project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Output\project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Aug 20 11:25:13 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Aug 22 08:23:43 2022
 <BR><P>
 <H3>Maximum Stack Usage =        644 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -2733,8 +2733,10 @@ Global Symbols
 <LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Range_Control
 </UL>
 
-<P><STRONG><a name="[242]"></a>Read_MCP3202</STRONG> (Thumb, 152 bytes, Stack size 24 bytes, spi_da_ad.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[184]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
+<P><STRONG><a name="[242]"></a>Read_MCP3202</STRONG> (Thumb, 146 bytes, Stack size 24 bytes, spi_da_ad.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = Read_MCP3202 &rArr; Set_Spi_out &rArr; GPIO_ClearValue
+</UL>
+<BR>[Calls]<UL><LI><a href="#[184]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
 <LI><a href="#[23f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_Spi_out
 <LI><a href="#[240]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_Cpld_clk
 <LI><a href="#[243]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AD_CS
@@ -2745,16 +2747,29 @@ Global Symbols
 <LI><a href="#[244]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_Ad_Ch0
 </UL>
 
-<P><STRONG><a name="[244]"></a>Read_Ad_Ch0</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, spi_da_ad.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[242]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_MCP3202
+<P><STRONG><a name="[244]"></a>Read_Ad_Ch0</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, spi_da_ad.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = Read_Ad_Ch0 &rArr; Read_MCP3202 &rArr; Set_Spi_out &rArr; GPIO_ClearValue
+</UL>
+<BR>[Calls]<UL><LI><a href="#[242]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_MCP3202
+</UL>
+<BR>[Called By]<UL><LI><a href="#[203]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_Ad
 </UL>
 
-<P><STRONG><a name="[245]"></a>Read_Ad_Ch1</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, spi_da_ad.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[242]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_MCP3202
+<P><STRONG><a name="[245]"></a>Read_Ad_Ch1</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, spi_da_ad.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = Read_Ad_Ch1 &rArr; Read_MCP3202 &rArr; Set_Spi_out &rArr; GPIO_ClearValue
+</UL>
+<BR>[Calls]<UL><LI><a href="#[242]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_MCP3202
+</UL>
+<BR>[Called By]<UL><LI><a href="#[203]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_Ad
 </UL>
 
-<P><STRONG><a name="[203]"></a>Read_Ad</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, spi_da_ad.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Test_Process
+<P><STRONG><a name="[203]"></a>Read_Ad</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, spi_da_ad.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = Read_Ad &rArr; Read_Ad_Ch1 &rArr; Read_MCP3202 &rArr; Set_Spi_out &rArr; GPIO_ClearValue
+</UL>
+<BR>[Calls]<UL><LI><a href="#[245]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_Ad_Ch1
+<LI><a href="#[244]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_Ad_Ch0
+</UL>
+<BR>[Called By]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Test_Process
 <LI><a href="#[253]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CalTest_Process
 </UL>
 
