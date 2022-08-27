@@ -465,7 +465,9 @@ void Idem_Process(void)
 	
     Test_mid.set_item=U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter;//当前参数
 	pageflag = 0;//测量显示
-	 Uart0_Send(0x02);
+	Uart0_Send(0x02);//关灯
+	PLC_OutOff();//关PLC启动
+	PLC_CompOff();//关PLC分选
 	while(GetSystemStatus()==SYS_STATUS_IDEM)
 	{
         Disp_Time( );
@@ -507,6 +509,7 @@ void Idem_Process(void)
             SetSystemStatus(SYS_STATUS_START);
             SetSystemMessage(MSG_RAMP);
             Uart0_Send(0xa1);
+						PLC_OutProg();//开PLC启动
 						clearstart=0;
 						osgetstart=0;
         }
@@ -791,6 +794,7 @@ void Finsh_Process(void)
             SetSystemStatus(SYS_STATUS_START);
             SetSystemMessage(MSG_TEST);
             Uart0_Send(0xa1);
+						PLC_OutProg();//开PLC启动
         }
         if(READ_STOP()==0)
         {
@@ -1124,6 +1128,7 @@ void Test_Process(void)
                             
                     
             SetSystemMessage(MSG_PASS);
+						PLC_OutPass();
             Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_flag=GetSystemMessage();
 						if(Test_mid.set_item==IR_SETUP)
             {
@@ -1168,7 +1173,7 @@ void Test_Process(void)
                             Sing_out_C(0);
                             Short_out(0);
                             FRB_out(0);
-							testflag=0;
+														testflag=0;
 //                            Uart0_Send(0xa4);
                         }
 					}
@@ -1216,6 +1221,7 @@ void Test_Process(void)
                 {
                     SetSystemStatus(SYS_STATUS_TEST_PAUSE);//测试暂停状态
                     SetSystemMessage(MSG_PASS);//系统信息-测试合格
+										PLC_OutPass();
                     f_msgdisp=TRUE;//消息显示标志
                     V_DA_out(0);
                     Sing_out_C(0);
@@ -1231,6 +1237,7 @@ void Test_Process(void)
 //                    Test_Value.Vol=0;
                     SetSystemStatus(SYS_STATUS_TEST_PAUSE);//测试暂停状态
                     SetSystemMessage(MSG_PASS);//系统信息-测试合格
+										PLC_OutPass();
                     f_msgdisp=TRUE;//消息显示标志
                     V_DA_out(0);
                     Sing_out_C(0);
@@ -1527,6 +1534,7 @@ void Test_Process(void)
 			Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_time=Test_Value.Time;
       Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_vot=Test_Value.Vol;
 			F_Fail=TRUE;//测试失败标志
+			PLC_OutFail();
 			SetSystemStatus(SYS_STATUS_TEST_PAUSE);//系统状态-测试暂停
 			f_disp=TRUE;//更新显示测试结果
 			f_msgdisp=TRUE;//消息显示标志
@@ -6621,7 +6629,7 @@ void Start_Process(void)
         FRB_out(0);
 		//状态控制
 
-		PLC_OutProg();//开PLC启动
+//		PLC_OutProg();//开PLC启动
 
 		//系统状态更新
         if(U9001_Save_sys.U9001_save.U9001_Setup[1].parameter!=OS)
@@ -6930,6 +6938,7 @@ void TestPause_Process(void)
                 Disp_Idel_Item();
             }
             Uart0_Send(0xa1);
+						PLC_OutProg();//开PLC启动
 		}
         if(READ_STOP()==0)
         {

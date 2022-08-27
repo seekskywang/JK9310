@@ -114,14 +114,22 @@ const char DELAY_TIMEDISP[][2][16]=
     {"    "," "},
 
 };
+const char VERSION_Tab[][2][32]=
+{
+    {"JK9310","JK9310"},
+    {"JK9320","JK9320"},
+
+};
+
 const char SYS_NAME_Tab[][2][32]=
 {
     {"耐压测试仪","HIPOT TESTER"},
-    {"Ver.1.005","Ver.1.005"},
+    {"Ver.1.006","Ver.1.006"},
     {"www.JK17.com","www.JK17.com"},
     {"0519-85563477","0519-85563477"},
 
 };
+//1.006修正PLC
 const char SYS_SetTime_Tab[][2][15]=
 {
 	{"日期：","OFF"},
@@ -2974,7 +2982,7 @@ void DispSYSConfig_value(void)
     GUI_SetTextMode(GUI_TEXTMODE_TRANS);
     GUI_SetColor(GUI_WHITE);
     
-    GUI_DispStringAt("JK9320",LISTVALUE1,FIRSTLINE+1*SPACE1);//合格保持时间
+    GUI_DispStringAt(VERSION_Tab[SOFTWARE_VERSION-1][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+1*SPACE1);//合格保持时间
  
     GUI_DispStringAt(SYS_NAME_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+2*SPACE1);//合格保持时间  delay_time
     
@@ -4258,6 +4266,20 @@ const u32 Set_DateFileCompvalue[][2]=
     {0,3500},
 
 };
+#if (SOFTWARE_VERSION==0x01)
+const u32 Set_ACW_Compvalue[][2]=
+{
+    {0,4},
+    {50,5000},
+    {1,12000},
+    {3,9999},
+    {0,12000},
+    {0,9999},
+    {0,150},
+    {0,9999},
+    {0,3500},
+};
+#elif (SOFTWARE_VERSION==0x02)
 const u32 Set_ACW_Compvalue[][2]=
 {
     {0,4},
@@ -4270,6 +4292,9 @@ const u32 Set_ACW_Compvalue[][2]=
     {0,9999},
     {0,3500},
 };
+#endif
+
+
 const u32 Set_DCW_Compvalue[][2]=
 {
     {0,4},
@@ -6071,6 +6096,7 @@ void Test_Init(void)
     Sing_out_C(1);//输出正弦波频率
 	
 	Uart0_Send(0x02);//关灯
+	PLC_CompOff();//关PLC分选
 	Beep_Off();//关蜂鸣器
 //	//声光状态控制
 //	Led_Pass_Off();//关合格灯

@@ -300,3 +300,17 @@ void PLC_OutProg(void)
     EMC_High&=PLC_PROG_L;
     Write_U212_574(EMC_High);
 }
+
+void PLC_OutOff(void)
+{
+	EMC_High|=(PLC_PROG_H);
+//    EMC_High&=PLC_PROG_L;
+  Write_U212_574(EMC_High);
+}
+
+void PLC_CompOff(void)
+{
+	EMC_High|=(PLC_FAIL_H|PLC_PASS_H);
+//    EMC_High&=PLC_PROG_L;
+  Write_U212_574(EMC_High);
+}

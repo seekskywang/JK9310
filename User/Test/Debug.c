@@ -860,6 +860,7 @@ void CalTest_Process(void)
 //	LcdAddr.x=TITLE_ADDR_X;	LcdAddr.y=TITLE_ADDR_Y;
 	GUI_DispStringAt("校准中..",40,271-32);//显示测试状态
     Uart0_Send(0xa1);
+		PLC_OutProg();//开PLC启动
 //	//显示测试参数
 //	LcdAddr.x=TITLE_ADDR_X+14; LcdAddr.y=TITLE_ADDR_Y;
 	GUI_DispStringAt((char*)ItemTab[set_item],170,2);//显示参数

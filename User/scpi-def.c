@@ -440,6 +440,7 @@ static scpi_result_t StartT(scpi_t * context) {
     SetSystemStatus(SYS_STATUS_START);
     SetSystemMessage(MSG_RAMP);
     Uart0_Send(0xa1);
+		PLC_OutProg();//¿ªPLCÆô¶¯
 		SCPI_ResultCharacters(context, Respond[0],2);
     return SCPI_RES_OK;
 }

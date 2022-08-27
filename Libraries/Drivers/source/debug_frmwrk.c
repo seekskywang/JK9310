@@ -1231,6 +1231,7 @@ static uint8_t MODS_WriteRegValue(uint16_t reg_addr, uint16_t reg_value)
 				SetSystemStatus(SYS_STATUS_START);
 				SetSystemMessage(MSG_RAMP);
 				Uart0_Send(0xa1);
+				PLC_OutProg();//¿ªPLCÆô¶¯
 			}
 			break;
 

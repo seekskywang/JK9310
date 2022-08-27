@@ -21,6 +21,8 @@ void CD4094_CS(u8 date);//0 选中  1 不选中
 void PLC_OutPass(void);
 void PLC_OutFail(void);
 void PLC_OutProg(void);
+void PLC_OutOff(void);
+void PLC_CompOff(void);
 void Sing_out_C(u8 date);//1 频率输出  0 频率不输出
 void Key_Start_Stop_GPIO(void);
 
