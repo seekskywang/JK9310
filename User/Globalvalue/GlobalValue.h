@@ -26,8 +26,8 @@ typedef unsigned           int vu32;
 
 #define FFTLENTH 16
 //==========================================================
-//软件版本：01-9310   02-9320
-#define SOFTWARE_VERSION		(0x01)
+//软件版本：01-9310 02-9320 03-9320A
+#define SOFTWARE_VERSION		(0x03)
 //#define SOFTWARE_VERSION		(0x02)
 //==========================================================
 //默认出厂编号(0)

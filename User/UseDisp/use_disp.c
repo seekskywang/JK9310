@@ -63,7 +63,7 @@ const char SYS_Set_Tab[][2][16]=
 const char SYS_Disp_Tab[][2][16]=
 {
 		{"型号    ：","MODEL  :"},
-    {"名称    ：","NAME   :"},
+//    {"名称    ：","NAME   :"},
     {"序列号  ：","SN     :"},
     {"固件版本：","VER    :"},
 		{"公司网址：","WEBSITE:"},
@@ -118,12 +118,12 @@ const char VERSION_Tab[][2][32]=
 {
     {"JK9310","JK9310"},
     {"JK9320","JK9320"},
-
+		{"JK9320A","JK9320A"},
 };
 
 const char SYS_NAME_Tab[][2][32]=
 {
-    {"耐压测试仪","HIPOT TESTER"},
+//    {"耐压测试仪","HIPOT TESTER"},
     {"Ver.1.006","Ver.1.006"},
     {"www.JK17.com","www.JK17.com"},
     {"0519-85563477","0519-85563477"},
@@ -156,6 +156,8 @@ const char Idel_Tab[][11][2][14]=
 	{{"STEP  :","STEP  :"},{"FUNC  :","FUNC  :"},{"MESSAGE  :","MESSAGE  :"},{"UNSIGNAL  :","UNSIGNAL  :"},{"TIME  :","TIME  :"}}//PA
 
 };
+
+#if (SOFTWARE_VERSION==0x01 || SOFTWARE_VERSION==0x02)
 const char SetupACButton_Tab[][2][5][14]=
 {
     {{"测量设置","测量配置","系统设置","     ","        ",},{"DISP","CONFIG","SYSSET","     ","   "}},
@@ -173,18 +175,75 @@ const char SetupACButton_Tab[][2][5][14]=
     {{"   ↑+ ","   ↓ - ","       ","          ","关闭 "},{"   ↑+ ","   ↓ - ","       ","     ","OFF "}},
     
     {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","关闭 "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","OFF  "}},
-    
-    
-    
-    
-    
-    
-    
-
-    
-
 
 };
+
+const char SetupOSButton_Tab[][2][5][14]=
+{
+    {{"测量设置","测量配置","系统设置","   ","    "},{"DISP","CONFIG","SYSSET","     ","   "}},
+    {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ADD  ","  DEL  ","  COPY  ","  PREV  ","  NEXT  "}},
+    {{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "},{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "}},
+    {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
+    {{"  清除  ","  获取  ","       ","          ","        "},{"   CLEAR   "," GET ","    ","    ","        "}},
+    {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
+   
+};
+
+const char SetupPAButton_Tab[][2][5][14]=
+{
+	{{"测量设置","测量配置","系统设置","   ","    "},{"DISP","CONFIG","SYSSET","     ","   "}},
+    {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ADD  ","  DEL  ","  COPY  ","  PREV  ","  NEXT  "}},
+    {{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "},{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "}},
+    {{"      ","      ","       ","        ","        "},{"    ","     ","      ","      ","        "}},
+    {{"  关闭  ","  打开  ","       ","          ","        "},{"   OFF   "," ON ","    ","    ","        "}},
+    {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","  连续  "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","CONST"}},
+   
+};
+#elif (SOFTWARE_VERSION==0x03)
+
+const char SetupACButton_Tab[][2][5][14]=
+{
+    {{"测量设置","测量配置","系统设置","     ","        ",},{"DISP","CONFIG","SYSSET","     ","   "}},
+    {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ADD  ","  DEL  ","  COPY  ","  PREV  ","  NEXT  "}},
+    {{"   AC   ","        ","        ","   OS   ","   PA   "},{"   AC   ","        ","        ","   OS   ","   PA   "}},
+    {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","      "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
+    {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","      "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
+    
+    {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","连续"},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","CONST"}},
+    
+    
+    {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","关闭 "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","OFF "}},
+    
+     {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","关闭 "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","OFF "}},
+    {{"   ↑+ ","   ↓ - ","       ","          ","关闭 "},{"   ↑+ ","   ↓ - ","       ","     ","OFF "}},
+    
+    {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","关闭 "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","OFF  "}},
+
+};
+
+const char SetupOSButton_Tab[][2][5][14]=
+{
+    {{"测量设置","测量配置","系统设置","   ","    "},{"DISP","CONFIG","SYSSET","     ","   "}},
+    {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ADD  ","  DEL  ","  COPY  ","  PREV  ","  NEXT  "}},
+    {{"   AC   ","        ","        ","   OS   ","   PA   "},{"   AC   ","        ","        ","   OS   ","   PA   "}},
+    {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
+    {{"  清除  ","  获取  ","       ","          ","        "},{"   CLEAR   "," GET ","    ","    ","        "}},
+    {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
+   
+};
+
+const char SetupPAButton_Tab[][2][5][14]=
+{
+	{{"测量设置","测量配置","系统设置","   ","    "},{"DISP","CONFIG","SYSSET","     ","   "}},
+    {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ADD  ","  DEL  ","  COPY  ","  PREV  ","  NEXT  "}},
+    {{"   AC   ","        ","        ","   OS   ","   PA   "},{"   AC   ","        ","        ","   OS   ","   PA   "}},
+    {{"      ","      ","       ","        ","        "},{"    ","     ","      ","      ","        "}},
+    {{"  关闭  ","  打开  ","       ","          ","        "},{"   OFF   "," ON ","    ","    ","        "}},
+    {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","  连续  "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","CONST"}},
+   
+};
+
+#endif
 const char SysSetButton_Tab[][2][5][14]=
 {
     {{"系统设置","系统信息","        ","        ","        ",},{"SYSSET","SYSINFO","      ","      ","      "}},
@@ -260,26 +319,7 @@ const char SetupConfig_Button_Tab[][2][5][14]=
     {{"   ↑+ ","   ↓ - ","    ","          ","        "},{"   ↑+ ","   ↓ - ","       ","          ","     "}},
  
 };
-const char SetupOSButton_Tab[][2][5][14]=
-{
-    {{"测量设置","测量配置","系统设置","   ","    "},{"DISP","CONFIG","SYSSET","     ","   "}},
-    {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ADD  ","  DEL  ","  COPY  ","  PREV  ","  NEXT  "}},
-    {{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "},{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "}},
-    {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
-    {{"  清除  ","  获取  ","       ","          ","        "},{"   CLEAR   "," GET ","    ","    ","        "}},
-    {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
-   
-};
-const char SetupPAButton_Tab[][2][5][14]=
-{
-	{{"测量设置","测量配置","系统设置","   ","    "},{"DISP","CONFIG","SYSSET","     ","   "}},
-    {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ADD  ","  DEL  ","  COPY  ","  PREV  ","  NEXT  "}},
-    {{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "},{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "}},
-    {{"      ","      ","       ","        ","        "},{"    ","     ","      ","      ","        "}},
-    {{"  关闭  ","  打开  ","       ","          ","        "},{"   OFF   "," ON ","    ","    ","        "}},
-    {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","  连续  "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","CONST"}},
-   
-};
+
 
 const char Sys_SetValue[][2][5][14]=
 {
@@ -2990,12 +3030,12 @@ void DispSYSConfig_value(void)
 //    strcat(DispBuf,"s");
 //    GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+3*SPACE1);//合格保持时间  delay_time
     
-    GUI_DispStringAt(SYS_NAME_Tab[1][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+4*SPACE1);//下降时间时间 
+    GUI_DispStringAt(SYS_NAME_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+3*SPACE1);//下降时间时间 
 
  
     
-     GUI_DispStringAt(SYS_NAME_Tab[2][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+5*SPACE1);
-    GUI_DispStringAt(SYS_NAME_Tab[3][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+6*SPACE1);
+     GUI_DispStringAt(SYS_NAME_Tab[1][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+4*SPACE1);
+    GUI_DispStringAt(SYS_NAME_Tab[2][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+5*SPACE1);
 
     dispSYSButtonvalue();
     //增加最下面的提示
@@ -4279,7 +4319,7 @@ const u32 Set_ACW_Compvalue[][2]=
     {0,9999},
     {0,3500},
 };
-#elif (SOFTWARE_VERSION==0x02)
+#elif (SOFTWARE_VERSION==0x02 || SOFTWARE_VERSION==0x03)
 const u32 Set_ACW_Compvalue[][2]=
 {
     {0,4},
