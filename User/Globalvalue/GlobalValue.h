@@ -775,6 +775,7 @@ typedef struct
     U9001_SYS_Typedef U9001_SYS;
     U9001_Testconfg_Typedef U9001_Testconfg;
 	U9001_save_Typedef U9001_save;
+	u8 jkflag;
 //    U9001_Calibrate_TypeDef U9001_Calibrate;
 }U9001_Save_sysTypedef;
 extern U9001_Save_sysTypedef U9001_Save_sys;

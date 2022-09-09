@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Output\project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Output\project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Aug 27 11:21:49 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Sep 08 14:47:11 2022
 <BR><P>
 <H3>Maximum Stack Usage =        644 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1173,7 +1173,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DispSYSConfig_value
 </UL>
 
-<P><STRONG><a name="[15f]"></a>DispSYSConfig_value</STRONG> (Thumb, 116 bytes, Stack size 8 bytes, use_disp.o(.text))
+<P><STRONG><a name="[15f]"></a>DispSYSConfig_value</STRONG> (Thumb, 126 bytes, Stack size 8 bytes, use_disp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = DispSYSConfig_value &rArr; dispSYSButtonvalue &rArr; Disp_Fastbutton &rArr; GUI_DrawGradientRoundedV &rArr; _DrawGradientRounded &rArr; GUI_GetColor &rArr; GUI_Lock &rArr; GUI_DEVICE_UnlinkTaskDevices
 </UL>
 <BR>[Calls]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SetTextMode
@@ -1202,7 +1202,7 @@ Global Symbols
 <LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
 
-<P><STRONG><a name="[164]"></a>dispSYSSetButtonvalue</STRONG> (Thumb, 226 bytes, Stack size 24 bytes, use_disp.o(.text))
+<P><STRONG><a name="[164]"></a>dispSYSSetButtonvalue</STRONG> (Thumb, 228 bytes, Stack size 24 bytes, use_disp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = dispSYSSetButtonvalue &rArr; Disp_Fastbutton &rArr; GUI_DrawGradientRoundedV &rArr; _DrawGradientRounded &rArr; GUI_GetColor &rArr; GUI_Lock &rArr; GUI_DEVICE_UnlinkTaskDevices
 </UL>
 <BR>[Calls]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SetTextMode
@@ -1427,6 +1427,7 @@ Global Symbols
 <LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Setup_config_Process
 <LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Setup_Process
 <LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Idem_Process
+<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Debug_Process
 <LI><a href="#[227]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Test_cleardata
 <LI><a href="#[221]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Main_Read
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSMode
@@ -1472,7 +1473,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Power_Process
 </UL>
 
-<P><STRONG><a name="[1f2]"></a>SetDate_Comp</STRONG> (Thumb, 656 bytes, Stack size 12 bytes, use_disp.o(.text))
+<P><STRONG><a name="[1f2]"></a>SetDate_Comp</STRONG> (Thumb, 674 bytes, Stack size 12 bytes, use_disp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = SetDate_Comp
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Use_SysSetProcess
@@ -1548,7 +1549,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Input_Num
 </UL>
 
-<P><STRONG><a name="[1a4]"></a>Input_Num</STRONG> (Thumb, 1078 bytes, Stack size 72 bytes, use_disp.o(.text), UNUSED)
+<P><STRONG><a name="[1a4]"></a>Input_Num</STRONG> (Thumb, 1068 bytes, Stack size 72 bytes, use_disp.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[197]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Read_WithTimeOut
 <LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disp_Numtouch
 <LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Test_Set_Item
@@ -1558,7 +1559,7 @@ Global Symbols
 <LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_Clear
 </UL>
 
-<P><STRONG><a name="[1a6]"></a>Disp_open</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, use_disp.o(.text), UNUSED)
+<P><STRONG><a name="[1a6]"></a>Disp_open</STRONG> (Thumb, 84 bytes, Stack size 8 bytes, use_disp.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_DrawRect
 </UL>
 
@@ -1568,7 +1569,7 @@ Global Symbols
 <LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Abroat_Process
 </UL>
 
-<P><STRONG><a name="[1a7]"></a>Disp_IdelButton</STRONG> (Thumb, 152 bytes, Stack size 16 bytes, use_disp.o(.text))
+<P><STRONG><a name="[1a7]"></a>Disp_IdelButton</STRONG> (Thumb, 128 bytes, Stack size 16 bytes, use_disp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = Disp_IdelButton &rArr; GUI_SetTextMode &rArr; GUI_Lock &rArr; GUI_DEVICE_UnlinkTaskDevices
 </UL>
 <BR>[Calls]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SetTextMode
@@ -1691,7 +1692,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Test_Process
 </UL>
 
-<P><STRONG><a name="[1bc]"></a>InputNum</STRONG> (Thumb, 348 bytes, Stack size 32 bytes, use_disp.o(.text))
+<P><STRONG><a name="[1bc]"></a>InputNum</STRONG> (Thumb, 346 bytes, Stack size 32 bytes, use_disp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = InputNum &rArr; GUI_DrawGradientRoundedV &rArr; _DrawGradientRounded &rArr; GUI_GetColor &rArr; GUI_Lock &rArr; GUI_DEVICE_UnlinkTaskDevices
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SetPenSize
@@ -2070,9 +2071,9 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[197]"></a>Key_Read_WithTimeOut</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, key.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Read
-<LI><a href="#[1e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSoftTimer
+<BR><BR>[Calls]<UL><LI><a href="#[1e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSoftTimer
 <LI><a href="#[1e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetSoftTimerOut
+<LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Read
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Input_Num
 <LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Number_Setup
@@ -2186,14 +2187,14 @@ Global Symbols
 <P><STRONG><a name="[fa]"></a>Abroat_Process</STRONG> (Thumb, 216 bytes, Stack size 8 bytes, test.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = Abroat_Process &rArr; ARC_out &rArr; Out_4094 &rArr; Set_Spi_out &rArr; GPIO_SetValue
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Read
-<LI><a href="#[1e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_Key
+<BR>[Calls]<UL><LI><a href="#[1e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_Key
 <LI><a href="#[205]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Power_Off_led
 <LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Beep
 <LI><a href="#[1af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ARC_out
 <LI><a href="#[202]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Time
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_big_HZ
 <LI><a href="#[203]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadValue
+<LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Read
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -2805,10 +2806,10 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[24b]"></a>Write_U211_574</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, cpld.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[24c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPLD_CS
-<LI><a href="#[242]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DA_CS
+<BR><BR>[Called By]<UL><LI><a href="#[242]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DA_CS
 <LI><a href="#[245]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CD4094_CS
 <LI><a href="#[247]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AD_CS
+<LI><a href="#[24c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPLD_CS
 </UL>
 
 <P><STRONG><a name="[247]"></a>AD_CS</STRONG> (Thumb, 42 bytes, Stack size 4 bytes, cpld.o(.text))
@@ -2841,12 +2842,12 @@ Global Symbols
 <P><STRONG><a name="[1ff]"></a>FMC_Int</STRONG> (Thumb, 104 bytes, Stack size 8 bytes, cpld.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = FMC_Int &rArr; EMC_StaMemConfigPB
 </UL>
-<BR>[Calls]<UL><LI><a href="#[24c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPLD_CS
-<LI><a href="#[242]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DA_CS
+<BR>[Calls]<UL><LI><a href="#[242]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DA_CS
 <LI><a href="#[247]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AD_CS
 <LI><a href="#[24e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EMC_StaMemConfigPB
 <LI><a href="#[24d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EMC_StaMemConfigMW
 <LI><a href="#[24f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EMC_SetStaMemoryParameter
+<LI><a href="#[24c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPLD_CS
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Power_Process
 </UL>
@@ -2895,9 +2896,9 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = Write_Cpld &rArr; Set_Spi_out &rArr; GPIO_SetValue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delayMs
-<LI><a href="#[24c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPLD_CS
 <LI><a href="#[243]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_Spi_out
 <LI><a href="#[244]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_Cpld_clk
+<LI><a href="#[24c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPLD_CS
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sing_out_C
 <LI><a href="#[1b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sin_out
@@ -3095,7 +3096,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Debug_Process
 </UL>
 
-<P><STRONG><a name="[f5]"></a>Debug_Process</STRONG> (Thumb, 460 bytes, Stack size 16 bytes, debug.o(.text))
+<P><STRONG><a name="[f5]"></a>Debug_Process</STRONG> (Thumb, 498 bytes, Stack size 16 bytes, debug.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 376<LI>Call Chain = Debug_Process &rArr; Acw_Calibrate &rArr; CalTest_Process &rArr; dispSetupButtonvalue &rArr; Disp_Fastbutton &rArr; GUI_DrawGradientRoundedV &rArr; _DrawGradientRounded &rArr; GUI_GetColor &rArr; GUI_Lock &rArr; GUI_DEVICE_UnlinkTaskDevices
 </UL>
 <BR>[Calls]<UL><LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SetFont
@@ -3105,6 +3106,7 @@ Global Symbols
 <LI><a href="#[1b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GFI_out
 <LI><a href="#[1af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ARC_out
 <LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Short_out
+<LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Savetoeeprom
 <LI><a href="#[1fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_Clear
 <LI><a href="#[258]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Acw_Calibrate
 <LI><a href="#[257]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Dcw_Calibrate

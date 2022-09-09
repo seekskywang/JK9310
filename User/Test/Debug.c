@@ -142,8 +142,18 @@ void Debug_Process(void)
                 case Key_RIGHT:
                 break;
                 case Key_UP:
+									
                 break;
-
+								case Key_DOWN:
+								{
+									if(U9001_Save_sys.jkflag==0)
+									{
+										U9001_Save_sys.jkflag=1;
+									}else if(U9001_Save_sys.jkflag==1){
+										U9001_Save_sys.jkflag=0;
+									}
+									Savetoeeprom();
+								}break;
                 
                 default:
                     break;

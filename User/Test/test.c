@@ -2368,10 +2368,13 @@ void Setup_Process(void)
                                 }
                                 break;
                             case 2:
-//																DISP_FLAG=TRUE;
-//                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter=1;
-//                                SetDate_Comp();
-//                                disp_all=1;
+																if(SOFTWARE_VERSION != 0x03)
+																{
+																	DISP_FLAG=TRUE;
+																	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter=1;
+																	SetDate_Comp();
+																	disp_all=1;
+																}
                                 break;
                             case 3:
                                  if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
@@ -2922,10 +2925,13 @@ void Setup_Process(void)
                                 
                                 break;
                             case 2:
-//                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter=2;
-//								SetDate_Comp();
-//                                disp_all=1;
-//								DISP_FLAG=TRUE;
+															if(SOFTWARE_VERSION != 0x03)
+																{
+																	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter=2;
+																	SetDate_Comp();
+																	disp_all=1;
+																	DISP_FLAG=TRUE;
+																}
                                 break;
                             case 3:
                                  if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)

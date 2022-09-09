@@ -121,6 +121,13 @@ const char VERSION_Tab[][2][32]=
 		{"JK9320A","JK9320A"},
 };
 
+const char VERSION_Tab1[][2][32]=
+{
+    {"9310","9310"},
+    {"9320","9320"},
+		{"9320A","9320A"},
+};
+
 const char SYS_NAME_Tab[][2][32]=
 {
 //    {"耐压测试仪","HIPOT TESTER"},
@@ -3021,10 +3028,15 @@ void DispSYSConfig_value(void)
 
     GUI_SetTextMode(GUI_TEXTMODE_TRANS);
     GUI_SetColor(GUI_WHITE);
-    
-    GUI_DispStringAt(VERSION_Tab[SOFTWARE_VERSION-1][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+1*SPACE1);//合格保持时间
+    if(U9001_Save_sys.jkflag == 0)
+		{
+			GUI_DispStringAt(VERSION_Tab1[SOFTWARE_VERSION-1][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+1*SPACE1);
+		}else{
+			GUI_DispStringAt(VERSION_Tab[SOFTWARE_VERSION-1][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+1*SPACE1);
+			GUI_DispStringAt(SYS_NAME_Tab[1][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+4*SPACE1);
+			GUI_DispStringAt(SYS_NAME_Tab[2][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+5*SPACE1);
+		}
  
-    GUI_DispStringAt(SYS_NAME_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+2*SPACE1);//合格保持时间  delay_time
     
 //    Hex_Format(U9001_save_sys.U9001_Testconfg.delay_time,1,3,FALSE);
 //    strcat(DispBuf,"s");
@@ -3034,8 +3046,8 @@ void DispSYSConfig_value(void)
 
  
     
-     GUI_DispStringAt(SYS_NAME_Tab[1][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+4*SPACE1);
-    GUI_DispStringAt(SYS_NAME_Tab[2][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+5*SPACE1);
+     
+    
 
     dispSYSButtonvalue();
     //增加最下面的提示
@@ -4394,6 +4406,10 @@ void SetDate_Comp(void)
 {
    u8 i,j;
     u32 *pt;
+		if(U9001_Save_sys.jkflag > 1)
+		{
+			U9001_Save_sys.jkflag=0;
+		}
     if(U9001_Save_sys.U9001_save.all_step>MAX_TEXT_STEP)
         U9001_Save_sys.U9001_save.all_step=1;
     if(U9001_Save_sys.U9001_save.current_step>U9001_Save_sys.U9001_save.all_step || U9001_Save_sys.U9001_save.current_step==0)
