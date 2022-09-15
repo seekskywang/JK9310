@@ -27,7 +27,7 @@ typedef unsigned           int vu32;
 #define FFTLENTH 16
 //==========================================================
 //软件版本：01-9310 02-9320 03-9320A
-#define SOFTWARE_VERSION		(0x03)
+#define SOFTWARE_VERSION		U9001_Save_sys.version
 //#define SOFTWARE_VERSION		(0x02)
 //==========================================================
 //默认出厂编号(0)
@@ -147,7 +147,7 @@ typedef unsigned           int vu32;
 //#define DCW_CURRENT_MAX		(2000)
 #define ACW_CURRENT_MAX		(3000)
 #define DCW_CURRENT_MAX		(3000)
-#define IR_RESISTANCE_MAX	(50000)
+#define IR_RESISTANCE_MAX	(250000)
 #define GND_RESISTANCE_MAX	(310)
 //测试值溢出
 #define TEST_VALUE_OVER		(65535)
@@ -776,6 +776,7 @@ typedef struct
     U9001_Testconfg_Typedef U9001_Testconfg;
 	U9001_save_Typedef U9001_save;
 	u8 jkflag;
+	u8 version;
 //    U9001_Calibrate_TypeDef U9001_Calibrate;
 }U9001_Save_sysTypedef;
 extern U9001_Save_sysTypedef U9001_Save_sys;

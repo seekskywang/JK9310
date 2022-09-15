@@ -131,12 +131,13 @@ const char VERSION_Tab1[][2][32]=
 const char SYS_NAME_Tab[][2][32]=
 {
 //    {"耐压测试仪","HIPOT TESTER"},
-    {"Ver.1.006","Ver.1.006"},
+    {"Ver.1.007","Ver.1.007"},
     {"www.JK17.com","www.JK17.com"},
     {"0519-85563477","0519-85563477"},
 
 };
 //1.006修正PLC
+//1.007修改绝缘电阻测量上限(GlobalValue.h：IR_RESISTANCE_MAX：50000 -> 250000)
 const char SYS_SetTime_Tab[][2][15]=
 {
 	{"日期：","OFF"},
@@ -164,7 +165,7 @@ const char Idel_Tab[][11][2][14]=
 
 };
 
-#if (SOFTWARE_VERSION==0x01 || SOFTWARE_VERSION==0x02)
+
 const char SetupACButton_Tab[][2][5][14]=
 {
     {{"测量设置","测量配置","系统设置","     ","        ",},{"DISP","CONFIG","SYSSET","     ","   "}},
@@ -206,9 +207,9 @@ const char SetupPAButton_Tab[][2][5][14]=
     {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","  连续  "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","CONST"}},
    
 };
-#elif (SOFTWARE_VERSION==0x03)
 
-const char SetupACButton_Tab[][2][5][14]=
+
+const char SetupACButton_Tab1[][2][5][14]=
 {
     {{"测量设置","测量配置","系统设置","     ","        ",},{"DISP","CONFIG","SYSSET","     ","   "}},
     {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ADD  ","  DEL  ","  COPY  ","  PREV  ","  NEXT  "}},
@@ -228,7 +229,7 @@ const char SetupACButton_Tab[][2][5][14]=
 
 };
 
-const char SetupOSButton_Tab[][2][5][14]=
+const char SetupOSButton_Tab1[][2][5][14]=
 {
     {{"测量设置","测量配置","系统设置","   ","    "},{"DISP","CONFIG","SYSSET","     ","   "}},
     {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ADD  ","  DEL  ","  COPY  ","  PREV  ","  NEXT  "}},
@@ -239,7 +240,7 @@ const char SetupOSButton_Tab[][2][5][14]=
    
 };
 
-const char SetupPAButton_Tab[][2][5][14]=
+const char SetupPAButton_Tab1[][2][5][14]=
 {
 	{{"测量设置","测量配置","系统设置","   ","    "},{"DISP","CONFIG","SYSSET","     ","   "}},
     {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ADD  ","  DEL  ","  COPY  ","  PREV  ","  NEXT  "}},
@@ -250,7 +251,7 @@ const char SetupPAButton_Tab[][2][5][14]=
    
 };
 
-#endif
+
 const char SysSetButton_Tab[][2][5][14]=
 {
     {{"系统设置","系统信息","        ","        ","        ",},{"SYSSET","SYSINFO","      ","      ","      "}},
@@ -4318,7 +4319,7 @@ const u32 Set_DateFileCompvalue[][2]=
     {0,3500},
 
 };
-#if (SOFTWARE_VERSION==0x01)
+//#if (SOFTWARE_VERSION==0x01)
 const u32 Set_ACW_Compvalue[][2]=
 {
     {0,4},
@@ -4331,8 +4332,8 @@ const u32 Set_ACW_Compvalue[][2]=
     {0,9999},
     {0,3500},
 };
-#elif (SOFTWARE_VERSION==0x02 || SOFTWARE_VERSION==0x03)
-const u32 Set_ACW_Compvalue[][2]=
+//#elif (SOFTWARE_VERSION==0x02 || SOFTWARE_VERSION==0x03)
+const u32 Set_ACW_Compvalue1[][2]=
 {
     {0,4},
     {50,5000},
@@ -4344,7 +4345,7 @@ const u32 Set_ACW_Compvalue[][2]=
     {0,9999},
     {0,3500},
 };
-#endif
+//#endif
 
 
 const u32 Set_DCW_Compvalue[][2]=
@@ -4410,6 +4411,11 @@ void SetDate_Comp(void)
 		{
 			U9001_Save_sys.jkflag=0;
 		}
+		if(U9001_Save_sys.version != 1 
+			&& U9001_Save_sys.version != 2
+			&& U9001_Save_sys.version != 3){
+				U9001_Save_sys.version = 1; 
+		}
     if(U9001_Save_sys.U9001_save.all_step>MAX_TEXT_STEP)
         U9001_Save_sys.U9001_save.all_step=1;
     if(U9001_Save_sys.U9001_save.current_step>U9001_Save_sys.U9001_save.all_step || U9001_Save_sys.U9001_save.current_step==0)
@@ -4442,22 +4448,40 @@ void SetDate_Comp(void)
                 break;
 
             case ACW_SETUP://耐压测试
-                 for(j=0;j<9;j++)
+							if(SOFTWARE_VERSION==1)
+							{
+                for(j=0;j<9;j++)
                 {
-                     if((*(pt+j)>Set_ACW_Compvalue[j][1])/*||(*(pt+j)<Set_ACW_Compvalue[j][0])*/)
-                    {
-                        *(pt+j)=Set_ACW_Compvalue[j][1];
-                    }else if((*(pt+j)<Set_ACW_Compvalue[j][0])){
-						if(j==3)
-						{
-							*(pt+j)=0;
-						}else{
-							*(pt+j)=Set_ACW_Compvalue[j][0];
-						}
-					}
+									 if((*(pt+j)>Set_ACW_Compvalue[j][1])/*||(*(pt+j)<Set_ACW_Compvalue[j][0])*/)
+									 {
+									   *(pt+j)=Set_ACW_Compvalue[j][1];
+									 }else if((*(pt+j)<Set_ACW_Compvalue[j][0])){
+										 if(j==3)
+										 {
+											 *(pt+j)=0;
+										 }else{
+											 *(pt+j)=Set_ACW_Compvalue[j][0];
+										 }
+									}
                 }
+							}else if(SOFTWARE_VERSION==2||SOFTWARE_VERSION==3){
+								for(j=0;j<9;j++)
+                {
+									 if((*(pt+j)>Set_ACW_Compvalue1[j][1])/*||(*(pt+j)<Set_ACW_Compvalue[j][0])*/)
+									 {
+									   *(pt+j)=Set_ACW_Compvalue1[j][1];
+									 }else if((*(pt+j)<Set_ACW_Compvalue1[j][0])){
+										 if(j==3)
+										 {
+											 *(pt+j)=0;
+										 }else{
+											 *(pt+j)=Set_ACW_Compvalue1[j][0];
+										 }
+									}
+                }
+							}
                 
-                break;
+            break;
 
             case DCW_SETUP://
                  for(j=0;j<10;j++)
@@ -5704,7 +5728,12 @@ void dispSetupButtonvalue(u8 item,u8 list)
             switch(item)
             {
                 case AC:   
-                    GUI_DispStringInRect(SetupACButton_Tab[list][U9001_Save_sys.U9001_SYS.language][i],&Rect,GUI_TA_HCENTER|GUI_TA_VCENTER);            
+									if(SOFTWARE_VERSION!=3)
+									{
+                    GUI_DispStringInRect(SetupACButton_Tab[list][U9001_Save_sys.U9001_SYS.language][i],&Rect,GUI_TA_HCENTER|GUI_TA_VCENTER);   
+									}else{
+										 GUI_DispStringInRect(SetupACButton_Tab1[list][U9001_Save_sys.U9001_SYS.language][i],&Rect,GUI_TA_HCENTER|GUI_TA_VCENTER);
+									}										
                     break;
                 case DC:
                     GUI_DispStringInRect(SetupDCButton_Tab[list][U9001_Save_sys.U9001_SYS.language][i],&Rect,GUI_TA_HCENTER|GUI_TA_VCENTER); 
@@ -5713,10 +5742,22 @@ void dispSetupButtonvalue(u8 item,u8 list)
                     GUI_DispStringInRect(SetupIRButton_Tab[list][U9001_Save_sys.U9001_SYS.language][i],&Rect,GUI_TA_HCENTER|GUI_TA_VCENTER); 
                     break;
                 case OS:
-                    GUI_DispStringInRect(SetupOSButton_Tab[list][U9001_Save_sys.U9001_SYS.language][i],&Rect,GUI_TA_HCENTER|GUI_TA_VCENTER); 
+									if(SOFTWARE_VERSION!=3)
+									{
+                    GUI_DispStringInRect(SetupOSButton_Tab[list][U9001_Save_sys.U9001_SYS.language][i],&Rect,GUI_TA_HCENTER|GUI_TA_VCENTER);   
+									}else{
+										 GUI_DispStringInRect(SetupOSButton_Tab1[list][U9001_Save_sys.U9001_SYS.language][i],&Rect,GUI_TA_HCENTER|GUI_TA_VCENTER);
+									}
+//                    GUI_DispStringInRect(SetupOSButton_Tab[list][U9001_Save_sys.U9001_SYS.language][i],&Rect,GUI_TA_HCENTER|GUI_TA_VCENTER); 
                     break;
                 case PA:
-                    GUI_DispStringInRect(SetupPAButton_Tab[list][U9001_Save_sys.U9001_SYS.language][i],&Rect,GUI_TA_HCENTER|GUI_TA_VCENTER); 
+									if(SOFTWARE_VERSION!=3)
+									{
+                    GUI_DispStringInRect(SetupPAButton_Tab[list][U9001_Save_sys.U9001_SYS.language][i],&Rect,GUI_TA_HCENTER|GUI_TA_VCENTER);   
+									}else{
+										 GUI_DispStringInRect(SetupPAButton_Tab1[list][U9001_Save_sys.U9001_SYS.language][i],&Rect,GUI_TA_HCENTER|GUI_TA_VCENTER);
+									}
+//                    GUI_DispStringInRect(SetupPAButton_Tab[list][U9001_Save_sys.U9001_SYS.language][i],&Rect,GUI_TA_HCENTER|GUI_TA_VCENTER); 
                     break;
                     
             }

@@ -45,6 +45,20 @@ const char DebugMenu[][20]=
 	
 	"4.F5恢复默认",
 };
+
+const char DispModel[2][3][20]=
+{
+	{
+	"9310",
+	"9320",
+	"9320A",
+	},	
+	{
+	"JK9310",
+	"JK9320",
+	"JK9320A",
+	}
+};
 //==========================================================
 //调试菜单项
 enum DebugMenuEnum
@@ -92,6 +106,7 @@ void Debug_Process(void)
 			{
                 GUI_DispStringAt(DebugMenu[i],120,40+40*i);
 			}
+			GUI_DispStringAt(DispModel[U9001_Save_sys.jkflag][SOFTWARE_VERSION-1],120,40+40*4);
 		}
 
 		if(keyvalue!=KEY_NONE)
@@ -104,7 +119,7 @@ void Debug_Process(void)
                     MenuIndex=DEBUG_MENU_ACW;
                     Acw_Calibrate();//交流耐压校准处理
                     
-                    F_Disp=TRUE;
+                    F_Disp=TRUE;	
                     GUI_Clear();
                 
                 break;
@@ -140,12 +155,20 @@ void Debug_Process(void)
                 case Key_LEFT:
                 break;
                 case Key_RIGHT:
+									GUI_Clear();
+									U9001_Save_sys.version++;
+									if(U9001_Save_sys.version>3)
+										U9001_Save_sys.version=1;
+									Savetoeeprom();
+									F_Disp=TRUE;
+									GUI_Clear();
                 break;
                 case Key_UP:
 									
                 break;
 								case Key_DOWN:
 								{
+									GUI_Clear();
 									if(U9001_Save_sys.jkflag==0)
 									{
 										U9001_Save_sys.jkflag=1;
@@ -153,6 +176,8 @@ void Debug_Process(void)
 										U9001_Save_sys.jkflag=0;
 									}
 									Savetoeeprom();
+									F_Disp=TRUE;
+									GUI_Clear();
 								}break;
                 
                 default:
