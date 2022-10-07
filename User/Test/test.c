@@ -921,7 +921,7 @@ void Test_Process(void)
 				rangr_limit_high=Range_comp[1][0];
 				rangelomit_low=Range_comp[1][1];
 				Range=0;
-				max=1;//最大量程-2档
+				max=2;//最大量程-2档
 				min=0;
 			}else if(U9001_Save_sys.U9001_Testconfg.Autorange == 0){
 				if(Test_mid.set_high < 3000)
@@ -1485,6 +1485,12 @@ void Test_Process(void)
 							SetSystemMessage(MSG_HIGH);
 						if(GetSystemMessage()==MSG_TEST )
 						if(dat*10<Test_mid.set_low)//超下限
+							SetSystemMessage(MSG_LOW);
+					}else if(Range == 2){
+						if(dat/10>Test_mid.set_high)//超上限
+							SetSystemMessage(MSG_HIGH);
+						if(GetSystemMessage()==MSG_TEST )
+						if(dat/10<Test_mid.set_low)//超下限
 							SetSystemMessage(MSG_LOW);
 					}
 					break;

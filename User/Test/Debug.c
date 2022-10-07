@@ -375,6 +375,7 @@ const u8 CalDcwTab[][25]=
 	"1.DCW电压4000V  ",
 	"2.DCW电流6.00mA",
 	"3.DCW电流2.000mA",
+	"3.DCW电流200.0uA",
 };
 //==========================================================
 //直流耐压校准项
@@ -772,7 +773,7 @@ void CalTest_Process(void)
 	}
 	else if(set_item==DCW_SETUP)
 	{
-		i=3;//DCW
+		i=4;//DCW
 		pt=(u8*)(&U9001_Calibrate.DcwVol);//校准值首地址
 	}
 	else if(set_item==IR_SETUP)
@@ -1265,7 +1266,7 @@ void CalTest_Process(void)
 				}
 				else if(set_item==DCW_SETUP)
 				{
-					i=3;//DCW
+					i=4;//DCW
 					pt=(u8*)(&U9001_Calibrate.DcwVol);//校准值首地址
 				}
 				else if(set_item==IR_SETUP)

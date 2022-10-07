@@ -131,13 +131,14 @@ const char VERSION_Tab1[][2][32]=
 const char SYS_NAME_Tab[][2][32]=
 {
 //    {"耐压测试仪","HIPOT TESTER"},
-    {"Ver.1.007","Ver.1.007"},
+    {"Ver.1.008","Ver.1.008"},
     {"www.JK17.com","www.JK17.com"},
     {"0519-85563477","0519-85563477"},
 
 };
 //1.006修正PLC
 //1.007修改绝缘电阻测量上限(GlobalValue.h：IR_RESISTANCE_MAX：50000 -> 250000)
+//1.008增加DC微安档位
 const char SYS_SetTime_Tab[][2][15]=
 {
 	{"日期：","OFF"},
@@ -3952,11 +3953,15 @@ void Disp_Testvalue(u8 test)
 							 Test_Value.I_R -= U9001_Save_sys.U9001_save.clearvalue[U9001_Save_sys.U9001_save.current_step-1];
 						 }
 					 }
-					 if(Range==1)
-                        Hex_Format(Test_Value.I_R,3,4,0);
-                    else
-                        Hex_Format(Test_Value.I_R,2,4,0);
-                }
+								if(Range==1)
+								{
+										Hex_Format(Test_Value.I_R,3,4,0);
+								}else if(Range==0){
+										Hex_Format(Test_Value.I_R,2,4,0);
+                }else{
+										Hex_Format(Test_Value.I_R,1,4,0);
+								}
+               }
             }
             else
             {
@@ -3968,7 +3973,10 @@ void Disp_Testvalue(u8 test)
              GUI_FillRect(DISP_V_XPOS+50,DISP_V_YPOS+50,DISP_V_XPOS+50+150,DISP_V_YPOS+50+62);
 			 GUI_SetColor(GUI_LIGHTYELLOW);
             GUI_DispStringAt(DispBuf,DISP_V_XPOS+50,DISP_V_YPOS+50);
-            GUI_DispStringAt("mA  ",DISP_V_XPOS+50+6*25,DISP_V_YPOS+50);
+						if(Range<2)
+							GUI_DispStringAt("mA  ",DISP_V_XPOS+50+6*25,DISP_V_YPOS+50);
+						else
+							GUI_DispStringAt("uA  ",DISP_V_XPOS+50+6*25,DISP_V_YPOS+50);
             break;
         case IR:
             if(test==1)
@@ -6008,7 +6016,7 @@ void Test_Init(void)
 	}
 	else if(set_item==DCW_SETUP)
 	{
-		i=3;//DCW
+		i=4;//DCW
 		pt=(u8*)(&U9001_Calibrate.DcwVol);//校准值首地址
 	}
 	else if(set_item==IR_SETUP)

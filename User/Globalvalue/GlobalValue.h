@@ -742,7 +742,7 @@ typedef struct
 	Cal_TypeDef AcwVol[1];//交流耐压电压值-1档
 	Cal_TypeDef AcwCur[2];//交流耐压电流值-2档
 	Cal_TypeDef DcwVol[1];//只流耐压电压值-1档
-	Cal_TypeDef DcwCur[2];//直流耐压电流值-2档
+	Cal_TypeDef DcwCur[3];//直流耐压电流值-2档
 	Cal_TypeDef IrVol[1];//绝缘电阻电压值-1档
 	Cal_TypeDef IrCur[5];//绝缘电阻电流值-4档
 	Cal_TypeDef GndVol[1];//接地电阻电压值-1档
