@@ -131,7 +131,7 @@ const char VERSION_Tab1[][2][32]=
 const char SYS_NAME_Tab[][2][32]=
 {
 //    {"耐压测试仪","HIPOT TESTER"},
-    {"Ver.1.008","Ver.1.008"},
+    {"Ver.1.009","Ver.1.009"},
     {"www.JK17.com","www.JK17.com"},
     {"0519-85563477","0519-85563477"},
 
@@ -139,6 +139,7 @@ const char SYS_NAME_Tab[][2][32]=
 //1.006修正PLC
 //1.007修改绝缘电阻测量上限(GlobalValue.h：IR_RESISTANCE_MAX：50000 -> 250000)
 //1.008增加DC微安档位
+//1.009修改耐压最小分选时间从0.2s到0.5s；修正100ms定时器不准的问题
 const char SYS_SetTime_Tab[][2][15]=
 {
 	{"日期：","OFF"},

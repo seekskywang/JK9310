@@ -422,7 +422,7 @@ uint32_t init_timer ( uint8_t timer_num, uint32_t TimerInterval )
 	timer0_counter = 0;
 	LPC_SC->PCONP |= (0x01<<1);
 	LPC_TIM0->TCR |= (1<<1);//复位定时器
-	LPC_TIM0->PR   = 60000-1;//分频
+	LPC_TIM0->PR   = 54540-1;//分频
 	LPC_TIM0->MR0 = TimerInterval;
 	LPC_TIM0->MCR = 3;				/* Interrupt and Reset on MR0 */
 

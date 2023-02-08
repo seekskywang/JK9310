@@ -151,8 +151,8 @@ typedef unsigned           int vu32;
 #define GND_RESISTANCE_MAX	(310)
 //测试值溢出
 #define TEST_VALUE_OVER		(65535)
-//最小分选时间--0.2s
-#define SORT_TIME_MIN		(2)
+//最小分选时间--0.5s
+#define SORT_TIME_MIN		(5)
 ///////////////////////////////////////////////////////////
 //16bit数据的位操作定义
 #define	SetD0	(0x0001)
