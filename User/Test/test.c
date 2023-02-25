@@ -985,8 +985,8 @@ void Test_Process(void)
         Read_Ad();//读取AD值
 		Ad_Filter();//AD值滤波
        
-        
-		Get_Result();//计算测试值	
+    if(rangedelay == 0)    
+			Get_Result();//计算测试值	
 		//分选判别
 		if(f_switch==FALSE)//非量程切换标志
 		{
@@ -1082,7 +1082,7 @@ void Test_Process(void)
 				{
 					if(Current)//电流值非零
 					{
-						temp=Voltage;//电压值
+						temp=Voltage;//电压值 
 //						//最大值判别
 						if((Range==5)&&(Resistance>IR_RESISTANCE_MAX))//最大值判别
 							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=TEST_VALUE_OVER;//电阻溢出
@@ -1466,7 +1466,7 @@ void Test_Process(void)
 //			}
 //		}//上下限判别
 //		if((f_sort==TRUE) && (AdCount>=AD_BUF_LENGTH))//非换挡
-        if(f_sort==TRUE)
+        if(f_sort==TRUE && rangedelay == 0)
 		{
 			switch(Test_mid.set_item)//参数项
 			{

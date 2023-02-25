@@ -131,7 +131,7 @@ const char VERSION_Tab1[][2][32]=
 const char SYS_NAME_Tab[][2][32]=
 {
 //    {"耐压测试仪","HIPOT TESTER"},
-    {"Ver.1.009","Ver.1.009"},
+    {"Ver.1.010","Ver.1.010"},
     {"www.JK17.com","www.JK17.com"},
     {"0519-85563477","0519-85563477"},
 
@@ -140,6 +140,8 @@ const char SYS_NAME_Tab[][2][32]=
 //1.007修改绝缘电阻测量上限(GlobalValue.h：IR_RESISTANCE_MAX：50000 -> 250000)
 //1.008增加DC微安档位
 //1.009修改耐压最小分选时间从0.2s到0.5s；修正100ms定时器不准的问题
+//1.010直流耐压最大电流从5mA增加到10mA(9320&9320A)
+
 const char SYS_SetTime_Tab[][2][15]=
 {
 	{"日期：","OFF"},
@@ -4370,6 +4372,21 @@ const u32 Set_DCW_Compvalue[][2]=
     {0,9999},
     {0,3500},
 };
+
+const u32 Set_DCW_Compvalue1[][2]=
+{
+    {0,4},
+    {50,6000},
+    {1,10000},
+    {2,9999},
+    {0,5000},
+    {0,9999},
+    {0,100},
+    {0,9999},
+    {0,9999},
+    {0,3500},
+};
+
 const u32 Set_IR_Compvalue[][2]=
 {
     {0,4},
@@ -4493,21 +4510,39 @@ void SetDate_Comp(void)
             break;
 
             case DCW_SETUP://
-                 for(j=0;j<10;j++)
+							if(SOFTWARE_VERSION==1)
+							{
+                for(j=0;j<10;j++)
                 {
-                     if((*(pt+j)>Set_DCW_Compvalue[j][1])/*||(*(pt+j)<Set_DCW_Compvalue[j][0])*/)
-                    {
-                        *(pt+j)=Set_DCW_Compvalue[j][1];
-                    }else if((*(pt+j)<Set_DCW_Compvalue[j][0])){
-						if(j==3)
-						{
-							*(pt+j)=0;
-						}else{
-							*(pt+j)=Set_DCW_Compvalue[j][0];
-						}
-					}
+									if((*(pt+j)>Set_DCW_Compvalue[j][1])/*||(*(pt+j)<Set_DCW_Compvalue[j][0])*/)
+									{
+											*(pt+j)=Set_DCW_Compvalue[j][1];
+									}else if((*(pt+j)<Set_DCW_Compvalue[j][0])){
+										if(j==3)
+										{
+											*(pt+j)=0;
+										}else{
+											*(pt+j)=Set_DCW_Compvalue[j][0];
+										}
+									}
                 }
-                break;
+							}else if(SOFTWARE_VERSION==2||SOFTWARE_VERSION==3){
+								for(j=0;j<10;j++)
+                {
+									if((*(pt+j)>Set_DCW_Compvalue1[j][1])/*||(*(pt+j)<Set_DCW_Compvalue[j][0])*/)
+									{
+											*(pt+j)=Set_DCW_Compvalue1[j][1];
+									}else if((*(pt+j)<Set_DCW_Compvalue1[j][0])){
+										if(j==3)
+										{
+											*(pt+j)=0;
+										}else{
+											*(pt+j)=Set_DCW_Compvalue1[j][0];
+										}
+									}
+                }
+							}
+            break;
 
             case OS_SETUP://
                  for(j=0;j<9;j++)
