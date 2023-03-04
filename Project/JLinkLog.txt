@@ -1,961 +1,1227 @@
-
-T19E0 000:049 SEGGER J-Link V6.30h Log File (0001ms, 0050ms total)
-T19E0 000:049 DLL Compiled: Mar 16 2018 18:02:51 (0001ms, 0050ms total)
-T19E0 000:049 Logging started @ 2022-09-15 13:25 (0001ms, 0050ms total)
-T19E0 000:050 JLINK_SetWarnOutHandler(...) (0000ms, 0050ms total)
-T19E0 000:050 JLINK_OpenEx(...)
-Firmware: J-Link V9 compiled May  7 2021 16:26:12
-Hardware: V9.60
-S/N: 69601442
-Feature(s): GDB, RDI, FlashBP, FlashDL, JFlash
-TELNET listener socket opened on port 19021WEBSRV 
-Starting webserver (0029ms, 0079ms total)
-T19E0 000:050 WEBSRV Webserver running on local port 19080 (0030ms, 0080ms total)
-T19E0 000:050   returns O.K. (0030ms, 0080ms total)
-T19E0 000:080 JLINK_GetEmuCaps()  returns 0xB9FF7BBF (0000ms, 0080ms total)
-T19E0 000:080 JLINK_TIF_GetAvailable(...) (0001ms, 0081ms total)
-T19E0 000:081 JLINK_SetErrorOutHandler(...) (0000ms, 0081ms total)
-T19E0 000:081 JLINK_ExecCommand("ProjectFile = "F:\JK9310\Project\JLinkSettings.ini"", ...). Device "ARM7" selected.  returns 0x00 (0146ms, 0227ms total)
-T19E0 000:234 JLINK_ExecCommand("Device = LPC1788", ...). Device "LPC1788" selected.  returns 0x00 (0011ms, 0238ms total)
-T19E0 000:245 JLINK_ExecCommand("DisableConnectionTimeout", ...).   returns 0x01 (0000ms, 0238ms total)
-T19E0 000:245 JLINK_GetHardwareVersion()  returns 0x17700 (0000ms, 0238ms total)
-T19E0 000:245 JLINK_GetDLLVersion()  returns 63008 (0000ms, 0238ms total)
-T19E0 000:245 JLINK_GetFirmwareString(...) (0000ms, 0238ms total)
-T19E0 000:271 JLINK_GetDLLVersion()  returns 63008 (0000ms, 0238ms total)
-T19E0 000:271 JLINK_GetCompileDateTime() (0000ms, 0238ms total)
-T19E0 000:281 JLINK_GetFirmwareString(...) (0000ms, 0238ms total)
-T19E0 000:289 JLINK_GetHardwareVersion()  returns 0x17700 (0000ms, 0238ms total)
-T19E0 000:328 JLINK_TIF_Select(JLINKARM_TIF_SWD)  returns 0x00 (0006ms, 0244ms total)
-T19E0 000:334 JLINK_SetSpeed(5000) (0001ms, 0245ms total)
-T19E0 000:335 JLINK_GetId() >0x10B TIF>Found SW-DP with ID 0x2BA01477 >0x0D TIF> >0x28 TIF> >0x0D TIF> >0x28 TIF> >0x0D TIF> >0x28 TIF> >0x0D TIF> >0x28 TIF> >0x0D TIF> >0x21 TIF> >0x0D TIF> >0x28 TIF>Scanning AP map to find all available APs >0x0D TIF> >0x28 TIF> >0x0D TIF> >0x21 TIF> >0x0D TIF> >0x21 TIF> >0x0D TIF> >0x28 TIF> >0x0D TIF> >0x21 TIF> >0x0D TIF> >0x21 TIF>AP[1]: Stopped AP scan as end of AP map has been reachedAP[0]: AHB-AP (IDR: 0x24770011)Iterating through AP map to find AHB-AP to use
- >0x42 TIF> >0x28 TIF> >0x0D TIF> >0x28 TIF> >0x0D TIF> >0x21 TIF> >0x0D TIF> >0x21 TIF> >0x42 TIF> >0x28 TIF> >0x0D TIF> >0x28 TIF> >0x0D TIF> >0x28 TIF> >0x0D TIF> >0x21 TIF> >0x0D TIF> >0x21 TIF>AP[0]: Core foundAP[0]: AHB-AP ROM base: 0xE00FF000 >0x0D TIF> >0x28 TIF> >0x0D TIF> >0x28 TIF> >0x0D TIF> >0x28 TIF> >0x0D TIF> >0x21 TIF> >0x0D TIF> >0x21 TIF>CPUID register: 0x410FC241. Implementer code: 0x41 (ARM)Found Cortex-M4 r0p1, Little endian.
-Identified core does not match configuration. (Found: Cortex-M4, Configured: Cortex-M3) -- CPU_ReadMem(4 bytes @ 0xE000EDF0) -- CPU_WriteMem(4 bytes @ 0xE000EDF0) -- CPU_ReadMem(4 bytes @ 0xE0002000)FPUnit: 6 code (BP) slots and 2 literal slots -- CPU_ReadMem(4 bytes @ 0xE000EDFC) -- CPU_WriteMem(4 bytes @ 0xE000EDFC) -- CPU_ReadMem(4 bytes @ 0xE0001000) -- CPU_WriteMem(4 bytes @ 0xE0001000) -- CPU_ReadMem(4 bytes @ 0xE000ED88) -- CPU_WriteMem(4 bytes @ 0xE000ED88) -- CPU_ReadMem(4 bytes @ 0xE000ED88)
  -- CPU_WriteMem(4 bytes @ 0xE000ED88)CoreSight components:ROMTbl[0] @ E00FF000 -- CPU_ReadMem(16 bytes @ 0xE00FF000) -- CPU_ReadMem(16 bytes @ 0xE000EFF0) -- CPU_ReadMem(16 bytes @ 0xE000EFE0)ROMTbl[0][0]: E000E000, CID: B105E00D, PID: 000BB00C SCS-M7 -- CPU_ReadMem(16 bytes @ 0xE0001FF0) -- CPU_ReadMem(16 bytes @ 0xE0001FE0)ROMTbl[0][1]: E0001000, CID: B105E00D, PID: 003BB002 DWT -- CPU_ReadMem(16 bytes @ 0xE0002FF0) -- CPU_ReadMem(16 bytes @ 0xE0002FE0)
-ROMTbl[0][2]: E0002000, CID: B105E00D, PID: 002BB003 FPB -- CPU_ReadMem(16 bytes @ 0xE0000FF0) -- CPU_ReadMem(16 bytes @ 0xE0000FE0)ROMTbl[0][3]: E0000000, CID: B105E00D, PID: 003BB001 ITM -- CPU_ReadMem(16 bytes @ 0xE00FF010) -- CPU_ReadMem(16 bytes @ 0xE0040FF0) -- CPU_ReadMem(16 bytes @ 0xE0040FE0)ROMTbl[0][4]: E0040000, CID: B105900D, PID: 000BB9A1 TPIU -- CPU_ReadMem(16 bytes @ 0xE0041FF0) -- CPU_ReadMem(16 bytes @ 0xE0041FE0)ROMTbl[0][5]: E0041000, CID: B105900D, PID: 000BB925 ETM >0x0D TIF>
- >0x21 TIF>  returns 0x2BA01477 (0412ms, 0657ms total)
-T19E0 000:747 JLINK_GetDLLVersion()  returns 63008 (0000ms, 0657ms total)
-T19E0 000:747 JLINK_CORE_GetFound()  returns 0xE0000FF (0000ms, 0657ms total)
-T19E0 000:747 JLINK_GetDebugInfo(0x100 = JLINKARM_ROM_TABLE_ADDR_INDEX) -- Value=0xE00FF000  returns 0x00 (0000ms, 0657ms total)
-T19E0 000:755 JLINK_GetDebugInfo(0x100 = JLINKARM_ROM_TABLE_ADDR_INDEX) -- Value=0xE00FF000  returns 0x00 (0000ms, 0657ms total)
-T19E0 000:755 JLINK_GetDebugInfo(0x101 = JLINKARM_DEBUG_INFO_ETM_ADDR_INDEX) -- Value=0xE0041000  returns 0x00 (0000ms, 0657ms total)
-T19E0 000:755 JLINK_ReadMemEx(0xE0041FD0, 0x0020 Bytes, ..., Flags = 0x02000004) -- CPU_ReadMem(32 bytes @ 0xE0041FD0) - Data: 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ...  returns 0x20 (0002ms, 0659ms total)
-T19E0 000:757 JLINK_GetDebugInfo(0x102 = JLINKARM_DEBUG_INFO_MTB_ADDR_INDEX) -- Value=0x00000000  returns 0x00 (0000ms, 0659ms total)
-T19E0 000:757 JLINK_GetDebugInfo(0x103 = JLINKARM_DEBUG_INFO_TPIU_ADDR_INDEX) -- Value=0xE0040000  returns 0x00 (0000ms, 0659ms total)
-T19E0 000:757 JLINK_GetDebugInfo(0x104 = JLINKARM_DEBUG_INFO_ITM_ADDR_INDEX) -- Value=0xE0000000  returns 0x00 (0000ms, 0659ms total)
-T19E0 000:757 JLINK_GetDebugInfo(0x105 = JLINKARM_DEBUG_INFO_DWT_ADDR_INDEX) -- Value=0xE0001000  returns 0x00 (0000ms, 0659ms total)
-T19E0 000:757 JLINK_GetDebugInfo(0x106 = JLINKARM_DEBUG_INFO_FPB_ADDR_INDEX) -- Value=0xE0002000  returns 0x00 (0000ms, 0659ms total)
-T19E0 000:757 JLINK_GetDebugInfo(0x107 = JLINKARM_DEBUG_INFO_NVIC_ADDR_INDEX) -- Value=0xE000E000  returns 0x00 (0000ms, 0659ms total)
-T19E0 000:757 JLINK_GetDebugInfo(0x10C = JLINKARM_DEBUG_INFO_DBG_ADDR_INDEX) -- Value=0xE000EDF0  returns 0x00 (0000ms, 0659ms total)
-T19E0 000:757 JLINK_GetDebugInfo(0x01 = Unknown) -- Value=0x00000001  returns 0x00 (0000ms, 0659ms total)
-T19E0 000:757 JLINK_ReadMemU32(0xE000ED00, 0x0001 Items, ...) -- CPU_ReadMem(4 bytes @ 0xE000ED00) - Data: 41 C2 0F 41  returns 0x01 (0001ms, 0660ms total)
-T19E0 000:758 JLINK_GetDebugInfo(0x10F = JLINKARM_DEBUG_INFO_HAS_CORTEX_M_SECURITY_EXT_INDEX) -- Value=0x00000000  returns 0x00 (0000ms, 0660ms total)
-T19E0 000:758 JLINK_SetResetType(JLINKARM_CM3_RESET_TYPE_NORMAL)  returns JLINKARM_CM3_RESET_TYPE_HALT_AFTER_BTL (0000ms, 0660ms total)
-T19E0 000:758 JLINK_Reset() -- CPU is running -- CPU_WriteMem(4 bytes @ 0xE000EDF0) -- CPU is running -- CPU_WriteMem(4 bytes @ 0xE000EDFC)Reset: Halt core after reset via DEMCR.VC_CORERESET. >0x35 TIF>Reset: Reset device via AIRCR.SYSRESETREQ. -- CPU is running -- CPU_WriteMem(4 bytes @ 0xE000ED0C) >0x0D TIF> >0x28 TIF> -- CPU_ReadMem(4 bytes @ 0xE000EDF0) -- CPU_ReadMem(4 bytes @ 0xE000EDF0) -- CPU is running -- CPU_WriteMem(4 bytes @ 0xE000EDF0) -- CPU is running -- CPU_WriteMem(4 bytes @ 0xE000EDFC)
- -- CPU_ReadMem(4 bytes @ 0xE000EDF0) -- CPU_WriteMem(4 bytes @ 0xE000EDFC) -- CPU_WriteMem(4 bytes @ 0xE000EDFC) -- CPU_WriteMem(4 bytes @ 0xE000EDFC) -- CPU_WriteMem(4 bytes @ 0xE000EDFC) -- CPU_WriteMem(4 bytes @ 0xE000EDFC) -- CPU_WriteMem(4 bytes @ 0xE0001050) -- CPU_WriteMem(4 bytes @ 0xE0001054) -- CPU_WriteMem(4 bytes @ 0xE0001058) -- CPU_ReadMem(4 bytes @ 0xE0001000)CPU did not halt after bootloader. -- CPU_WriteMem(4 bytes @ 0xE000EDFC) -- CPU_WriteMem(4 bytes @ 0xE0001058)
- -- CPU_ReadMem(4 bytes @ 0x00000004) -- CPU_ReadMem(4 bytes @ 0xE0002000) -- CPU_ReadMem(4 bytes @ 0xE0002008) -- CPU_ReadMem(4 bytes @ 0xE000200C) -- CPU_ReadMem(4 bytes @ 0xE0002010) -- CPU_ReadMem(4 bytes @ 0xE0002014) -- CPU_ReadMem(4 bytes @ 0xE0002018) -- CPU_ReadMem(4 bytes @ 0xE000201C) -- CPU_WriteMem(4 bytes @ 0xE0002000) -- CPU_WriteMem(4 bytes @ 0xE0002008) -- CPU_WriteMem(4 bytes @ 0xE000200C) -- CPU_WriteMem(4 bytes @ 0xE0002010) -- CPU_WriteMem(4 bytes @ 0xE0002014)
- -- CPU_WriteMem(4 bytes @ 0xE0002018) -- CPU_WriteMem(4 bytes @ 0xE000201C) -- CPU_ReadMem(4 bytes @ 0xE0001000)CPU did not halt after bootloader. -- CPU_WriteMem(4 bytes @ 0xE0002000) -- CPU_WriteMem(4 bytes @ 0xE0002008) -- CPU_WriteMem(4 bytes @ 0xE000200C) -- CPU_WriteMem(4 bytes @ 0xE0002010) -- CPU_WriteMem(4 bytes @ 0xE0002014) -- CPU_WriteMem(4 bytes @ 0xE0002018) -- CPU_WriteMem(4 bytes @ 0xE000201C) -- CPU_WriteMem(4 bytes @ 0xE0002000) -- CPU_ReadMem(4 bytes @ 0xE000EDFC)
- -- CPU_ReadMem(4 bytes @ 0xE0001000) (0631ms, 1291ms total)
-T19E0 001:390 JLINK_Halt()  returns 0x00 (0000ms, 1291ms total)
-T19E0 001:390 JLINK_ReadMemU32(0xE000EDF0, 0x0001 Items, ...) -- CPU_ReadMem(4 bytes @ 0xE000EDF0) - Data: 03 00 03 00  returns 0x01 (0003ms, 1294ms total)
-T19E0 001:393 JLINK_WriteU32(0xE000EDF0, 0xA05F0003) -- CPU_WriteMem(4 bytes @ 0xE000EDF0)  returns 0x00 (0001ms, 1295ms total)
-T19E0 001:395 JLINK_WriteU32(0xE000EDFC, 0x01000000) -- CPU_WriteMem(4 bytes @ 0xE000EDFC)  returns 0x00 (0000ms, 1295ms total)
-T19E0 001:500 JLINK_GetHWStatus(...)  returns 0x00 (0001ms, 1297ms total)
-T19E0 001:514 JLINK_GetNumBPUnits(Type = 0xFFFFFF00)  returns 0x06 (0000ms, 1297ms total)
-T19E0 001:514 JLINK_GetNumBPUnits(Type = 0xF0)  returns 0x2000 (0000ms, 1297ms total)
-T19E0 001:514 JLINK_GetNumWPUnits()  returns 0x04 (0000ms, 1297ms total)
-T19E0 001:522 JLINK_GetSpeed()  returns 0xFA0 (0000ms, 1297ms total)
-T19E0 001:527 JLINK_ReadMemU32(0xE000E004, 0x0001 Items, ...) -- CPU_ReadMem(4 bytes @ 0xE000E004) - Data: 02 00 00 00  returns 0x01 (0001ms, 1298ms total)
-T19E0 001:528 JLINK_ReadMemU32(0xE000E004, 0x0001 Items, ...) -- CPU_ReadMem(4 bytes @ 0xE000E004) - Data: 02 00 00 00  returns 0x01 (0001ms, 1299ms total)
-T19E0 001:529 JLINK_WriteMemEx(0xE0001000, 0x001C Bytes, ..., Flags = 0x02000004) - Data: 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ... -- CPU_WriteMem(28 bytes @ 0xE0001000)  returns 0x1C (0001ms, 1300ms total)
-T19E0 001:530 JLINK_Halt()  returns 0x00 (0000ms, 1300ms total)
-T19E0 001:530 JLINK_IsHalted()  returns TRUE (0000ms, 1300ms total)
-T19E0 001:573 JLINK_WriteMem(0x10000000, 0x01E4 Bytes, ...) - Data: 00 BE 0A E0 0D 78 2D 06 68 40 08 24 40 00 00 D3 ... -- CPU_WriteMem(484 bytes @ 0x10000000)  returns 0x1E4 (0003ms, 1303ms total)
-T19E0 001:576 JLINK_WriteReg(R0, 0x00000000)  returns 0x00 (0000ms, 1303ms total)
-T19E0 001:576 JLINK_WriteReg(R1, 0x00B71B00)  returns 0x00 (0000ms, 1303ms total)
-T19E0 001:576 JLINK_WriteReg(R2, 0x00000001)  returns 0x00 (0000ms, 1303ms total)
-T19E0 001:576 JLINK_WriteReg(R3, 0x00000000)  returns 0x00 (0000ms, 1303ms total)
-T19E0 001:576 JLINK_WriteReg(R4, 0x00000000)  returns 0x00 (0000ms, 1303ms total)
-T19E0 001:576 JLINK_WriteReg(R5, 0x00000000)  returns 0x00 (0000ms, 1303ms total)
-T19E0 001:576 JLINK_WriteReg(R6, 0x00000000)  returns 0x00 (0000ms, 1303ms total)
-T19E0 001:576 JLINK_WriteReg(R7, 0x00000000)  returns 0x00 (0000ms, 1303ms total)
-T19E0 001:576 JLINK_WriteReg(R8, 0x00000000)  returns 0x00 (0000ms, 1303ms total)
-T19E0 001:576 JLINK_WriteReg(R9, 0x100001DC)  returns 0x00 (0000ms, 1303ms total)
-T19E0 001:576 JLINK_WriteReg(R10, 0x00000000)  returns 0x00 (0000ms, 1303ms total)
-T19E0 001:576 JLINK_WriteReg(R11, 0x00000000)  returns 0x00 (0000ms, 1303ms total)
-T19E0 001:576 JLINK_WriteReg(R12, 0x00000000)  returns 0x00 (0000ms, 1303ms total)
-T19E0 001:576 JLINK_WriteReg(R13 (SP), 0x10000800)  returns 0x00 (0000ms, 1303ms total)
-T19E0 001:576 JLINK_WriteReg(R14, 0x10000001)  returns 0x00 (0000ms, 1303ms total)
-T19E0 001:576 JLINK_WriteReg(R15 (PC), 0x10000044)  returns 0x00 (0000ms, 1303ms total)
-T19E0 001:576 JLINK_WriteReg(XPSR, 0x01000000)  returns 0x00 (0000ms, 1303ms total)
-T19E0 001:576 JLINK_WriteReg(MSP, 0x10000800)  returns 0x00 (0000ms, 1303ms total)
-T19E0 001:576 JLINK_WriteReg(PSP, 0x10000800)  returns 0x00 (0000ms, 1303ms total)
-T19E0 001:576 JLINK_WriteReg(CFBP, 0x00000000)  returns 0x00 (0000ms, 1303ms total)
-T19E0 001:576 JLINK_SetBPEx(Addr = 0x10000000, Type = 0xFFFFFFF2)  returns 0x00000001 (0000ms, 1303ms total)
-T19E0 001:576 JLINK_Go() -- CPU_WriteMem(4 bytes @ 0xE0002000) -- CPU_ReadMem(4 bytes @ 0xE0001000) -- CPU_WriteMem(4 bytes @ 0xE0002008) -- CPU_WriteMem(4 bytes @ 0xE000200C) -- CPU_WriteMem(4 bytes @ 0xE0002010) -- CPU_WriteMem(4 bytes @ 0xE0002014) -- CPU_WriteMem(4 bytes @ 0xE0002018) -- CPU_WriteMem(4 bytes @ 0xE000201C) -- CPU_WriteMem(4 bytes @ 0xE0001004) (0008ms, 1311ms total)
-T19E0 001:584 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:231 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:322 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:412 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:506 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:529 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:531 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:533 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:535 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:537 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:539 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:541 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:543 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:545 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:547 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:549 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:551 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:553 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:555 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:557 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:559 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:561 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:563 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:565 JLINK_IsHalted()  returns FALSE (0005ms, 1316ms total)
-T19E0 002:571 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:573 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:574 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:576 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:578 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:579 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:580 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:581 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:582 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:583 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:584 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:585 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:586 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:587 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:588 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:589 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:590 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:591 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:593 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:594 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:595 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:596 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:597 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:598 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:599 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:600 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:601 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:602 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:603 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:604 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:605 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:606 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:607 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:608 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:609 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:610 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:611 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:612 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:613 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:614 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:615 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:616 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:617 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:618 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:619 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:620 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:621 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:623 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:624 JLINK_IsHalted()  returns FALSE (0005ms, 1316ms total)
-T19E0 002:634 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:636 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:638 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:639 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:640 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:642 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:643 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:644 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:646 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:648 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:649 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:651 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:652 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:653 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:655 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:656 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:657 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:658 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:659 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:661 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:662 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:663 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:664 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:665 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:666 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:667 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:668 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:669 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:670 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:671 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:672 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:673 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:674 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:675 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:676 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:678 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:679 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:680 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:681 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:682 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:683 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:684 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:685 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:686 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:687 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:688 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:689 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:690 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:691 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:693 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:694 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:695 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:696 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:697 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:698 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:699 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:700 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:701 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:702 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:703 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:704 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:705 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:706 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:707 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:708 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:709 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:710 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:711 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:712 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:713 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:714 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:715 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:716 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:717 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:718 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:719 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:720 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:726 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:728 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:730 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:732 JLINK_IsHalted()  returns FALSE (0002ms, 1313ms total)
-T19E0 002:744 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:746 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:748 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:749 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:750 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:751 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:752 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:753 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:754 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:755 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:756 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:757 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:759 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:760 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:761 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:762 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:763 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:764 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:765 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:766 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:767 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:768 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:769 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:770 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:771 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:772 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:773 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:774 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:775 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:776 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:777 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:778 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:779 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:780 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:781 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:782 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:783 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:784 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:785 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:786 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:787 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:788 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:789 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:790 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:791 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:793 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:794 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:795 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:796 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:797 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:798 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:799 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:800 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:801 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:802 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:803 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:804 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:805 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:806 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:807 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:808 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:809 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:810 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:811 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:812 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:813 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:814 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:815 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:816 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:817 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:818 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:819 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:820 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:821 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:822 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:823 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:824 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:825 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:826 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:827 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:828 JLINK_IsHalted()  returns FALSE (0002ms, 1313ms total)
-T19E0 002:831 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:833 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:835 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:837 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:839 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:841 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:843 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:845 JLINK_IsHalted()  returns FALSE (0003ms, 1314ms total)
-T19E0 002:852 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:854 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:855 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:857 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:858 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:859 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:860 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:861 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:863 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:865 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:867 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:869 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:871 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:873 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:874 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:876 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:877 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:879 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:880 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:881 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:882 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:883 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:884 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:885 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:887 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:888 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:889 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:890 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:891 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:893 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:894 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:895 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:896 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:897 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:898 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:899 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:900 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:901 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:902 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:903 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:904 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:905 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:906 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:907 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:908 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:909 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:910 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:911 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:912 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:913 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:914 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:915 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:916 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:917 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:918 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:919 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:920 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:921 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:922 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:923 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:924 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:925 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:926 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:927 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:928 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:929 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:930 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:931 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:932 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:933 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:934 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:935 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:936 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:937 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:938 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:939 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:940 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:941 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:942 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:943 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:944 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:945 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:946 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:947 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:948 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:949 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:950 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:951 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:956 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:958 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:960 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:962 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:964 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:966 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:967 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:968 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:970 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:972 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:973 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:974 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:975 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:977 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:978 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:979 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:980 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:981 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:982 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:983 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:984 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:986 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:987 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:988 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:989 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:990 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:991 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 002:993 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:994 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:995 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:996 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:997 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:998 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 002:999 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:000 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:001 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:002 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:003 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:004 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:005 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:006 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:007 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:008 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:009 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:010 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:011 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:012 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:013 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:014 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:015 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:016 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:017 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:018 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:019 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:020 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:022 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:023 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:024 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:025 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:026 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:027 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:028 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:029 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:030 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:031 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:032 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:033 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:034 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:035 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:036 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:037 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:038 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:039 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:040 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:041 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:042 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:043 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:044 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:045 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:046 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:047 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:048 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:049 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:050 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:051 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:052 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:053 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:054 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:055 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:056 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:057 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:058 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:059 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:060 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:071 JLINK_IsHalted()  returns FALSE (0002ms, 1313ms total)
-T19E0 003:074 JLINK_IsHalted()  returns FALSE (0002ms, 1313ms total)
-T19E0 003:077 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:079 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:081 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:083 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:085 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:086 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:087 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:089 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:091 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:093 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:095 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:097 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:099 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:100 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:101 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:102 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:103 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:105 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:106 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:107 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:109 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:110 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:111 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:112 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:113 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:114 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:115 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:116 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:117 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:118 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:119 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:120 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:122 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:123 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:124 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:125 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:127 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:128 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:129 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:130 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:131 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:132 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:133 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:134 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:136 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:137 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:139 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:141 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:143 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:144 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:146 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:147 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:148 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:149 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:150 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:151 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:152 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:153 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:154 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:156 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:157 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:158 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:159 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:161 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:163 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:164 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:165 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:166 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:167 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:168 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:178 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:180 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:181 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:182 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:183 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:184 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:185 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:186 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:187 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:188 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:189 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:190 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:191 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:193 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:194 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:195 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:196 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:197 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:198 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:199 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:200 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:201 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:202 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:203 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:204 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:205 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:206 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:207 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:208 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:209 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:210 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:211 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:212 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:213 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:214 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:215 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:216 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:217 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:218 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:219 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:220 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:221 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:222 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:223 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:224 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:225 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:226 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:227 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:228 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:229 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:230 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:231 JLINK_IsHalted()  returns FALSE (0000ms, 1311ms total)
-T19E0 003:236 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:238 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:240 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:242 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:244 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:246 JLINK_IsHalted()  returns FALSE (0001ms, 1312ms total)
-T19E0 003:248 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:249 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:250 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:251 JLINK_IsHalted()  returns FALSE (0001ms, 1313ms total)
-T19E0 003:253 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:254 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:255 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:256 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:257 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:258 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:259 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:260 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:261 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:262 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:263 JLINK_IsHalted()  returns FALSE (0001ms, 1313ms total)
-T19E0 003:265 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:266 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:267 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:268 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:269 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:270 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:271 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:272 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:273 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:274 JLINK_IsHalted()  returns FALSE (0001ms, 1313ms total)
-T19E0 003:276 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:277 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:278 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:284 JLINK_IsHalted()  returns FALSE (0001ms, 1313ms total)
-T19E0 003:286 JLINK_IsHalted()  returns FALSE (0001ms, 1313ms total)
-T19E0 003:288 JLINK_IsHalted()  returns FALSE (0001ms, 1313ms total)
-T19E0 003:290 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:291 JLINK_IsHalted()  returns FALSE (0001ms, 1313ms total)
-T19E0 003:293 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:294 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:295 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:296 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:297 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:298 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:299 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:300 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:301 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:302 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:303 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:304 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:305 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:306 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:307 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:308 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:309 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:310 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:311 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:312 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:313 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:314 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:315 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:316 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:317 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:318 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:319 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:320 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:321 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:322 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:323 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:324 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:325 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:326 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:327 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:328 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:329 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:330 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:331 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:332 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:333 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:334 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:335 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:336 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:337 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:338 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:339 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:340 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:341 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:342 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:343 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:344 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:345 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:346 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:347 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:348 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:349 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:350 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:351 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:352 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:353 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:354 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:355 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:356 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:357 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:359 JLINK_IsHalted()  returns FALSE (0001ms, 1313ms total)
-T19E0 003:361 JLINK_IsHalted()  returns FALSE (0001ms, 1313ms total)
-T19E0 003:363 JLINK_IsHalted()  returns FALSE (0001ms, 1313ms total)
-T19E0 003:365 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:366 JLINK_IsHalted()  returns FALSE (0001ms, 1313ms total)
-T19E0 003:368 JLINK_IsHalted()  returns FALSE (0000ms, 1312ms total)
-T19E0 003:369 JLINK_IsHalted()  returns FALSE (0001ms, 1313ms total)
-T19E0 003:371 JLINK_IsHalted()  returns FALSE (0001ms, 1313ms total)
-T19E0 003:373 JLINK_IsHalted()  returns FALSE (0001ms, 1314ms total)
-T19E0 003:375 JLINK_IsHalted()  returns FALSE (0001ms, 1314ms total)
-T19E0 003:377 JLINK_IsHalted()  returns FALSE (0000ms, 1313ms total)
-T19E0 003:378 JLINK_IsHalted()  returns FALSE (0000ms, 1313ms total)
-T19E0 003:379 JLINK_IsHalted()  returns FALSE (0000ms, 1313ms total)
-T19E0 003:380 JLINK_IsHalted()  returns FALSE (0000ms, 1313ms total)
-T19E0 003:381 JLINK_IsHalted()  returns FALSE (0000ms, 1313ms total)
-T19E0 003:382 JLINK_IsHalted()  returns FALSE (0000ms, 1313ms total)
-T19E0 003:383 JLINK_IsHalted()  returns FALSE (0000ms, 1313ms total)
-T19E0 003:384 JLINK_IsHalted()  returns FALSE (0000ms, 1313ms total)
-T19E0 003:385 JLINK_IsHalted()  returns FALSE (0000ms, 1313ms total)
-T19E0 003:386 JLINK_IsHalted()  returns FALSE (0000ms, 1313ms total)
-T19E0 003:387 JLINK_IsHalted()  returns FALSE (0000ms, 1313ms total)
-T19E0 003:388 JLINK_IsHalted()  returns FALSE (0000ms, 1313ms total)
-T19E0 003:398 JLINK_IsHalted()  returns FALSE (0001ms, 1314ms total)
-T19E0 003:400 JLINK_IsHalted()  returns FALSE (0001ms, 1314ms total)
-T19E0 003:402 JLINK_IsHalted()  returns FALSE (0001ms, 1314ms total)
-T19E0 003:404 JLINK_IsHalted()  returns FALSE (0000ms, 1313ms total)
-T19E0 003:405 JLINK_IsHalted()  returns FALSE (0001ms, 1314ms total)
-T19E0 003:407 JLINK_IsHalted()  returns FALSE (0000ms, 1313ms total)
-T19E0 003:408 JLINK_IsHalted()  returns FALSE (0001ms, 1314ms total)
-T19E0 003:410 JLINK_IsHalted()  returns FALSE (0000ms, 1313ms total)
-T19E0 003:411 JLINK_IsHalted()  returns FALSE (0001ms, 1314ms total)
-T19E0 003:413 JLINK_IsHalted()  returns FALSE (0000ms, 1313ms total)
-T19E0 003:414 JLINK_IsHalted()  returns FALSE (0001ms, 1314ms total)
-T19E0 003:416 JLINK_IsHalted()  returns FALSE (0000ms, 1313ms total)
-T19E0 003:417 JLINK_IsHalted()  returns FALSE (0000ms, 1313ms total)
-T19E0 003:418 JLINK_IsHalted()  returns FALSE (0001ms, 1314ms total)
-T19E0 003:420 JLINK_IsHalted()  returns FALSE (0000ms, 1313ms total)
-T19E0 003:421 JLINK_IsHalted()  returns FALSE (0001ms, 1314ms total)
-T19E0 003:423 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:424 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:425 JLINK_IsHalted()  returns FALSE (0001ms, 1315ms total)
-T19E0 003:427 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:428 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:429 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:430 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:431 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:432 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:433 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:434 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:435 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:436 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:437 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:438 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:439 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:440 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:441 JLINK_IsHalted()  returns FALSE (0001ms, 1315ms total)
-T19E0 003:443 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:444 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:445 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:446 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:448 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:449 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:450 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:451 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:452 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:453 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:454 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:455 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:456 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:457 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:458 JLINK_IsHalted()  returns FALSE (0001ms, 1315ms total)
-T19E0 003:460 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:461 JLINK_IsHalted()  returns FALSE (0001ms, 1315ms total)
-T19E0 003:463 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:464 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:465 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:466 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:467 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:468 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:469 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:470 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:471 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:472 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:473 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:474 JLINK_IsHalted()  returns FALSE (0001ms, 1315ms total)
-T19E0 003:476 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:477 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:478 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:479 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:480 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:481 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:482 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:483 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:484 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:485 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:486 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:487 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:488 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:489 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:490 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:491 JLINK_IsHalted()  returns FALSE (0001ms, 1315ms total)
-T19E0 003:493 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:494 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:495 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:496 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:497 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:498 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:503 JLINK_IsHalted()  returns FALSE (0001ms, 1315ms total)
-T19E0 003:505 JLINK_IsHalted()  returns FALSE (0001ms, 1315ms total)
-T19E0 003:507 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:508 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:509 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:510 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:511 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:512 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:513 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:514 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:515 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:516 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:517 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:518 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:519 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:520 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:521 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:522 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:523 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:524 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:525 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:526 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:527 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:528 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:529 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:530 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:531 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:532 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:533 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:534 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:535 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:536 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:537 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:538 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:539 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:540 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:541 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:542 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:543 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:544 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:545 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:546 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:547 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:548 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:549 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:550 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:551 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:552 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:553 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:554 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:555 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:556 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:557 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:558 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:560 JLINK_IsHalted()  returns FALSE (0001ms, 1315ms total)
-T19E0 003:562 JLINK_IsHalted()  returns FALSE (0001ms, 1315ms total)
-T19E0 003:564 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:565 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:566 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:567 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:568 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:569 JLINK_IsHalted()  returns FALSE (0000ms, 1314ms total)
-T19E0 003:570 JLINK_IsHalted()  returns FALSE (0001ms, 1315ms total)
-T19E0 003:572 JLINK_IsHalted()  returns FALSE (0001ms, 1315ms total)
-T19E0 003:574 JLINK_IsHalted()  returns FALSE (0000ms, 1315ms total)
-T19E0 003:575 JLINK_IsHalted()  returns FALSE (0001ms, 1316ms total)
-T19E0 003:578 JLINK_IsHalted()  returns FALSE (0002ms, 1317ms total)
-T19E0 003:581 JLINK_IsHalted()  returns FALSE (0001ms, 1316ms total)
-T19E0 003:583 JLINK_IsHalted()  returns FALSE (0001ms, 1316ms total)
-T19E0 003:585 JLINK_IsHalted()  returns FALSE (0001ms, 1316ms total)
-T19E0 003:587 JLINK_IsHalted()  returns FALSE (0001ms, 1316ms total)
-T19E0 003:589 JLINK_IsHalted()  returns FALSE (0001ms, 1316ms total)
-T19E0 003:591 JLINK_IsHalted()  returns ERROR (0002ms, 1317ms total)
-T19E0 003:593 JLINK_ReadReg(R15 (PC)) -- CPU is running
-  ***** Error: Can not read register 15 (R15) while CPU is running  returns 0x00000000 (0002ms, 1317ms total)
-T19E0 003:606 JLINK_ClrBPEx(BPHandle = 0x00000001) -- CPU is running -- CPU is running -- CPU_WriteMem(4 bytes @ 0xE0002008) -- CPU is running -- CPU_WriteMem(4 bytes @ 0xE000200C) -- CPU is running -- CPU_WriteMem(4 bytes @ 0xE0002010) -- CPU is running -- CPU_WriteMem(4 bytes @ 0xE0002014) -- CPU is running -- CPU_WriteMem(4 bytes @ 0xE0002018) -- CPU is running -- CPU_WriteMem(4 bytes @ 0xE000201C)  returns 0x00 (0010ms, 1327ms total)
-T19E0 003:617 JLINK_WriteReg(R0, 0x00000001)  returns 0x00 (0000ms, 1328ms total)
-T19E0 003:617 JLINK_WriteReg(R1, 0x00B71B00)  returns 0x00 (0000ms, 1328ms total)
-T19E0 003:617 JLINK_WriteReg(R2, 0x00000001)  returns 0x00 (0000ms, 1328ms total)
-T19E0 003:617 JLINK_WriteReg(R3, 0x00000000)  returns 0x00 (0000ms, 1328ms total)
-T19E0 003:617 JLINK_WriteReg(R4, 0x00000000)  returns 0x00 (0000ms, 1328ms total)
-T19E0 003:617 JLINK_WriteReg(R5, 0x00000000)  returns 0x00 (0000ms, 1328ms total)
-T19E0 003:617 JLINK_WriteReg(R6, 0x00000000)  returns 0x00 (0000ms, 1328ms total)
-T19E0 003:617 JLINK_WriteReg(R7, 0x00000000)  returns 0x00 (0000ms, 1328ms total)
-T19E0 003:617 JLINK_WriteReg(R8, 0x00000000)  returns 0x00 (0000ms, 1328ms total)
-T19E0 003:617 JLINK_WriteReg(R9, 0x100001DC)  returns 0x00 (0000ms, 1328ms total)
-T19E0 003:617 JLINK_WriteReg(R10, 0x00000000)  returns 0x00 (0000ms, 1328ms total)
-T19E0 003:617 JLINK_WriteReg(R11, 0x00000000)  returns 0x00 (0000ms, 1328ms total)
-T19E0 003:617 JLINK_WriteReg(R12, 0x00000000)  returns 0x00 (0000ms, 1328ms total)
-T19E0 003:617 JLINK_WriteReg(R13 (SP), 0x10000800) -- CPU is running
-  ***** Error: Can not read register 20 (CFBP) while CPU is running  returns 0x00 (0000ms, 1328ms total)
-T19E0 003:632 JLINK_WriteReg(R14, 0x10000001)  returns 0x00 (0000ms, 1328ms total)
-T19E0 003:632 JLINK_WriteReg(R15 (PC), 0x100000CC)  returns 0x00 (0000ms, 1328ms total)
-T19E0 003:632 JLINK_WriteReg(XPSR, 0x01000000)  returns 0x00 (0000ms, 1328ms total)
-T19E0 003:632 JLINK_WriteReg(MSP, 0x10000800)  returns 0x00 (0000ms, 1328ms total)
-T19E0 003:632 JLINK_WriteReg(PSP, 0x10000800)  returns 0x00 (0000ms, 1328ms total)
-T19E0 003:632 JLINK_WriteReg(CFBP, 0x00000000)  returns 0x00 (0000ms, 1328ms total)
-T19E0 003:632 JLINK_SetBPEx(Addr = 0x10000000, Type = 0xFFFFFFF2) -- CPU is running -- CPU is running -- CPU_WriteMem(4 bytes @ 0xE0002000) -- CPU is running -- CPU_WriteMem(4 bytes @ 0xE0002008)  returns 0x00000002 (0003ms, 1331ms total)
-T19E0 003:635 JLINK_Go()
-  ***** Error: CPU is not halted (0002ms, 1333ms total)
-T19E0 003:653 JLINK_IsHalted()  returns ERROR (0002ms, 1335ms total)
-T19E0 003:655 JLINK_ReadReg(R15 (PC)) -- CPU is running
-  ***** Error: Can not read register 15 (R15) while CPU is running  returns 0x00000000 (0002ms, 1335ms total)
-T19E0 003:676 JLINK_ClrBPEx(BPHandle = 0x00000002) -- CPU is running -- CPU is running -- CPU_WriteMem(4 bytes @ 0xE0002008) -- CPU is running -- CPU_WriteMem(4 bytes @ 0xE000200C) -- CPU is running -- CPU_WriteMem(4 bytes @ 0xE0002010) -- CPU is running -- CPU_WriteMem(4 bytes @ 0xE0002014) -- CPU is running -- CPU_WriteMem(4 bytes @ 0xE0002018) -- CPU is running -- CPU_WriteMem(4 bytes @ 0xE000201C)  returns 0x00 (0008ms, 1343ms total)
-T19E0 005:529 JLINK_Close() -- CPU is running -- CPU_WriteMem(4 bytes @ 0xE0002008) -- CPU is running -- CPU_WriteMem(4 bytes @ 0xE000200C) -- CPU is running -- CPU_WriteMem(4 bytes @ 0xE0002010) -- CPU is running -- CPU_WriteMem(4 bytes @ 0xE0002014) -- CPU is running -- CPU_WriteMem(4 bytes @ 0xE0002018) -- CPU is running -- CPU_WriteMem(4 bytes @ 0xE000201C) >0x0D TIF> >0x0D TIF> >0x0D TIF> >0x0D TIF> >0x0D TIF> >0x0D TIF> >0x0D TIF> >0x0D TIF> >0x0D TIF> >0x0D TIF> (0032ms, 1375ms total)
-T19E0 005:529  (0032ms, 1375ms total)
-T19E0 005:529 Closed (0032ms, 1375ms total)
+T1B7C 000:081.896   SEGGER J-Link V7.82 Log File
+T1B7C 000:090.893   DLL Compiled: Oct 13 2022 13:32:51
+T1B7C 000:090.897   Logging started @ 2023-02-25 05:12
+T1B7C 000:090.900 - 90.902ms
+T1B7C 000:090.908 JLINK_SetWarnOutHandler(...)
+T1B7C 000:091.127 - 0.220ms
+T1B7C 000:091.132 JLINK_OpenEx(...)
+T1B7C 000:106.671   Firmware: J-Link V9 compiled May  7 2021 16:26:12
+T1B7C 000:108.397   Firmware: J-Link V9 compiled May  7 2021 16:26:12
+T1B7C 000:108.814   Decompressing FW timestamp took 396 us
+T1B7C 000:121.362   Hardware: V9.60
+T1B7C 000:121.379   S/N: 69606767
+T1B7C 000:121.383   OEM: SEGGER
+T1B7C 000:121.387   Feature(s): GDB, RDI, FlashBP, FlashDL, JFlash
+T1B7C 000:126.193   TELNET listener socket opened on port 19021
+T1B7C 000:126.291   WEBSRV WEBSRV_Init(): Starting webserver thread(s)
+T1B7C 000:126.404   WEBSRV Webserver running on local port 19080
+T1B7C 000:159.550 - 68.439ms returns "O.K."
+T1B7C 000:159.582 JLINK_GetEmuCaps()
+T1B7C 000:159.586 - 0.005ms returns 0xB9FF7BBF
+T1B7C 000:159.749 JLINK_TIF_GetAvailable(...)
+T1B7C 000:160.836 - 1.096ms
+T1B7C 000:160.853 JLINK_SetErrorOutHandler(...)
+T1B7C 000:160.856 - 0.004ms
+T1B7C 000:161.048 JLINK_ExecCommand("ProjectFile = "F:\JK9310\Project\JLinkSettings.ini"", ...). 
+T1B7C 000:201.805   Ref file found at: E:\Keil_v5\ARM\Segger\JLinkDevices.ref
+T1B7C 000:223.542   XML referenced by ref file: D:\Program Files\SEGGER\JLink_V782\JLinkDevices.xml
+T1B7C 000:231.033   D:\Program Files\SEGGER\JLink_V782\JLinkDevices.xml evaluated successfully.
+T1B7C 000:231.052     Device entry created:  MIMXRT500_UFL_L0
+T1B7C 000:231.056       ChipInfo:
+T1B7C 000:231.060         Vendor:          NXP
+T1B7C 000:231.065         Name:            MIMXRT500_UFL_L0
+T1B7C 000:231.070         WorkRAMSize:     0x00500000
+T1B7C 000:231.077         Core:            JLINK_CORE_CORTEX_M33
+T1B7C 000:231.107         Script:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\iMXRT5xx_CortexM33.JLinkScript
+T1B7C 000:231.113       FlashBankInfo:
+T1B7C 000:231.117         Name:            Octal Flash
+T1B7C 000:231.121         BaseAddr:        0x08000000
+T1B7C 000:236.384         LoaderInfo:
+T1B7C 000:236.404           Name:            Octal Flash
+T1B7C 000:236.409           MaxSize:         0x08000000
+T1B7C 000:236.414           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:236.418           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:236.448     Alias entry created:
+T1B7C 000:236.454       ChipInfo:
+T1B7C 000:236.459         Alias of:        MIMXRT500_UFL_L0
+T1B7C 000:236.463         Name:            MIMXRT533S
+T1B7C 000:236.492     Alias entry created:
+T1B7C 000:236.495       ChipInfo:
+T1B7C 000:236.499         Alias of:        MIMXRT500_UFL_L0
+T1B7C 000:236.503         Name:            MIMXRT555S
+T1B7C 000:236.519     Device entry modified: MIMXRT595S_M33
+T1B7C 000:236.523       ChipInfo:
+T1B7C 000:236.527         WorkRAMAddr:     0x00000000
+T1B7C 000:236.538         Script:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\iMXRT5xx_CortexM33.JLinkScript
+T1B7C 000:236.543       FlashBankInfo:
+T1B7C 000:236.547         Name:            Octal Flash
+T1B7C 000:236.551         BaseAddr:        0x08000000
+T1B7C 000:236.570         LoaderInfo:
+T1B7C 000:236.574           Name:            Octal Flash
+T1B7C 000:236.578           MaxSize:         0x08000000
+T1B7C 000:236.583           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:236.587           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:236.594     Device entry created:  MIMXRT500_UFL_L1
+T1B7C 000:236.597       ChipInfo:
+T1B7C 000:236.601         Vendor:          NXP
+T1B7C 000:236.605         Name:            MIMXRT500_UFL_L1
+T1B7C 000:236.609         WorkRAMSize:     0x00500000
+T1B7C 000:236.615         Core:            JLINK_CORE_CORTEX_M33
+T1B7C 000:236.625         Script:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\iMXRT5xx_CortexM33.JLinkScript
+T1B7C 000:248.904       FlashBankInfo:
+T1B7C 000:248.910         Name:            Octal Flash
+T1B7C 000:248.914         BaseAddr:        0x08000000
+T1B7C 000:248.976         LoaderInfo:
+T1B7C 000:248.981           Name:            Octal Flash
+T1B7C 000:248.986           MaxSize:         0x08000000
+T1B7C 000:248.990           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:248.994           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:249.017     Device entry modified: MIMXRT533S
+T1B7C 000:249.031       FlashBankInfo:
+T1B7C 000:249.035         Name:            Octal Flash
+T1B7C 000:249.039         BaseAddr:        0x08000000
+T1B7C 000:249.054         LoaderInfo:
+T1B7C 000:249.058           Name:            Octal Flash
+T1B7C 000:249.062           MaxSize:         0x08000000
+T1B7C 000:249.066           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:249.070           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:249.076     Device entry modified: MIMXRT555S
+T1B7C 000:249.087       FlashBankInfo:
+T1B7C 000:249.091         Name:            Octal Flash
+T1B7C 000:249.095         BaseAddr:        0x08000000
+T1B7C 000:249.108         LoaderInfo:
+T1B7C 000:249.113           Name:            Octal Flash
+T1B7C 000:249.117           MaxSize:         0x08000000
+T1B7C 000:249.121           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:249.125           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:249.132     Device entry modified: MIMXRT595S_M33
+T1B7C 000:249.142       FlashBankInfo:
+T1B7C 000:249.146         Name:            Octal Flash
+T1B7C 000:249.151         BaseAddr:        0x08000000
+T1B7C 000:249.167         LoaderInfo:
+T1B7C 000:249.171           Name:            Octal Flash
+T1B7C 000:249.175           MaxSize:         0x08000000
+T1B7C 000:249.179           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:249.183           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:249.191     Device entry created:  MIMXRT500_UFL_L2
+T1B7C 000:249.194       ChipInfo:
+T1B7C 000:249.198         Vendor:          NXP
+T1B7C 000:249.203         Name:            MIMXRT500_UFL_L2
+T1B7C 000:249.207         WorkRAMSize:     0x00500000
+T1B7C 000:249.213         Core:            JLINK_CORE_CORTEX_M33
+T1B7C 000:249.223         Script:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\iMXRT5xx_CortexM33.JLinkScript
+T1B7C 000:249.227       FlashBankInfo:
+T1B7C 000:249.231         Name:            Octal Flash
+T1B7C 000:249.236         BaseAddr:        0x08000000
+T1B7C 000:249.258         LoaderInfo:
+T1B7C 000:249.262           Name:            Octal Flash
+T1B7C 000:249.266           MaxSize:         0x08000000
+T1B7C 000:249.271           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:249.275           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:249.281     Device entry modified: MIMXRT533S
+T1B7C 000:249.292       FlashBankInfo:
+T1B7C 000:249.296         Name:            Octal Flash
+T1B7C 000:249.300         BaseAddr:        0x08000000
+T1B7C 000:249.314         LoaderInfo:
+T1B7C 000:249.318           Name:            Octal Flash
+T1B7C 000:249.322           MaxSize:         0x08000000
+T1B7C 000:249.326           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:249.331           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:249.336     Device entry modified: MIMXRT555S
+T1B7C 000:249.346       FlashBankInfo:
+T1B7C 000:249.350         Name:            Octal Flash
+T1B7C 000:249.354         BaseAddr:        0x08000000
+T1B7C 000:249.367         LoaderInfo:
+T1B7C 000:249.372           Name:            Octal Flash
+T1B7C 000:249.376           MaxSize:         0x08000000
+T1B7C 000:249.383           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:249.387           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:249.393     Device entry modified: MIMXRT595S_M33
+T1B7C 000:249.403       FlashBankInfo:
+T1B7C 000:249.408         Name:            Octal Flash
+T1B7C 000:249.412         BaseAddr:        0x08000000
+T1B7C 000:249.425         LoaderInfo:
+T1B7C 000:249.429           Name:            Octal Flash
+T1B7C 000:249.433           MaxSize:         0x08000000
+T1B7C 000:249.438           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:249.442           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:249.449     Device entry created:  MIMXRT600_UFL_L0
+T1B7C 000:249.453       ChipInfo:
+T1B7C 000:249.457         Vendor:          NXP
+T1B7C 000:249.461         Name:            MIMXRT600_UFL_L0
+T1B7C 000:249.465         WorkRAMSize:     0x00480000
+T1B7C 000:249.471         Core:            JLINK_CORE_CORTEX_M33
+T1B7C 000:249.480         Script:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\iMXRT6xx_CortexM33.JLinkScript
+T1B7C 000:249.485       FlashBankInfo:
+T1B7C 000:249.489         Name:            Octal Flash
+T1B7C 000:249.493         BaseAddr:        0x08000000
+T1B7C 000:249.507         LoaderInfo:
+T1B7C 000:249.512           Name:            Octal Flash
+T1B7C 000:249.516           MaxSize:         0x08000000
+T1B7C 000:249.520           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:249.524           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:249.530     Device entry modified: MIMXRT633S
+T1B7C 000:249.535       ChipInfo:
+T1B7C 000:249.539         WorkRAMAddr:     0x00000000
+T1B7C 000:249.544         WorkRAMSize:     0x00480000
+T1B7C 000:249.555         Script:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\iMXRT6xx_CortexM33.JLinkScript
+T1B7C 000:249.559       FlashBankInfo:
+T1B7C 000:249.564         Name:            Octal Flash
+T1B7C 000:249.568         BaseAddr:        0x08000000
+T1B7C 000:249.581         LoaderInfo:
+T1B7C 000:249.586           Name:            Octal Flash
+T1B7C 000:249.590           MaxSize:         0x08000000
+T1B7C 000:249.594           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:249.598           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:249.604     Device entry modified: MIMXRT685S_M33
+T1B7C 000:249.608       ChipInfo:
+T1B7C 000:249.612         WorkRAMAddr:     0x00000000
+T1B7C 000:249.623         Script:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\iMXRT6xx_CortexM33.JLinkScript
+T1B7C 000:249.628       FlashBankInfo:
+T1B7C 000:249.632         Name:            Octal Flash
+T1B7C 000:249.636         BaseAddr:        0x08000000
+T1B7C 000:249.649         LoaderInfo:
+T1B7C 000:249.653           Name:            Octal Flash
+T1B7C 000:249.658           MaxSize:         0x08000000
+T1B7C 000:249.718           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:249.723           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:249.731     Device entry created:  MIMXRT600_UFL_L1
+T1B7C 000:249.734       ChipInfo:
+T1B7C 000:249.738         Vendor:          NXP
+T1B7C 000:249.743         Name:            MIMXRT600_UFL_L1
+T1B7C 000:249.747         WorkRAMSize:     0x00480000
+T1B7C 000:249.752         Core:            JLINK_CORE_CORTEX_M33
+T1B7C 000:249.768         Script:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\iMXRT6xx_CortexM33.JLinkScript
+T1B7C 000:249.773       FlashBankInfo:
+T1B7C 000:249.777         Name:            Octal Flash
+T1B7C 000:249.781         BaseAddr:        0x08000000
+T1B7C 000:249.795         LoaderInfo:
+T1B7C 000:249.800           Name:            Octal Flash
+T1B7C 000:249.806           MaxSize:         0x08000000
+T1B7C 000:249.811           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:249.815           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:249.821     Device entry modified: MIMXRT633S
+T1B7C 000:249.833       FlashBankInfo:
+T1B7C 000:249.837         Name:            Octal Flash
+T1B7C 000:249.841         BaseAddr:        0x08000000
+T1B7C 000:249.855         LoaderInfo:
+T1B7C 000:249.859           Name:            Octal Flash
+T1B7C 000:249.863           MaxSize:         0x08000000
+T1B7C 000:249.867           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:249.871           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:249.877     Device entry modified: MIMXRT685S_M33
+T1B7C 000:249.888       FlashBankInfo:
+T1B7C 000:249.892         Name:            Octal Flash
+T1B7C 000:249.896         BaseAddr:        0x08000000
+T1B7C 000:249.910         LoaderInfo:
+T1B7C 000:249.914           Name:            Octal Flash
+T1B7C 000:249.918           MaxSize:         0x08000000
+T1B7C 000:249.922           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:249.927           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:249.934     Device entry created:  MIMXRT600_UFL_L2
+T1B7C 000:249.936       ChipInfo:
+T1B7C 000:249.940         Vendor:          NXP
+T1B7C 000:249.945         Name:            MIMXRT600_UFL_L2
+T1B7C 000:249.949         WorkRAMSize:     0x00480000
+T1B7C 000:249.954         Core:            JLINK_CORE_CORTEX_M33
+T1B7C 000:249.964         Script:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\iMXRT6xx_CortexM33.JLinkScript
+T1B7C 000:249.969       FlashBankInfo:
+T1B7C 000:249.973         Name:            Octal Flash
+T1B7C 000:249.977         BaseAddr:        0x08000000
+T1B7C 000:249.990         LoaderInfo:
+T1B7C 000:249.994           Name:            Octal Flash
+T1B7C 000:249.999           MaxSize:         0x08000000
+T1B7C 000:250.003           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:250.007           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:250.012     Device entry modified: MIMXRT633S
+T1B7C 000:250.023       FlashBankInfo:
+T1B7C 000:250.027         Name:            Octal Flash
+T1B7C 000:250.031         BaseAddr:        0x08000000
+T1B7C 000:250.044         LoaderInfo:
+T1B7C 000:250.048           Name:            Octal Flash
+T1B7C 000:250.052           MaxSize:         0x08000000
+T1B7C 000:250.057           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:250.061           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:250.066     Device entry modified: MIMXRT685S_M33
+T1B7C 000:250.077       FlashBankInfo:
+T1B7C 000:250.081         Name:            Octal Flash
+T1B7C 000:250.085         BaseAddr:        0x08000000
+T1B7C 000:250.098         LoaderInfo:
+T1B7C 000:250.103           Name:            Octal Flash
+T1B7C 000:250.107           MaxSize:         0x08000000
+T1B7C 000:250.111           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:250.115           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:250.122     Device entry created:  MIMXRT1010_UFL_L0
+T1B7C 000:250.125       ChipInfo:
+T1B7C 000:250.129         Vendor:          NXP
+T1B7C 000:250.134         Name:            MIMXRT1010_UFL_L0
+T1B7C 000:250.138         WorkRAMAddr:     0x20000000
+T1B7C 000:250.142         WorkRAMSize:     0x00010000
+T1B7C 000:250.148         Core:            JLINK_CORE_CORTEX_M7
+T1B7C 000:250.158         Script:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\iMXRT1011_CortexM7.JLinkScript
+T1B7C 000:250.162       FlashBankInfo:
+T1B7C 000:250.166         Name:            QSPI Flash
+T1B7C 000:250.344         BaseAddr:        0x60000000
+T1B7C 000:250.368         LoaderInfo:
+T1B7C 000:250.372           Name:            QSPI Flash
+T1B7C 000:250.376           MaxSize:         0x08000000
+T1B7C 000:250.381           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:250.385           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:250.407     Device entry modified: MIMXRT1011xxx4A
+T1B7C 000:250.412       ChipInfo:
+T1B7C 000:250.416         WorkRAMAddr:     0x20000000
+T1B7C 000:250.428         Script:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\iMXRT1011_CortexM7.JLinkScript
+T1B7C 000:250.433       FlashBankInfo:
+T1B7C 000:250.437         Name:            QSPI Flash
+T1B7C 000:250.441         BaseAddr:        0x60000000
+T1B7C 000:250.455         LoaderInfo:
+T1B7C 000:250.459           Name:            QSPI Flash
+T1B7C 000:250.463           MaxSize:         0x08000000
+T1B7C 000:250.468           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:250.472           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:250.477     Device entry modified: MIMXRT1011xxx5A
+T1B7C 000:250.480       ChipInfo:
+T1B7C 000:250.485         WorkRAMAddr:     0x20000000
+T1B7C 000:250.496         Script:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\iMXRT1011_CortexM7.JLinkScript
+T1B7C 000:250.500       FlashBankInfo:
+T1B7C 000:250.504         Name:            QSPI Flash
+T1B7C 000:250.508         BaseAddr:        0x60000000
+T1B7C 000:250.521         LoaderInfo:
+T1B7C 000:250.525           Name:            QSPI Flash
+T1B7C 000:250.529           MaxSize:         0x08000000
+T1B7C 000:250.533           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:250.537           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:250.544     Device entry created:  MIMXRT1010_UFL_L1
+T1B7C 000:250.547       ChipInfo:
+T1B7C 000:250.551         Vendor:          NXP
+T1B7C 000:250.555         Name:            MIMXRT1010_UFL_L1
+T1B7C 000:250.559         WorkRAMAddr:     0x20000000
+T1B7C 000:250.564         WorkRAMSize:     0x00010000
+T1B7C 000:250.569         Core:            JLINK_CORE_CORTEX_M7
+T1B7C 000:250.579         Script:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\iMXRT1011_CortexM7.JLinkScript
+T1B7C 000:250.583       FlashBankInfo:
+T1B7C 000:250.587         Name:            QSPI Flash
+T1B7C 000:250.591         BaseAddr:        0x60000000
+T1B7C 000:250.605         LoaderInfo:
+T1B7C 000:250.609           Name:            QSPI Flash
+T1B7C 000:250.613           MaxSize:         0x08000000
+T1B7C 000:250.617           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:250.621           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:250.628     Device entry modified: MIMXRT1011xxx4A
+T1B7C 000:250.639       FlashBankInfo:
+T1B7C 000:250.643         Name:            QSPI Flash
+T1B7C 000:250.647         BaseAddr:        0x60000000
+T1B7C 000:250.677         LoaderInfo:
+T1B7C 000:250.682           Name:            QSPI Flash
+T1B7C 000:250.686           MaxSize:         0x08000000
+T1B7C 000:250.690           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:250.694           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:250.700     Device entry modified: MIMXRT1011xxx5A
+T1B7C 000:250.714       FlashBankInfo:
+T1B7C 000:250.718         Name:            QSPI Flash
+T1B7C 000:250.722         BaseAddr:        0x60000000
+T1B7C 000:250.736         LoaderInfo:
+T1B7C 000:250.740           Name:            QSPI Flash
+T1B7C 000:250.744           MaxSize:         0x08000000
+T1B7C 000:250.748           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:250.752           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:250.762     Device entry created:  MIMXRT1010_UFL_L2
+T1B7C 000:250.766       ChipInfo:
+T1B7C 000:250.770         Vendor:          NXP
+T1B7C 000:250.774         Name:            MIMXRT1010_UFL_L2
+T1B7C 000:250.778         WorkRAMAddr:     0x20000000
+T1B7C 000:250.782         WorkRAMSize:     0x00010000
+T1B7C 000:250.787         Core:            JLINK_CORE_CORTEX_M7
+T1B7C 000:250.797         Script:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\iMXRT1011_CortexM7.JLinkScript
+T1B7C 000:250.802       FlashBankInfo:
+T1B7C 000:250.806         Name:            QSPI Flash
+T1B7C 000:250.810         BaseAddr:        0x60000000
+T1B7C 000:250.824         LoaderInfo:
+T1B7C 000:250.828           Name:            QSPI Flash
+T1B7C 000:250.832           MaxSize:         0x08000000
+T1B7C 000:250.837           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:250.840           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:250.847     Device entry modified: MIMXRT1011xxx4A
+T1B7C 000:250.858       FlashBankInfo:
+T1B7C 000:250.862         Name:            QSPI Flash
+T1B7C 000:250.866         BaseAddr:        0x60000000
+T1B7C 000:250.881         LoaderInfo:
+T1B7C 000:250.885           Name:            QSPI Flash
+T1B7C 000:250.889           MaxSize:         0x08000000
+T1B7C 000:250.893           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:250.897           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:250.903     Device entry modified: MIMXRT1011xxx5A
+T1B7C 000:250.913       FlashBankInfo:
+T1B7C 000:250.917         Name:            QSPI Flash
+T1B7C 000:250.921         BaseAddr:        0x60000000
+T1B7C 000:250.934         LoaderInfo:
+T1B7C 000:250.938           Name:            QSPI Flash
+T1B7C 000:250.942           MaxSize:         0x08000000
+T1B7C 000:250.947           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:250.951           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:250.959     Device entry created:  MIMXRT1015_UFL_L0
+T1B7C 000:250.962       ChipInfo:
+T1B7C 000:250.966         Vendor:          NXP
+T1B7C 000:250.970         Name:            MIMXRT1015_UFL_L0
+T1B7C 000:250.974         WorkRAMSize:     0x00010000
+T1B7C 000:250.979         Core:            JLINK_CORE_CORTEX_M7
+T1B7C 000:250.984       FlashBankInfo:
+T1B7C 000:250.988         Name:            QSPI Flash
+T1B7C 000:250.992         BaseAddr:        0x60000000
+T1B7C 000:251.007         LoaderInfo:
+T1B7C 000:251.011           Name:            QSPI Flash
+T1B7C 000:251.015           MaxSize:         0x08000000
+T1B7C 000:251.020           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:251.023           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:251.030     Device entry modified: MIMXRT1015xxx4A
+T1B7C 000:251.033       ChipInfo:
+T1B7C 000:251.037         WorkRAMAddr:     0x00000000
+T1B7C 000:251.043       FlashBankInfo:
+T1B7C 000:251.047         Name:            QSPI Flash
+T1B7C 000:251.051         BaseAddr:        0x60000000
+T1B7C 000:251.065         LoaderInfo:
+T1B7C 000:251.069           Name:            QSPI Flash
+T1B7C 000:251.073           MaxSize:         0x08000000
+T1B7C 000:251.077           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:251.082           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:251.087     Device entry modified: MIMXRT1015xxx5A
+T1B7C 000:251.090       ChipInfo:
+T1B7C 000:251.095         WorkRAMAddr:     0x00000000
+T1B7C 000:251.100       FlashBankInfo:
+T1B7C 000:251.105         Name:            QSPI Flash
+T1B7C 000:251.109         BaseAddr:        0x60000000
+T1B7C 000:251.123         LoaderInfo:
+T1B7C 000:251.127           Name:            QSPI Flash
+T1B7C 000:251.133           MaxSize:         0x08000000
+T1B7C 000:251.137           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:251.141           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:251.149     Device entry created:  MIMXRT1015_UFL_L1
+T1B7C 000:251.152       ChipInfo:
+T1B7C 000:251.156         Vendor:          NXP
+T1B7C 000:251.160         Name:            MIMXRT1015_UFL_L1
+T1B7C 000:251.164         WorkRAMSize:     0x00010000
+T1B7C 000:251.170         Core:            JLINK_CORE_CORTEX_M7
+T1B7C 000:251.175       FlashBankInfo:
+T1B7C 000:251.179         Name:            QSPI Flash
+T1B7C 000:251.183         BaseAddr:        0x60000000
+T1B7C 000:251.197         LoaderInfo:
+T1B7C 000:251.202           Name:            QSPI Flash
+T1B7C 000:251.206           MaxSize:         0x08000000
+T1B7C 000:251.210           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:251.214           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:251.220     Device entry modified: MIMXRT1015xxx4A
+T1B7C 000:251.225       FlashBankInfo:
+T1B7C 000:251.229         Name:            QSPI Flash
+T1B7C 000:251.233         BaseAddr:        0x60000000
+T1B7C 000:251.248         LoaderInfo:
+T1B7C 000:251.252           Name:            QSPI Flash
+T1B7C 000:251.257           MaxSize:         0x08000000
+T1B7C 000:251.261           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:251.265           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:251.270     Device entry modified: MIMXRT1015xxx5A
+T1B7C 000:251.275       FlashBankInfo:
+T1B7C 000:251.280         Name:            QSPI Flash
+T1B7C 000:251.285         BaseAddr:        0x60000000
+T1B7C 000:251.298         LoaderInfo:
+T1B7C 000:251.303           Name:            QSPI Flash
+T1B7C 000:251.307           MaxSize:         0x08000000
+T1B7C 000:251.312           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:251.316           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:251.323     Device entry created:  MIMXRT1015_UFL_L2
+T1B7C 000:251.326       ChipInfo:
+T1B7C 000:251.330         Vendor:          NXP
+T1B7C 000:251.334         Name:            MIMXRT1015_UFL_L2
+T1B7C 000:251.338         WorkRAMSize:     0x00010000
+T1B7C 000:251.344         Core:            JLINK_CORE_CORTEX_M7
+T1B7C 000:251.349       FlashBankInfo:
+T1B7C 000:251.353         Name:            QSPI Flash
+T1B7C 000:251.358         BaseAddr:        0x60000000
+T1B7C 000:251.372         LoaderInfo:
+T1B7C 000:251.377           Name:            QSPI Flash
+T1B7C 000:251.381           MaxSize:         0x08000000
+T1B7C 000:251.385           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:251.390           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:251.396     Device entry modified: MIMXRT1015xxx4A
+T1B7C 000:251.401       FlashBankInfo:
+T1B7C 000:251.405         Name:            QSPI Flash
+T1B7C 000:251.409         BaseAddr:        0x60000000
+T1B7C 000:251.422         LoaderInfo:
+T1B7C 000:251.427           Name:            QSPI Flash
+T1B7C 000:251.431           MaxSize:         0x08000000
+T1B7C 000:251.435           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:251.439           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:251.444     Device entry modified: MIMXRT1015xxx5A
+T1B7C 000:251.449       FlashBankInfo:
+T1B7C 000:251.453         Name:            QSPI Flash
+T1B7C 000:251.457         BaseAddr:        0x60000000
+T1B7C 000:251.471         LoaderInfo:
+T1B7C 000:251.475           Name:            QSPI Flash
+T1B7C 000:251.479           MaxSize:         0x08000000
+T1B7C 000:251.483           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:251.489           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:251.497     Device entry created:  MIMXRT1020_UFL_L0
+T1B7C 000:251.501       ChipInfo:
+T1B7C 000:251.505         Vendor:          NXP
+T1B7C 000:251.509         Name:            MIMXRT1020_UFL_L0
+T1B7C 000:251.513         WorkRAMSize:     0x00010000
+T1B7C 000:251.519         Core:            JLINK_CORE_CORTEX_M7
+T1B7C 000:251.523       FlashBankInfo:
+T1B7C 000:251.527         Name:            QSPI Flash
+T1B7C 000:251.532         BaseAddr:        0x60000000
+T1B7C 000:251.547         LoaderInfo:
+T1B7C 000:251.552           Name:            QSPI Flash
+T1B7C 000:251.556           MaxSize:         0x08000000
+T1B7C 000:251.560           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:251.564           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:251.571     Device entry modified: MIMXRT1021xxx4A
+T1B7C 000:251.574       ChipInfo:
+T1B7C 000:251.579         WorkRAMAddr:     0x00000000
+T1B7C 000:251.585       FlashBankInfo:
+T1B7C 000:251.589         Name:            QSPI Flash
+T1B7C 000:251.593         BaseAddr:        0x60000000
+T1B7C 000:251.609         LoaderInfo:
+T1B7C 000:251.614           Name:            QSPI Flash
+T1B7C 000:251.619           MaxSize:         0x08000000
+T1B7C 000:251.623           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:251.628           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:251.633     Device entry modified: MIMXRT1021xxx5A
+T1B7C 000:251.636       ChipInfo:
+T1B7C 000:251.640         WorkRAMAddr:     0x00000000
+T1B7C 000:251.646       FlashBankInfo:
+T1B7C 000:251.650         Name:            QSPI Flash
+T1B7C 000:251.654         BaseAddr:        0x60000000
+T1B7C 000:251.670         LoaderInfo:
+T1B7C 000:251.674           Name:            QSPI Flash
+T1B7C 000:251.678           MaxSize:         0x08000000
+T1B7C 000:251.682           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:251.686           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:251.693     Device entry created:  MIMXRT1020_UFL_L1
+T1B7C 000:251.696       ChipInfo:
+T1B7C 000:251.700         Vendor:          NXP
+T1B7C 000:251.704         Name:            MIMXRT1020_UFL_L1
+T1B7C 000:251.709         WorkRAMSize:     0x00010000
+T1B7C 000:251.715         Core:            JLINK_CORE_CORTEX_M7
+T1B7C 000:251.720       FlashBankInfo:
+T1B7C 000:251.724         Name:            QSPI Flash
+T1B7C 000:251.729         BaseAddr:        0x60000000
+T1B7C 000:251.743         LoaderInfo:
+T1B7C 000:251.747           Name:            QSPI Flash
+T1B7C 000:251.751           MaxSize:         0x08000000
+T1B7C 000:251.755           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:251.760           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:251.765     Device entry modified: MIMXRT1021xxx4A
+T1B7C 000:251.770       FlashBankInfo:
+T1B7C 000:251.775         Name:            QSPI Flash
+T1B7C 000:251.779         BaseAddr:        0x60000000
+T1B7C 000:251.792         LoaderInfo:
+T1B7C 000:251.797           Name:            QSPI Flash
+T1B7C 000:251.802           MaxSize:         0x08000000
+T1B7C 000:251.806           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:251.811           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:251.816     Device entry modified: MIMXRT1021xxx5A
+T1B7C 000:251.821       FlashBankInfo:
+T1B7C 000:251.825         Name:            QSPI Flash
+T1B7C 000:251.829         BaseAddr:        0x60000000
+T1B7C 000:251.843         LoaderInfo:
+T1B7C 000:251.847           Name:            QSPI Flash
+T1B7C 000:251.852           MaxSize:         0x08000000
+T1B7C 000:251.856           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:252.216           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:252.226     Device entry created:  MIMXRT1020_UFL_L2
+T1B7C 000:252.229       ChipInfo:
+T1B7C 000:252.233         Vendor:          NXP
+T1B7C 000:252.237         Name:            MIMXRT1020_UFL_L2
+T1B7C 000:252.242         WorkRAMSize:     0x00010000
+T1B7C 000:252.248         Core:            JLINK_CORE_CORTEX_M7
+T1B7C 000:252.252       FlashBankInfo:
+T1B7C 000:252.256         Name:            QSPI Flash
+T1B7C 000:252.261         BaseAddr:        0x60000000
+T1B7C 000:252.289         LoaderInfo:
+T1B7C 000:252.293           Name:            QSPI Flash
+T1B7C 000:252.297           MaxSize:         0x08000000
+T1B7C 000:252.301           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:252.305           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:252.313     Device entry modified: MIMXRT1021xxx4A
+T1B7C 000:252.318       FlashBankInfo:
+T1B7C 000:252.322         Name:            QSPI Flash
+T1B7C 000:252.326         BaseAddr:        0x60000000
+T1B7C 000:252.341         LoaderInfo:
+T1B7C 000:252.346           Name:            QSPI Flash
+T1B7C 000:252.350           MaxSize:         0x08000000
+T1B7C 000:252.354           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:252.358           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:252.363     Device entry modified: MIMXRT1021xxx5A
+T1B7C 000:252.369       FlashBankInfo:
+T1B7C 000:252.372         Name:            QSPI Flash
+T1B7C 000:252.377         BaseAddr:        0x60000000
+T1B7C 000:252.390         LoaderInfo:
+T1B7C 000:252.394           Name:            QSPI Flash
+T1B7C 000:252.398           MaxSize:         0x08000000
+T1B7C 000:252.403           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:252.407           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:252.413     Device entry created:  MIMXRT1024_UFL
+T1B7C 000:252.416       ChipInfo:
+T1B7C 000:252.420         Vendor:          NXP
+T1B7C 000:252.425         Name:            MIMXRT1024_UFL
+T1B7C 000:252.429         WorkRAMSize:     0x00010000
+T1B7C 000:252.434         Core:            JLINK_CORE_CORTEX_M7
+T1B7C 000:252.438       FlashBankInfo:
+T1B7C 000:252.442         Name:            QSPI Flash
+T1B7C 000:252.447         BaseAddr:        0x60000000
+T1B7C 000:252.460         LoaderInfo:
+T1B7C 000:252.465           Name:            QSPI Flash
+T1B7C 000:252.469           MaxSize:         0x00400000
+T1B7C 000:252.473           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:252.477           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:252.484     Device entry modified: MIMXRT1024xxx4A
+T1B7C 000:252.487       ChipInfo:
+T1B7C 000:252.491         WorkRAMAddr:     0x00000000
+T1B7C 000:252.497       FlashBankInfo:
+T1B7C 000:252.501         Name:            QSPI Flash
+T1B7C 000:252.505         BaseAddr:        0x60000000
+T1B7C 000:252.518         LoaderInfo:
+T1B7C 000:252.522           Name:            QSPI Flash
+T1B7C 000:252.526           MaxSize:         0x00400000
+T1B7C 000:252.531           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:252.534           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:252.540     Device entry modified: MIMXRT1024xxx5A
+T1B7C 000:252.543       ChipInfo:
+T1B7C 000:252.547         WorkRAMAddr:     0x00000000
+T1B7C 000:252.553       FlashBankInfo:
+T1B7C 000:252.557         Name:            QSPI Flash
+T1B7C 000:252.561         BaseAddr:        0x60000000
+T1B7C 000:252.574         LoaderInfo:
+T1B7C 000:252.579           Name:            QSPI Flash
+T1B7C 000:252.583           MaxSize:         0x00400000
+T1B7C 000:252.587           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:252.593           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:252.601     Device entry created:  MIMXRT1050_UFL_L0
+T1B7C 000:252.604       ChipInfo:
+T1B7C 000:252.608         Vendor:          NXP
+T1B7C 000:252.613         Name:            MIMXRT1050_UFL_L0
+T1B7C 000:252.617         WorkRAMSize:     0x00020000
+T1B7C 000:252.622         Core:            JLINK_CORE_CORTEX_M7
+T1B7C 000:252.627       FlashBankInfo:
+T1B7C 000:252.631         Name:            HyperFlash
+T1B7C 000:252.635         BaseAddr:        0x60000000
+T1B7C 000:252.648         LoaderInfo:
+T1B7C 000:252.652           Name:            HyperFlash
+T1B7C 000:252.657           MaxSize:         0x08000000
+T1B7C 000:252.665           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:252.670           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:252.677     Alias entry created:
+T1B7C 000:252.681       ChipInfo:
+T1B7C 000:252.685         Alias of:        MIMXRT1050_UFL_L0
+T1B7C 000:252.689         Name:            MIMXRT1051xxx5A
+T1B7C 000:252.698     Alias entry created:
+T1B7C 000:252.701       ChipInfo:
+T1B7C 000:252.705         Alias of:        MIMXRT1050_UFL_L0
+T1B7C 000:252.709         Name:            MIMXRT1051xxx5B
+T1B7C 000:252.717     Alias entry created:
+T1B7C 000:252.720       ChipInfo:
+T1B7C 000:252.724         Alias of:        MIMXRT1050_UFL_L0
+T1B7C 000:252.728         Name:            MIMXRT1051xxx6A
+T1B7C 000:252.736     Alias entry created:
+T1B7C 000:252.740       ChipInfo:
+T1B7C 000:252.744         Alias of:        MIMXRT1050_UFL_L0
+T1B7C 000:252.748         Name:            MIMXRT1051xxx6B
+T1B7C 000:252.756     Alias entry created:
+T1B7C 000:252.760       ChipInfo:
+T1B7C 000:252.764         Alias of:        MIMXRT1050_UFL_L0
+T1B7C 000:252.768         Name:            MIMXRT1052xxx5A
+T1B7C 000:252.776     Alias entry created:
+T1B7C 000:252.779       ChipInfo:
+T1B7C 000:252.783         Alias of:        MIMXRT1050_UFL_L0
+T1B7C 000:252.787         Name:            MIMXRT1052xxx5B
+T1B7C 000:252.796     Alias entry created:
+T1B7C 000:252.799       ChipInfo:
+T1B7C 000:252.803         Alias of:        MIMXRT1050_UFL_L0
+T1B7C 000:252.807         Name:            MIMXRT1052xxx6A
+T1B7C 000:252.815     Alias entry created:
+T1B7C 000:252.818       ChipInfo:
+T1B7C 000:252.822         Alias of:        MIMXRT1050_UFL_L0
+T1B7C 000:252.826         Name:            MIMXRT1052xxx6B
+T1B7C 000:252.835     Device entry created:  MIMXRT1050_UFL_L1
+T1B7C 000:252.838       ChipInfo:
+T1B7C 000:252.842         Vendor:          NXP
+T1B7C 000:252.846         Name:            MIMXRT1050_UFL_L1
+T1B7C 000:252.850         WorkRAMSize:     0x00020000
+T1B7C 000:252.856         Core:            JLINK_CORE_CORTEX_M7
+T1B7C 000:252.860       FlashBankInfo:
+T1B7C 000:252.864         Name:            HyperFlash
+T1B7C 000:252.868         BaseAddr:        0x60000000
+T1B7C 000:252.885         LoaderInfo:
+T1B7C 000:252.890           Name:            HyperFlash
+T1B7C 000:252.894           MaxSize:         0x08000000
+T1B7C 000:252.898           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:252.903           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:252.922     Device entry modified: MIMXRT1051xxx5A
+T1B7C 000:252.928       FlashBankInfo:
+T1B7C 000:252.932         Name:            HyperFlash
+T1B7C 000:252.937         BaseAddr:        0x60000000
+T1B7C 000:252.951         LoaderInfo:
+T1B7C 000:252.956           Name:            HyperFlash
+T1B7C 000:252.960           MaxSize:         0x08000000
+T1B7C 000:252.965           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:252.969           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:252.974     Device entry modified: MIMXRT1051xxx5B
+T1B7C 000:252.979       FlashBankInfo:
+T1B7C 000:252.983         Name:            HyperFlash
+T1B7C 000:252.989         BaseAddr:        0x60000000
+T1B7C 000:253.002         LoaderInfo:
+T1B7C 000:253.006           Name:            HyperFlash
+T1B7C 000:253.010           MaxSize:         0x08000000
+T1B7C 000:253.015           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:253.019           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:253.024     Device entry modified: MIMXRT1051xxx6A
+T1B7C 000:253.029       FlashBankInfo:
+T1B7C 000:253.033         Name:            HyperFlash
+T1B7C 000:253.038         BaseAddr:        0x60000000
+T1B7C 000:253.051         LoaderInfo:
+T1B7C 000:253.055           Name:            HyperFlash
+T1B7C 000:253.059           MaxSize:         0x08000000
+T1B7C 000:253.063           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:253.067           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:253.073     Device entry modified: MIMXRT1051xxx6B
+T1B7C 000:253.078       FlashBankInfo:
+T1B7C 000:253.082         Name:            HyperFlash
+T1B7C 000:253.086         BaseAddr:        0x60000000
+T1B7C 000:253.101         LoaderInfo:
+T1B7C 000:253.105           Name:            HyperFlash
+T1B7C 000:253.109           MaxSize:         0x08000000
+T1B7C 000:253.114           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:253.118           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:253.123     Device entry modified: MIMXRT1052xxx5A
+T1B7C 000:253.128       FlashBankInfo:
+T1B7C 000:253.132         Name:            HyperFlash
+T1B7C 000:253.136         BaseAddr:        0x60000000
+T1B7C 000:253.150         LoaderInfo:
+T1B7C 000:253.155           Name:            HyperFlash
+T1B7C 000:253.159           MaxSize:         0x08000000
+T1B7C 000:253.163           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:253.167           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:253.173     Device entry modified: MIMXRT1052xxx5B
+T1B7C 000:253.178       FlashBankInfo:
+T1B7C 000:253.182         Name:            HyperFlash
+T1B7C 000:253.186         BaseAddr:        0x60000000
+T1B7C 000:253.199         LoaderInfo:
+T1B7C 000:253.203           Name:            HyperFlash
+T1B7C 000:253.207           MaxSize:         0x08000000
+T1B7C 000:253.212           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:253.216           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:253.221     Device entry modified: MIMXRT1052xxx6A
+T1B7C 000:253.226       FlashBankInfo:
+T1B7C 000:253.230         Name:            HyperFlash
+T1B7C 000:253.234         BaseAddr:        0x60000000
+T1B7C 000:253.248         LoaderInfo:
+T1B7C 000:253.252           Name:            HyperFlash
+T1B7C 000:253.256           MaxSize:         0x08000000
+T1B7C 000:253.260           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:253.264           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:253.269     Device entry modified: MIMXRT1052xxx6B
+T1B7C 000:253.274       FlashBankInfo:
+T1B7C 000:253.278         Name:            HyperFlash
+T1B7C 000:253.282         BaseAddr:        0x60000000
+T1B7C 000:253.295         LoaderInfo:
+T1B7C 000:253.300           Name:            HyperFlash
+T1B7C 000:253.304           MaxSize:         0x08000000
+T1B7C 000:253.308           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:253.313           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:253.321     Device entry created:  MIMXRT1050_UFL_L2
+T1B7C 000:253.324       ChipInfo:
+T1B7C 000:253.328         Vendor:          NXP
+T1B7C 000:253.332         Name:            MIMXRT1050_UFL_L2
+T1B7C 000:253.337         WorkRAMSize:     0x00020000
+T1B7C 000:253.343         Core:            JLINK_CORE_CORTEX_M7
+T1B7C 000:253.349       FlashBankInfo:
+T1B7C 000:253.353         Name:            HyperFlash
+T1B7C 000:253.358         BaseAddr:        0x60000000
+T1B7C 000:253.373         LoaderInfo:
+T1B7C 000:253.377           Name:            HyperFlash
+T1B7C 000:253.381           MaxSize:         0x08000000
+T1B7C 000:253.385           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:253.390           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:253.396     Device entry modified: MIMXRT1051xxx5A
+T1B7C 000:253.402       FlashBankInfo:
+T1B7C 000:253.405         Name:            HyperFlash
+T1B7C 000:253.410         BaseAddr:        0x60000000
+T1B7C 000:253.424         LoaderInfo:
+T1B7C 000:253.428           Name:            HyperFlash
+T1B7C 000:253.432           MaxSize:         0x08000000
+T1B7C 000:253.437           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:253.441           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:253.446     Device entry modified: MIMXRT1051xxx5B
+T1B7C 000:253.452       FlashBankInfo:
+T1B7C 000:253.456         Name:            HyperFlash
+T1B7C 000:253.460         BaseAddr:        0x60000000
+T1B7C 000:253.473         LoaderInfo:
+T1B7C 000:253.477           Name:            HyperFlash
+T1B7C 000:253.482           MaxSize:         0x08000000
+T1B7C 000:253.487           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:253.491           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:253.497     Device entry modified: MIMXRT1051xxx6A
+T1B7C 000:253.504       FlashBankInfo:
+T1B7C 000:253.508         Name:            HyperFlash
+T1B7C 000:253.512         BaseAddr:        0x60000000
+T1B7C 000:253.526         LoaderInfo:
+T1B7C 000:253.530           Name:            HyperFlash
+T1B7C 000:253.534           MaxSize:         0x08000000
+T1B7C 000:253.539           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:253.543           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:253.548     Device entry modified: MIMXRT1051xxx6B
+T1B7C 000:253.553       FlashBankInfo:
+T1B7C 000:253.557         Name:            HyperFlash
+T1B7C 000:253.561         BaseAddr:        0x60000000
+T1B7C 000:253.574         LoaderInfo:
+T1B7C 000:253.579           Name:            HyperFlash
+T1B7C 000:253.583           MaxSize:         0x08000000
+T1B7C 000:253.588           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:253.592           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:253.597     Device entry modified: MIMXRT1052xxx5A
+T1B7C 000:253.602       FlashBankInfo:
+T1B7C 000:253.606         Name:            HyperFlash
+T1B7C 000:253.611         BaseAddr:        0x60000000
+T1B7C 000:253.624         LoaderInfo:
+T1B7C 000:253.629           Name:            HyperFlash
+T1B7C 000:253.633           MaxSize:         0x08000000
+T1B7C 000:253.637           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:253.641           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:253.647     Device entry modified: MIMXRT1052xxx5B
+T1B7C 000:253.652       FlashBankInfo:
+T1B7C 000:253.656         Name:            HyperFlash
+T1B7C 000:253.714         BaseAddr:        0x60000000
+T1B7C 000:253.738         LoaderInfo:
+T1B7C 000:253.742           Name:            HyperFlash
+T1B7C 000:253.746           MaxSize:         0x08000000
+T1B7C 000:253.751           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:253.755           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:253.761     Device entry modified: MIMXRT1052xxx6A
+T1B7C 000:253.766       FlashBankInfo:
+T1B7C 000:253.770         Name:            HyperFlash
+T1B7C 000:253.777         BaseAddr:        0x60000000
+T1B7C 000:253.790         LoaderInfo:
+T1B7C 000:253.794           Name:            HyperFlash
+T1B7C 000:253.799           MaxSize:         0x08000000
+T1B7C 000:253.803           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:253.807           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:253.813     Device entry modified: MIMXRT1052xxx6B
+T1B7C 000:253.818       FlashBankInfo:
+T1B7C 000:253.822         Name:            HyperFlash
+T1B7C 000:253.826         BaseAddr:        0x60000000
+T1B7C 000:253.839         LoaderInfo:
+T1B7C 000:253.843           Name:            HyperFlash
+T1B7C 000:253.847           MaxSize:         0x08000000
+T1B7C 000:253.852           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:253.856           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:253.863     Device entry created:  MIMXRT1060_UFL_L0
+T1B7C 000:253.866       ChipInfo:
+T1B7C 000:253.870         Vendor:          NXP
+T1B7C 000:253.874         Name:            MIMXRT1060_UFL_L0
+T1B7C 000:253.879         WorkRAMSize:     0x00020000
+T1B7C 000:253.884         Core:            JLINK_CORE_CORTEX_M7
+T1B7C 000:253.890       FlashBankInfo:
+T1B7C 000:253.894         Name:            QSPI Flash
+T1B7C 000:253.899         BaseAddr:        0x60000000
+T1B7C 000:253.913         LoaderInfo:
+T1B7C 000:253.917           Name:            QSPI Flash
+T1B7C 000:253.921           MaxSize:         0x08000000
+T1B7C 000:253.925           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:253.929           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:253.936     Device entry modified: MIMXRT1061xxx5A
+T1B7C 000:253.940       ChipInfo:
+T1B7C 000:253.943         WorkRAMAddr:     0x00000000
+T1B7C 000:253.948         WorkRAMSize:     0x00020000
+T1B7C 000:253.954       FlashBankInfo:
+T1B7C 000:253.958         Name:            QSPI Flash
+T1B7C 000:253.962         BaseAddr:        0x60000000
+T1B7C 000:253.975         LoaderInfo:
+T1B7C 000:253.979           Name:            QSPI Flash
+T1B7C 000:253.983           MaxSize:         0x08000000
+T1B7C 000:253.987           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:253.991           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:253.997     Device entry modified: MIMXRT1061xxx6A
+T1B7C 000:254.000       ChipInfo:
+T1B7C 000:254.004         WorkRAMAddr:     0x00000000
+T1B7C 000:254.008         WorkRAMSize:     0x00020000
+T1B7C 000:254.015       FlashBankInfo:
+T1B7C 000:254.019         Name:            QSPI Flash
+T1B7C 000:254.023         BaseAddr:        0x60000000
+T1B7C 000:254.036         LoaderInfo:
+T1B7C 000:254.040           Name:            QSPI Flash
+T1B7C 000:254.044           MaxSize:         0x08000000
+T1B7C 000:254.048           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:254.052           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:254.058     Device entry modified: MIMXRT1062xxx5A
+T1B7C 000:254.061       ChipInfo:
+T1B7C 000:254.065         WorkRAMAddr:     0x00000000
+T1B7C 000:254.069         WorkRAMSize:     0x00020000
+T1B7C 000:254.075       FlashBankInfo:
+T1B7C 000:254.079         Name:            QSPI Flash
+T1B7C 000:254.083         BaseAddr:        0x60000000
+T1B7C 000:254.096         LoaderInfo:
+T1B7C 000:254.100           Name:            QSPI Flash
+T1B7C 000:254.105           MaxSize:         0x08000000
+T1B7C 000:254.109           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:254.113           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:254.118     Device entry modified: MIMXRT1062xxx6A
+T1B7C 000:254.121       ChipInfo:
+T1B7C 000:254.125         WorkRAMAddr:     0x00000000
+T1B7C 000:254.131         WorkRAMSize:     0x00020000
+T1B7C 000:254.137       FlashBankInfo:
+T1B7C 000:254.141         Name:            QSPI Flash
+T1B7C 000:254.145         BaseAddr:        0x60000000
+T1B7C 000:254.159         LoaderInfo:
+T1B7C 000:254.163           Name:            QSPI Flash
+T1B7C 000:254.167           MaxSize:         0x08000000
+T1B7C 000:254.172           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:254.176           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:254.183     Device entry created:  MIMXRT1060_UFL_L1
+T1B7C 000:254.186       ChipInfo:
+T1B7C 000:254.190         Vendor:          NXP
+T1B7C 000:254.194         Name:            MIMXRT1060_UFL_L1
+T1B7C 000:254.198         WorkRAMSize:     0x00020000
+T1B7C 000:254.203         Core:            JLINK_CORE_CORTEX_M7
+T1B7C 000:254.208       FlashBankInfo:
+T1B7C 000:254.212         Name:            QSPI Flash
+T1B7C 000:254.216         BaseAddr:        0x60000000
+T1B7C 000:254.231         LoaderInfo:
+T1B7C 000:254.235           Name:            QSPI Flash
+T1B7C 000:254.239           MaxSize:         0x08000000
+T1B7C 000:254.244           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:254.247           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:254.253     Device entry modified: MIMXRT1061xxx5A
+T1B7C 000:254.259       FlashBankInfo:
+T1B7C 000:254.263         Name:            QSPI Flash
+T1B7C 000:254.267         BaseAddr:        0x60000000
+T1B7C 000:254.281         LoaderInfo:
+T1B7C 000:254.285           Name:            QSPI Flash
+T1B7C 000:254.289           MaxSize:         0x08000000
+T1B7C 000:254.293           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:254.298           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:254.303     Device entry modified: MIMXRT1061xxx6A
+T1B7C 000:254.310       FlashBankInfo:
+T1B7C 000:254.317         Name:            QSPI Flash
+T1B7C 000:254.321         BaseAddr:        0x60000000
+T1B7C 000:254.391         LoaderInfo:
+T1B7C 000:254.399           Name:            QSPI Flash
+T1B7C 000:254.404           MaxSize:         0x08000000
+T1B7C 000:254.408           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:254.412           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:254.418     Device entry modified: MIMXRT1062xxx5A
+T1B7C 000:254.424       FlashBankInfo:
+T1B7C 000:254.428         Name:            QSPI Flash
+T1B7C 000:254.432         BaseAddr:        0x60000000
+T1B7C 000:254.451         LoaderInfo:
+T1B7C 000:254.456           Name:            QSPI Flash
+T1B7C 000:254.460           MaxSize:         0x08000000
+T1B7C 000:254.464           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:254.468           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:254.474     Device entry modified: MIMXRT1062xxx6A
+T1B7C 000:254.479       FlashBankInfo:
+T1B7C 000:254.483         Name:            QSPI Flash
+T1B7C 000:254.487         BaseAddr:        0x60000000
+T1B7C 000:254.500         LoaderInfo:
+T1B7C 000:254.504           Name:            QSPI Flash
+T1B7C 000:254.508           MaxSize:         0x08000000
+T1B7C 000:254.512           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:254.516           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:254.523     Device entry created:  MIMXRT1060_UFL_L2
+T1B7C 000:254.526       ChipInfo:
+T1B7C 000:254.530         Vendor:          NXP
+T1B7C 000:254.534         Name:            MIMXRT1060_UFL_L2
+T1B7C 000:254.538         WorkRAMSize:     0x00020000
+T1B7C 000:254.544         Core:            JLINK_CORE_CORTEX_M7
+T1B7C 000:254.549       FlashBankInfo:
+T1B7C 000:254.553         Name:            QSPI Flash
+T1B7C 000:254.560         BaseAddr:        0x60000000
+T1B7C 000:254.574         LoaderInfo:
+T1B7C 000:254.578           Name:            QSPI Flash
+T1B7C 000:254.583           MaxSize:         0x08000000
+T1B7C 000:254.587           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:254.591           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:254.598     Device entry modified: MIMXRT1061xxx5A
+T1B7C 000:254.603       FlashBankInfo:
+T1B7C 000:254.607         Name:            QSPI Flash
+T1B7C 000:254.611         BaseAddr:        0x60000000
+T1B7C 000:254.624         LoaderInfo:
+T1B7C 000:254.629           Name:            QSPI Flash
+T1B7C 000:254.633           MaxSize:         0x08000000
+T1B7C 000:254.637           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:254.641           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:254.646     Device entry modified: MIMXRT1061xxx6A
+T1B7C 000:254.651       FlashBankInfo:
+T1B7C 000:254.655         Name:            QSPI Flash
+T1B7C 000:254.660         BaseAddr:        0x60000000
+T1B7C 000:254.675         LoaderInfo:
+T1B7C 000:254.679           Name:            QSPI Flash
+T1B7C 000:254.683           MaxSize:         0x08000000
+T1B7C 000:254.688           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:254.692           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:254.697     Device entry modified: MIMXRT1062xxx5A
+T1B7C 000:254.702       FlashBankInfo:
+T1B7C 000:254.706         Name:            QSPI Flash
+T1B7C 000:254.710         BaseAddr:        0x60000000
+T1B7C 000:254.723         LoaderInfo:
+T1B7C 000:254.728           Name:            QSPI Flash
+T1B7C 000:254.732           MaxSize:         0x08000000
+T1B7C 000:254.736           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:254.740           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:254.745     Device entry modified: MIMXRT1062xxx6A
+T1B7C 000:254.749       FlashBankInfo:
+T1B7C 000:254.753         Name:            QSPI Flash
+T1B7C 000:254.758         BaseAddr:        0x60000000
+T1B7C 000:254.771         LoaderInfo:
+T1B7C 000:254.775           Name:            QSPI Flash
+T1B7C 000:254.779           MaxSize:         0x08000000
+T1B7C 000:254.783           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:254.787           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:254.795     Device entry created:  MIMXRT1064_UFL
+T1B7C 000:254.798       ChipInfo:
+T1B7C 000:254.801         Vendor:          NXP
+T1B7C 000:254.805         Name:            MIMXRT1064_UFL
+T1B7C 000:254.810         WorkRAMSize:     0x00020000
+T1B7C 000:254.816         Core:            JLINK_CORE_CORTEX_M7
+T1B7C 000:254.820       FlashBankInfo:
+T1B7C 000:254.824         Name:            QSPI Flash
+T1B7C 000:254.828         BaseAddr:        0x70000000
+T1B7C 000:254.843         LoaderInfo:
+T1B7C 000:254.848           Name:            QSPI Flash
+T1B7C 000:254.852           MaxSize:         0x00400000
+T1B7C 000:254.856           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:254.860           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:254.866     Device entry modified: MIMXRT1064xxx5A
+T1B7C 000:254.870       ChipInfo:
+T1B7C 000:254.874         WorkRAMAddr:     0x00000000
+T1B7C 000:254.878         WorkRAMSize:     0x00020000
+T1B7C 000:254.884       FlashBankInfo:
+T1B7C 000:254.888         Name:            QSPI Flash
+T1B7C 000:254.892         BaseAddr:        0x70000000
+T1B7C 000:254.905         LoaderInfo:
+T1B7C 000:254.909           Name:            QSPI Flash
+T1B7C 000:254.914           MaxSize:         0x00400000
+T1B7C 000:254.918           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:254.924           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:254.930     Device entry modified: MIMXRT1064xxx6A
+T1B7C 000:254.933       ChipInfo:
+T1B7C 000:254.937         WorkRAMAddr:     0x00000000
+T1B7C 000:254.941         WorkRAMSize:     0x00020000
+T1B7C 000:254.947       FlashBankInfo:
+T1B7C 000:254.951         Name:            QSPI Flash
+T1B7C 000:254.956         BaseAddr:        0x70000000
+T1B7C 000:254.971         LoaderInfo:
+T1B7C 000:254.975           Name:            QSPI Flash
+T1B7C 000:254.979           MaxSize:         0x00400000
+T1B7C 000:254.984           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:254.988           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:254.995     Device entry created:  MIMXRT1160_UFL_L0
+T1B7C 000:254.997       ChipInfo:
+T1B7C 000:255.002         Vendor:          NXP
+T1B7C 000:255.006         Name:            MIMXRT1160_UFL_L0
+T1B7C 000:255.010         WorkRAMSize:     0x00040000
+T1B7C 000:255.015         Core:            JLINK_CORE_CORTEX_M7
+T1B7C 000:255.026         Script:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\iMXRT117x_CortexM7.JLinkScript
+T1B7C 000:255.030       FlashBankInfo:
+T1B7C 000:255.034         Name:            QSPI Flash
+T1B7C 000:255.039         BaseAddr:        0x30000000
+T1B7C 000:255.052         LoaderInfo:
+T1B7C 000:255.056           Name:            QSPI Flash
+T1B7C 000:255.060           MaxSize:         0x08000000
+T1B7C 000:255.065           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:255.069           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:255.076     Alias entry created:
+T1B7C 000:255.079       ChipInfo:
+T1B7C 000:255.083         Alias of:        MIMXRT1160_UFL_L0
+T1B7C 000:255.087         Name:            MIMXRT1166xxx6A
+T1B7C 000:255.103     Device entry created:  MIMXRT1160_UFL_L1
+T1B7C 000:255.107       ChipInfo:
+T1B7C 000:255.111         Vendor:          NXP
+T1B7C 000:255.115         Name:            MIMXRT1160_UFL_L1
+T1B7C 000:255.120         WorkRAMSize:     0x00040000
+T1B7C 000:255.125         Core:            JLINK_CORE_CORTEX_M7
+T1B7C 000:255.135         Script:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\iMXRT117x_CortexM7.JLinkScript
+T1B7C 000:255.140       FlashBankInfo:
+T1B7C 000:255.145         Name:            QSPI Flash
+T1B7C 000:255.149         BaseAddr:        0x30000000
+T1B7C 000:255.162         LoaderInfo:
+T1B7C 000:255.167           Name:            QSPI Flash
+T1B7C 000:255.171           MaxSize:         0x08000000
+T1B7C 000:255.176           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:255.180           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:255.202     Device entry modified: MIMXRT1166xxx6A
+T1B7C 000:255.215       FlashBankInfo:
+T1B7C 000:255.219         Name:            QSPI Flash
+T1B7C 000:255.223         BaseAddr:        0x30000000
+T1B7C 000:255.236         LoaderInfo:
+T1B7C 000:255.240           Name:            QSPI Flash
+T1B7C 000:255.244           MaxSize:         0x08000000
+T1B7C 000:255.249           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:255.253           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:255.260     Device entry created:  MIMXRT1160_UFL_L2
+T1B7C 000:255.263       ChipInfo:
+T1B7C 000:255.267         Vendor:          NXP
+T1B7C 000:255.271         Name:            MIMXRT1160_UFL_L2
+T1B7C 000:255.275         WorkRAMSize:     0x00040000
+T1B7C 000:255.280         Core:            JLINK_CORE_CORTEX_M7
+T1B7C 000:255.291         Script:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\iMXRT117x_CortexM7.JLinkScript
+T1B7C 000:255.295       FlashBankInfo:
+T1B7C 000:255.299         Name:            QSPI Flash
+T1B7C 000:255.303         BaseAddr:        0x30000000
+T1B7C 000:255.581         LoaderInfo:
+T1B7C 000:255.586           Name:            QSPI Flash
+T1B7C 000:255.590           MaxSize:         0x08000000
+T1B7C 000:255.594           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:255.598           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:255.606     Device entry modified: MIMXRT1166xxx6A
+T1B7C 000:255.617       FlashBankInfo:
+T1B7C 000:255.621         Name:            QSPI Flash
+T1B7C 000:255.625         BaseAddr:        0x30000000
+T1B7C 000:255.638         LoaderInfo:
+T1B7C 000:255.642           Name:            QSPI Flash
+T1B7C 000:255.646           MaxSize:         0x08000000
+T1B7C 000:255.650           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:255.654           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:255.664     Device entry created:  MIMXRT1170_UFL_L0
+T1B7C 000:255.667       ChipInfo:
+T1B7C 000:255.671         Vendor:          NXP
+T1B7C 000:255.675         Name:            MIMXRT1170_UFL_L0
+T1B7C 000:255.679         WorkRAMSize:     0x00040000
+T1B7C 000:255.685         Core:            JLINK_CORE_CORTEX_M7
+T1B7C 000:255.696         Script:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\iMXRT117x_CortexM7.JLinkScript
+T1B7C 000:255.700       FlashBankInfo:
+T1B7C 000:255.704         Name:            QSPI Flash
+T1B7C 000:255.709         BaseAddr:        0x30000000
+T1B7C 000:255.722         LoaderInfo:
+T1B7C 000:255.726           Name:            QSPI Flash
+T1B7C 000:255.730           MaxSize:         0x08000000
+T1B7C 000:255.734           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:255.738           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:255.745     Device entry modified: MIMXRT1176xxx8_M7
+T1B7C 000:255.748       ChipInfo:
+T1B7C 000:255.752         WorkRAMAddr:     0x00000000
+T1B7C 000:255.756         WorkRAMSize:     0x00040000
+T1B7C 000:255.767         Script:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\iMXRT117x_CortexM7.JLinkScript
+T1B7C 000:255.772       FlashBankInfo:
+T1B7C 000:255.776         Name:            QSPI Flash
+T1B7C 000:255.780         BaseAddr:        0x30000000
+T1B7C 000:255.793         LoaderInfo:
+T1B7C 000:255.797           Name:            QSPI Flash
+T1B7C 000:255.801           MaxSize:         0x08000000
+T1B7C 000:255.805           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:255.809           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:255.815     Device entry modified: MIMXRT1176xxxA_M7
+T1B7C 000:255.818       ChipInfo:
+T1B7C 000:255.822         WorkRAMAddr:     0x00000000
+T1B7C 000:255.826         WorkRAMSize:     0x00040000
+T1B7C 000:255.837         Script:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\iMXRT117x_CortexM7.JLinkScript
+T1B7C 000:255.842       FlashBankInfo:
+T1B7C 000:255.846         Name:            QSPI Flash
+T1B7C 000:255.850         BaseAddr:        0x30000000
+T1B7C 000:255.862         LoaderInfo:
+T1B7C 000:255.866           Name:            QSPI Flash
+T1B7C 000:255.871           MaxSize:         0x08000000
+T1B7C 000:255.875           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_256B_4KB.FLM
+T1B7C 000:255.879           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:255.885     Device entry created:  MIMXRT1170_UFL_L1
+T1B7C 000:255.888       ChipInfo:
+T1B7C 000:255.892         Vendor:          NXP
+T1B7C 000:255.896         Name:            MIMXRT1170_UFL_L1
+T1B7C 000:255.900         WorkRAMSize:     0x00040000
+T1B7C 000:255.906         Core:            JLINK_CORE_CORTEX_M7
+T1B7C 000:255.915         Script:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\iMXRT117x_CortexM7.JLinkScript
+T1B7C 000:255.920       FlashBankInfo:
+T1B7C 000:255.926         Name:            QSPI Flash
+T1B7C 000:255.930         BaseAddr:        0x30000000
+T1B7C 000:255.943         LoaderInfo:
+T1B7C 000:255.948           Name:            QSPI Flash
+T1B7C 000:255.952           MaxSize:         0x08000000
+T1B7C 000:255.956           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:255.960           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:255.966     Device entry modified: MIMXRT1176xxx8_M7
+T1B7C 000:255.977       FlashBankInfo:
+T1B7C 000:255.981         Name:            QSPI Flash
+T1B7C 000:255.985         BaseAddr:        0x30000000
+T1B7C 000:255.998         LoaderInfo:
+T1B7C 000:256.002           Name:            QSPI Flash
+T1B7C 000:256.006           MaxSize:         0x08000000
+T1B7C 000:256.011           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:256.014           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:256.020     Device entry modified: MIMXRT1176xxxA_M7
+T1B7C 000:256.030       FlashBankInfo:
+T1B7C 000:256.034         Name:            QSPI Flash
+T1B7C 000:256.038         BaseAddr:        0x30000000
+T1B7C 000:256.052         LoaderInfo:
+T1B7C 000:256.056           Name:            QSPI Flash
+T1B7C 000:256.060           MaxSize:         0x08000000
+T1B7C 000:256.064           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_4KB.FLM
+T1B7C 000:256.068           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:256.075     Device entry created:  MIMXRT1170_UFL_L2
+T1B7C 000:256.078       ChipInfo:
+T1B7C 000:256.082         Vendor:          NXP
+T1B7C 000:256.086         Name:            MIMXRT1170_UFL_L2
+T1B7C 000:256.090         WorkRAMSize:     0x00040000
+T1B7C 000:256.096         Core:            JLINK_CORE_CORTEX_M7
+T1B7C 000:256.105         Script:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\iMXRT117x_CortexM7.JLinkScript
+T1B7C 000:256.110       FlashBankInfo:
+T1B7C 000:256.114         Name:            QSPI Flash
+T1B7C 000:256.118         BaseAddr:        0x30000000
+T1B7C 000:256.131         LoaderInfo:
+T1B7C 000:256.135           Name:            QSPI Flash
+T1B7C 000:256.139           MaxSize:         0x08000000
+T1B7C 000:256.144           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:256.148           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:256.153     Device entry modified: MIMXRT1176xxx8_M7
+T1B7C 000:256.164       FlashBankInfo:
+T1B7C 000:256.168         Name:            QSPI Flash
+T1B7C 000:256.172         BaseAddr:        0x30000000
+T1B7C 000:256.185         LoaderInfo:
+T1B7C 000:256.189           Name:            QSPI Flash
+T1B7C 000:256.193           MaxSize:         0x08000000
+T1B7C 000:256.197           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:256.201           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:256.207     Device entry modified: MIMXRT1176xxxA_M7
+T1B7C 000:256.217       FlashBankInfo:
+T1B7C 000:256.221         Name:            QSPI Flash
+T1B7C 000:256.225         BaseAddr:        0x30000000
+T1B7C 000:256.238         LoaderInfo:
+T1B7C 000:256.242           Name:            QSPI Flash
+T1B7C 000:256.246           MaxSize:         0x08000000
+T1B7C 000:256.250           Loader:          D:\Program Files\SEGGER\JLink_V782\Devices\NXP\iMXRT_UFL\MIMXRT_FLEXSPI_UFL_512B_64KB.FLM
+T1B7C 000:256.254           LoaderType:      FLASH_ALGO_TYPE_OPEN
+T1B7C 000:270.054   Device "ARM7" selected.
+T1B7C 000:270.598 - 109.556ms returns 0x00
+T1B7C 000:287.436 JLINK_ExecCommand("Device = LPC1788", ...). 
+T1B7C 000:298.585   Device "LPC1788" selected.
+T1B7C 000:299.069 - 11.618ms returns 0x00
+T1B7C 000:299.104 JLINK_ExecCommand("DisableConnectionTimeout", ...). 
+T1B7C 000:299.111 - 0.003ms returns 0x01
+T1B7C 000:299.116 JLINK_GetHardwareVersion()
+T1B7C 000:299.122 - 0.007ms returns 96000
+T1B7C 000:299.131 JLINK_GetDLLVersion()
+T1B7C 000:299.134 - 0.004ms returns 78200
+T1B7C 000:299.138 JLINK_GetOEMString(...)
+T1B7C 000:299.142 JLINK_GetFirmwareString(...)
+T1B7C 000:299.145 - 0.004ms
+T1B7C 000:324.558 JLINK_GetDLLVersion()
+T1B7C 000:324.577 - 0.020ms returns 78200
+T1B7C 000:324.581 JLINK_GetCompileDateTime()
+T1B7C 000:324.584 - 0.004ms
+T1B7C 000:331.796 JLINK_GetFirmwareString(...)
+T1B7C 000:331.815 - 0.021ms
+T1B7C 000:340.443 JLINK_GetHardwareVersion()
+T1B7C 000:340.462 - 0.020ms returns 96000
+T1B7C 000:349.787 JLINK_GetSN()
+T1B7C 000:349.808 - 0.022ms returns 69606767
+T1B7C 000:360.403 JLINK_GetOEMString(...)
+T1B7C 000:381.573 JLINK_TIF_Select(JLINKARM_TIF_SWD)
+T1B7C 000:385.688 - 4.128ms returns 0x00
+T1B7C 000:385.710 JLINK_HasError()
+T1B7C 000:385.717 JLINK_SetSpeed(5000)
+T1B7C 000:386.682 - 0.969ms
+T1B7C 000:386.692 JLINK_GetId()
+T1B7C 000:508.597   Failed to attach to CPU. Trying connect under reset.
+T1B7C 001:295.630 - 908.950ms returns 0x00000000
+T1B7C 003:904.824 JLINK_Close()
+T1B7C 003:937.940 - 33.136ms
+T1B7C 003:937.963   
+T1B7C 003:937.966   Closed
