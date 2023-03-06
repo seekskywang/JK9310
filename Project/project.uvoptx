@@ -119,6 +119,11 @@
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
+          <Key>DLGUARM</Key>
+          <Name>猬Nw瑑?瑑??6s</Name>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
           <Key>PWSTATINFO</Key>
           <Name>200,50,700</Name>
         </SetRegEntry>
@@ -445,6 +450,31 @@
           <WinNumber>1</WinNumber>
           <ItemText>Sys_SetValue</ItemText>
         </Ww>
+        <Ww>
+          <count>57</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>U9001_Save_sys,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>58</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>ComBuf3</ItemText>
+        </Ww>
+        <Ww>
+          <count>59</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>sendbuff</ItemText>
+        </Ww>
+        <Ww>
+          <count>60</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>sendbuff1</ItemText>
+        </Ww>
+        <Ww>
+          <count>61</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>DispBuf</ItemText>
+        </Ww>
       </WatchWindow1>
       <WatchWindow2>
         <Ww>
@@ -591,6 +621,11 @@
           <count>28</count>
           <WinNumber>2</WinNumber>
           <ItemText>NumBox.Min,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>29</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>ComBuf3.rec</ItemText>
         </Ww>
       </WatchWindow2>
       <MemoryWindow1>

@@ -1010,7 +1010,8 @@ void LoadDefaultConfig(void);//加载默认配置值
 void LoadDefaultCalibrate(void);//加载默认校准值
 void ReadSaveData(void);//读取保存参数
 //void WriteSaveData(void);//写入保存参数
-
+void SetDate_Comp(void);
+void Savetoeeprom(void);
 #define SetSystemStatus(status) (SystemStatus=status)
 #define GetSystemStatus() (SystemStatus)
 #define GetSystemMessage() (SystemMessage)
@@ -1024,5 +1025,7 @@ uint32_t Get_SorftTime(uint8_t id);
 uint8_t Key_Read_WithTimeOut(uint8_t  ticks);
 extern u16 cpld_value;
 extern u8 EMC_High,Emc_low;
-
+extern char sendbuff[20];
+extern char sendbuff1[20];
+extern u8 sendflag;
 #endif

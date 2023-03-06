@@ -79,7 +79,7 @@
 //==========================================================
 //收发帧缓冲长度
 #define REC_LEN_MAX  	(60)//接收帧长度
-#define SEND_LEN_MAX 	(18)//发送帧长度
+#define SEND_LEN_MAX 	(60)//发送帧长度
 
 ////串口发送结构
 typedef struct
@@ -100,7 +100,7 @@ typedef struct
 	uint8_t len;//接收数据长度
 	uint8_t buf[REC_LEN_MAX];//数据接收缓冲
 	uint8_t TimeOut;//接收超时(10ms周期)
-}ComRec_TypeDef;
+}ComRec_TypeDef;	
 
 ////串口收发结构
 typedef struct

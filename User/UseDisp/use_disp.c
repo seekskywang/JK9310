@@ -21,6 +21,7 @@
 extern GUI_CONST_STORAGE GUI_FONT GUI_FontGUI_FONTXBFFON16;
 extern GUI_CONST_STORAGE GUI_FONT GUI_FontGUI_FONTXBFFON50;
 extern GUI_CONST_STORAGE GUI_FONT GUI_FontHZMCRBLK16;
+extern u16 ParameterLimit[][2];
 Test_Value_Typedef Test_Value;
 UnitNum_typedef test_value;
 const u8 MAX_SETP[5]={9,11,10,5,5};
@@ -266,7 +267,7 @@ const char SysSetButton_Tab[][2][5][14]=
     {{"  关闭  ","  打开  ","   ","   ","        "},{" OFF ","  ON  ","    ","    ","        "}},
 //    {{"  低音  ","  中音  ","  高音  ","   ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
 //    {{"  关闭  ","  系统  ","  文件  ","  修改  ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
-    {{"MODBUS","SCPI ","    ","    ","    "},{"MODBUS","SCPI ","    ","    ","    "}},
+    {{"MODBUS","SCPI ","JK-1 ","    ","    "},{"MODBUS","SCPI ","JK-1 ","    ","    "}},
     {{"   ↑+ ","   ↓ - ","       ","          ","    "},{"   ↑+ ","   ↓ - ","       ","          ","  关闭  "}},
     {{"4800","9600","19200","38400","115200"},{"4800","9600","19200","38400","115200"}},
 //    {{"8","7","       ","          ","    "},{"   ↑+ ","   ↓ - ","       ","          ","  关闭  "}},
@@ -342,7 +343,7 @@ const char Sys_SetValue[][2][5][14]=
     {{"关闭","打开"},{"OFF","ON"}},
     {{"低音","中音","高音"},{"LOW","MID","HIGH"}},
     {{"关闭","中音","高音"},{"OFF","MID","HIGH"}},
-    {{"MODBUS","SCPI  ",""},{"MODBUS","SCPI  ",""}},
+    {{"MODBUS","SCPI  ","JK-1  "},{"MODBUS","SCPI  ","JK-1  "}},
     {{"","",""},{"","",""}},//总线地址
     {{"4800","9600","19200","38400","115200"},{"4800","9600","19200","38400","115200"}},
     {{"8","7","19200","38400","115200"},{"8","7","19200","38400","115200"}},
@@ -3912,7 +3913,7 @@ UnitNum_typedef IntToStr_nF(u32 value)
 void Disp_Testvalue(u8 test)
 {
     UnitNum_typedef test_value;
-     GUI_SetColor(GUI_WHITE);
+    GUI_SetColor(GUI_WHITE);
     sprintf(DispBuf,"%d/%d",U9001_Save_sys.U9001_save.current_step,U9001_Save_sys.U9001_save.all_step);
     GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE);//显示步骤
     GUI_DispStringAt(TestPara[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter],LISTVALUE2,FIRSTLINE+0*SPACE1);//参数
@@ -3932,40 +3933,76 @@ void Disp_Testvalue(u8 test)
         }
     }
     
+		if(U9001_Save_sys.U9001_save.all_step == 2)
+		{
+			if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter == IR)
+			{
+				memset(sendbuff1,0,20);
+				memcpy(sendbuff1,DispBuf,4);
+				strcat(sendbuff1,"kV;");
+			}else{
+				memset(sendbuff,0,20);
+				memcpy(sendbuff,DispBuf,4);
+				strcat(sendbuff,"kV;");
+			}
+//			if(U9001_Save_sys.U9001_save.current_step == 2)
+//			{
+//				memset(sendbuff1,0,20);
+//				memcpy(sendbuff1,DispBuf,4);
+//				strcat(sendbuff1,"kV;");
+//			}
+		}else{
+			memset(sendbuff,0,20);
+			memcpy(sendbuff,DispBuf,4);
+			strcat(sendbuff,"kV;");
+			
+			memset(sendbuff1,0,20);
+			memcpy(sendbuff1,DispBuf,4);
+			strcat(sendbuff1,"kV;");
+		}
+		
     GUI_DispStringAt(DispBuf,DISP_V_XPOS+50,DISP_V_YPOS);
     switch(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter)
     {
         case AC:
         case DC:
-             if(test==1)
+            if(test==1)
             {
-                if(Test_Value.I_R==0xffff)
-                   memcpy(DispBuf,"UPPER",6); 
-                else
+                if(Test_Value.I_R==0xffff || GetSystemMessage() == MSG_SHORT)
+								{
+									memcpy(DispBuf,"UPPER",6); 
+									memcpy(&sendbuff[7],"OFL",3);
+                }else
                 {  
 //                    test_value=IntToStr(Test_Value.I_R);
 //                    if(Range==0)
 //                        Hex_Format(test_value.num,1,4,0);
 //                    else
 //                        Hex_Format(test_value.num,1,3,0);
-					if(U9001_Save_sys.U9001_Testconfg.clear == 1)
-					 {
-						 if(Test_Value.I_R < U9001_Save_sys.U9001_save.clearvalue[U9001_Save_sys.U9001_save.current_step-1])
-						 {
-							 Test_Value.I_R = 0;
-						 }else{
-							 Test_Value.I_R -= U9001_Save_sys.U9001_save.clearvalue[U9001_Save_sys.U9001_save.current_step-1];
-						 }
-					 }
-								if(Range==1)
-								{
-										Hex_Format(Test_Value.I_R,3,4,0);
-								}else if(Range==0){
-										Hex_Format(Test_Value.I_R,2,4,0);
-                }else{
-										Hex_Format(Test_Value.I_R,1,4,0);
-								}
+								 if(U9001_Save_sys.U9001_Testconfg.clear == 1)
+								 {
+									 if(Test_Value.I_R < U9001_Save_sys.U9001_save.clearvalue[U9001_Save_sys.U9001_save.current_step-1])
+									 {
+										 Test_Value.I_R = 0;
+									 }else{
+										 Test_Value.I_R -= U9001_Save_sys.U9001_save.clearvalue[U9001_Save_sys.U9001_save.current_step-1];
+									 }
+								 }
+									if(Range==1)
+									{
+											Hex_Format(Test_Value.I_R,3,4,0);
+											memcpy(&sendbuff[7],&DispBuf[0],4);
+									}else if(Range==0){
+											Hex_Format(Test_Value.I_R,2,4,0);
+											memcpy(&sendbuff[7],&DispBuf[1],4);
+									}else{
+											Hex_Format(Test_Value.I_R,1,4,0);
+											memcpy(&sendbuff[7],"0.00",4);
+									}
+									
                }
+							strcat(sendbuff,"mA;");
+							 
             }
             else
             {
@@ -3973,9 +4010,9 @@ void Disp_Testvalue(u8 test)
 				
                 Hex_Format(0,3,4,0);
             }
-			 GUI_SetColor(LCD_COLOR_TEST_BACK);
-             GUI_FillRect(DISP_V_XPOS+50,DISP_V_YPOS+50,DISP_V_XPOS+50+150,DISP_V_YPOS+50+62);
-			 GUI_SetColor(GUI_LIGHTYELLOW);
+						GUI_SetColor(LCD_COLOR_TEST_BACK);
+            GUI_FillRect(DISP_V_XPOS+50,DISP_V_YPOS+50,DISP_V_XPOS+50+150,DISP_V_YPOS+50+62);
+						GUI_SetColor(GUI_LIGHTYELLOW);
             GUI_DispStringAt(DispBuf,DISP_V_XPOS+50,DISP_V_YPOS+50);
 						if(Range<2)
 							GUI_DispStringAt("mA  ",DISP_V_XPOS+50+6*25,DISP_V_YPOS+50);
@@ -3983,30 +4020,42 @@ void Disp_Testvalue(u8 test)
 							GUI_DispStringAt("uA  ",DISP_V_XPOS+50+6*25,DISP_V_YPOS+50);
             break;
         case IR:
-            if(test==1)
-            {
-                if(Test_Value.I_R==0xffff*10)
-                   memcpy(DispBuf,"UPPER   ",8); 
-                else
-                {  
-                    test_value=IntToStr(Test_Value.I_R);
-                 
-                    Hex_Format(test_value.num,test_value.dot,4,0);
-					GUI_SetColor(LCD_COLOR_TEST_BACK);
-					GUI_FillRect(DISP_V_XPOS+50,DISP_V_YPOS+50,DISP_V_XPOS+50+150,DISP_V_YPOS+50+62);
-					GUI_SetColor(GUI_LIGHTYELLOW);
-					 GUI_DispStringAt(Test_IRUINT[test_value.uint],DISP_V_XPOS+50+6*25,DISP_V_YPOS+50);
-                }
-            }
-            else
-            {
+					if(test==1)
+					{
+							if(Test_Value.I_R==0xffff*10){
+								memcpy(DispBuf,"UPPER   ",8);
+//								if(U9001_Save_sys.U9001_save.all_step == 1)
+//									strcat(sendbuff,">9999");
+//								else
+									strcat(sendbuff1,">9999");
+							}else
+							{  
+								test_value=IntToStr(Test_Value.I_R);
+							
+								Hex_Format(test_value.num,test_value.dot,4,0);
+								GUI_SetColor(LCD_COLOR_TEST_BACK);
+								GUI_FillRect(DISP_V_XPOS+50,DISP_V_YPOS+50,DISP_V_XPOS+50+150,DISP_V_YPOS+50+62);
+								GUI_SetColor(GUI_LIGHTYELLOW);
+								GUI_DispStringAt(Test_IRUINT[test_value.uint],DISP_V_XPOS+50+6*25,DISP_V_YPOS+50);
+//								if(U9001_Save_sys.U9001_save.all_step == 1)
+//									strcat(sendbuff,(char*)DispBuf);
+//								else
+									strcat(sendbuff1,(char*)DispBuf);
+							}
+//							if(U9001_Save_sys.U9001_save.all_step == 1)
+//								strcat(sendbuff,(char*)"M;");
+//							else
+								strcat(sendbuff1,(char*)"M;");
+					}
+					else
+					{
 //                test_value=IntToStr();
-                
-                Hex_Format(0,1,3,0);
-            }
-            GUI_DispStringAt(DispBuf,DISP_V_XPOS+50,DISP_V_YPOS+50);
+							
+							Hex_Format(0,1,3,0);
+					}
+					GUI_DispStringAt(DispBuf,DISP_V_XPOS+50,DISP_V_YPOS+50);
 //            GUI_DispStringAt(Test_IRUINT[test_value.uint],DISP_V_XPOS+50+6*25,DISP_V_YPOS+50-20);·	
-            break;
+					break;
         case OS:
             
             if(test==1)
@@ -4309,7 +4358,7 @@ const  vu16 Sys_Data_Comp[][2]=
 	{0,1},
 	{0,2},
 	{2019,2030},
-	{0,1},
+	{0,2},
 	{0,127},
 	{0,4},
 	{0,1},
@@ -4433,7 +4482,8 @@ const u32 Set_PA_Compvalue[][2]=
 void SetDate_Comp(void)
 {
    u8 i,j;
-    u32 *pt;
+   u32 *pt;
+	 u16 *pt1;
 		if(U9001_Save_sys.jkflag > 1)
 		{
 			U9001_Save_sys.jkflag=0;
@@ -4587,7 +4637,15 @@ void SetDate_Comp(void)
         }	
     
     } 
-
+		
+		pt1=(u16*)&U9001_Save_sys.U9001_Testconfg;
+		for(i=0;i<15;i++)
+    {
+			if(*(pt1+(i))>=ParameterLimit[i][1])
+			{
+				*(pt1+(i))=ParameterLimit[i][0];
+			}
+		}
 }
 //void SetDate_Comp(void)
 //{

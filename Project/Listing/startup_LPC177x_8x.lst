@@ -56,9 +56,9 @@ ARM Macro Assembler    Page 1
    35 00000800         ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
    36 00000800         ; </h>
    37 00000800         
-   38 00000800 00000000 
+   38 00000800 00000400 
                        Heap_Size
-                               EQU              0x00000000
+                               EQU              0x00000400
    39 00000800         
    40 00000800                 AREA             HEAP, NOINIT, READWRITE, ALIGN=
 3
@@ -71,16 +71,16 @@ ARM Macro Assembler    Page 2
 
    42 00000000         Heap_Mem
                                SPACE            Heap_Size
-   43 00000000         __heap_limit
-   44 00000000         
-   45 00000000         
-   46 00000000                 PRESERVE8
-   47 00000000                 THUMB
-   48 00000000         
-   49 00000000         
-   50 00000000         ; Vector Table Mapped to Address 0 at Reset
-   51 00000000         
-   52 00000000                 AREA             RESET, DATA, READONLY
+   43 00000400         __heap_limit
+   44 00000400         
+   45 00000400         
+   46 00000400                 PRESERVE8
+   47 00000400                 THUMB
+   48 00000400         
+   49 00000400         
+   50 00000400         ; Vector Table Mapped to Address 0 at Reset
+   51 00000400         
+   52 00000400                 AREA             RESET, DATA, READONLY
    53 00000000                 EXPORT           __Vectors
    54 00000000         
    55 00000000 00000000 
@@ -430,8 +430,8 @@ ARM Macro Assembler    Page 7
   289 0000001C         
   290 0000001C 4804            LDR              R0, =  Heap_Mem
   291 0000001E 4905            LDR              R1, =(Stack_Mem + Stack_Size)
-  292 00000020 4A03            LDR              R2, = (Heap_Mem +  Heap_Size)
-  293 00000022 4B05            LDR              R3, = Stack_Mem
+  292 00000020 4A05            LDR              R2, = (Heap_Mem +  Heap_Size)
+  293 00000022 4B06            LDR              R3, = Stack_Mem
   294 00000024 4770            BX               LR
   295 00000026         
   296 00000026 00 00           ALIGN
@@ -444,6 +444,7 @@ ARM Macro Assembler    Page 7
               00000000 
               00000000 
               00000800 
+              00000400 
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
 ork --depend=.\output\startup_lpc177x_8x.d -o.\output\startup_lpc177x_8x.o -I.\
@@ -452,6 +453,12 @@ l_v5\ARM\PACK\Keil\LPC1700_DFP\2.7.1\Device\Include --predefine="__UVISION_VERS
 ION SETA 537" --predefine="_RTE_ SETA 1" --predefine="LPC177x_8x SETA 1" --pred
 efine="_RTE_ SETA 1" --predefine="NO_CRP SETA 1" --predefine="Define SETA 1" --
 predefine="HEAP_SIZE SETA 0x1800" --list=.\listing\startup_lpc177x_8x.lst ..\Li
+
+
+
+ARM Macro Assembler    Page 8 
+
+
 braries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\startup\arm\startup_LPC177x_8x.s
 
 
@@ -527,7 +534,7 @@ rtup\arm\startup_LPC177x_8x.s
    Uses
       None
 Comment: __heap_base unused
-__heap_limit 00000000
+__heap_limit 00000400
 
 Symbol: __heap_limit
    Definitions
@@ -1276,7 +1283,7 @@ Comment: __user_initial_stackheap used once
 ARM Macro Assembler    Page 1 Alphabetic symbol ordering
 Absolute symbols
 
-Heap_Size 00000000
+Heap_Size 00000400
 
 Symbol: Heap_Size
    Definitions

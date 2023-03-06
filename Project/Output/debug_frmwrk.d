@@ -28,3 +28,5 @@
 .\output\debug_frmwrk.o: ..\libscpi\inc\scpi/utils.h
 .\output\debug_frmwrk.o: ..\libscpi\inc\scpi/expression.h
 .\output\debug_frmwrk.o: ..\User\scpi-def.h
+.\output\debug_frmwrk.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\output\debug_frmwrk.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

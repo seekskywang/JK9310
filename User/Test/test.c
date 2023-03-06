@@ -51,8 +51,7 @@ FRESULT res;
 UINT br;
 char sendbuff[20];
 char sendbuff1[20];
-char sendbuff2[20];
-char sendbuff3[20];
+
 const u8 IR_Range_dot[5]={3,2,1,0,0};
 uint8_t inputselnum;
 uint8_t clearflag;
@@ -60,6 +59,7 @@ uint8_t clearstart;
 uint8_t osgetstart;
 uint8_t osgetflag;
 uint8_t testflag;
+u8 sendflag;
 const uint8_t USB_dISPVALUE[][9]=
 {
 	"RH_FAIL ",
@@ -468,17 +468,18 @@ void Idem_Process(void)
 	Uart0_Send(0x02);//关灯
 	PLC_OutOff();//关PLC启动
 	PLC_CompOff();//关PLC分选
+	
 	while(GetSystemStatus()==SYS_STATUS_IDEM)
 	{
-        Disp_Time( );
+    Disp_Time( );
 		if(Pc_Sendflag)//如果上位机发送设置数据，侧保存并转发到下位机
-        {
-            Pc_Sendflag=0;
-            Savetoeeprom();//保存设置数据
-           DISP_FLAG=TRUE;
-			
-        
-        }
+		{
+				Pc_Sendflag=0;
+				Savetoeeprom();//保存设置数据
+			 DISP_FLAG=TRUE;
+	
+		
+		}
 		if(DISP_FLAG==TRUE)
 		{
 			
@@ -502,26 +503,56 @@ void Idem_Process(void)
 			Disp_IdelButton();
              
 			DISP_FLAG=FALSE;
+			memset(sendbuff,0,20);
+			memcpy(sendbuff,"0.00",4);
+			strcat(sendbuff,"kV;");
+//			if(U9001_Save_sys.U9001_save.all_step == 2)
+//			{
+				memset(sendbuff1,0,20);
+				memcpy(sendbuff1,"0.00",4);
+				strcat(sendbuff1,"kV;");
+//			}
+			if(U9001_Save_sys.U9001_save.U9001_Setup[1].parameter == IR)
+			{
+				strcat(sendbuff1,"  0.0");
+				strcat(sendbuff1,"M;");
+				if(U9001_Save_sys.U9001_save.all_step == 2)
+				{
+					strcat(sendbuff,"0.00");
+					strcat(sendbuff,"mA;");
+				}
+			}else{
+				strcat(sendbuff,"0.00");
+				strcat(sendbuff,"mA;");
+				if(U9001_Save_sys.U9001_save.all_step == 2)
+				{
+					strcat(sendbuff1,"  0.0");
+					strcat(sendbuff1,"M;");
+				}
+			}
 
 		}
-        if(READ_START()==0 || clearstart==1 || osgetstart == 1)
-        {
-            SetSystemStatus(SYS_STATUS_START);
-            SetSystemMessage(MSG_RAMP);
-            Uart0_Send(0xa1);
-						PLC_OutProg();//开PLC启动
-						clearstart=0;
-						osgetstart=0;
-        }
-        if(READ_STOP()==0)
-        {
-            
-            V_DA_out(0);
-            Sing_out_C(0);
-            Short_out(0);
-            FRB_out(0);
-            Uart0_Send(0xa0);
-        }
+		
+		
+		
+		if(READ_START()==0 || clearstart==1 || osgetstart == 1)
+		{
+				SetSystemStatus(SYS_STATUS_START);
+				SetSystemMessage(MSG_RAMP);
+				Uart0_Send(0xa1);
+				PLC_OutProg();//开PLC启动
+				clearstart=0;
+				osgetstart=0;
+		}
+		if(READ_STOP()==0)
+		{
+				
+				V_DA_out(0);
+				Sing_out_C(0);
+				Short_out(0);
+				FRB_out(0);
+				Uart0_Send(0xa0);
+		}
         
 //	  key=Key_Read();
 //        keyvalue=Key_Read();;
@@ -833,8 +864,7 @@ const u16 Range_comp[][2]=
 //创建日期：2015.01.25 
 //修改日期：2015.09.06 15:06
 //备注说明：数值刷新8.4ms，状态刷新3.6ms，12MHz/12周期
-//备注说明：缺少电弧中断、过流中断处理
-//==========================================================
+//备注说明：缺少电弧中断、过流中断处理//==========================================================
 void Test_Process(void)
 {
 	vu8 key;
@@ -847,8 +877,8 @@ void Test_Process(void)
 //	char sendbuff[20];
 	vu32 dat;
 	vu32 temp;
-    float value;
-    float F_x;
+  float value;
+  float F_x;
 
 	bool f_disp=FALSE;//显示更新标志
 	bool f_msgdisp=FALSE;//消息显示标志
@@ -973,16 +1003,17 @@ void Test_Process(void)
 	
 	while(GetSystemStatus()==SYS_STATUS_TEST)
 	{
-        if(READ_STOP()==0)
-        {
-            
-            V_DA_out(0);
-            Sing_out_C(0);
-            Short_out(0);	
-            FRB_out(0);
-            SetSystemStatus(SYS_STATUS_TEST_PAUSE);
-        }
-        Read_Ad();//读取AD值
+
+		if(READ_STOP()==0)
+		{
+				
+				V_DA_out(0);
+				Sing_out_C(0);
+				Short_out(0);	
+				FRB_out(0);
+				SetSystemStatus(SYS_STATUS_TEST_PAUSE);
+		}
+		Read_Ad();//读取AD值
 		Ad_Filter();//AD值滤波
        
     if(rangedelay == 0)    
@@ -992,15 +1023,14 @@ void Test_Process(void)
 		{
 			if(Test_mid.set_item==IR_SETUP || Test_mid.set_item==OS_SETUP)//绝缘电阻
 			{
-                if(GetSystemMessage()==MSG_TEST )
-                {
-                    if(Test_Value.Time>=Test_mid.set_time)//判别延时
+				if(GetSystemMessage()==MSG_TEST )
+				{
+          if(Test_Value.Time>=Test_mid.set_time)//判别延时
 					{
 						f_sort=TRUE;//分选标志
 					}
 //                        f_sort=TRUE;//分选标志
-                    
-                }
+        }
 			}
 			else
 			{
@@ -1466,7 +1496,7 @@ void Test_Process(void)
 //			}
 //		}//上下限判别
 //		if((f_sort==TRUE) && (AdCount>=AD_BUF_LENGTH))//非换挡
-        if(f_sort==TRUE && rangedelay == 0)
+    if(f_sort==TRUE && rangedelay == 0)
 		{
 			switch(Test_mid.set_item)//参数项
 			{
@@ -1550,10 +1580,10 @@ void Test_Process(void)
 
 		if(f_disp==TRUE)//显示更新
 		{
-            if(U9001_Save_sys.U9001_save.disp)
-                Disp_Test_List(U9001_Save_sys.U9001_save.current_step);
-            else
-            Disp_Testvalue(1); 
+			if(U9001_Save_sys.U9001_save.disp)
+					Disp_Test_List(U9001_Save_sys.U9001_save.current_step);
+			else
+			Disp_Testvalue(1); 
 			f_disp=FALSE;//显示更新
 
 			//显示信息
@@ -1566,17 +1596,17 @@ void Test_Process(void)
 		}
 		
 //		Uart_Process();//串口处理
-        if(READ_STOP()==0)
-        {
-						Beep_Off();
-            V_DA_out(0);
-            Sing_out_C(0);
-            Short_out(0);
-            FRB_out(0);
-            SetSystemMessage(MSG_PAUSE);//系统信息-暂停测试
-            SetSystemStatus(SYS_STATUS_ABORT);//系统状态-暂停测试
-            Uart0_Send(0xa0);
-        }
+		if(READ_STOP()==0)
+		{
+				Beep_Off();
+				V_DA_out(0);
+				Sing_out_C(0);
+				Short_out(0);
+				FRB_out(0);
+				SetSystemMessage(MSG_PAUSE);//系统信息-暂停测试
+				SetSystemStatus(SYS_STATUS_ABORT);//系统状态-暂停测试
+				Uart0_Send(0xa0);
+		}
 
 	}
 
@@ -5156,6 +5186,10 @@ void Use_SysSetProcess(void)
 						case 4:
 						{
 //							U9001_save_sys.U9001_SYS.key_beep = 1;
+						}break;
+						case 5:
+						{
+							U9001_Save_sys.U9001_SYS.bussmode = 2;
 						}break;
 //						case 5:
 //						{

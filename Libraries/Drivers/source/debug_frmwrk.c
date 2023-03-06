@@ -32,11 +32,20 @@
 #include <assert.h>
 #include "scpi/scpi.h"
 #include "scpi-def.h"
+#include <stdlib.h>
+#include <stdio.h>
 Com_TypeDef ComBuf;
 Com_TypeDef ComBuf3;
 Com_TypeDef FacBuf;
 u8 strbuff[8];
 u8 g_mods_timeout = 0;
+
+static const char IRUNITJK1[][3]={
+	{"k"},//
+    {"M"},//
+    {"G"},//
+};
+char sendend[2] = {0x0d,0x0a};
 
 struct MODS_T g_tModS;
 static void MODS_03H(void);
@@ -63,6 +72,35 @@ vu8 Uart0_Process(void);
 uint8_t (*_db_get_char)(LPC_UART_TypeDef *UARTx);
 uint8_t (*_db_get_val)(LPC_UART_TypeDef *UARTx, uint8_t option, uint8_t numCh, uint32_t * val);
 //Com_TypeDef ComBuf;//串口收发缓冲
+
+/*************************************************************************************************************************
+*函数 ? ? ? ? : void BCDtoHex(u8 *pBuff,u8 len)
+*功能 ? ? ? ? : BCD码转为十六进制
+*参数 ? ? ? ? : pBuff:输入的十六进制数组,len:数组长度
+*返回 ? ? ? ? : 无
+*依赖 : 底层宏定义
+* 作者 : li_qcxy@126.com
+* 时间 : 2017-1-5
+* 最后修改时间:?
+*说明 ? ? ? ? : 
+*************************************************************************************************************************/
+void BCDtoHex(u8 *pBuff,u8 len) //BCD码转为十六进制
+{
+	u8 i,temp;
+	for(i = 0;i < len;i ++)
+	{
+		temp =pBuff[i] / 16;
+		pBuff[i] = temp * 10 + pBuff[i] % 16;
+	}
+}
+u8 BCDtoHex1(u8 pBuff,u8 len) //BCD码转为十六进制
+{
+	u8 i,temp;
+	
+	temp =pBuff / 16;
+	pBuff = temp * 10 + pBuff % 16;
+	return pBuff;
+}
 
 /*********************************************************************//**
  * @brief		Puts a character to UART port
@@ -863,6 +901,481 @@ vu8 Uart_Process(void)
 	ComBuf.rec.end=0;
 	return kind;
 }
+
+void UartResJK1(void)
+{
+	u8 i;
+	char stepbuf[50];
+	if(U9001_Save_sys.U9001_save.all_step == 1)//单项
+	{
+		if(U9001_Save_sys.U9001_save.U9001_Setup[1].parameter != IR)
+		{
+			sprintf(Resbuf,"%.2fkV;%.2fmA;%s",
+			(double)Save_TestValue[0].Text_vot/1000,//电压
+			(double)Save_TestValue[0].Text_value/1000,//电流
+			SEND_COMP[Save_TestValue[0].text_flag][1]//分选结果		
+			);
+		}else{
+			sprintf(Resbuf,"%.2fkV;%.1f%s;%s;",			
+			(double)Save_TestValue[i].Text_vot/1000,//电压
+			(double)Save_TestValue[i].Text_value/1000,//内阻
+			IRUNITJK1[Save_TestValue[i].text_unit],//内阻单位
+			SEND_COMP[Save_TestValue[i].text_flag][1]);//分选结果
+		}
+	}else{
+		
+	}
+//	else if(U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter == OS){//OS模式
+//		sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,%.1fnF,%.1fs;",
+//		i+1,
+//		TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],//模式
+//		SEND_COMP[Save_TestValue[i].text_flag][1],//分选结果
+//		(double)Save_TestValue[i].Text_vot/1000,//电压
+//		(double)Save_TestValue[i].Text_value/10,//电容
+//		(double)Save_TestValue[i].Text_time/10);//测试时间
+//	}else if(U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter == IR){//绝缘模式
+//		sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,%.3f%sΩ,%.1fs;",
+//		i+1,
+//		TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],//模式
+//		SEND_COMP[Save_TestValue[i].text_flag][1],//分选结果
+//		(double)Save_TestValue[i].Text_vot/1000,//电压
+//		(double)Save_TestValue[i].Text_value/1000,//内阻
+//		IRUNIT[Save_TestValue[i].text_unit],//内阻单位
+//		(double)Save_TestValue[i].Text_time/10);//测试时间
+//	}
+	
+	strcat(Resbuf,stepbuf);
+}
+
+vu8 Uart3_Process(void)
+{
+	u8 sec_king,i;
+	u8 kind=0xff;
+	u8 lenth = 0;
+	u8 recbuf[30];
+	u8 str[(FRAME_LEN_MAX-FRAME_LEN_MIN)+1];//收发数据缓冲
+	if (ComBuf3.rec.end)//接收数据结束
+	{
+		memset(str,'\0',(FRAME_LEN_MAX-FRAME_LEN_MIN+1));//清空缓冲
+		{
+			memcpy(str,&ComBuf3.rec.buf[PDATASTART],(FRAME_LEN_MAX-FRAME_LEN_MIN)+1);//ComBuf3.send.len-FRAME_LEN_MIN);//数据包
+			kind=ComBuf3.rec.buf[PFRAMEKIND];//命令字
+			sec_king=ComBuf3.rec.buf[PDATASTART];
+		}
+		//准备接收下一帧数据
+		ComBuf3.rec.end=FALSE;//接收缓冲可读标志复位
+		ComBuf3.rec.ptr=0;//接收指针清零
+//		}
+//	}
+
+		switch(kind)
+		{
+			case FRAME_READ_RESULT://读取结果
+				//串口发送测试数据:电压(5)+电阻(6)+时间(4)+分选(1)=16字节
+				switch (GetSystemMessage())//系统信息
+				{
+					case MSG_IDLE:
+						memcpy(strbuff,"----",5);
+						break;
+					case MSG_PAUSE:
+						memcpy(strbuff,"----",5);
+						//kind=0x9B;//测试中止
+						break;
+					case MSG_PASS:
+						//kind=0x91;//测试通过
+						memcpy(strbuff,"PASS",5);
+						break;
+					case MSG_HIGH:
+						//kind=0x92;//上限报警
+						memcpy(strbuff,"HIGH",5);
+						break;
+					case MSG_LOW:
+						//kind=0x92;//下限报警
+						memcpy(strbuff,"LOW ",5);
+						break;
+					case MSG_OVER:
+						memcpy(strbuff,"BRK ",5);
+						break;
+					case MSG_ARC:
+						memcpy(strbuff,"ARC ",5);
+						break;
+					case MSG_SHORT://过流报警
+						if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter == IR)
+							memcpy(strbuff,"LOW ",5);
+						else
+							memcpy(strbuff,"HIGH",5);
+						break;
+					default:
+						//kind=0x90;//正常测试
+						memcpy(strbuff,"TEST",5);
+						break;
+				}	
+				
+				
+
+				if(U9001_Save_sys.U9001_save.all_step == 2)//W-I I-W
+				{
+//					if(U9001_Save_sys.U9001_save.current_step == 1)
+//					{
+						memset(ComBuf3.send.buf,0,40);
+		//				ComBuf3.send.buf[0]=0xAA;
+		//				ComBuf3.send.begin=FALSE;
+						if(GetSystemMessage() == MSG_IDLE)
+						{
+							strcat((char*)ComBuf3.send.buf,(char*)sendbuff);
+	//						memcpy(&ComBuf3.send.buf[0],sendbuff,14);
+							strcat((char*)ComBuf3.send.buf,(char*)strbuff);
+						}else{
+							if(U9001_Save_sys.U9001_save.current_step == 1)
+							{
+								strcat((char*)ComBuf3.send.buf,(char*)sendbuff);
+	//							memcpy(&ComBuf3.send.buf[0],sendbuff,14);
+								if(U9001_Save_sys.U9001_save.U9001_Setup[2].parameter == IR)
+								{
+									strcat((char*)ComBuf3.send.buf,(char*)strbuff);
+								}else if(U9001_Save_sys.U9001_save.U9001_Setup[1].parameter == IR){
+									strcat((char*)ComBuf3.send.buf,"----");
+								}
+							}else{
+								if(U9001_Save_sys.U9001_save.U9001_Setup[2].parameter == IR)
+								{
+									if(sendbuff[13] == 0x3b)
+									{
+										memcpy(&sendbuff[14],"PASS",4);
+									}else if(sendbuff[14] == 0x3b){
+										memcpy(&sendbuff[15],"PASS",4);
+									}
+//									strcat((char*)sendbuff,"PASS");
+									memcpy(&ComBuf3.send.buf[0],sendbuff,18);
+								}else if(U9001_Save_sys.U9001_save.U9001_Setup[1].parameter == IR){
+//									strcat((char*)sendbuff,"mA;");
+									if(sendbuff[13] == 0x3b)
+									{
+										memcpy(&sendbuff[14],strbuff,4);
+									}else if(sendbuff[14] == 0x3b){
+										memcpy(&sendbuff[15],strbuff,4);
+									}
+//									strcat((char*)sendbuff,(char*)strbuff);
+									strcat((char*)ComBuf3.send.buf,(char*)sendbuff);
+//									memcpy(&ComBuf3.send.buf[0],sendbuff,18);
+								}							
+							}
+						}
+	//					memset(ComBuf1.send.buf,0,21);
+	//					ComBuf1.send.buf[0]=0xAA;
+	//					ComBuf1.send.begin=FALSE;
+	//					memcpy(&ComBuf1.send.buf[1],sendbuff1,16);
+						
+						strcat((char*)ComBuf3.send.buf,";");
+						strcat((char*)ComBuf3.send.buf,(char*)sendbuff1);
+						if(U9001_Save_sys.U9001_save.current_step == 1)
+						{
+	//						strcat((char*)ComBuf3.send.buf,"----");
+							if(U9001_Save_sys.U9001_save.U9001_Setup[2].parameter == IR)
+							{
+								strcat((char*)ComBuf3.send.buf,"----");
+							}else if(U9001_Save_sys.U9001_save.U9001_Setup[1].parameter == IR){
+								strcat((char*)ComBuf3.send.buf,(char*)strbuff);
+							}
+						}else{
+							if(U9001_Save_sys.U9001_save.U9001_Setup[2].parameter == IR)
+							{
+								strcat((char*)ComBuf3.send.buf,(char*)strbuff);
+							}else if(U9001_Save_sys.U9001_save.U9001_Setup[1].parameter == IR){
+								strcat((char*)ComBuf3.send.buf,"PASS");
+							}
+							
+						}
+						strcat((char*)ComBuf3.send.buf,(char*)sendend);//尾部增加回车和换行符
+						for(i=0;i<39;i++)
+						{
+							UARTPutChar(LPC_UART3, ComBuf3.send.buf[i]);
+						}
+						ComBuf3.rec.end=FALSE;//接收缓冲可读标志复位
+	//					USART_SendData(USART1, 0xBB);
+	//					while(USART_GetFlagStatus(USART1,USART_FLAG_TXE)==RESET);
+
+	//					break;
+//					}else{
+//						for(i=0;i<39;i++)
+//						{
+//							UARTPutChar(LPC_UART3, ComBuf3.send.buf[i]);
+//						}
+//						ComBuf3.rec.end=FALSE;//接收缓冲可读标志复位
+//					}
+				}else{
+//					if(sendflag == 0)
+//					{
+//						sendflag = 1;
+						memset(ComBuf3.send.buf,0,40);
+		//				ComBuf3.send.buf[0]=0xAA;
+		//				ComBuf3.send.begin=FALSE;
+						if(U9001_Save_sys.U9001_save.U9001_Setup[1].parameter == IR)
+							memcpy(&ComBuf3.send.buf[0],sendbuff1,14);
+						else
+							memcpy(&ComBuf3.send.buf[0],sendbuff,14);
+						strcat((char*)ComBuf3.send.buf,(char*)strbuff);
+						
+						strcat((char*)ComBuf3.send.buf,(char*)sendend);//尾部增加回车和换行符
+						
+						for(i=0;i<20;i++)
+						{
+							UARTPutChar(LPC_UART3, ComBuf3.send.buf[i]);
+						}
+//					}else{
+//						for(i=0;i<20;i++)
+//						{
+//							UARTPutChar(LPC_UART3, ComBuf3.send.buf[i]);
+//						}
+//					}
+				}
+				
+
+				
+				
+				
+				break;
+			
+			case FRAME_START://启动
+				SetSystemStatus(SYS_STATUS_START);
+				SetSystemMessage(MSG_RAMP);
+				Uart0_Send(0xa1);
+				PLC_OutProg();//开PLC启动
+				break;
+
+			case FRAME_RESET://复位
+				switch(GetSystemStatus())
+				{
+					case SYS_STATUS_FINISH:
+						Beep_Off();
+						SetSystemStatus(SYS_STATUS_IDEM);
+						SetSystemMessage(MSG_IDLE);
+						V_DA_out(0);
+						Sing_out_C(0);
+						Short_out(0);
+						FRB_out(0);
+						Uart0_Send(0xa0);
+					break;
+					case SYS_STATUS_IDEM:
+						Beep_Off();
+						V_DA_out(0);
+						Sing_out_C(0);
+						Short_out(0);
+						FRB_out(0);
+						Uart0_Send(0xa0);
+					break;
+					case SYS_STATUS_TEST_PAUSE:
+						Beep_Off();
+						V_DA_out(0);
+						Sing_out_C(0);
+						Short_out(0);
+						FRB_out(0);
+						SetSystemMessage(MSG_PAUSE);//系统信息-暂停测试
+						SetSystemStatus(SYS_STATUS_ABORT);//系统状态-暂停测试
+						Uart0_Send(0xa0);
+					break;
+					case SYS_STATUS_ABORT:
+						Beep_Off();
+						SetSystemMessage(MSG_IDLE);//系统信息-暂停测试
+						SetSystemStatus(SYS_STATUS_IDEM);//系统状态-暂停测试
+					break;
+					case SYS_STATUS_TEST:
+						Beep_Off();
+						V_DA_out(0);
+						Sing_out_C(0);
+						Short_out(0);
+						FRB_out(0);
+						SetSystemMessage(MSG_PAUSE);//系统信息-暂停测试
+						SetSystemStatus(SYS_STATUS_ABORT);//系统状态-暂停测试
+						Uart0_Send(0xa0);
+					break;
+					case SYS_STATUS_START:   
+						Beep_Off();
+						SetSystemMessage(MSG_PAUSE);//系统信息-暂停测试
+						SetSystemStatus(SYS_STATUS_ABORT);//系统状态-暂停测试
+						Uart0_Send(0xa0);
+					break;
+				}
+				V_DA_out(0);
+				Sing_out_C(0);
+				Short_out(0);
+				FRB_out(0);
+				Uart0_Send(0xa0);
+				break;
+
+			case FRAME_WRITE_SN://写序列号
+				break;
+			
+			case FRAME_CLR_BOOT_NUM://清开机次数
+				break;
+			case FRAME_ITEM://设置测试项目
+				switch(sec_king)
+				{
+					case 0x00:
+						U9001_Save_sys.U9001_save.all_step = 1;
+						U9001_Save_sys.U9001_save.U9001_Setup[1].parameter = AC;
+						break;
+					case 0x01:
+						U9001_Save_sys.U9001_save.all_step = 1;
+						U9001_Save_sys.U9001_save.U9001_Setup[1].parameter = IR;
+						break;
+					case 0x02:
+						U9001_Save_sys.U9001_save.all_step = 2;
+						U9001_Save_sys.U9001_save.U9001_Setup[1].parameter = AC;
+						U9001_Save_sys.U9001_save.U9001_Setup[2].parameter = IR;
+						break;
+					case 0x03:
+						U9001_Save_sys.U9001_save.all_step = 2;
+						U9001_Save_sys.U9001_save.U9001_Setup[1].parameter = IR;
+						U9001_Save_sys.U9001_save.U9001_Setup[2].parameter = AC;
+						break;
+					default:
+						break;
+				}
+				SetDate_Comp();
+//				Savetoeeprom();
+//				SaveGroup();//保存组别
+//				Store_set_flash();
+//				Disp_Idle_Menu();//显示待测界面
+				break;
+			case FRAME_DATA://数据帧
+				U9001_Save_sys.U9001_save.current_step = str[1]-1;
+
+				switch(sec_king)
+				{
+					case 0xAC:
+						if(U9001_Save_sys.U9001_save.all_step == 2 && U9001_Save_sys.U9001_save.U9001_Setup[2].parameter == IR)
+						{
+							U9001_Save_sys.U9001_save.U9001_Setup[1].parameter = AC;
+							U9001_Save_sys.U9001_save.U9001_Setup[1].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
+							U9001_Save_sys.U9001_save.U9001_Setup[1].Upper = (u16)BCDtoHex1(str[4],1)*1000+BCDtoHex1(str[5],1)*10;
+							U9001_Save_sys.U9001_save.U9001_Setup[1].lower = (u16)BCDtoHex1(str[6],1)*1000+BCDtoHex1(str[7],1)*10;
+							U9001_Save_sys.U9001_save.U9001_Setup[1].rise_time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
+							U9001_Save_sys.U9001_save.U9001_Setup[1].time = (u16)BCDtoHex1(str[10],1)*100+BCDtoHex1(str[11],1);
+							U9001_Save_sys.U9001_save.U9001_Setup[1].range_arc = str[12];
+							if(str[13]==0x50)
+								U9001_Save_sys.U9001_Testconfg.hz=0;
+							else
+								U9001_Save_sys.U9001_Testconfg.hz=1;
+							break;
+						}else if(U9001_Save_sys.U9001_save.all_step == 2 && U9001_Save_sys.U9001_save.U9001_Setup[1].parameter == IR){
+							U9001_Save_sys.U9001_save.U9001_Setup[2].parameter = AC;
+							U9001_Save_sys.U9001_save.U9001_Setup[2].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
+							U9001_Save_sys.U9001_save.U9001_Setup[2].Upper = (u16)BCDtoHex1(str[4],1)*1000+BCDtoHex1(str[5],1)*10;
+							U9001_Save_sys.U9001_save.U9001_Setup[2].lower = (u16)BCDtoHex1(str[6],1)*1000+BCDtoHex1(str[7],1)*10;
+							U9001_Save_sys.U9001_save.U9001_Setup[2].rise_time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
+							U9001_Save_sys.U9001_save.U9001_Setup[2].time = (u16)BCDtoHex1(str[10],1)*100+BCDtoHex1(str[11],1);
+							U9001_Save_sys.U9001_save.U9001_Setup[2].range_arc = str[12];
+							if(str[13]==0x50)
+								U9001_Save_sys.U9001_Testconfg.hz=0;
+							else
+								U9001_Save_sys.U9001_Testconfg.hz=1;
+							
+						}else if(U9001_Save_sys.U9001_save.all_step == 1){
+							U9001_Save_sys.U9001_save.U9001_Setup[1].parameter = AC;
+							U9001_Save_sys.U9001_save.U9001_Setup[1].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
+							U9001_Save_sys.U9001_save.U9001_Setup[1].Upper = (u16)BCDtoHex1(str[4],1)*1000+BCDtoHex1(str[5],1)*10;
+							U9001_Save_sys.U9001_save.U9001_Setup[1].lower = (u16)BCDtoHex1(str[6],1)*1000+BCDtoHex1(str[7],1)*10;
+							U9001_Save_sys.U9001_save.U9001_Setup[1].rise_time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
+							U9001_Save_sys.U9001_save.U9001_Setup[1].time = (u16)BCDtoHex1(str[10],1)*100+BCDtoHex1(str[11],1);
+							U9001_Save_sys.U9001_save.U9001_Setup[1].range_arc = str[12];
+							if(str[13]==0x50)
+								U9001_Save_sys.U9001_Testconfg.hz=0;
+							else
+								U9001_Save_sys.U9001_Testconfg.hz=1;
+						}
+					break;
+					case 0xDC:
+						if(U9001_Save_sys.U9001_save.all_step == 2 && U9001_Save_sys.U9001_save.U9001_Setup[2].parameter == IR)
+						{
+							U9001_Save_sys.U9001_save.U9001_Setup[1].parameter = DC;
+							U9001_Save_sys.U9001_save.U9001_Setup[1].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
+							U9001_Save_sys.U9001_save.U9001_Setup[1].Upper = (u16)BCDtoHex1(str[4],1)*1000+BCDtoHex1(str[5],1)*10;
+							U9001_Save_sys.U9001_save.U9001_Setup[1].lower = (u16)BCDtoHex1(str[6],1)*1000+BCDtoHex1(str[7],1)*10;
+							U9001_Save_sys.U9001_save.U9001_Setup[1].rise_time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
+							U9001_Save_sys.U9001_save.U9001_Setup[1].time = (u16)BCDtoHex1(str[10],1)*100+BCDtoHex1(str[11],1);
+							U9001_Save_sys.U9001_save.U9001_Setup[1].range_arc = str[12];
+
+						}else if(U9001_Save_sys.U9001_save.all_step == 2 && U9001_Save_sys.U9001_save.U9001_Setup[1].parameter == IR){
+							U9001_Save_sys.U9001_save.U9001_Setup[2].parameter = DC;
+							U9001_Save_sys.U9001_save.U9001_Setup[2].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
+							U9001_Save_sys.U9001_save.U9001_Setup[2].Upper = (u16)BCDtoHex1(str[4],1)*1000+BCDtoHex1(str[5],1)*10;
+							U9001_Save_sys.U9001_save.U9001_Setup[2].lower = (u16)BCDtoHex1(str[6],1)*1000+BCDtoHex1(str[7],1)*10;
+							U9001_Save_sys.U9001_save.U9001_Setup[2].rise_time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
+							U9001_Save_sys.U9001_save.U9001_Setup[2].time = (u16)BCDtoHex1(str[10],1)*100+BCDtoHex1(str[11],1);
+							U9001_Save_sys.U9001_save.U9001_Setup[2].range_arc = str[12];
+
+							
+						}else if(U9001_Save_sys.U9001_save.all_step == 1){
+							U9001_Save_sys.U9001_save.U9001_Setup[1].parameter = DC;
+							U9001_Save_sys.U9001_save.U9001_Setup[1].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
+							U9001_Save_sys.U9001_save.U9001_Setup[1].Upper = (u16)BCDtoHex1(str[4],1)*1000+BCDtoHex1(str[5],1)*10;
+							U9001_Save_sys.U9001_save.U9001_Setup[1].lower = (u16)BCDtoHex1(str[6],1)*1000+BCDtoHex1(str[7],1)*10;
+							U9001_Save_sys.U9001_save.U9001_Setup[1].rise_time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
+							U9001_Save_sys.U9001_save.U9001_Setup[1].time = (u16)BCDtoHex1(str[10],1)*100+BCDtoHex1(str[11],1);
+							U9001_Save_sys.U9001_save.U9001_Setup[1].range_arc = str[12];
+
+						}
+
+//						SaveData.Setup.Item=1;
+//						SaveData.Setup.Output=(u16)BCDtoHex1(str[2],1)*100+BCDtoHex1(str[3],1);
+//						SaveData.Setup.High=(u16)BCDtoHex1(str[4],1)*100+BCDtoHex1(str[5],1);
+//						SaveData.Setup.Low=(u16)BCDtoHex1(str[6],1)*100+BCDtoHex1(str[7],1);
+//						SaveData.Setup.RampDelay=(u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
+//						SaveData.Setup.TestTime=(u16)BCDtoHex1(str[10],1)*100+BCDtoHex1(str[11],1);
+//						SaveData.Setup.Arc=str[12];
+						break;
+					case 0xAD:
+						if(U9001_Save_sys.U9001_save.all_step == 2 && U9001_Save_sys.U9001_save.U9001_Setup[2].parameter == IR)
+						{
+							U9001_Save_sys.U9001_save.U9001_Setup[2].parameter = IR;
+							U9001_Save_sys.U9001_save.U9001_Setup[2].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
+							U9001_Save_sys.U9001_save.U9001_Setup[2].Upper = (u16)BCDtoHex1(str[4],1)*100+BCDtoHex1(str[5],1)*1;
+							U9001_Save_sys.U9001_save.U9001_Setup[2].lower = (u16)BCDtoHex1(str[6],1)*100+BCDtoHex1(str[7],1)*1;
+							U9001_Save_sys.U9001_save.U9001_Setup[2].time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
+						}else if(U9001_Save_sys.U9001_save.all_step == 2 && U9001_Save_sys.U9001_save.U9001_Setup[1].parameter == IR){
+							U9001_Save_sys.U9001_save.U9001_Setup[1].parameter = IR;
+							U9001_Save_sys.U9001_save.U9001_Setup[1].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
+							U9001_Save_sys.U9001_save.U9001_Setup[1].Upper = (u16)BCDtoHex1(str[4],1)*100+BCDtoHex1(str[5],1)*1;
+							U9001_Save_sys.U9001_save.U9001_Setup[1].lower = (u16)BCDtoHex1(str[6],1)*100+BCDtoHex1(str[7],1)*1;
+							U9001_Save_sys.U9001_save.U9001_Setup[1].time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);							
+						}else if(U9001_Save_sys.U9001_save.all_step == 1){
+							U9001_Save_sys.U9001_save.U9001_Setup[1].parameter = IR;
+							U9001_Save_sys.U9001_save.U9001_Setup[1].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
+							U9001_Save_sys.U9001_save.U9001_Setup[1].Upper = (u16)BCDtoHex1(str[4],1)*100+BCDtoHex1(str[5],1)*1;
+							U9001_Save_sys.U9001_save.U9001_Setup[1].lower = (u16)BCDtoHex1(str[6],1)*100+BCDtoHex1(str[7],1)*1;
+							U9001_Save_sys.U9001_save.U9001_Setup[1].time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
+
+						}
+//					SaveData.Setup.I_Volt=(u16)BCDtoHex1(str[2],1)*100+BCDtoHex1(str[3],1);
+//						SaveData.Setup.I_High=(u16)BCDtoHex1(str[4],1)*100+BCDtoHex1(str[5],1);
+//						SaveData.Setup.I_Low=(u16)BCDtoHex1(str[6],1)*100+BCDtoHex1(str[7],1);
+//						SaveData.Setup.I_Delay=(u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
+//						
+						break;
+					
+				
+				}
+				SetDate_Comp();
+//				Savetoeeprom();
+				break;
+			case FRAME_SELECT_GROUP:
+//				SaveData.Group=sec_king-1;
+//				SaveGroup();
+//				SetSystemStatus(SYS_STATUS_IDLE);//待机状态
+//				ReadSetByGroup();
+//				Parameter_valuecomp();//比较设置参数
+//				Disp_Idle_Menu();//显示待测界面
+				break;		
+			default:
+				break;
+			
+		}
+//	Disp_Idle_Menu();//显示待测界面
+	}
+}
+
+
 /*----------------- INTERRUPT SERVICE ROUTINES --------------------------*/
 /*********************************************************************//**
  * @brief		UART0 interrupt handler sub-routine
@@ -903,6 +1416,46 @@ void UART3_IRQHandler(void)//UART3_IRQn
 	}else if(U9001_Save_sys.U9001_SYS.bussmode == 1){
 		Res=UART_ReceiveByte(LPC_UART3);
 		SCPI_Input(&scpi_context, &Res, 1);
+	}else if(U9001_Save_sys.U9001_SYS.bussmode == 2){
+		if (!ComBuf3.rec.end)//接收没结束
+		{
+			SetRecTimeOut(REC_TIME_OUT);//设置接收超时周期
+			Res=UART_ReceiveByte(LPC_UART3);
+			if (/*dat==(u8)(UART_REC_BEGIN)*/ComBuf3.rec.ptr==0)//帧头
+			{
+				if(Res!=(u8)(UART_REC_BEGIN)) //首字节
+				{
+					ComBuf3.rec.ptr=0;//重新接收 
+				}
+				else
+				{
+					ComBuf3.rec.buf[ComBuf3.rec.ptr++]=Res;
+				}
+			}
+			else if (Res==(u8)(UART_REC_END))//帧尾
+			{
+				ComBuf3.rec.buf[ComBuf3.rec.ptr++]=Res;
+				ComBuf3.rec.end=TRUE;//接收结束
+				ComBuf3.rec.len=ComBuf3.rec.ptr;//存接收数据长度
+				ComBuf3.rec.ptr=0;//指针清零重新开始新的一帧接收
+				ComBuf3.rec.TimeOut=0;//接收超时清零
+			}
+			else
+			{
+				if (ComBuf3.rec.ptr>=REC_LEN_MAX)//最大接收帧长度
+				{
+					ComBuf3.rec.ptr=0;//重新接收
+				}
+				else
+				{
+					ComBuf3.rec.buf[ComBuf3.rec.ptr++]=Res;
+				}
+			}
+		}
+		if(ComBuf3.rec.end == TRUE)
+		{
+			Uart3_Process();//串口处理
+		}
 	}
 }
 
