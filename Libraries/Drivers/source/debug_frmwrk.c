@@ -1219,12 +1219,12 @@ vu8 Uart3_Process(void)
 						U9001_Save_sys.U9001_save.all_step = 1;
 						U9001_Save_sys.U9001_save.U9001_Setup[1].parameter = IR;
 						break;
-					case 0x02:
+					case 0x10:
 						U9001_Save_sys.U9001_save.all_step = 2;
 						U9001_Save_sys.U9001_save.U9001_Setup[1].parameter = AC;
 						U9001_Save_sys.U9001_save.U9001_Setup[2].parameter = IR;
 						break;
-					case 0x03:
+					case 0x11:
 						U9001_Save_sys.U9001_save.all_step = 2;
 						U9001_Save_sys.U9001_save.U9001_Setup[1].parameter = IR;
 						U9001_Save_sys.U9001_save.U9001_Setup[2].parameter = AC;

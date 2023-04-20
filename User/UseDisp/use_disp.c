@@ -132,7 +132,7 @@ const char VERSION_Tab1[][2][32]=
 const char SYS_NAME_Tab[][2][32]=
 {
 //    {"耐压测试仪","HIPOT TESTER"},
-    {"Ver.1.011","Ver.1.011"},
+    {"Ver.1.012","Ver.1.012"},
     {"www.JK17.com","www.JK17.com"},
     {"0519-85563477","0519-85563477"},
 
@@ -143,7 +143,7 @@ const char SYS_NAME_Tab[][2][32]=
 //1.009修改耐压最小分选时间从0.2s到0.5s；修正100ms定时器不准的问题
 //1.010直流耐压最大电流从5mA增加到10mA(9320&9320A)
 //1.011修改IR模式上限随下限增加的bug
-
+//1.012增加JK-1协议
 const char SYS_SetTime_Tab[][2][15]=
 {
 	{"日期：","OFF"},
@@ -4638,14 +4638,14 @@ void SetDate_Comp(void)
     
     } 
 		
-		pt1=(u16*)&U9001_Save_sys.U9001_Testconfg;
-		for(i=0;i<15;i++)
-    {
-			if(*(pt1+(i))>=ParameterLimit[i][1])
-			{
-				*(pt1+(i))=ParameterLimit[i][0];
-			}
-		}
+//		pt1=(u16*)&U9001_Save_sys.U9001_Testconfg;
+//		for(i=0;i<15;i++)
+//    {
+//			if(*(pt1+(i))>=ParameterLimit[i][1])
+//			{
+//				*(pt1+(i))=ParameterLimit[i][0];
+//			}
+//		}
 }
 //void SetDate_Comp(void)
 //{

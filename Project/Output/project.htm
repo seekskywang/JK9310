@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Output\project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Output\project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Mar 06 16:09:31 2023
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Mar 07 09:27:53 2023
 <BR><P>
 <H3>Maximum Stack Usage =        644 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1475,8 +1475,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Power_Process
 </UL>
 
-<P><STRONG><a name="[1f3]"></a>SetDate_Comp</STRONG> (Thumb, 1014 bytes, Stack size 16 bytes, use_disp.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = SetDate_Comp
+<P><STRONG><a name="[1f3]"></a>SetDate_Comp</STRONG> (Thumb, 972 bytes, Stack size 12 bytes, use_disp.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = SetDate_Comp
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Use_SysSetProcess
 <LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Setup_Process
@@ -1493,11 +1493,11 @@ Global Symbols
 <LI><a href="#[2aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Process
 </UL>
 
-<P><STRONG><a name="[1f4]"></a>SetData_High_Low_Comp</STRONG> (Thumb, 272 bytes, Stack size 0 bytes, use_disp.o(.text))
+<P><STRONG><a name="[1f4]"></a>SetData_High_Low_Comp</STRONG> (Thumb, 230 bytes, Stack size 0 bytes, use_disp.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Power_Process
 </UL>
 
-<P><STRONG><a name="[194]"></a>Disp_Range</STRONG> (Thumb, 72 bytes, Stack size 8 bytes, use_disp.o(.text), UNUSED)
+<P><STRONG><a name="[194]"></a>Disp_Range</STRONG> (Thumb, 126 bytes, Stack size 8 bytes, use_disp.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WriteString_16
 </UL>
 <BR>[Called By]<UL><LI><a href="#[228]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Test_cleardata
@@ -1531,7 +1531,7 @@ Global Symbols
 <LI><a href="#[228]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Test_cleardata
 </UL>
 
-<P><STRONG><a name="[19c]"></a>Comp_Disp</STRONG> (Thumb, 298 bytes, Stack size 24 bytes, use_disp.o(.text), UNUSED)
+<P><STRONG><a name="[19c]"></a>Comp_Disp</STRONG> (Thumb, 292 bytes, Stack size 24 bytes, use_disp.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pass_Led
 <LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Fail_led
 <LI><a href="#[19f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Beep_on
@@ -1552,7 +1552,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Input_Num
 </UL>
 
-<P><STRONG><a name="[1a5]"></a>Input_Num</STRONG> (Thumb, 1084 bytes, Stack size 72 bytes, use_disp.o(.text), UNUSED)
+<P><STRONG><a name="[1a5]"></a>Input_Num</STRONG> (Thumb, 1080 bytes, Stack size 72 bytes, use_disp.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Read_WithTimeOut
 <LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disp_Numtouch
 <LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Test_Set_Item
@@ -1606,7 +1606,7 @@ Global Symbols
 <LI><a href="#[256]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CalTest_Process
 </UL>
 
-<P><STRONG><a name="[1ad]"></a>DCW_Select</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, use_disp.o(.text))
+<P><STRONG><a name="[1ad]"></a>DCW_Select</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, use_disp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = DCW_Select &rArr; Out_4094 &rArr; Set_Spi_out &rArr; GPIO_SetValue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Out_4094
@@ -1643,7 +1643,7 @@ Global Symbols
 <LI><a href="#[2ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MODS_WriteRegValue
 </UL>
 
-<P><STRONG><a name="[1b0]"></a>ARC_out</STRONG> (Thumb, 158 bytes, Stack size 8 bytes, use_disp.o(.text))
+<P><STRONG><a name="[1b0]"></a>ARC_out</STRONG> (Thumb, 180 bytes, Stack size 8 bytes, use_disp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = ARC_out &rArr; Out_4094 &rArr; Set_Spi_out &rArr; GPIO_SetValue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Out_4094
@@ -1655,7 +1655,7 @@ Global Symbols
 <LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Abroat_Process
 </UL>
 
-<P><STRONG><a name="[1b1]"></a>Test_Init</STRONG> (Thumb, 974 bytes, Stack size 48 bytes, use_disp.o(.text))
+<P><STRONG><a name="[1b1]"></a>Test_Init</STRONG> (Thumb, 976 bytes, Stack size 48 bytes, use_disp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 116<LI>Call Chain = Test_Init &rArr; Uart0_Send &rArr; UARTPutChar &rArr; UART_Send
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart0_Send
@@ -1711,7 +1711,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Pre_Uint
 </UL>
 
-<P><STRONG><a name="[1c1]"></a>Disp_NumKeyboard_Set</STRONG> (Thumb, 860 bytes, Stack size 88 bytes, use_disp.o(.text), UNUSED)
+<P><STRONG><a name="[1c1]"></a>Disp_NumKeyboard_Set</STRONG> (Thumb, 852 bytes, Stack size 88 bytes, use_disp.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Beep
 <LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WriteString_16
 <LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_DrawRect
@@ -1757,7 +1757,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_DelayTime
 </UL>
 
-<P><STRONG><a name="[1c5]"></a>Disp_DelayTime</STRONG> (Thumb, 204 bytes, Stack size 16 bytes, use_disp.o(.text))
+<P><STRONG><a name="[1c5]"></a>Disp_DelayTime</STRONG> (Thumb, 166 bytes, Stack size 16 bytes, use_disp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = Disp_DelayTime &rArr; disp_DelayMSG &rArr; GUI_DispStringAt &rArr; GUI_DispString &rArr; GUI__DispLine &rArr; WM__InitIVRSearch &rArr; WM__GetNextIVR &rArr; WM__ActivateClipRect &rArr; _SetClipRectUserIntersect &rArr; LCD_SetClipRectEx &rArr; GUI__IntersectRects
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Get_SorftTime
@@ -1780,7 +1780,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TestPause_Process
 </UL>
 
-<P><STRONG><a name="[1c8]"></a>Disp_CompTest</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, use_disp.o(.text), UNUSED)
+<P><STRONG><a name="[1c8]"></a>Disp_CompTest</STRONG> (Thumb, 100 bytes, Stack size 8 bytes, use_disp.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispStringAt
 </UL>
 
@@ -1992,11 +1992,11 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[1df]"></a>HW_keyInt</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, key.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = HW_keyInt &rArr; GPIO_Key_Configuration &rArr; GPIO_SetDir
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = HW_keyInt &rArr; HW_Sendvalueto164 &rArr; GPIO_SetValue
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Key_Configuration
+<BR>[Calls]<UL><LI><a href="#[1dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HW_Sendvalueto164
+<LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Key_Configuration
 <LI><a href="#[1e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Init
-<LI><a href="#[1dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HW_Sendvalueto164
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Power_Process
 </UL>
@@ -3336,7 +3336,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[270]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_GetPointer
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Key_Configuration
+<BR>[Called By]<UL><LI><a href="#[1dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HW_Sendvalueto164
+<LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Key_Configuration
 <LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WAN_Config
 <LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wlan_Cfg_H
 <LI><a href="#[1d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wlan_Rst
@@ -3361,7 +3362,6 @@ Global Symbols
 <LI><a href="#[22a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_ADDA_SendByte
 <LI><a href="#[229]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AD_7192_Rest
 <LI><a href="#[228]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Test_cleardata
-<LI><a href="#[1dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HW_Sendvalueto164
 <LI><a href="#[273]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FIO_SetValue
 <LI><a href="#[271]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_OutputValue
 </UL>
@@ -3371,7 +3371,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[270]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_GetPointer
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wlan_Cfg_L
+<BR>[Called By]<UL><LI><a href="#[1dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HW_Sendvalueto164
+<LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wlan_Cfg_L
 <LI><a href="#[1d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wlan_Rst
 <LI><a href="#[1d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Turnoff_backlight
 <LI><a href="#[1d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;All_LedOff
@@ -3395,7 +3396,6 @@ Global Symbols
 <LI><a href="#[22a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_ADDA_SendByte
 <LI><a href="#[229]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AD_7192_Rest
 <LI><a href="#[228]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Test_cleardata
-<LI><a href="#[1dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HW_Sendvalueto164
 <LI><a href="#[274]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FIO_ClearValue
 <LI><a href="#[271]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_OutputValue
 </UL>
