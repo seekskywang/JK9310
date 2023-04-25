@@ -1025,10 +1025,18 @@ void Test_Process(void)
 			{
 				if(GetSystemMessage()==MSG_TEST )
 				{
-          if(Test_Value.Time>=Test_mid.set_time)//判别延时
+          if(Test_mid.set_time != 0)
+				 {
+					if(Test_Value.Time>=Test_mid.set_time)//判别延时
 					{
-						f_sort=TRUE;//分选标志
+					 f_sort=TRUE;//分选标志
 					}
+				 }else if(Test_mid.set_time == 0){
+					if(sortT>=8)//判别延时
+					{
+					 f_sort=TRUE;//分选标志
+					}
+				 }
 //                        f_sort=TRUE;//分选标志
         }
 			}

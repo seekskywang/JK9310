@@ -132,7 +132,7 @@ const char VERSION_Tab1[][2][32]=
 const char SYS_NAME_Tab[][2][32]=
 {
 //    {"耐压测试仪","HIPOT TESTER"},
-    {"Ver.1.012","Ver.1.012"},
+    {"Ver.1.014","Ver.1.014"},
     {"www.JK17.com","www.JK17.com"},
     {"0519-85563477","0519-85563477"},
 
@@ -144,6 +144,8 @@ const char SYS_NAME_Tab[][2][32]=
 //1.010直流耐压最大电流从5mA增加到10mA(9320&9320A)
 //1.011修改IR模式上限随下限增加的bug
 //1.012增加JK-1协议
+//1.013修改绝缘连续测试分选判断bug
+//1.014导通测量默认打开
 const char SYS_SetTime_Tab[][2][15]=
 {
 	{"日期：","OFF"},
@@ -2985,7 +2987,7 @@ void DispSetConfig_value(uint8_t list)
  
    
     
-    GUI_DispStringAt(Switch_Tab[*(pt+3)][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+3*SPACE1);//下降时间时间 
+    GUI_DispStringAt(Switch_Tab[1][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+3*SPACE1);//下降时间时间 
 
  
     
