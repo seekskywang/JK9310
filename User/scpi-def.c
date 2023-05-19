@@ -58,6 +58,14 @@ static const char IRUNIT[][3]={
     {"G"},//
 };
 
+static const char CURR_UNIT[][3]=
+{
+    {"uA"},
+    {"mA"},
+    {" A"},
+
+};
+
 static const char Respond[][5]={
 	{"OK"}
 };
@@ -74,12 +82,13 @@ void UartRes(void)
 		if(U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter == AC ||
 		   U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter == DC)//耐压模式
 		{
-			sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,%.3fmA,%.1fs;",
+			sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,%.3f%s,%.1fs;",
 			i+1,
 			TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],//模式
 			SEND_COMP[Save_TestValue[i].text_flag][1],//分选结果
 			(double)Save_TestValue[i].Text_vot/1000,//电压
 			(double)Save_TestValue[i].Text_value/1000,//电流
+			CURR_UNIT[Save_TestValue[i].text_unit],//电流单位	
 			(double)Save_TestValue[i].Text_time/10);//测试时间
 		}else if(U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter == OS){//OS模式
 			sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,%.1fnF,%.1fs;",

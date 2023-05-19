@@ -1129,10 +1129,23 @@ void Test_Process(void)
 					{
 							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=TEST_VALUE_OVER;//电阻溢出
 					}
-//							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Resistance;
-					Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit=test_value.uint;
+//					if(Range <5)
+//						Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Test_Value.I_R*100;
+//					else
+//						Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Test_Value.I_R/10;
+//					Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit=test_value.uint;
 				}else{
-					Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Current;
+					if(Range==0)
+					{						
+						Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit=1;
+						Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Current*10;
+					}else if(Range==1){
+						Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit=1;
+						Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Current;
+					}else if(Range==2){
+						Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit=0;
+						Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Current*100;
+					}
 				}
 					Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_vot=Test_Value.Vol;
 					Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_time=Test_Value.Time;
@@ -1181,10 +1194,23 @@ void Test_Process(void)
 							{
 									Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=TEST_VALUE_OVER;//电阻溢出
 							}
-//							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Resistance;
-							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit=test_value.uint;
+//							if(Range <5)
+//								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Test_Value.I_R*100;
+//							else
+//								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Test_Value.I_R/10;
+//							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit=test_value.uint;
 						}else{
-							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Current;
+							if(Range==0)
+							{						
+								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit=1;
+								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Current*10;
+							}else if(Range==1){
+								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit=1;
+								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Current;
+							}else if(Range==2){
+								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit=0;
+								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Current*100;
+							}
 						}
               Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_vot=Test_Value.Vol;
 							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_time=Test_Value.Time;
@@ -1380,7 +1406,7 @@ void Test_Process(void)
                     }
 					break;
 	
-                case IR_SETUP:
+				case IR_SETUP:
 					//档位换算
                    
 					if(Current)//电流值非零
@@ -1396,28 +1422,37 @@ void Test_Process(void)
 							Resistance=TEST_VALUE_OVER;//电阻溢出
               Test_Value.I_R=Resistance;
 					}
-                     switch(Range)
-                    {
-                        case 1:
-                            
-                            Test_Value.I_R/=100;
-                            break;
-                        case 2:
-                            Test_Value.I_R/=100;
-                            break;
-                        case 3:
-                            Test_Value.I_R/=10;
-                            break;
-                        case 4:
+					switch(Range)
+					{
+							case 1:
+									
+									Test_Value.I_R/=100;
+									break;
+							case 2:
+									Test_Value.I_R/=100;
+									break;
+							case 3:
+									Test_Value.I_R/=10;
+									break;
+							case 4:
 //                            Test_Value.I_R*=10;
-                            break;
-                        case 5:
-                            Test_Value.I_R*=10;
-                            break;
-                        default:
-                            break;
-                    
-                    }
+									break;
+							case 5:
+									Test_Value.I_R*=10;
+									break;
+							default:
+									break;
+					
+					}
+					if(Test_Value.I_R == TEST_VALUE_OVER)
+					{
+						Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Test_Value.I_R;
+					}else{
+						if(Range <5)
+							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Test_Value.I_R*100;
+						else
+							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Test_Value.I_R/10;
+					}
 					break;
                 case PA_SETUP:
 

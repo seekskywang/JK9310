@@ -132,7 +132,7 @@ const char VERSION_Tab1[][2][32]=
 const char SYS_NAME_Tab[][2][32]=
 {
 //    {"耐压测试仪","HIPOT TESTER"},
-    {"Ver.1.014","Ver.1.014"},
+    {"Ver.1.015","Ver.1.015"},
     {"www.JK17.com","www.JK17.com"},
     {"0519-85563477","0519-85563477"},
 
@@ -146,6 +146,7 @@ const char SYS_NAME_Tab[][2][32]=
 //1.012增加JK-1协议
 //1.013修改绝缘连续测试分选判断bug
 //1.014导通测量默认打开
+//1.015上位机通讯debug
 const char SYS_SetTime_Tab[][2][15]=
 {
 	{"日期：","OFF"},
@@ -4003,7 +4004,11 @@ void Disp_Testvalue(u8 test)
 									}
 									
                }
-							strcat(sendbuff,"mA;");
+								
+//							 if(Range<2)
+									strcat(sendbuff,"mA;");
+//							 else
+//								 strcat(sendbuff,"uA;");
 							 
             }
             else
@@ -4047,7 +4052,15 @@ void Disp_Testvalue(u8 test)
 //							if(U9001_Save_sys.U9001_save.all_step == 1)
 //								strcat(sendbuff,(char*)"M;");
 //							else
+							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit=test_value.uint;
+							if(test_value.uint == 0)
+							{
+								strcat(sendbuff1,(char*)"k;");
+							}else if(test_value.uint == 1){
 								strcat(sendbuff1,(char*)"M;");
+							}else if(test_value.uint == 2){
+								strcat(sendbuff1,(char*)"G;");
+							}
 					}
 					else
 					{
