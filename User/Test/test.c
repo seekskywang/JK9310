@@ -1736,7 +1736,7 @@ void File_Process(void)
 	}
 
 }
-const u16 Hign_Vout[]={5000,6000,1000};
+const u16 Hign_Vout[]={5000,6000,5000};
 const u16 High_Upper[]={12000,600,9999};
 const u8 ITEM_S[][12]=
 {
