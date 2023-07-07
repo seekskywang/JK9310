@@ -132,7 +132,7 @@ const char VERSION_Tab1[][2][32]=
 const char SYS_NAME_Tab[][2][32]=
 {
 //    {"耐压测试仪","HIPOT TESTER"},
-    {"Ver.1.015","Ver.1.015"},
+    {"Ver.1.016","Ver.1.016"},
     {"www.JK17.com","www.JK17.com"},
     {"0519-85563477","0519-85563477"},
 
@@ -147,6 +147,7 @@ const char SYS_NAME_Tab[][2][32]=
 //1.013修改绝缘连续测试分选判断bug
 //1.014导通测量默认打开
 //1.015上位机通讯debug
+//1.016测试时间显示debug
 const char SYS_SetTime_Tab[][2][15]=
 {
 	{"日期：","OFF"},

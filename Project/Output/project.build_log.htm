@@ -27,57 +27,97 @@ Project File Date:  07/07/2023
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Open1788'
-compiling GUI_FONTXBFFON16.c...
-compiling test.c...
-..\Libraries\Drivers\include\debug_frmwrk.h(92): warning:  #47-D: incompatible redefinition of macro "TICKS_PER_SEC"  (declared at line 13 of "..\User\key/key.h")
-  #define TICKS_PER_SEC 1000	//????????????????????100x10mS(T0)=1S
-..\User\Test\test.c(200): warning:  #177-D: variable "temp"  was declared but never referenced
-  	u8 temp[4];
-..\User\Test\test.c(201): warning:  #177-D: variable "FlashID"  was declared but never referenced
-  		u32 FlashID;
-..\User\Test\test.c(775): warning:  #177-D: variable "key"  was declared but never referenced
-  	vu8 key;
-..\User\Test\test.c(871): warning:  #550-D: variable "Range_IR"  was set but never used
-      u8 Range_IR=0;
-..\User\Test\test.c(879): warning:  #550-D: variable "temp"  was set but never used
-  	vu32 temp;
-..\User\Test\test.c(880): warning:  #177-D: variable "value"  was declared but never referenced
-    float value;
-..\User\Test\test.c(881): warning:  #177-D: variable "F_x"  was declared but never referenced
-    float F_x;
-..\User\Test\test.c(1755): warning:  #177-D: variable "pt"  was declared but never referenced
-      vu16 *pt;
-..\User\Test\test.c(1756): warning:  #177-D: variable "list"  was declared but never referenced
-  	u8 list=1;//????????0  ??????1??
-..\User\Test\test.c(1757): warning:  #177-D: variable "line"  was declared but never referenced
-      u8 line=0;//??
-..\User\Test\test.c(1764): warning:  #177-D: variable "select_num"  was declared but never referenced
-      u8 select_num=0;
-..\User\Test\test.c(4384): warning:  #177-D: variable "select_num"  was declared but never referenced
-      u8 select_num=0;
-..\User\Test\test.c(5066): warning:  #177-D: variable "list"  was declared but never referenced
-  	u8 list=0;//??
-..\User\Test\test.c(5068): warning:  #177-D: variable "item"  was declared but never referenced
-      u8 item=0;
-..\User\Test\test.c(6766): warning:  #188-D: enumerated type mixed with another type
-  	f_disp=
-ALSE;//????????
-..\User\Test\test.c(6759): warning:  #177-D: variable "i"  was declared but never referenced
-  	u8 i;
-..\User\Test\test.c(6760): warning:  #177-D: variable "key"  was declared but never referenced
-  	u8 key;
-..\User\Test\test.c(6762): warning:  #177-D: variable "item"  was declared but never referenced
-  	u8 item;
-..\User\Test\test.c(6763): warning:  #550-D: variable "time"  was set but never used
-  	u16 time;//????????????
-..\User\Test\test.c(6764): warning:  #550-D: variable "f_disp"  was set but never used
-  	Bool f_disp;//????????
-..\User\Test\test.c: 21 warnings, 0 errors
+compiling use_disp.c...
+..\User\UseDisp\use_disp.c(1995): warning:  #167-D: argument of type "const u8 *" is incompatible with parameter of type "const char *restrict"
+  				strcat(DispBuf,Test_IRUINT[test_value.uint]);
+..\User\UseDisp\use_disp.c(2011): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
+  			strcat(DispBuf,Disp_Unit[test_value.uint]);
+..\User\UseDisp\use_disp.c(2346): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
+                  strcat(DispBuf,Disp_Unit[1]);
+..\User\UseDisp\use_disp.c(2547): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+  	WriteString_16(
+IST1+
+ATA_SPACE1+8, 
+IRSTLINE+
+PACE1*2, DispBuf,  0);
+..\User\UseDisp\use_disp.c(2566): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+  	WriteString_16(
+IST1+
+ATA_SPACE1+8, 
+IRSTLINE+
+PACE1*3, DispBuf,  0);
+..\User\UseDisp\use_disp.c(2602): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+  	WriteString_16(
+IST2+
+ATA_SPACE1+10+8, 
+IRSTLINE+
+PACE1*2, DispBuf,  0);
+..\User\UseDisp\use_disp.c(2619): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+  	WriteString_16(
+IST2+
+ATA_SPACE1+8, 
+IRSTLINE+
+PACE1*3, DispBuf,  0);
+..\User\UseDisp\use_disp.c(2913): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
+                  strcat(DispBuf,Disp_Unit[1]);
+..\User\UseDisp\use_disp.c(2629): warning:  #177-D: variable "num"  was declared but never referenced
+      u8 num=(MAX_SETP[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter]+1)/2;
+..\User\UseDisp\use_disp.c(2949): warning:  #177-D: variable "Black_Select"  was declared but never referenced
+  	vu32 Black_Select;
+..\User\UseDisp\use_disp.c(3037): warning:  #177-D: variable "i"  was declared but never referenced
+  	vu32 i;
+..\User\UseDisp\use_disp.c(3074): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+  	WriteString_16(
+IST1+160+160, 
+IRSTLINE+
+PACE1*(list+1), DispBuf,  1);
+..\User\UseDisp\use_disp.c(3098): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+          WriteString_16(
+IST1+160, 
+IRSTLINE+
+PACE1*(i+2), DispBuf,  1);
+..\User\UseDisp\use_disp.c(4047): warning:  #167-D: argument of type "const u8 *" is incompatible with parameter of type "const char *"
+  								GUI_DispStringAt(Test_IRUINT[test_value.uint],
+ISP_V_XPOS+50+6*25,
+ISP_V_YPOS+50);
+..\User\UseDisp\use_disp.c(4098): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *"
+              GUI_DispStringAt(Disp_Unit[1],
+ISP_V_XPOS+50+6*25,
+ISP_V_YPOS+50);
+..\User\UseDisp\use_disp.c(4283): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+  		WriteString_12(
+IST2+140, 58+i*15, DispBuf,  1);//?????????????€?  ??????????????€????????????
+..\User\UseDisp\use_disp.c(4647): warning:  #111-D: statement is unreachable
+                  break;
+..\User\UseDisp\use_disp.c(4502): warning:  #177-D: variable "pt1"  was declared but never referenced
+  	 u16 *pt1;
+..\User\UseDisp\use_disp.c(4691): warning:  #177-D: variable "j"  was declared but never referenced
+  	vu16 j,i;
+..\User\UseDisp\use_disp.c(4691): warning:  #177-D: variable "i"  was declared but never referenced
+  	vu16 j,i;
+..\User\UseDisp\use_disp.c(4692): warning:  #177-D: variable "pt"  was declared but never referenced
+  	vu8 *pt;
+..\User\UseDisp\use_disp.c(4693): warning:  #177-D: variable "ppt"  was declared but never referenced
+      uint16_t *ppt;
+..\User\UseDisp\use_disp.c(4933): warning:  #550-D: variable "addr"  was set but never used
+  	LcdAddr_TypeDef addr;//???????????€??????
+..\User\UseDisp\use_disp.c(5574): warning:  #69-D: integer conversion resulted in truncation
+  	lcd_Clear(
+CD_COLOR_TEST_BACK);
+..\User\UseDisp\use_disp.c(6307): warning:  #111-D: statement is unreachable
+  			break;
+..\User\UseDisp\use_disp.c(6314): warning:  #223-D: function "Uart0_Send" declared implicitly
+  	Uart0_Send(0x02);//??????
+..\User\UseDisp\use_disp.c(6108): warning:  #550-D: variable "set_arc"  was set but never used
+  	vu8 set_arc;//?????????????????????
+..\User\UseDisp\use_disp.c(6481): warning:  #177-D: variable "keynum"  was declared but never referenced
+  	vu32 keynum=0;
+..\User\UseDisp\use_disp.c: 28 warnings, 0 errors
 linking...
 Program Size: Code=163794 RO-data=127650 RW-data=816 ZI-data=9504  
 FromELF: creating hex file...
 After Build - User command #1: C:\Keil_v5\ARM\ARMCC\bin\fromelf.exe --bin  -o ..\update\update.bin Output\project.axf
-".\Output\project.axf" - 0 Error(s), 21 Warning(s).
+".\Output\project.axf" - 0 Error(s), 28 Warning(s).
 
 <h2>Software Packages used:</h2>
 
