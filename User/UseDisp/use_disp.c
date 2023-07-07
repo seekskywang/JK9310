@@ -117,9 +117,9 @@ const char DELAY_TIMEDISP[][2][16]=
 };
 const char VERSION_Tab[][2][32]=
 {
-    {"NBX9310","NBX9310"},
-    {"NBX9320","NBX9320"},
-		{"NBX9320A","NBX9320A"},
+    {"JK9310","JK9310"},
+    {"JK9320","JK9320"},
+		{"JK9320A","JK9320A"},
 };
 
 const char VERSION_Tab1[][2][32]=
@@ -133,8 +133,8 @@ const char SYS_NAME_Tab[][2][32]=
 {
 //    {"耐压测试仪","HIPOT TESTER"},
     {"Ver.1.015","Ver.1.015"},
-    {" "," "},
-    {" "," "},
+    {"www.JK17.com","www.JK17.com"},
+    {"0519-85563477","0519-85563477"},
 
 };
 //1.006修正PLC
@@ -4112,11 +4112,11 @@ void Disp_Testvalue(u8 test)
       GUI_SetFont(&GUI_FontGUI_FONTXBFFON16);
     if(test==1)
     {
-        Hex_Format(Test_Value.Time,1,4,0);
+        Hex_Format(Test_Value.Time,1,4,1);
     }
     else
     {
-        Hex_Format(0,1,4,0);
+        Hex_Format(0,1,4,1);
     }
     GUI_DispStringAt(DispBuf,DISP_V_XPOS+44,DISP_V_YPOS+100+23);
     disp_TestMSG(GetSystemMessage());

@@ -41,7 +41,7 @@ I (..\User\TouchPanel/TouchPanel.h)(0x5B641C62)
 I (..\Libraries\Drivers\include\lpc177x_8x_ssp.h)(0x5029ACB2)
 I (..\Libraries\Drivers\include\lpc177x_8x_pinsel.h)(0x5029ACB2)
 I (..\Libraries\Drivers\include\debug_frmwrk.h)(0x64059500)
-I (..\User\Globalvalue/GlobalValue.h)(0x64686027)
+I (..\User\Globalvalue/GlobalValue.h)(0x64A777CB)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F606B8)
 I (..\Libraries\Drivers\include\lpc177x_8x_uart.h)(0x5029ACB2)
 I (..\User\UseDisp/Use_Disp.h)(0x62A3F9ED)
@@ -70,7 +70,7 @@ I (..\Libraries\Drivers\include\lpc_types.h)(0x618E55D6)
 I (..\User\timer.h)(0x5996F7D2)
 I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\system_LPC177x_8x.h)(0x5029ACB2)
 I (..\User\Key/key.h)(0x620A0ED7)
-I (..\User\Globalvalue\GlobalValue.h)(0x64686027)
+I (..\User\Globalvalue\GlobalValue.h)(0x64A777CB)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F606B8)
 I (..\Libraries\Drivers\include\debug_frmwrk.h)(0x64059500)
 I (..\Libraries\Drivers\include\lpc177x_8x_uart.h)(0x5029ACB2)
@@ -93,7 +93,7 @@ I (..\emWin\Header\Global.h)(0x4FDB5710)
 I (..\emWin\Header\GUI_Version.h)(0x4FDB5712)
 I (..\User\LCD/AsciiLib.h)(0x5C6D0E2E)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x57F606B8)
-I (..\User\Globalvalue/globalvalue.h)(0x64686027)
+I (..\User\Globalvalue/globalvalue.h)(0x64A777CB)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F606B8)
 I (..\User\hzk.h)(0x5C8F33E4)
 F (..\User\LCD\logo.c)(0x5029ACB0)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\Libraries\Core\CM3\CoreSupport -I ..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I ..\Libraries\Drivers\include -I ..\User -I ..\Libraries\BoardSupport -I ..\User\UseDisp -I ..\User\Globalvalue -I ..\Libraries\Drivers\include -I ..\User\Include -I ..\User\Fat -I ..\User\Host -I ..\User\MassStorage -I ..\User\pwm -I ..\User\spi_ad_da -I ..\User\FATFS_V0.08A\src -I ..\User\touch -I ..\emWin\Config -I ..\emWin\Header -I ..\emWin\Library -I ..\emWin -I ..\User\flash -I ..\User\Test -I ..\libscpi\inc --locale=english-I.\RTE\_Open1788-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.7.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DLPC177x_8x -D_RTE_ -DUSE_FULL_LL_DRIVER-o .\output\logo.o --omf_browse .\output\logo.crf --depend .\output\logo.d)
@@ -117,7 +117,7 @@ I (..\emWin\Header\GUI_Version.h)(0x4FDB5712)
 F (..\User\LCD\AsciiLib.c)(0x5C6D11A6)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\Libraries\Core\CM3\CoreSupport -I ..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I ..\Libraries\Drivers\include -I ..\User -I ..\Libraries\BoardSupport -I ..\User\UseDisp -I ..\User\Globalvalue -I ..\Libraries\Drivers\include -I ..\User\Include -I ..\User\Fat -I ..\User\Host -I ..\User\MassStorage -I ..\User\pwm -I ..\User\spi_ad_da -I ..\User\FATFS_V0.08A\src -I ..\User\touch -I ..\emWin\Config -I ..\emWin\Header -I ..\emWin\Library -I ..\emWin -I ..\User\flash -I ..\User\Test -I ..\libscpi\inc --locale=english-I.\RTE\_Open1788-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.7.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DLPC177x_8x -D_RTE_ -DUSE_FULL_LL_DRIVER-o .\output\asciilib.o --omf_browse .\output\asciilib.crf --depend .\output\asciilib.d)
 I (..\User\LCD/AsciiLib.h)(0x5C6D0E2E)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x57F606B8)
-F (..\User\UseDisp\use_disp.c)(0x64686104)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\Libraries\Core\CM3\CoreSupport -I ..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I ..\Libraries\Drivers\include -I ..\User -I ..\Libraries\BoardSupport -I ..\User\UseDisp -I ..\User\Globalvalue -I ..\Libraries\Drivers\include -I ..\User\Include -I ..\User\Fat -I ..\User\Host -I ..\User\MassStorage -I ..\User\pwm -I ..\User\spi_ad_da -I ..\User\FATFS_V0.08A\src -I ..\User\touch -I ..\emWin\Config -I ..\emWin\Header -I ..\emWin\Library -I ..\emWin -I ..\User\flash -I ..\User\Test -I ..\libscpi\inc --locale=english-I.\RTE\_Open1788-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.7.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DLPC177x_8x -D_RTE_ -DUSE_FULL_LL_DRIVER-o .\output\use_disp.o --omf_browse .\output\use_disp.crf --depend .\output\use_disp.d)
+F (..\User\UseDisp\use_disp.c)(0x64A79D97)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\Libraries\Core\CM3\CoreSupport -I ..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I ..\Libraries\Drivers\include -I ..\User -I ..\Libraries\BoardSupport -I ..\User\UseDisp -I ..\User\Globalvalue -I ..\Libraries\Drivers\include -I ..\User\Include -I ..\User\Fat -I ..\User\Host -I ..\User\MassStorage -I ..\User\pwm -I ..\User\spi_ad_da -I ..\User\FATFS_V0.08A\src -I ..\User\touch -I ..\emWin\Config -I ..\emWin\Header -I ..\emWin\Library -I ..\emWin -I ..\User\flash -I ..\User\Test -I ..\libscpi\inc --locale=english-I.\RTE\_Open1788-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.7.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DLPC177x_8x -D_RTE_ -DUSE_FULL_LL_DRIVER-o .\output\use_disp.o --omf_browse .\output\use_disp.crf --depend .\output\use_disp.d)
 I (..\User\LCD/lpc177x_8x_lcd.h)(0x5F474246)
 I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
 I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x6170BEF2)
@@ -137,7 +137,7 @@ I (..\emWin\Header\GUI_Version.h)(0x4FDB5712)
 I (..\User\LCD/AsciiLib.h)(0x5C6D0E2E)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x57F606B8)
 I (..\User\UseDisp\use_disp.h)(0x62A3F9ED)
-I (..\User\Globalvalue/globalvalue.h)(0x64686027)
+I (..\User\Globalvalue/globalvalue.h)(0x64A777CB)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F606B8)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x57F606B8)
 I (..\User\Key/key.h)(0x620A0ED7)
@@ -156,7 +156,7 @@ I (..\User\cpld.h)(0x63071CFA)
 I (..\User\spi_ad_da\spi_da_ad.h)(0x60A673EF)
 F (..\User\Key\key.c)(0x620B1AD9)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\Libraries\Core\CM3\CoreSupport -I ..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I ..\Libraries\Drivers\include -I ..\User -I ..\Libraries\BoardSupport -I ..\User\UseDisp -I ..\User\Globalvalue -I ..\Libraries\Drivers\include -I ..\User\Include -I ..\User\Fat -I ..\User\Host -I ..\User\MassStorage -I ..\User\pwm -I ..\User\spi_ad_da -I ..\User\FATFS_V0.08A\src -I ..\User\touch -I ..\emWin\Config -I ..\emWin\Header -I ..\emWin\Library -I ..\emWin -I ..\User\flash -I ..\User\Test -I ..\libscpi\inc --locale=english-I.\RTE\_Open1788-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.7.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DLPC177x_8x -D_RTE_ -DUSE_FULL_LL_DRIVER-o .\output\key.o --omf_browse .\output\key.crf --depend .\output\key.d)
 I (..\User\Key/key.h)(0x620A0ED7)
-I (..\User\Globalvalue\GlobalValue.h)(0x64686027)
+I (..\User\Globalvalue\GlobalValue.h)(0x64A777CB)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6465D237)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F606B8)
 I (..\Libraries\Drivers\include\lpc177x_8x_gpio.h)(0x5029ACB2)
@@ -165,10 +165,10 @@ I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x6170BEF2)
 I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
 I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
 I (..\Libraries\Drivers\include\lpc_types.h)(0x618E55D6)
-F (..\User\Test\test.c)(0x64686027)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\Libraries\Core\CM3\CoreSupport -I ..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I ..\Libraries\Drivers\include -I ..\User -I ..\Libraries\BoardSupport -I ..\User\UseDisp -I ..\User\Globalvalue -I ..\Libraries\Drivers\include -I ..\User\Include -I ..\User\Fat -I ..\User\Host -I ..\User\MassStorage -I ..\User\pwm -I ..\User\spi_ad_da -I ..\User\FATFS_V0.08A\src -I ..\User\touch -I ..\emWin\Config -I ..\emWin\Header -I ..\emWin\Library -I ..\emWin -I ..\User\flash -I ..\User\Test -I ..\libscpi\inc --locale=english-I.\RTE\_Open1788-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.7.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DLPC177x_8x -D_RTE_ -DUSE_FULL_LL_DRIVER-o .\output\test.o --omf_browse .\output\test.crf --depend .\output\test.d)
+F (..\User\Test\test.c)(0x64A79F17)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\Libraries\Core\CM3\CoreSupport -I ..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I ..\Libraries\Drivers\include -I ..\User -I ..\Libraries\BoardSupport -I ..\User\UseDisp -I ..\User\Globalvalue -I ..\Libraries\Drivers\include -I ..\User\Include -I ..\User\Fat -I ..\User\Host -I ..\User\MassStorage -I ..\User\pwm -I ..\User\spi_ad_da -I ..\User\FATFS_V0.08A\src -I ..\User\touch -I ..\emWin\Config -I ..\emWin\Header -I ..\emWin\Library -I ..\emWin -I ..\User\flash -I ..\User\Test -I ..\libscpi\inc --locale=english-I.\RTE\_Open1788-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.7.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DLPC177x_8x -D_RTE_ -DUSE_FULL_LL_DRIVER-o .\output\test.o --omf_browse .\output\test.crf --depend .\output\test.d)
 I (..\User\Test\test.h)(0x60A923BC)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6465D237)
-I (..\User\Globalvalue/globalvalue.h)(0x64686027)
+I (..\User\Globalvalue/globalvalue.h)(0x64A777CB)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F606B8)
 I (..\User\LCD/lpc177x_8x_lcd.h)(0x5F474246)
 I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
@@ -231,7 +231,7 @@ I (..\User\scpi-def.h)(0x60201B18)
 F (..\User\Globalvalue\GlobalValue.c)(0x64671B2F)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\Libraries\Core\CM3\CoreSupport -I ..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I ..\Libraries\Drivers\include -I ..\User -I ..\Libraries\BoardSupport -I ..\User\UseDisp -I ..\User\Globalvalue -I ..\Libraries\Drivers\include -I ..\User\Include -I ..\User\Fat -I ..\User\Host -I ..\User\MassStorage -I ..\User\pwm -I ..\User\spi_ad_da -I ..\User\FATFS_V0.08A\src -I ..\User\touch -I ..\emWin\Config -I ..\emWin\Header -I ..\emWin\Library -I ..\emWin -I ..\User\flash -I ..\User\Test -I ..\libscpi\inc --locale=english-I.\RTE\_Open1788-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.7.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DLPC177x_8x -D_RTE_ -DUSE_FULL_LL_DRIVER-o .\output\globalvalue.o --omf_browse .\output\globalvalue.crf --depend .\output\globalvalue.d)
 I (..\User\Globalvalue\TypeDefine.h)(0x5B615D96)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F606B8)
-I (..\User\Globalvalue/GlobalValue.h)(0x64686027)
+I (..\User\Globalvalue/GlobalValue.h)(0x64A777CB)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6465D237)
 I (..\Libraries\Drivers\include\lpc_types.h)(0x618E55D6)
 I (..\User\UseDisp\use_disp.h)(0x62A3F9ED)
@@ -266,7 +266,7 @@ I (..\Libraries\Drivers\include\lpc177x_8x_clkpwr.h)(0x5029ACB2)
 I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\system_LPC177x_8x.h)(0x5029ACB2)
 I (..\Libraries\Drivers\include\lpc177x_8x_pinsel.h)(0x5029ACB2)
 I (..\Libraries\Drivers\include\debug_frmwrk.h)(0x64059500)
-I (..\User\Globalvalue/GlobalValue.h)(0x64686027)
+I (..\User\Globalvalue/GlobalValue.h)(0x64A777CB)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F606B8)
 I (..\Libraries\Drivers\include\lpc177x_8x_uart.h)(0x5029ACB2)
 I (..\User\spi_ad_da/spi_da_ad.h)(0x60A673EF)
@@ -275,7 +275,7 @@ I (..\User\cpld.h)(0x63071CFA)
 I (..\User\timer.h)(0x5996F7D2)
 I (..\User\Key/key.h)(0x620A0ED7)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x57F606B6)
-F (..\User\GUI_FONTXBFFON16.c)(0x61F25E50)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\Libraries\Core\CM3\CoreSupport -I ..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I ..\Libraries\Drivers\include -I ..\User -I ..\Libraries\BoardSupport -I ..\User\UseDisp -I ..\User\Globalvalue -I ..\Libraries\Drivers\include -I ..\User\Include -I ..\User\Fat -I ..\User\Host -I ..\User\MassStorage -I ..\User\pwm -I ..\User\spi_ad_da -I ..\User\FATFS_V0.08A\src -I ..\User\touch -I ..\emWin\Config -I ..\emWin\Header -I ..\emWin\Library -I ..\emWin -I ..\User\flash -I ..\User\Test -I ..\libscpi\inc --locale=english-I.\RTE\_Open1788-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.7.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DLPC177x_8x -D_RTE_ -DUSE_FULL_LL_DRIVER-o .\output\gui_fontxbffon16.o --omf_browse .\output\gui_fontxbffon16.crf --depend .\output\gui_fontxbffon16.d)
+F (..\User\GUI_FONTXBFFON16.c)(0x64A79F76)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\Libraries\Core\CM3\CoreSupport -I ..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I ..\Libraries\Drivers\include -I ..\User -I ..\Libraries\BoardSupport -I ..\User\UseDisp -I ..\User\Globalvalue -I ..\Libraries\Drivers\include -I ..\User\Include -I ..\User\Fat -I ..\User\Host -I ..\User\MassStorage -I ..\User\pwm -I ..\User\spi_ad_da -I ..\User\FATFS_V0.08A\src -I ..\User\touch -I ..\emWin\Config -I ..\emWin\Header -I ..\emWin\Library -I ..\emWin -I ..\User\flash -I ..\User\Test -I ..\libscpi\inc --locale=english-I.\RTE\_Open1788-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.7.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DLPC177x_8x -D_RTE_ -DUSE_FULL_LL_DRIVER-o .\output\gui_fontxbffon16.o --omf_browse .\output\gui_fontxbffon16.crf --depend .\output\gui_fontxbffon16.d)
 I (..\emWin\Header\GUI.h)(0x60ABACB3)
 I (..\emWin\Header\GUI_ConfDefaults.h)(0x4FDB5710)
 I (..\emWin\Config\GUIConf.h)(0x5F47199C)
@@ -299,7 +299,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6465D237)
 I (..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h)(0x5029ACB2)
 I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
 I (..\Libraries\Drivers\include\lpc_types.h)(0x618E55D6)
-I (..\User\Globalvalue\GlobalValue.h)(0x64686027)
+I (..\User\Globalvalue\GlobalValue.h)(0x64A777CB)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F606B8)
 I (..\User\cpld.h)(0x63071CFA)
 I (..\User\timer.h)(0x5996F7D2)
@@ -311,7 +311,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6465D237)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x57F606B8)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x57F606B8)
 I (..\User\key/key.h)(0x620A0ED7)
-I (..\User\Globalvalue\GlobalValue.h)(0x64686027)
+I (..\User\Globalvalue\GlobalValue.h)(0x64A777CB)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F606B8)
 I (..\User\cpld.h)(0x63071CFA)
 I (..\User\UseDisp\use_disp.h)(0x62A3F9ED)
@@ -371,7 +371,7 @@ I (..\libscpi\inc\scpi/units.h)(0x60201B18)
 I (..\libscpi\inc\scpi/utils.h)(0x60201B18)
 I (..\libscpi\inc\scpi/expression.h)(0x60201B18)
 I (..\User\scpi-def.h)(0x60201B18)
-I (..\User\Globalvalue/globalvalue.h)(0x64686027)
+I (..\User\Globalvalue/globalvalue.h)(0x64A777CB)
 I (..\User\UseDisp\use_disp.h)(0x62A3F9ED)
 I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h)(0x5029ACB2)
 I (..\Libraries\Core\CM3\CoreSupport\core_cm3.h)(0x6170BEF2)
@@ -426,7 +426,7 @@ I (..\Libraries\Drivers\include\lpc177x_8x_clkpwr.h)(0x5029ACB2)
 I (..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\system_LPC177x_8x.h)(0x5029ACB2)
 F (..\Libraries\Drivers\source\debug_frmwrk.c)(0x6405A755)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\Libraries\Core\CM3\CoreSupport -I ..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I ..\Libraries\Drivers\include -I ..\User -I ..\Libraries\BoardSupport -I ..\User\UseDisp -I ..\User\Globalvalue -I ..\Libraries\Drivers\include -I ..\User\Include -I ..\User\Fat -I ..\User\Host -I ..\User\MassStorage -I ..\User\pwm -I ..\User\spi_ad_da -I ..\User\FATFS_V0.08A\src -I ..\User\touch -I ..\emWin\Config -I ..\emWin\Header -I ..\emWin\Library -I ..\emWin -I ..\User\flash -I ..\User\Test -I ..\libscpi\inc --locale=english-I.\RTE\_Open1788-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.7.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DLPC177x_8x -D_RTE_ -DUSE_FULL_LL_DRIVER-o .\output\debug_frmwrk.o --omf_browse .\output\debug_frmwrk.crf --depend .\output\debug_frmwrk.d)
 I (..\Libraries\Drivers\include\debug_frmwrk.h)(0x64059500)
-I (..\User\Globalvalue/GlobalValue.h)(0x64686027)
+I (..\User\Globalvalue/GlobalValue.h)(0x64A777CB)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6465D237)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F606B8)
 I (..\Libraries\Drivers\include\lpc177x_8x_uart.h)(0x5029ACB2)
@@ -541,7 +541,7 @@ I (..\User\Include\../Host/usbhost_lpc17xx.h)(0x5A1AD540)
 I (..\User\Include\../MassStorage/usbhost_ms.h)(0x5B8C8594)
 I (..\User\Include\../Fat/usbhost_fat.h)(0x5A1D75D2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x57F606B8)
-I (..\User\Globalvalue/GlobalValue.h)(0x64686027)
+I (..\User\Globalvalue/GlobalValue.h)(0x64A777CB)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F606B8)
 F (..\User\MassStorage\usbhost_ms.c)(0x5B8C8594)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\Libraries\Core\CM3\CoreSupport -I ..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x -I ..\Libraries\Drivers\include -I ..\User -I ..\Libraries\BoardSupport -I ..\User\UseDisp -I ..\User\Globalvalue -I ..\Libraries\Drivers\include -I ..\User\Include -I ..\User\Fat -I ..\User\Host -I ..\User\MassStorage -I ..\User\pwm -I ..\User\spi_ad_da -I ..\User\FATFS_V0.08A\src -I ..\User\touch -I ..\emWin\Config -I ..\emWin\Header -I ..\emWin\Library -I ..\emWin -I ..\User\flash -I ..\User\Test -I ..\libscpi\inc --locale=english-I.\RTE\_Open1788-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.7.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DLPC177x_8x -D_RTE_ -DUSE_FULL_LL_DRIVER-o .\output\usbhost_ms.o --omf_browse .\output\usbhost_ms.crf --depend .\output\usbhost_ms.d)
 I (..\User\MassStorage\usbhost_ms.h)(0x5B8C8594)
@@ -708,7 +708,7 @@ I (..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h)(0x5029ACB2)
 I (..\Libraries\Drivers\include\lpc_types.h)(0x618E55D6)
 I (..\Libraries\Drivers\include\lpc177x_8x_gpio.h)(0x5029ACB2)
 I (..\Libraries\Drivers\include\debug_frmwrk.h)(0x64059500)
-I (..\User\Globalvalue/GlobalValue.h)(0x64686027)
+I (..\User\Globalvalue/GlobalValue.h)(0x64A777CB)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F606B8)
 I (..\Libraries\Drivers\include\lpc177x_8x_uart.h)(0x5029ACB2)
 I (..\Libraries\Drivers\include\lpc177x_8x_ssp.h)(0x5029ACB2)

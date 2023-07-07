@@ -6767,28 +6767,28 @@
 extern GUI_CONST_STORAGE GUI_FONT GUI_FontGUI_FONTXBFFON16;
 
 /* Start of unicode area <Basic Latin> */
-GUI_CONST_STORAGE unsigned char acGUI_FontGUI_FONTXBFFON16_0020[ 21] = { /* code 0020, SPACE */
-  ________,
-  ________,
-  ________,
-  ________,
-  ________,
-  ________,
-  ________,
-  ________,
-  ________,
-  ________,
-  ________,
-  ________,
-  ________,
-  ________,
-  ________,
-  ________,
-  ________,
-  ________,
-  ________,
-  ________,
-  ________};
+GUI_CONST_STORAGE unsigned char acGUI_FontGUI_FONTXBFFON16_0020[ 42] = { /* code 0020, SPACE */
+  ________, ________,
+  ________, ________,
+  ________, ________,
+  ________, ________,
+  ________, ________,
+  ________, ________,
+  ________, ________,
+  ________, ________,
+  ________, ________,
+  ________, ________,
+  ________, ________,
+  ________, ________,
+  ________, ________,
+  ________, ________,
+  ________, ________,
+  ________, ________,
+  ________, ________,
+  ________, ________,
+  ________, ________,
+  ________, ________,
+  ________,________};
 
 GUI_CONST_STORAGE unsigned char acGUI_FontGUI_FONTXBFFON16_0021[ 21] = { /* code 0021, EXCLAMATION MARK */
   ________,
@@ -12383,7 +12383,7 @@ GUI_CONST_STORAGE unsigned char acGUI_FontGUI_FONTXBFFON16_FF1A[ 42] = { /* code
   ________,________};
 
 GUI_CONST_STORAGE GUI_CHARINFO GUI_FontGUI_FONTXBFFON16_CharInfo[244] = {
-   {   5,   5,  1, acGUI_FontGUI_FONTXBFFON16_0020 } /* code 0020 */
+   {   16,   16,  2, acGUI_FontGUI_FONTXBFFON16_0020 } /* code 0020 */
   ,{   5,   5,  1, acGUI_FontGUI_FONTXBFFON16_0021 } /* code 0021 */
   ,{   7,   7,  1, acGUI_FontGUI_FONTXBFFON16_0022 } /* code 0022 */
   ,{  10,  10,  2, acGUI_FontGUI_FONTXBFFON16_0023 } /* code 0023 */
