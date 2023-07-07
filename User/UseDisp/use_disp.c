@@ -2024,7 +2024,7 @@ void Disp_Test_List(u8 i)
             break;
     
     }
-    Hex_Format(Test_Value.Time,1,4,0);
+    Hex_Format(Test_Value.Time,1,4,1);
     strcat(DispBuf," s");
     GUI_DispStringAt(DispBuf,DISP_V_XPOS+44,DISP_V_YPOS+100+23);
     disp_TestMSG(GetSystemMessage());
