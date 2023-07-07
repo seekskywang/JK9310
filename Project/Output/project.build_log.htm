@@ -3,101 +3,40 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: ¦ÌVision V5.37.0.0
+IDE-Version: ¦ÌVision V5.38.0.0
 Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: 1 Microsoft, Microsoft, LIC=03C6R-KIDXE-2Z1W4-FI5SL-E8BHU-R7F4D
+License Information: lj Administrator, JK, LIC=WHYH9-4ZW6G-TG17T-R739D-ZWPZ5-PK2TP
  
 Tool Versions:
-Toolchain:       MDK-ARM Plus  Version: 5.37.0.0
-Toolchain Path:  E:\Keil_v5\ARM\ARMCC\Bin
-C Compiler:      Armcc.exe V5.06 update 6 (build 750)
-Assembler:       Armasm.exe V5.06 update 6 (build 750)
-Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
-Library Manager: ArmAr.exe V5.06 update 6 (build 750)
-Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
-CPU DLL:         SARMCM3.DLL V5.37.0.0
+Toolchain:       MDK-ARM Plus  Version: 5.38.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 4 (build 422)
+Assembler:       Armasm.exe V5.06 update 4 (build 422)
+Linker/Locator:  ArmLink.exe V5.06 update 4 (build 422)
+Library Manager: ArmAr.exe V5.06 update 4 (build 422)
+Hex Converter:   FromElf.exe V5.06 update 4 (build 422)
+CPU DLL:         SARMCM3.DLL V5.38.0.0
 Dialog DLL:      DARMP1.DLL V1.28.1.0
 Target DLL:      Segger\JL2CM3.dll V2.99.42.0
 Dialog DLL:      TARMP1.DLL V1.27.1.0
  
 <h2>Project:</h2>
-F:\JK9310\Project\project.uvprojx
-Project File Date:  03/06/2023
+H:\JK9310\Project\project.uvprojx
+Project File Date:  05/20/2023
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'E:\Keil_v5\ARM\ARMCC\Bin'
+*** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Open1788'
-compiling use_disp.c...
-..\User\UseDisp\use_disp.c(1994): warning:  #167-D: argument of type "const u8 *" is incompatible with parameter of type "const char *restrict"
-                                strcat(DispBuf,Test_IRUINT[test_value.uint]);
-..\User\UseDisp\use_disp.c(2010): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
-                        strcat(DispBuf,Disp_Unit[test_value.uint]);
-..\User\UseDisp\use_disp.c(2345): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
-                  strcat(DispBuf,Disp_Unit[1]);
-..\User\UseDisp\use_disp.c(2546): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
-        WriteString_16(LIST1+DATA_SPACE1+8, FIRSTLINE+SPACE1*2, DispBuf,  0);
-..\User\UseDisp\use_disp.c(2565): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
-        WriteString_16(LIST1+DATA_SPACE1+8, FIRSTLINE+SPACE1*3, DispBuf,  0);
-..\User\UseDisp\use_disp.c(2601): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
-        WriteString_16(LIST2+DATA_SPACE1+10+8, FIRSTLINE+SPACE1*2, DispBuf,  0);
-..\User\UseDisp\use_disp.c(2618): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
-        WriteString_16(LIST2+DATA_SPACE1+8, FIRSTLINE+SPACE1*3, DispBuf,  0);
-..\User\UseDisp\use_disp.c(2912): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
-                  strcat(DispBuf,Disp_Unit[1]);
-..\User\UseDisp\use_disp.c(2628): warning:  #177-D: variable "num"  was declared but never referenced
-      u8 num=(MAX_SETP[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter]+1)/2;
-..\User\UseDisp\use_disp.c(2948): warning:  #177-D: variable "Black_Select"  was declared but never referenced
-        vu32 Black_Select;
-..\User\UseDisp\use_disp.c(3036): warning:  #177-D: variable "i"  was declared but never referenced
-        vu32 i;
-..\User\UseDisp\use_disp.c(3073): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
-        WriteString_16(LIST1+160+160, FIRSTLINE+SPACE1*(list+1), DispBuf,  1);
-..\User\UseDisp\use_disp.c(3097): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
-          WriteString_16(LIST1+160, FIRSTLINE+SPACE1*(i+2), DispBuf,  1);
-..\User\UseDisp\use_disp.c(4046): warning:  #167-D: argument of type "const u8 *" is incompatible with parameter of type "const char *"
-                                                                GUI_DispStringAt(Test_IRUINT[test_value.uint],DISP_V_XPOS+50+6*25,DISP_V_YPOS+50);
-..\User\UseDisp\use_disp.c(4097): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *"
-              GUI_DispStringAt(Disp_Unit[1],DISP_V_XPOS+50+6*25,DISP_V_YPOS+50);
-..\User\UseDisp\use_disp.c(4282): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
-                WriteString_12(LIST2+140, 58+i*15, DispBuf,  1);//?????????????€?  ??????????????€????????????
-..\User\UseDisp\use_disp.c(4646): warning:  #111-D: statement is unreachable
-                  break;
-..\User\UseDisp\use_disp.c(4501): warning:  #177-D: variable "pt1"  was declared but never referenced
-         u16 *pt1;
-..\User\UseDisp\use_disp.c(4690): warning:  #177-D: variable "j"  was declared but never referenced
-        vu16 j,i;
-..\User\UseDisp\use_disp.c(4690): warning:  #177-D: variable "i"  was declared but never referenced
-        vu16 j,i;
-..\User\UseDisp\use_disp.c(4691): warning:  #177-D: variable "pt"  was declared but never referenced
-        vu8 *pt;
-..\User\UseDisp\use_disp.c(4692): warning:  #177-D: variable "ppt"  was declared but never referenced
-      uint16_t *ppt;
-..\User\UseDisp\use_disp.c(4932): warning:  #550-D: variable "addr"  was set but never used
-        LcdAddr_TypeDef addr;//???????????€??????
-..\User\UseDisp\use_disp.c(5573): warning:  #69-D: integer conversion resulted in truncation
-        lcd_Clear(LCD_COLOR_TEST_BACK);
-..\User\UseDisp\use_disp.c(6306): warning:  #111-D: statement is unreachable
-                        break;
-..\User\UseDisp\use_disp.c(6313): warning:  #223-D: function "Uart0_Send" declared implicitly
-        Uart0_Send(0x02);//??????
-..\User\UseDisp\use_disp.c(6107): warning:  #550-D: variable "set_arc"  was set but never used
-        vu8 set_arc;//?????????????????????
-..\User\UseDisp\use_disp.c(6480): warning:  #177-D: variable "keynum"  was declared but never referenced
-        vu32 keynum=0;
-..\User\UseDisp\use_disp.c: 28 warnings, 0 errors
-linking...
-Program Size: Code=164032 RO-data=127644 RW-data=816 ZI-data=9504  
-FromELF: creating hex file...
-After Build - User command #1: E:\Keil_v5\ARM\ARMCC\bin\fromelf.exe --bin  -o ..\update\update.bin Output\project.axf
-".\Output\project.axf" - 0 Error(s), 28 Warning(s).
+After Build - User command #1: C:\Keil_v5\ARM\ARMCC\bin\fromelf.exe --bin  -o ..\update\update.bin Output\project.axf
+".\Output\project.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
 Package Vendor: ARM
-                http://www.keil.com/pack/ARM.CMSIS.5.8.0.pack
-                ARM.CMSIS.5.8.0
+                http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
+                ARM.CMSIS.5.9.0
                 CMSIS (Common Microcontroller Software Interface Standard)
-   * Component: CORE Version: 5.5.0
+   * Component: CORE Version: 5.6.0
 
 Package Vendor: Keil
                 http://www.keil.com/pack/Keil.LPC1700_DFP.2.7.1.pack
@@ -106,13 +45,13 @@ Package Vendor: Keil
 
 <h2>Collection of Component include folders:</h2>
   ./RTE/_Open1788
-  D:/Keil_v5/ARM/PACK/ARM/CMSIS/5.8.0/CMSIS/Core/Include
-  D:/Keil_v5/ARM/PACK/Keil/LPC1700_DFP/2.7.1/Device/Include
+  C:/Keil_v5/ARM/PACK/ARM/CMSIS/5.9.0/CMSIS/Core/Include
+  C:/Keil_v5/ARM/PACK/Keil/LPC1700_DFP/2.7.1/Device/Include
 
 <h2>Collection of Component Files used:</h2>
 
-   * Component: ARM::CMSIS:CORE:5.5.0
-Build Time Elapsed:  00:00:02
+   * Component: ARM::CMSIS:CORE:5.6.0
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

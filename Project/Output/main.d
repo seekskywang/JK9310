@@ -2,7 +2,7 @@
 .\output\main.o: ..\Libraries\Drivers\include\lpc177x_8x_gpio.h
 .\output\main.o: ..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h
 .\output\main.o: ..\Libraries\Core\CM3\CoreSupport\core_cm3.h
-.\output\main.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\output\main.o: ..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h
 .\output\main.o: ..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h
 .\output\main.o: ..\Libraries\Drivers\include\lpc_types.h
@@ -23,11 +23,11 @@
 .\output\main.o: ..\Libraries\Drivers\include\lpc177x_8x_pinsel.h
 .\output\main.o: ..\Libraries\Drivers\include\debug_frmwrk.h
 .\output\main.o: ..\User\Globalvalue/GlobalValue.h
-.\output\main.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\output\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\output\main.o: ..\Libraries\Drivers\include\lpc177x_8x_uart.h
 .\output\main.o: ..\User\UseDisp/Use_Disp.h
 .\output\main.o: ..\User\Key/key.h
-.\output\main.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\output\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\output\main.o: ..\User\Globalvalue\TypeDefine.h
 .\output\main.o: ..\User\test/Test.h
 .\output\main.o: ..\Libraries\Drivers\include\lpc177x_8x_eeprom.h

@@ -1,8 +1,8 @@
 .\output\test.o: ..\User\Test\test.c
 .\output\test.o: ..\User\Test\test.h
-.\output\test.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\test.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\output\test.o: ..\User\Globalvalue/globalvalue.h
-.\output\test.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\output\test.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\output\test.o: ..\User\LCD/lpc177x_8x_lcd.h
 .\output\test.o: ..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h
 .\output\test.o: ..\Libraries\Core\CM3\CoreSupport\core_cm3.h
@@ -22,7 +22,7 @@
 .\output\test.o: ..\User\key/key.h
 .\output\test.o: ..\User\timer.h
 .\output\test.o: ..\Libraries\Drivers\include\lpc177x_8x_eeprom.h
-.\output\test.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\output\test.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\output\test.o: ..\User\Fat\usbhost_fat.h
 .\output\test.o: ..\User\Include\usbhost_inc.h
 .\output\test.o: ..\User\Include\usbhost_err.h
@@ -30,14 +30,14 @@
 .\output\test.o: ..\User\Include\usbhost_inc.h
 .\output\test.o: ..\User\Include\../MassStorage/usbhost_ms.h
 .\output\test.o: ..\User\Include\../Fat/usbhost_fat.h
-.\output\test.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\output\test.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\output\test.o: ..\Libraries\Drivers\include\lpc177x_8x_clkpwr.h
 .\output\test.o: ..\User\LCD/logo.h
-.\output\test.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\output\test.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\output\test.o: ..\Libraries\Drivers\include\debug_frmwrk.h
 .\output\test.o: ..\Libraries\Drivers\include\lpc177x_8x_uart.h
 .\output\test.o: ..\Libraries\Drivers\include\lpc177x_8x_gpio.h
-.\output\test.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\output\test.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\output\test.o: ..\User\spi_ad_da/spi_da_ad.h
 .\output\test.o: ..\Libraries\Drivers\include\lpc177x_8x_rtc.h
 .\output\test.o: ..\User\FATFS_V0.08A\src\ff.h
@@ -51,7 +51,7 @@
 .\output\test.o: ..\libscpi\inc\scpi/scpi.h
 .\output\test.o: ..\libscpi\inc\scpi/parser.h
 .\output\test.o: ..\libscpi\inc\scpi/types.h
-.\output\test.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\output\test.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\output\test.o: ..\libscpi\inc\scpi/config.h
 .\output\test.o: ..\libscpi\inc\scpi/cc.h
 .\output\test.o: ..\libscpi\inc\scpi/ieee488.h

@@ -117,9 +117,9 @@ const char DELAY_TIMEDISP[][2][16]=
 };
 const char VERSION_Tab[][2][32]=
 {
-    {"JK9310","JK9310"},
-    {"JK9320","JK9320"},
-		{"JK9320A","JK9320A"},
+    {"NBX9310","NBX9310"},
+    {"NBX9320","NBX9320"},
+		{"NBX9320A","NBX9320A"},
 };
 
 const char VERSION_Tab1[][2][32]=
@@ -133,8 +133,8 @@ const char SYS_NAME_Tab[][2][32]=
 {
 //    {"耐压测试仪","HIPOT TESTER"},
     {"Ver.1.015","Ver.1.015"},
-    {"www.JK17.com","www.JK17.com"},
-    {"0519-85563477","0519-85563477"},
+    {" "," "},
+    {" "," "},
 
 };
 //1.006修正PLC

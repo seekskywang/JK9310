@@ -1,12 +1,12 @@
 .\output\debug.o: ..\User\Test\Debug.c
-.\output\debug.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\output\debug.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\output\debug.o: ..\Libraries\Drivers\include\lpc_types.h
-.\output\debug.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\output\debug.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\output\debug.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\output\debug.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\debug.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\output\debug.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\output\debug.o: ..\User\key/key.h
 .\output\debug.o: ..\User\Globalvalue\GlobalValue.h
-.\output\debug.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\output\debug.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\output\debug.o: ..\User\cpld.h
 .\output\debug.o: ..\User\UseDisp\use_disp.h
 .\output\debug.o: ..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h

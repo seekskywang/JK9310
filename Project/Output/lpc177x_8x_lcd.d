@@ -2,7 +2,7 @@
 .\output\lpc177x_8x_lcd.o: ..\User\LCD/lpc177x_8x_lcd.h
 .\output\lpc177x_8x_lcd.o: ..\Libraries\Core\CM3\DeviceSupport\NXP\LPC177x_8x\LPC177x_8x.h
 .\output\lpc177x_8x_lcd.o: ..\Libraries\Core\CM3\CoreSupport\core_cm3.h
-.\output\lpc177x_8x_lcd.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\lpc177x_8x_lcd.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\output\lpc177x_8x_lcd.o: ..\Libraries\Core\CM3\CoreSupport\core_cmInstr.h
 .\output\lpc177x_8x_lcd.o: ..\Libraries\Core\CM3\CoreSupport\core_cmFunc.h
 .\output\lpc177x_8x_lcd.o: ..\Libraries\Drivers\include\lpc_types.h
@@ -16,7 +16,7 @@
 .\output\lpc177x_8x_lcd.o: ..\emWin\Header\Global.h
 .\output\lpc177x_8x_lcd.o: ..\emWin\Header\GUI_Version.h
 .\output\lpc177x_8x_lcd.o: ..\User\LCD/AsciiLib.h
-.\output\lpc177x_8x_lcd.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\output\lpc177x_8x_lcd.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\output\lpc177x_8x_lcd.o: ..\User\Globalvalue/globalvalue.h
-.\output\lpc177x_8x_lcd.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\output\lpc177x_8x_lcd.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\output\lpc177x_8x_lcd.o: ..\User\hzk.h
