@@ -132,7 +132,7 @@ const char VERSION_Tab1[][2][32]=
 const char SYS_NAME_Tab[][2][32]=
 {
 //    {"耐压测试仪","HIPOT TESTER"},
-    {"Ver.1.016","Ver.1.016"},
+    {"Ver.1.017","Ver.1.017"},
     {"www.JK17.com","www.JK17.com"},
     {"0519-85563477","0519-85563477"},
 
@@ -148,6 +148,7 @@ const char SYS_NAME_Tab[][2][32]=
 //1.014导通测量默认打开
 //1.015上位机通讯debug
 //1.016测试时间显示debug
+//1.017列表界面上位机数据bug
 const char SYS_SetTime_Tab[][2][15]=
 {
 	{"日期：","OFF"},
@@ -1940,6 +1941,33 @@ void Disp_Test_List(u8 i)
     
     GUI_DispStringAt(DispBuf,80,40+20*(i));//TEST_UNIT
     
+		if(U9001_Save_sys.U9001_save.all_step == 2)
+		{
+			if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter == IR)
+			{
+				memset(sendbuff1,0,20);
+				memcpy(sendbuff1,DispBuf,4);
+				strcat(sendbuff1,"kV;");
+			}else{
+				memset(sendbuff,0,20);
+				memcpy(sendbuff,DispBuf,4);
+				strcat(sendbuff,"kV;");
+			}
+//			if(U9001_Save_sys.U9001_save.current_step == 2)
+//			{
+//				memset(sendbuff1,0,20);
+//				memcpy(sendbuff1,DispBuf,4);
+//				strcat(sendbuff1,"kV;");
+//			}
+		}else{
+			memset(sendbuff,0,20);
+			memcpy(sendbuff,DispBuf,4);
+			strcat(sendbuff,"kV;");
+			
+			memset(sendbuff1,0,20);
+			memcpy(sendbuff1,DispBuf,4);
+			strcat(sendbuff1,"kV;");
+		}
 //    if(Resistance==0xffff)
 //        memcpy(DispBuf,"UPPER",6); 
 //    else
@@ -1958,43 +1986,69 @@ void Disp_Test_List(u8 i)
     {
         case AC:
         case DC:
-			if(Test_Value.I_R==0xffff)
-			   memcpy(DispBuf,"UPPER",6); 
-			else
-			{  
-//                    test_value=IntToStr(Test_Value.I_R);
-//                    if(Range==0)
-//                        Hex_Format(test_value.num,1,4,0);
-//                    else
-//                        Hex_Format(test_value.num,1,3,0);
-				 if(U9001_Save_sys.U9001_Testconfg.clear == 1)
-				 {
-					 if(Test_Value.I_R < U9001_Save_sys.U9001_save.clearvalue[U9001_Save_sys.U9001_save.current_step-1])
-					 {
-						 Test_Value.I_R = 0;
-					 }else{
-						 Test_Value.I_R -= U9001_Save_sys.U9001_save.clearvalue[U9001_Save_sys.U9001_save.current_step-1];
-					 }
-				 }
-				 if(Range==1)
-					Hex_Format(Test_Value.I_R,3,4,0);
-				 else
-					Hex_Format(Test_Value.I_R,2,4,0);
-			}
-			strcat(DispBuf,"mA ");
-			GUI_DispStringAt(DispBuf,160,40+20*(i));
-            break;
+					if(Test_Value.I_R==0xffff)
+						memcpy(DispBuf,"UPPER",6); 
+					else
+					{  
+		//                    test_value=IntToStr(Test_Value.I_R);
+		//                    if(Range==0)
+		//                        Hex_Format(test_value.num,1,4,0);
+		//                    else
+		//                        Hex_Format(test_value.num,1,3,0);
+						 if(U9001_Save_sys.U9001_Testconfg.clear == 1)
+						 {
+							 if(Test_Value.I_R < U9001_Save_sys.U9001_save.clearvalue[U9001_Save_sys.U9001_save.current_step-1])
+							 {
+								 Test_Value.I_R = 0;
+							 }else{
+								 Test_Value.I_R -= U9001_Save_sys.U9001_save.clearvalue[U9001_Save_sys.U9001_save.current_step-1];
+							 }
+						 }
+						 if(Range==1)
+						 {
+								Hex_Format(Test_Value.I_R,3,4,0);
+								memcpy(&sendbuff[7],&DispBuf[0],4);
+						 }else if(Range==0){
+								Hex_Format(Test_Value.I_R,2,4,0);
+								memcpy(&sendbuff[7],&DispBuf[1],4);
+						 }else{
+								Hex_Format(Test_Value.I_R,1,4,0);
+								memcpy(&sendbuff[7],"0.00",4);
+						 }
+//						 if(Range==1)
+//							Hex_Format(Test_Value.I_R,3,4,0);
+//						 else
+//							Hex_Format(Test_Value.I_R,2,4,0);
+					}
+//					if(Range<2)
+						strcat(sendbuff,"mA;");
+//							 else
+//								 strcat(sendbuff,"uA;");
+					strcat(DispBuf,"mA ");
+					GUI_DispStringAt(DispBuf,160,40+20*(i));
+				break;
         case IR:
 			if(Test_Value.I_R==0xffff*10)
+			{
 			   memcpy(DispBuf,"UPPER   ",8); 
-			else
+				 strcat(sendbuff1,">9999");
+			}else
 			{  
 				test_value=IntToStr(Test_Value.I_R);
 			 
 				Hex_Format(test_value.num,test_value.dot,4,0);
 				strcat(DispBuf,Test_IRUINT[test_value.uint]);
+				strcat(sendbuff1,(char*)DispBuf);
 			}
 			GUI_DispStringAt(DispBuf,160,40+20*(i));
+			if(test_value.uint == 0)
+			{
+				strcat(sendbuff1,(char*)"k;");
+			}else if(test_value.uint == 1){
+				strcat(sendbuff1,(char*)"M;");
+			}else if(test_value.uint == 2){
+				strcat(sendbuff1,(char*)"G;");
+			}
 //            GUI_DispStringAt(DispBuf,DISP_V_XPOS+50,DISP_V_YPOS+50-20);
 //            GUI_DispStringAt(Test_IRUINT[test_value.uint],DISP_V_XPOS+50+6*25,DISP_V_YPOS+50-20);·	
             break;
