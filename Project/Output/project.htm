@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Output\project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Output\project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Fri Jul 14 09:32:13 2023
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Mon Jul 24 15:17:41 2023
 <BR><P>
 <H3>Maximum Stack Usage =        632 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1482,7 +1482,6 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Use_SysSetProcess
 <LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Setup_Process
 <LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Power_Process
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SHORTS1
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OPENS1
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ARCS1
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FTIMS1
@@ -2225,7 +2224,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[f2]"></a>Test_Process</STRONG> (Thumb, 3670 bytes, Stack size 104 bytes, test.o(.text))
+<P><STRONG><a name="[f2]"></a>Test_Process</STRONG> (Thumb, 3712 bytes, Stack size 104 bytes, test.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 344 + Unknown Stack Size
 <LI>Call Chain = Test_Process &rArr; Disp_Testvalue &rArr; disp_TestMSG &rArr; GUI_DispStringAt &rArr; GUI_DispString &rArr; GUI__DispLine &rArr; WM__InitIVRSearch &rArr; WM__GetNextIVR &rArr; WM__ActivateClipRect &rArr; _SetClipRectUserIntersect &rArr; LCD_SetClipRectEx &rArr; GUI__IntersectRects
 </UL>
@@ -2266,7 +2265,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[f4]"></a>Setup_Process</STRONG> (Thumb, 21156 bytes, Stack size 64 bytes, test.o(.text))
+<P><STRONG><a name="[f4]"></a>Setup_Process</STRONG> (Thumb, 21154 bytes, Stack size 64 bytes, test.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 512 + Unknown Stack Size
 <LI>Call Chain = Setup_Process &rArr; atof &rArr; __strtod_int &rArr; _local_sscanf &rArr; _scanf_real &rArr; _scanf_really_real &rArr; _fp_value &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
 </UL>
@@ -2544,7 +2543,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[f7]"></a>TestPause_Process</STRONG> (Thumb, 1204 bytes, Stack size 16 bytes, test.o(.text))
+<P><STRONG><a name="[f7]"></a>TestPause_Process</STRONG> (Thumb, 1210 bytes, Stack size 16 bytes, test.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 280 + Unknown Stack Size
 <LI>Call Chain = TestPause_Process &rArr; Disp_Idel_Item &rArr; GUI_DispDecAt &rArr; GUI_DispStringAt &rArr; GUI_DispString &rArr; GUI__DispLine &rArr; WM__InitIVRSearch &rArr; WM__GetNextIVR &rArr; WM__ActivateClipRect &rArr; _SetClipRectUserIntersect &rArr; LCD_SetClipRectEx &rArr; GUI__IntersectRects
 </UL>
@@ -9438,7 +9437,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[84]"></a>VoltageAcS1</STRONG> (Thumb, 66 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[84]"></a>VoltageAcS1</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = VoltageAcS1 &rArr; SCPI_ParamUInt32 &rArr; ParamSignUInt32 &rArr; SCPI_Parameter &rArr; SCPI_ErrorPush &rArr; SCPI_ErrorPushEx &rArr; SCPI_ErrorEmit &rArr; SCPI_RegSetBits &rArr; SCPI_RegSet &rArr; regUpdateSTB &rArr;  SCPI_RegSetBits (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetDate_Comp
@@ -9458,7 +9457,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[86]"></a>CUpperAcS1</STRONG> (Thumb, 140 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[86]"></a>CUpperAcS1</STRONG> (Thumb, 150 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 528<LI>Call Chain = CUpperAcS1 &rArr; SCPI_ParamFloat &rArr; SCPI_ParamToFloat &rArr; strToFloat &rArr; strtof &rArr; __strtod_int &rArr; _local_sscanf &rArr; _scanf_real &rArr; _scanf_really_real &rArr; _fp_value &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetDate_Comp
@@ -9480,7 +9479,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[88]"></a>CLOWAcS1</STRONG> (Thumb, 140 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[88]"></a>CLOWAcS1</STRONG> (Thumb, 150 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 528<LI>Call Chain = CLOWAcS1 &rArr; SCPI_ParamFloat &rArr; SCPI_ParamToFloat &rArr; strToFloat &rArr; strtof &rArr; __strtod_int &rArr; _local_sscanf &rArr; _scanf_real &rArr; _scanf_really_real &rArr; _fp_value &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetDate_Comp
@@ -9502,7 +9501,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[8a]"></a>TTIMS1</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[8a]"></a>TTIMS1</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 528<LI>Call Chain = TTIMS1 &rArr; SCPI_ParamFloat &rArr; SCPI_ParamToFloat &rArr; strToFloat &rArr; strtof &rArr; __strtod_int &rArr; _local_sscanf &rArr; _scanf_real &rArr; _scanf_really_real &rArr; _fp_value &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetDate_Comp
@@ -9523,7 +9522,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[8c]"></a>RTIMS1</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[8c]"></a>RTIMS1</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 528<LI>Call Chain = RTIMS1 &rArr; SCPI_ParamFloat &rArr; SCPI_ParamToFloat &rArr; strToFloat &rArr; strtof &rArr; __strtod_int &rArr; _local_sscanf &rArr; _scanf_real &rArr; _scanf_really_real &rArr; _fp_value &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetDate_Comp
@@ -9544,7 +9543,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[8e]"></a>FTIMS1</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[8e]"></a>FTIMS1</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 528<LI>Call Chain = FTIMS1 &rArr; SCPI_ParamFloat &rArr; SCPI_ParamToFloat &rArr; strToFloat &rArr; strtof &rArr; __strtod_int &rArr; _local_sscanf &rArr; _scanf_real &rArr; _scanf_really_real &rArr; _fp_value &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetDate_Comp
@@ -9565,7 +9564,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[90]"></a>ARCS1</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[90]"></a>ARCS1</STRONG> (Thumb, 108 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 528<LI>Call Chain = ARCS1 &rArr; SCPI_ParamFloat &rArr; SCPI_ParamToFloat &rArr; strToFloat &rArr; strtof &rArr; __strtod_int &rArr; _local_sscanf &rArr; _scanf_real &rArr; _scanf_really_real &rArr; _fp_value &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetDate_Comp
@@ -9584,7 +9583,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[92]"></a>FREQS1</STRONG> (Thumb, 74 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[92]"></a>FREQS1</STRONG> (Thumb, 84 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 528<LI>Call Chain = FREQS1 &rArr; SCPI_ParamFloat &rArr; SCPI_ParamToFloat &rArr; strToFloat &rArr; strtof &rArr; __strtod_int &rArr; _local_sscanf &rArr; _scanf_real &rArr; _scanf_really_real &rArr; _fp_value &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
 </UL>
 <BR>[Calls]<UL><LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Savetoeeprom
@@ -9594,7 +9593,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[93]"></a>OPENQ1</STRONG> (Thumb, 66 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[93]"></a>OPENQ1</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 240 + Unknown Stack Size
 <LI>Call Chain = OPENQ1 &rArr; SCPI_ResultFloat &rArr; SCPI_FloatToStr &rArr; __2snprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -9603,7 +9602,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[94]"></a>OPENS1</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[94]"></a>OPENS1</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 528<LI>Call Chain = OPENS1 &rArr; SCPI_ParamFloat &rArr; SCPI_ParamToFloat &rArr; strToFloat &rArr; strtof &rArr; __strtod_int &rArr; _local_sscanf &rArr; _scanf_real &rArr; _scanf_really_real &rArr; _fp_value &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetDate_Comp
@@ -9623,11 +9622,10 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[96]"></a>SHORTS1</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[96]"></a>SHORTS1</STRONG> (Thumb, 128 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 528<LI>Call Chain = SHORTS1 &rArr; SCPI_ParamFloat &rArr; SCPI_ParamToFloat &rArr; strToFloat &rArr; strtof &rArr; __strtod_int &rArr; _local_sscanf &rArr; _scanf_real &rArr; _scanf_really_real &rArr; _fp_value &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetDate_Comp
-<LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Savetoeeprom
+<BR>[Calls]<UL><LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Savetoeeprom
 <LI><a href="#[25f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCPI_ResultCharacters
 <LI><a href="#[264]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCPI_ParamFloat
 <LI><a href="#[1bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
@@ -9656,7 +9654,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[99]"></a>SetStep</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[99]"></a>SetStep</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = SetStep &rArr; SCPI_ParamUInt32 &rArr; ParamSignUInt32 &rArr; SCPI_Parameter &rArr; SCPI_ErrorPush &rArr; SCPI_ErrorPushEx &rArr; SCPI_ErrorEmit &rArr; SCPI_RegSetBits &rArr; SCPI_RegSet &rArr; regUpdateSTB &rArr;  SCPI_RegSetBits (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Savetoeeprom
@@ -9665,7 +9663,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[9a]"></a>SetTSteps</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[9a]"></a>SetTSteps</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = SetTSteps &rArr; SCPI_ParamUInt32 &rArr; ParamSignUInt32 &rArr; SCPI_Parameter &rArr; SCPI_ErrorPush &rArr; SCPI_ErrorPushEx &rArr; SCPI_ErrorEmit &rArr; SCPI_RegSetBits &rArr; SCPI_RegSet &rArr; regUpdateSTB &rArr;  SCPI_RegSetBits (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Savetoeeprom
@@ -9674,7 +9672,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[9b]"></a>ACMode</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[9b]"></a>ACMode</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = ACMode &rArr; SCPI_ResultCharacters &rArr; writeDelimiter &rArr; writeData
 </UL>
 <BR>[Calls]<UL><LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Savetoeeprom
@@ -9682,7 +9680,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[9c]"></a>DCMode</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[9c]"></a>DCMode</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = DCMode &rArr; SCPI_ResultCharacters &rArr; writeDelimiter &rArr; writeData
 </UL>
 <BR>[Calls]<UL><LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Savetoeeprom
@@ -9690,7 +9688,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[9d]"></a>IRMode</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[9d]"></a>IRMode</STRONG> (Thumb, 84 bytes, Stack size 8 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = IRMode &rArr; SCPI_ResultCharacters &rArr; writeDelimiter &rArr; writeData
 </UL>
 <BR>[Calls]<UL><LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Savetoeeprom
@@ -9698,7 +9696,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[9e]"></a>OSMode</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[9e]"></a>OSMode</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = OSMode &rArr; SCPI_ResultCharacters &rArr; writeDelimiter &rArr; writeData
 </UL>
 <BR>[Calls]<UL><LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Savetoeeprom
@@ -9750,7 +9748,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[7c]"></a>TEST_ChoiceQ</STRONG> (Thumb, 74 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[7c]"></a>TEST_ChoiceQ</STRONG> (Thumb, 46 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 272<LI>Call Chain = TEST_ChoiceQ &rArr; SCPI_ParamChoice &rArr; SCPI_ParamToChoice &rArr; matchPattern &rArr; compareStrAndNum &rArr; strBaseToInt32 &rArr; strtol &rArr; _strtoul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[269]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCPI_ResultInt32

@@ -60,6 +60,8 @@ uint8_t osgetstart;
 uint8_t osgetflag;
 uint8_t testflag;
 u8 sendflag;
+bool f_disp=FALSE;//显示更新标志
+
 const uint8_t USB_dISPVALUE[][9]=
 {
 	"RH_FAIL ",
@@ -880,7 +882,8 @@ void Test_Process(void)
   float value;
   float F_x;
 
-	bool f_disp=FALSE;//显示更新标志
+//	bool f_disp=FALSE;//显示更新标志
+	f_disp=FALSE;//显示标志
 	bool f_msgdisp=FALSE;//消息显示标志
 
 	bool f_sort=FALSE;//分选标志
@@ -1228,6 +1231,7 @@ void Test_Process(void)
  
                             }
                             SetSystemMessage(MSG_DROP);
+														
                         }else
                         {
                             SetSystemStatus(SYS_STATUS_TEST_PAUSE);//测试暂停状态
@@ -1281,6 +1285,7 @@ void Test_Process(void)
 
                     }
                     SetSystemMessage(MSG_DROP);
+										
                 }else
                 {
                     SetSystemStatus(SYS_STATUS_TEST_PAUSE);//测试暂停状态
@@ -1310,7 +1315,7 @@ void Test_Process(void)
 										testflag=0;
 //                    Uart0_Send(0xa4);
                 }
-            
+								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_flag=GetSystemMessage();
   
             }
 			
@@ -6761,7 +6766,7 @@ void TestPause_Process(void)
     u8 pass_flag=0;
 	u8 item;
 	u16 time;//连接延时时间
-	Bool f_disp;//显示标志
+//	Bool f_disp;//显示标志
 
 	f_disp=FALSE;//显示标志
     ARC_out(0);

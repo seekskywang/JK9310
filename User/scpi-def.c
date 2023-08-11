@@ -208,6 +208,8 @@ static scpi_result_t VoltageAcS1(scpi_t * context) {
 		return SCPI_RES_ERR;
     }
 	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out = param;
+	DISP_FLAG = TRUE;
+	f_disp = TRUE;
 	SetDate_Comp();
 	Savetoeeprom();
 	SCPI_ResultCharacters(context, Respond[0],2);
@@ -240,6 +242,8 @@ static scpi_result_t CUpperAcS1(scpi_t * context) {
 	}else {
 		U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper = param*1000;
 	}
+	DISP_FLAG = TRUE;
+	f_disp = TRUE;
 	SetDate_Comp();
 	Savetoeeprom();
 	SCPI_ResultCharacters(context, Respond[0],2);
@@ -272,6 +276,8 @@ static scpi_result_t CLOWAcS1(scpi_t * context) {
 	}else {
 		U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower = param*1000;
 	}
+	DISP_FLAG = TRUE;
+	f_disp = TRUE;
 	SetDate_Comp();
 	Savetoeeprom();
 	SCPI_ResultCharacters(context, Respond[0],2);
@@ -294,6 +300,8 @@ static scpi_result_t TTIMS1(scpi_t * context) {
     if (!SCPI_ParamFloat(context,&param, FALSE)) {
 		return SCPI_RES_ERR;
     }
+		DISP_FLAG = TRUE;
+	f_disp = TRUE;
 	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time = param;
 	SetDate_Comp();
 	Savetoeeprom();
@@ -317,6 +325,8 @@ static scpi_result_t RTIMS1(scpi_t * context) {
     if (!SCPI_ParamFloat(context,&param, FALSE)) {
 		return SCPI_RES_ERR;
     }
+		DISP_FLAG = TRUE;
+	f_disp = TRUE;
 	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time = param;
 	SetDate_Comp();
 	Savetoeeprom();
@@ -340,6 +350,8 @@ static scpi_result_t FTIMS1(scpi_t * context) {
     if (!SCPI_ParamFloat(context,&param, FALSE)) {
 		return SCPI_RES_ERR;
     }
+		DISP_FLAG = TRUE;
+	f_disp = TRUE;
 	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time = param;
 	SetDate_Comp();
 	Savetoeeprom();
@@ -363,6 +375,8 @@ static scpi_result_t ARCS1(scpi_t * context) {
     if (!SCPI_ParamFloat(context,&param, FALSE)) {
 		return SCPI_RES_ERR;
     }
+		DISP_FLAG = TRUE;
+	f_disp = TRUE;
 	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc = param;
 	SetDate_Comp();
 	Savetoeeprom();
@@ -396,6 +410,8 @@ static scpi_result_t FREQS1(scpi_t * context) {
 	}else if(param == 60){
 		U9001_Save_sys.U9001_Testconfg.hz = 1;
 	}
+	DISP_FLAG = TRUE;
+	f_disp = TRUE;
 	Savetoeeprom();
 	SCPI_ResultCharacters(context, Respond[0],2);
     return SCPI_RES_OK;
@@ -416,6 +432,8 @@ static scpi_result_t OPENS1(scpi_t * context) {
     if (!SCPI_ParamFloat(context,&param, FALSE)) {
 		return SCPI_RES_ERR;
     }
+		DISP_FLAG = TRUE;
+	f_disp = TRUE;
 	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower = param;
 	SetDate_Comp();
 	Savetoeeprom();
@@ -438,8 +456,12 @@ static scpi_result_t SHORTS1(scpi_t * context) {
     if (!SCPI_ParamFloat(context,&param, FALSE)) {
 		return SCPI_RES_ERR;
     }
+		DISP_FLAG = TRUE;
+	f_disp = TRUE;
 	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper = param;
-	SetDate_Comp();
+//	SetDate_Comp();
+	if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper > 500)
+		U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper = 500;
 	Savetoeeprom();
 	SCPI_ResultCharacters(context, Respond[0],2);
     return SCPI_RES_OK;
@@ -529,6 +551,8 @@ static scpi_result_t SetStep(scpi_t * context) {
     if (!SCPI_ParamUInt32(context,&param, FALSE)) {
 		return SCPI_RES_ERR;
     }
+		DISP_FLAG = TRUE;
+	f_disp = TRUE;
 	U9001_Save_sys.U9001_save.current_step = param;
 	Savetoeeprom();
 	 SCPI_ResultCharacters(context, Respond[0],2);
@@ -543,6 +567,8 @@ static scpi_result_t SetTSteps(scpi_t * context) {
     if (!SCPI_ParamUInt32(context,&param, FALSE)) {
 		return SCPI_RES_ERR;
     }
+		DISP_FLAG = TRUE;
+	f_disp = TRUE;
 	U9001_Save_sys.U9001_save.all_step = param;
 	Savetoeeprom();
 	 SCPI_ResultCharacters(context, Respond[0],2);
@@ -554,6 +580,8 @@ static scpi_result_t ACMode(scpi_t * context) {
     
 	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter = AC;
 	Savetoeeprom();
+	DISP_FLAG = TRUE;
+	f_disp = TRUE;
 	 SCPI_ResultCharacters(context, Respond[0],2);
     return SCPI_RES_OK;
 }
@@ -563,6 +591,8 @@ static scpi_result_t DCMode(scpi_t * context) {
     
 	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter = DC;
 	Savetoeeprom();
+	DISP_FLAG = TRUE;
+	f_disp = TRUE;
 	 SCPI_ResultCharacters(context, Respond[0],2);
     return SCPI_RES_OK;
 }
@@ -572,6 +602,8 @@ static scpi_result_t IRMode(scpi_t * context) {
     
 	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter = IR;
 	Savetoeeprom();
+	DISP_FLAG = TRUE;
+	f_disp = TRUE;
 	 SCPI_ResultCharacters(context, Respond[0],2);
     return SCPI_RES_OK;
 }
@@ -581,6 +613,8 @@ static scpi_result_t OSMode(scpi_t * context) {
     
 	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter = OS;
 	Savetoeeprom();
+	DISP_FLAG = TRUE;
+	f_disp = TRUE;
 	 SCPI_ResultCharacters(context, Respond[0],2);
     return SCPI_RES_OK;
 }
