@@ -132,7 +132,7 @@ const char VERSION_Tab1[][2][32]=
 const char SYS_NAME_Tab[][2][32]=
 {
 //    {"耐压测试仪","HIPOT TESTER"},
-    {"Ver.1.018","Ver.1.018"},
+    {"Ver.1.019","Ver.1.019"},
     {"www.JK17.com","www.JK17.com"},
     {"0519-85563477","0519-85563477"},
 
@@ -150,6 +150,7 @@ const char SYS_NAME_Tab[][2][32]=
 //1.016测试时间显示debug
 //1.017列表界面上位机数据bug
 //1.018SCPI协议设置数据仪器刷新
+//1.019SCPI协议数据超范围处理
 const char SYS_SetTime_Tab[][2][15]=
 {
 	{"日期：","OFF"},
