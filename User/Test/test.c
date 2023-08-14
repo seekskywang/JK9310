@@ -1454,9 +1454,17 @@ void Test_Process(void)
 						Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Test_Value.I_R;
 					}else{
 						if(Range <5)
-							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Test_Value.I_R*100;
-						else
+						{
+							if(Range == 4 && 
+								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit == 2)//4档单位为G时放大倍数按5档单独处理
+							{
+								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Test_Value.I_R/10;
+							}else{
+								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Test_Value.I_R*100;
+							}
+						}else{
 							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Test_Value.I_R/10;
+						}
 					}
 					break;
                 case PA_SETUP:

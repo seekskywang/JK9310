@@ -27,31 +27,8 @@ Project File Date:  07/07/2023
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Open1788'
-compiling scpi-def.c...
-..\User\scpi-def.c(583): warning:  #223-D: function "Uart0_Send" declared implicitly
-      Uart0_Send(0xa1);
-..\User\scpi-def.c(584): warning:  #223-D: function "PLC_OutProg" declared implicitly
-  		PLC_OutProg();//??PLC????
-..\User\scpi-def.c(594): warning:  #223-D: function "Beep_Off" declared implicitly
-  			Beep_Off();
-..\User\scpi-def.c(597): warning:  #223-D: function "V_DA_out" declared implicitly
-              V_DA_out(0);
-..\User\scpi-def.c(598): warning:  #223-D: function "Sing_out_C" declared implicitly
-              Sing_out_C(0);
-..\User\scpi-def.c(600): warning:  #223-D: function "FRB_out" declared implicitly
-              FRB_out(0);
-..\User\scpi-def.c(601): warning:  #223-D: function "Uart0_Send" declared implicitly
-              Uart0_Send(0xa0);
-..\User\scpi-def.c(901): warning:  #550-D: variable "res"  was set but never used
-          scpi_expr_result_t res;
-..\User\scpi-def.c(894): warning:  #550-D: variable "array"  was set but never used
-      scpi_channel_value_t array[MAXROW * MAXCOL]; /* array which holds values in order (2D) */
-..\User\scpi-def.c: 9 warnings, 0 errors
-linking...
-Program Size: Code=166534 RO-data=127630 RW-data=816 ZI-data=9504  
-FromELF: creating hex file...
 After Build - User command #1: C:\Keil_v5\ARM\ARMCC\bin\fromelf.exe --bin  -o ..\update\update.bin Output\project.axf
-".\Output\project.axf" - 0 Error(s), 9 Warning(s).
+".\Output\project.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -74,7 +51,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.6.0
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>
