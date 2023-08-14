@@ -82,23 +82,68 @@ void UartRes(void)
 		if(U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter == AC ||
 		   U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter == DC)//耐压模式
 		{
-			if(Test_Value.I_R==0xffff || GetSystemMessage() == MSG_SHORT)
+			if(GetSystemStatus() == SYS_STATUS_FINISH && 
+				U9001_Save_sys.U9001_save.current_step < U9001_Save_sys.U9001_save.all_step)
 			{
-				sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,UPPER,%.1fs;",
-				i+1,
-				TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],//模式
-				SEND_COMP[Save_TestValue[i].text_flag][1],//分选结果
-				(double)Save_TestValue[i].Text_vot/1000,//电压
-				(double)Save_TestValue[i].Text_time/10);//测试时间
+				if(Test_Value.I_R==0xffff || GetSystemMessage() == MSG_SHORT)
+				{
+					if(i > U9001_Save_sys.U9001_save.current_step - 1)
+					{
+						sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,UPPER,%.1fs;",
+						i+1,
+						TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],//模式
+						SEND_COMP[Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_flag][1],//分选结果
+						(double)Save_TestValue[i].Text_vot/1000,//电压
+						(double)Save_TestValue[i].Text_time/10);//测试时间
+					}else{
+						sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,UPPER,%.1fs;",
+						i+1,
+						TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],//模式
+						SEND_COMP[Save_TestValue[i].text_flag][1],//分选结果
+						(double)Save_TestValue[i].Text_vot/1000,//电压
+						(double)Save_TestValue[i].Text_time/10);//测试时间
+					}
+				}else{
+					if(i > U9001_Save_sys.U9001_save.current_step - 1)
+					{
+						sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,%.3f%s,%.1fs;",
+						i+1,
+						TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],//模式
+						SEND_COMP[Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_flag][1],//分选结果
+						(double)Save_TestValue[i].Text_vot/1000,//电压
+						(double)Save_TestValue[i].Text_value/1000,//电流
+						CURR_UNIT[Save_TestValue[i].text_unit],//电流单位	
+						(double)Save_TestValue[i].Text_time/10);//测试时间
+					}else{
+						sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,%.3f%s,%.1fs;",
+						i+1,
+						TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],//模式
+						SEND_COMP[Save_TestValue[i].text_flag][1],//分选结果
+						(double)Save_TestValue[i].Text_vot/1000,//电压
+						(double)Save_TestValue[i].Text_value/1000,//电流
+						CURR_UNIT[Save_TestValue[i].text_unit],//电流单位	
+						(double)Save_TestValue[i].Text_time/10);//测试时间
+					}
+				}
 			}else{
-				sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,%.3f%s,%.1fs;",
-				i+1,
-				TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],//模式
-				SEND_COMP[Save_TestValue[i].text_flag][1],//分选结果
-				(double)Save_TestValue[i].Text_vot/1000,//电压
-				(double)Save_TestValue[i].Text_value/1000,//电流
-				CURR_UNIT[Save_TestValue[i].text_unit],//电流单位	
-				(double)Save_TestValue[i].Text_time/10);//测试时间
+				if(Test_Value.I_R==0xffff || GetSystemMessage() == MSG_SHORT)
+				{
+					sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,UPPER,%.1fs;",
+					i+1,
+					TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],//模式
+					SEND_COMP[Save_TestValue[i].text_flag][1],//分选结果
+					(double)Save_TestValue[i].Text_vot/1000,//电压
+					(double)Save_TestValue[i].Text_time/10);//测试时间
+				}else{
+					sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,%.3f%s,%.1fs;",
+					i+1,
+					TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],//模式
+					SEND_COMP[Save_TestValue[i].text_flag][1],//分选结果
+					(double)Save_TestValue[i].Text_vot/1000,//电压
+					(double)Save_TestValue[i].Text_value/1000,//电流
+					CURR_UNIT[Save_TestValue[i].text_unit],//电流单位	
+					(double)Save_TestValue[i].Text_time/10);//测试时间
+				}
 			}
 		}else if(U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter == OS){//OS模式
 			sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,%.1fnF,%.1fs;",
@@ -109,23 +154,68 @@ void UartRes(void)
 			(double)Save_TestValue[i].Text_value/10,//电容
 			(double)Save_TestValue[i].Text_time/10);//测试时间
 		}else if(U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter == IR){//绝缘模式
-			if(Test_Value.I_R==0xffff*10)
+			if(GetSystemStatus() == SYS_STATUS_FINISH && 
+				U9001_Save_sys.U9001_save.current_step < U9001_Save_sys.U9001_save.all_step)
 			{
-				sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,UPPER,%.1fs;",
-				i+1,
-				TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],//模式
-				SEND_COMP[Save_TestValue[i].text_flag][1],//分选结果
-				(double)Save_TestValue[i].Text_vot/1000,//电压
-				(double)Save_TestValue[i].Text_time/10);//测试时间
+				if(Test_Value.I_R==0xffff*10)
+				{
+					if(i > U9001_Save_sys.U9001_save.current_step - 1)
+					{
+						sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,UPPER,%.1fs;",
+						i+1,
+						TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],//模式
+						SEND_COMP[Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_flag][1],//分选结果
+						(double)Save_TestValue[i].Text_vot/1000,//电压
+						(double)Save_TestValue[i].Text_time/10);//测试时间
+					}else{
+						sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,UPPER,%.1fs;",
+						i+1,
+						TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],//模式
+						SEND_COMP[Save_TestValue[i].text_flag][1],//分选结果
+						(double)Save_TestValue[i].Text_vot/1000,//电压
+						(double)Save_TestValue[i].Text_time/10);//测试时间
+					}
+				}else{
+					if(i > U9001_Save_sys.U9001_save.current_step - 1)
+					{
+						sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,%.3f%sΩ,%.1fs;",
+						i+1,
+						TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],//模式
+						SEND_COMP[Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_flag][1],//分选结果
+						(double)Save_TestValue[i].Text_vot/1000,//电压
+						(double)Save_TestValue[i].Text_value/1000,//内阻
+						IRUNIT[Save_TestValue[i].text_unit],//内阻单位
+						(double)Save_TestValue[i].Text_time/10);//测试时间
+					}else{
+						sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,%.3f%sΩ,%.1fs;",
+						i+1,
+						TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],//模式
+						SEND_COMP[Save_TestValue[i].text_flag][1],//分选结果
+						(double)Save_TestValue[i].Text_vot/1000,//电压
+						(double)Save_TestValue[i].Text_value/1000,//内阻
+						IRUNIT[Save_TestValue[i].text_unit],//内阻单位
+						(double)Save_TestValue[i].Text_time/10);//测试时间
+					}
+				}
 			}else{
-				sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,%.3f%sΩ,%.1fs;",
-				i+1,
-				TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],//模式
-				SEND_COMP[Save_TestValue[i].text_flag][1],//分选结果
-				(double)Save_TestValue[i].Text_vot/1000,//电压
-				(double)Save_TestValue[i].Text_value/1000,//内阻
-				IRUNIT[Save_TestValue[i].text_unit],//内阻单位
-				(double)Save_TestValue[i].Text_time/10);//测试时间
+				if(Test_Value.I_R==0xffff*10)
+				{
+					sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,UPPER,%.1fs;",
+					i+1,
+					TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],//模式
+					SEND_COMP[Save_TestValue[i].text_flag][1],//分选结果
+					(double)Save_TestValue[i].Text_vot/1000,//电压
+					(double)Save_TestValue[i].Text_time/10);//测试时间
+				}else{
+					sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,%.3f%sΩ,%.1fs;",
+					i+1,
+					TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],//模式
+					SEND_COMP[Save_TestValue[i].text_flag][1],//分选结果
+					(double)Save_TestValue[i].Text_vot/1000,//电压
+					(double)Save_TestValue[i].Text_value/1000,//内阻
+					IRUNIT[Save_TestValue[i].text_unit],//内阻单位
+					(double)Save_TestValue[i].Text_time/10);//测试时间
+				}
 			}
 		}
 		

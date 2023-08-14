@@ -120,7 +120,6 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>猬Sw?????ks</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -479,6 +478,11 @@
           <count>62</count>
           <WinNumber>1</WinNumber>
           <ItemText>Range</ItemText>
+        </Ww>
+        <Ww>
+          <count>63</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>Save_TestValue</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>
