@@ -132,7 +132,7 @@ const char VERSION_Tab1[][2][32]=
 const char SYS_NAME_Tab[][2][32]=
 {
 //    {"耐压测试仪","HIPOT TESTER"},
-    {"Ver.1.021","Ver.1.021"},
+    {"Ver.1.022","Ver.1.022"},
     {"www.JK17.com","www.JK17.com"},
     {"0519-85563477","0519-85563477"},
 
@@ -153,6 +153,7 @@ const char SYS_NAME_Tab[][2][32]=
 //1.019SCPI协议数据超范围处理
 //1.020SCPI协议在步骤未全部完成的情况下失败停止后，停止步骤之后的未测步骤状态全部统一为失败步骤的状态
 //1.021绝缘内阻SPCI返回数据的绝缘内阻值中，4档单位为G时放大倍数按5档单独处理
+//1.022主参数绝缘电阻显示单位加上Ω显示
 const char SYS_SetTime_Tab[][2][15]=
 {
 	{"日期：","OFF"},
@@ -1323,7 +1324,7 @@ const uint8_t User_LimitScan_Item2[][3+1]=
 
 
 };
-const u8 Test_IRUINT[][6]=
+const u8 Test_IRUINT[][10]=
 {
     "kΩ  ",
     "MΩ  ",
@@ -1331,7 +1332,7 @@ const u8 Test_IRUINT[][6]=
 //    "MΩ  ",
 //    "MΩ  ",
     "GΩ  ",
-	  "    ",
+	  "        ",
 };
 const uint8_t User_ListScan_Item[][15+1]=
 {
@@ -4089,7 +4090,7 @@ void Disp_Testvalue(u8 test)
 					if(test==1)
 					{
 							if(Test_Value.I_R==0xffff*10){
-								memcpy(DispBuf,"UPPER   ",8);
+								memcpy(DispBuf,"UPPER       ",12);
 //								if(U9001_Save_sys.U9001_save.all_step == 1)
 //									strcat(sendbuff,">9999");
 //								else
@@ -4126,6 +4127,7 @@ void Disp_Testvalue(u8 test)
 //                test_value=IntToStr();
 							
 							Hex_Format(0,1,3,0);
+							GUI_DispStringAt(Test_IRUINT[3],DISP_V_XPOS+50+6*25,DISP_V_YPOS+50);
 					}
 					GUI_DispStringAt(DispBuf,DISP_V_XPOS+50,DISP_V_YPOS+50);
 //            GUI_DispStringAt(Test_IRUINT[test_value.uint],DISP_V_XPOS+50+6*25,DISP_V_YPOS+50-20);·	

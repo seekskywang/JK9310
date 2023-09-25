@@ -6217,7 +6217,71 @@ GUI_CONST_STORAGE unsigned char acGUI_FontGUI_FONTXBFFON50_007F[124] = { /* code
   ________,________,
   ________,________};
 
-GUI_CONST_STORAGE GUI_CHARINFO GUI_FontGUI_FONTXBFFON50_CharInfo[96] = {
+	GUI_CONST_STORAGE unsigned char acGUI_FontGUI_FONTXBFFON50_03A9[310] = { /* code 03A9, GREEK CAPITAL LETTER OMEGA */
+   ________,________,________,________,________,
+  ________,________,________,________,________,
+  ________,________,________,________,________,
+  ________,________,________,________,________,
+  ________,________,________,________,________,
+  ________,________,________,________,________,
+  ________,________,________,________,________,
+  ________,________,________,________,________,
+  ________,________,________,________,________,
+  ________,________,________,________,________,
+  ________,________,________,________,________,
+  ________,________,________,________,________,
+  ________,________,________,________,________,
+  ________,________,________,________,________,
+  ________,_______X,XXXXXXXX,________,________,
+  ________,___XXXXX,XXXXXXXX,XXXX____,________,
+  ________,_XXXXXXX,XXXXXXXX,XXXXXX__,________,
+  ________,XXXXXXXX,XXXXXXXX,XXXXXXX_,________,
+  _______X,XXXXXXXX,XXXXXXXX,XXXXXXXX,________,
+  ______XX,XXXXXXXX,XXXXXXXX,XXXXXXXX,X_______,
+  _____XXX,XXXXXXXX,_______X,XXXXXXXX,XX______,
+  ____XXXX,XXXXXX__,________,_XXXXXXX,XXX_____,
+  ____XXXX,XXXXX___,________,__XXXXXX,XXX_____,
+  ___XXXXX,XXXX____,________,___XXXXX,XXXX____,
+  ___XXXXX,XXX_____,________,____XXXX,XXXX____,
+  ___XXXXX,XXX_____,________,____XXXX,XXXXX___,
+  __XXXXXX,XXX_____,________,____XXXX,XXXXX___,
+  __XXXXXX,XX______,________,_____XXX,XXXXX___,
+  __XXXXXX,XX______,________,_____XXX,XXXXX___,
+  __XXXXXX,XX______,________,_____XXX,XXXXX___,
+  __XXXXXX,XX______,________,_____XXX,XXXXX___,
+  __XXXXXX,XX______,________,_____XXX,XXXXX___,
+  __XXXXXX,XX______,________,_____XXX,XXXXX___,
+  __XXXXXX,XX______,________,_____XXX,XXXXX___,
+  ___XXXXX,XX______,________,____XXXX,XXXX____,
+  ___XXXXX,XXX_____,________,____XXXX,XXXX____,
+  ___XXXXX,XXX_____,________,____XXXX,XXXX____,
+  ____XXXX,XXXX____,________,___XXXXX,XXX_____,
+  ____XXXX,XXXX____,________,___XXXXX,XX______,
+  _____XXX,XXXXX___,________,__XXXXXX,XX______,
+  ______XX,XXXXX___,________,_XXXXXXX,X_______,
+  _______X,XXXXXX__,________,_XXXXXXX,________,
+  ________,XXXXXXX_,________,XXXXXX__,________,
+  ________,__XXXXXX,_______X,XXXXX___,________,
+  __XXXXXX,XXXXXXXX,X_____XX,XXXXXXXX,XXXXX___,
+  __XXXXXX,XXXXXXXX,X_____XX,XXXXXXXX,XXXXX___,
+  __XXXXXX,XXXXXXXX,X_____XX,XXXXXXXX,XXXXX___,
+  __XXXXXX,XXXXXXXX,X_____XX,XXXXXXXX,XXXXX___,
+  __XXXXXX,XXXXXXXX,X_____XX,XXXXXXXX,XXXXX___,
+  __XXXXXX,XXXXXXXX,X_____XX,XXXXXXXX,XXXXX___,
+  ________,________,________,________,________,
+  ________,________,________,________,________,
+  ________,________,________,________,________,
+  ________,________,________,________,________,
+  ________,________,________,________,________,
+  ________,________,________,________,________,
+  ________,________,________,________,________,
+  ________,________,________,________,________,
+  ________,________,________,________,________,
+  ________,________,________,________,________,
+  ________,________,________,________,________,
+  ________,________,________,________,________};
+	
+GUI_CONST_STORAGE GUI_CHARINFO GUI_FontGUI_FONTXBFFON50_CharInfo[97] = {
    {  14,  14,  2, acGUI_FontGUI_FONTXBFFON50_0020 } /* code 0020 */
   ,{  15,  15,  2, acGUI_FontGUI_FONTXBFFON50_0021 } /* code 0021 */
   ,{  21,  21,  3, acGUI_FontGUI_FONTXBFFON50_0022 } /* code 0022 */
@@ -6314,13 +6378,21 @@ GUI_CONST_STORAGE GUI_CHARINFO GUI_FontGUI_FONTXBFFON50_CharInfo[96] = {
   ,{  16,  16,  2, acGUI_FontGUI_FONTXBFFON50_007D } /* code 007D */
   ,{  36,  36,  5, acGUI_FontGUI_FONTXBFFON50_007E } /* code 007E */
   ,{  14,  14,  2, acGUI_FontGUI_FONTXBFFON50_007F } /* code 007F */
+	,{  39,  39,  5, acGUI_FontGUI_FONTXBFFON50_03A9 } /* code 03A9 */
+};
+
+GUI_CONST_STORAGE GUI_FONT_PROP GUI_FontGUI_FONTXBFFON50_Prop2 = {
+   0x03A9 /* first character */
+  ,0x03A9 /* last character  */
+  ,&GUI_FontGUI_FONTXBFFON50_CharInfo[ 96] /* address of first character */
+  ,(GUI_CONST_STORAGE GUI_FONT_PROP *)0 /* pointer to next GUI_FONT_PROP */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP GUI_FontGUI_FONTXBFFON50_Prop1 = {
    0x0020 /* first character */
   ,0x007F /* last character  */
   ,&GUI_FontGUI_FONTXBFFON50_CharInfo[  0] /* address of first character */
-  ,(GUI_CONST_STORAGE GUI_FONT_PROP *)0 /* pointer to next GUI_FONT_PROP */
+  ,&GUI_FontGUI_FONTXBFFON50_Prop2 /* pointer to next GUI_FONT_PROP */
 };
 
 GUI_CONST_STORAGE GUI_FONT GUI_FontGUI_FONTXBFFON50 = {

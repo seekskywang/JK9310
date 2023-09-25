@@ -27,31 +27,101 @@ Project File Date:  07/07/2023
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Open1788'
-compiling scpi-def.c...
-..\User\scpi-def.c(583): warning:  #223-D: function "Uart0_Send" declared implicitly
-      Uart0_Send(0xa1);
-..\User\scpi-def.c(584): warning:  #223-D: function "PLC_OutProg" declared implicitly
-  		PLC_OutProg();//??PLC????
-..\User\scpi-def.c(594): warning:  #223-D: function "Beep_Off" declared implicitly
-  			Beep_Off();
-..\User\scpi-def.c(597): warning:  #223-D: function "V_DA_out" declared implicitly
-              V_DA_out(0);
-..\User\scpi-def.c(598): warning:  #223-D: function "Sing_out_C" declared implicitly
-              Sing_out_C(0);
-..\User\scpi-def.c(600): warning:  #223-D: function "FRB_out" declared implicitly
-              FRB_out(0);
-..\User\scpi-def.c(601): warning:  #223-D: function "Uart0_Send" declared implicitly
-              Uart0_Send(0xa0);
-..\User\scpi-def.c(901): warning:  #550-D: variable "res"  was set but never used
-          scpi_expr_result_t res;
-..\User\scpi-def.c(894): warning:  #550-D: variable "array"  was set but never used
-      scpi_channel_value_t array[MAXROW * MAXCOL]; /* array which holds values in order (2D) */
-..\User\scpi-def.c: 9 warnings, 0 errors
+compiling use_disp.c...
+..\User\UseDisp\use_disp.c(2045): warning:  #167-D: argument of type "const u8 *" is incompatible with parameter of type "const char *restrict"
+  				strcat(DispBuf,Test_IRUINT[test_value.uint]);
+..\User\UseDisp\use_disp.c(2070): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
+  			strcat(DispBuf,Disp_Unit[test_value.uint]);
+..\User\UseDisp\use_disp.c(2405): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
+                  strcat(DispBuf,Disp_Unit[1]);
+..\User\UseDisp\use_disp.c(2606): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+  	WriteString_16(
+IST1+
+ATA_SPACE1+8, 
+IRSTLINE+
+PACE1*2, DispBuf,  0);
+..\User\UseDisp\use_disp.c(2625): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+  	WriteString_16(
+IST1+
+ATA_SPACE1+8, 
+IRSTLINE+
+PACE1*3, DispBuf,  0);
+..\User\UseDisp\use_disp.c(2661): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+  	WriteString_16(
+IST2+
+ATA_SPACE1+10+8, 
+IRSTLINE+
+PACE1*2, DispBuf,  0);
+..\User\UseDisp\use_disp.c(2678): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+  	WriteString_16(
+IST2+
+ATA_SPACE1+8, 
+IRSTLINE+
+PACE1*3, DispBuf,  0);
+..\User\UseDisp\use_disp.c(2972): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
+                  strcat(DispBuf,Disp_Unit[1]);
+..\User\UseDisp\use_disp.c(2688): warning:  #177-D: variable "num"  was declared but never referenced
+      u8 num=(MAX_SETP[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter]+1)/2;
+..\User\UseDisp\use_disp.c(3008): warning:  #177-D: variable "Black_Select"  was declared but never referenced
+  	vu32 Black_Select;
+..\User\UseDisp\use_disp.c(3096): warning:  #177-D: variable "i"  was declared but never referenced
+  	vu32 i;
+..\User\UseDisp\use_disp.c(3133): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+  	WriteString_16(
+IST1+160+160, 
+IRSTLINE+
+PACE1*(list+1), DispBuf,  1);
+..\User\UseDisp\use_disp.c(3157): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+          WriteString_16(
+IST1+160, 
+IRSTLINE+
+PACE1*(i+2), DispBuf,  1);
+..\User\UseDisp\use_disp.c(4106): warning:  #167-D: argument of type "const u8 *" is incompatible with parameter of type "const char *"
+  								GUI_DispStringAt(Test_IRUINT[test_value.uint],
+ISP_V_XPOS+50+6*25,
+ISP_V_YPOS+50);
+..\User\UseDisp\use_disp.c(4130): warning:  #167-D: argument of type "const u8 *" is incompatible with parameter of type "const char *"
+  							GUI_DispStringAt(Test_IRUINT[3],
+ISP_V_XPOS+50+6*25,
+ISP_V_YPOS+50);
+..\User\UseDisp\use_disp.c(4158): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *"
+              GUI_DispStringAt(Disp_Unit[1],
+ISP_V_XPOS+50+6*25,
+ISP_V_YPOS+50);
+..\User\UseDisp\use_disp.c(4343): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+  		WriteString_12(
+IST2+140, 58+i*15, DispBuf,  1);//?????????????€?  ??????????????€????????????
+..\User\UseDisp\use_disp.c(4707): warning:  #111-D: statement is unreachable
+                  break;
+..\User\UseDisp\use_disp.c(4562): warning:  #177-D: variable "pt1"  was declared but never referenced
+  	 u16 *pt1;
+..\User\UseDisp\use_disp.c(4751): warning:  #177-D: variable "j"  was declared but never referenced
+  	vu16 j,i;
+..\User\UseDisp\use_disp.c(4751): warning:  #177-D: variable "i"  was declared but never referenced
+  	vu16 j,i;
+..\User\UseDisp\use_disp.c(4752): warning:  #177-D: variable "pt"  was declared but never referenced
+  	vu8 *pt;
+..\User\UseDisp\use_disp.c(4753): warning:  #177-D: variable "ppt"  was declared but never referenced
+      uint16_t *ppt;
+..\User\UseDisp\use_disp.c(4993): warning:  #550-D: variable "addr"  was set but never used
+  	LcdAddr_TypeDef addr;//???????????€??????
+..\User\UseDisp\use_disp.c(5634): warning:  #69-D: integer conversion resulted in truncation
+  	lcd_Clear(
+CD_COLOR_TEST_BACK);
+..\User\UseDisp\use_disp.c(6367): warning:  #111-D: statement is unreachable
+  			break;
+..\User\UseDisp\use_disp.c(6374): warning:  #223-D: function "Uart0_Send" declared implicitly
+  	Uart0_Send(0x02);//??????
+..\User\UseDisp\use_disp.c(6168): warning:  #550-D: variable "set_arc"  was set but never used
+  	vu8 set_arc;//?????????????????????
+..\User\UseDisp\use_disp.c(6541): warning:  #177-D: variable "keynum"  was declared but never referenced
+  	vu32 keynum=0;
+..\User\UseDisp\use_disp.c: 29 warnings, 0 errors
 linking...
-Program Size: Code=166602 RO-data=127634 RW-data=816 ZI-data=9504  
+Program Size: Code=166634 RO-data=127978 RW-data=816 ZI-data=9504  
 FromELF: creating hex file...
 After Build - User command #1: C:\Keil_v5\ARM\ARMCC\bin\fromelf.exe --bin  -o ..\update\update.bin Output\project.axf
-".\Output\project.axf" - 0 Error(s), 9 Warning(s).
+".\Output\project.axf" - 0 Error(s), 29 Warning(s).
 
 <h2>Software Packages used:</h2>
 

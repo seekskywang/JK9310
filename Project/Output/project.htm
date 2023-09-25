@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Output\project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Output\project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Thu Aug 17 10:24:51 2023
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Thu Aug 17 14:33:35 2023
 <BR><P>
 <H3>Maximum Stack Usage =        632 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1351,7 +1351,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Testvalue
 </UL>
 
-<P><STRONG><a name="[17e]"></a>Disp_Testvalue</STRONG> (Thumb, 1134 bytes, Stack size 16 bytes, use_disp.o(.text))
+<P><STRONG><a name="[17e]"></a>Disp_Testvalue</STRONG> (Thumb, 1150 bytes, Stack size 16 bytes, use_disp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 240 + Unknown Stack Size
 <LI>Call Chain = Disp_Testvalue &rArr; disp_TestMSG &rArr; GUI_DispStringAt &rArr; GUI_DispString &rArr; GUI__DispLine &rArr; WM__InitIVRSearch &rArr; WM__GetNextIVR &rArr; WM__ActivateClipRect &rArr; _SetClipRectUserIntersect &rArr; LCD_SetClipRectEx &rArr; GUI__IntersectRects
 </UL>
@@ -1405,7 +1405,7 @@ Global Symbols
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WriteString_12
 </UL>
 
-<P><STRONG><a name="[18a]"></a>Disp_Set_Unit_16</STRONG> (Thumb, 186 bytes, Stack size 24 bytes, use_disp.o(.text), UNUSED)
+<P><STRONG><a name="[18a]"></a>Disp_Set_Unit_16</STRONG> (Thumb, 202 bytes, Stack size 24 bytes, use_disp.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WriteString_16
 </UL>
 
@@ -3546,8 +3546,8 @@ Global Symbols
 <P><STRONG><a name="[28a]"></a>UART_Init</STRONG> (Thumb, 312 bytes, Stack size 16 bytes, lpc177x_8x_uart.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = UART_Init &rArr; uart_set_divisors &rArr; __aeabi_uldivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[288]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_set_divisors
-<LI><a href="#[28b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLKPWR_ConfigPPWR
+<BR>[Calls]<UL><LI><a href="#[28b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLKPWR_ConfigPPWR
+<LI><a href="#[288]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_set_divisors
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;debug_frmwrk_init
 <LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_init
@@ -5264,13 +5264,13 @@ Global Symbols
 <P><STRONG><a name="[369]"></a>scpiParser_detectProgramMessageUnit</STRONG> (Thumb, 200 bytes, Stack size 48 bytes, parser.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = scpiParser_detectProgramMessageUnit &rArr; scpiParser_parseAllProgramData &rArr; scpiParser_parseProgramData &rArr; scpiLex_DecimalNumericProgramData &rArr; skipExponent &rArr; skipNumbers &rArr; __rt_ctype_table
 </UL>
-<BR>[Calls]<UL><LI><a href="#[358]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_NewLine
-<LI><a href="#[357]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_Semicolon
+<BR>[Calls]<UL><LI><a href="#[357]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_Semicolon
 <LI><a href="#[33e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_ProgramHeader
 <LI><a href="#[33b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_WhiteSpace
 <LI><a href="#[31a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_IsEos
 <LI><a href="#[368]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiParser_parseAllProgramData
 <LI><a href="#[36a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invalidateToken
+<LI><a href="#[358]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_NewLine
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCPI_Input
 <LI><a href="#[36b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCPI_Parse
@@ -6384,11 +6384,11 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_errno_addr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[4d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrt
-<LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
+<BR>[Called By]<UL><LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
 <LI><a href="#[20c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atof
 <LI><a href="#[4d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ldexp
 <LI><a href="#[4cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_tofloat
+<LI><a href="#[4d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrt
 </UL>
 
 <P><STRONG><a name="[3d5]"></a>tolower</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, tolower.o(.text))
@@ -8834,8 +8834,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[174]"></a>pow</STRONG> (Thumb, 2512 bytes, Stack size 128 bytes, pow.o(i.pow), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[4d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrt
-<LI><a href="#[4c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
+<BR><BR>[Calls]<UL><LI><a href="#[4c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
 <LI><a href="#[3e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_fpclassify
 <LI><a href="#[4ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_underflow
 <LI><a href="#[4cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_overflow
@@ -8851,6 +8850,7 @@ Global Symbols
 <LI><a href="#[4d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
 <LI><a href="#[4d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
 <LI><a href="#[227]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<LI><a href="#[4d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrt
 </UL>
 <BR>[Called By]<UL><LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Input_Set_CovPre
 <LI><a href="#[177]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Input_Set_Cov
@@ -10149,8 +10149,7 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[336]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ischr
 <LI><a href="#[32c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iseos
 </UL>
-<BR>[Called By]<UL><LI><a href="#[358]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_NewLine
-<LI><a href="#[357]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_Semicolon
+<BR>[Called By]<UL><LI><a href="#[357]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_Semicolon
 <LI><a href="#[353]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_ArbitraryBlockProgramData
 <LI><a href="#[349]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_NondecimalNumericData
 <LI><a href="#[343]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_SuffixProgramData
@@ -10159,6 +10158,7 @@ Local Symbols
 <LI><a href="#[320]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_SpecificCharacter
 <LI><a href="#[319]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_Comma
 <LI><a href="#[317]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_Colon
+<LI><a href="#[358]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_NewLine
 </UL>
 
 <P><STRONG><a name="[337]"></a>skipSlashDot</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, lexer.o(.text))
