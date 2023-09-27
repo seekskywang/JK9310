@@ -236,7 +236,7 @@ void  GPIO_IRQHandler(void)
       {
 
         
-       SetSystemMessage(MSG_GIF);
+//       SetSystemMessage(MSG_GIF);
         GPIO_ClearInt(0, 1<<7);
       }
 //        V_DA_out(0);

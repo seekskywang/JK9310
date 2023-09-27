@@ -27,101 +27,372 @@ Project File Date:  07/07/2023
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Open1788'
+compiling EX_SDRAM.c...
+compiling key.c...
+..\User\Key\key.c(286): warning:  #550-D: variable "keynum"  was set but never used
+  	static u8 keynum,keynum1;
+..\User\Key\key.c(286): warning:  #177-D: variable "keynum1"  was declared but never referenced
+  	static u8 keynum,keynum1;
+..\User\Key\key.c(313): warning:  #177-D: variable "value"  was declared but never referenced
+  	u8 value=0xff;
+..\User\Key\key.c: 3 warnings, 0 errors
+compiling timer.c...
+..\Libraries\Drivers\include\debug_frmwrk.h(92): warning:  #47-D: incompatible redefinition of macro "TICKS_PER_SEC"  (declared at line 13 of "..\User\Key/key.h")
+  #define TICKS_PER_SEC 1000	//????????????????????100x10mS(T0)=1S
+..\User\timer.c(108): warning:  #223-D: function "RecHandle" declared implicitly
+          RecHandle();
+..\User\timer.c(41): warning:  #177-D: variable "crc1"  was declared but never referenced
+  	static uint16_t crc1;
+..\User\timer.c: 3 warnings, 0 errors
+compiling main.c...
+..\User\Key/key.h(13): warning:  #47-D: incompatible redefinition of macro "TICKS_PER_SEC"  (declared at line 92 of "..\Libraries\Drivers\include\debug_frmwrk.h")
+  #define TICKS_PER_SEC 100	//????????????????????100x10mS(T0)=1S
+..\User\Test\Debug.h(28): warning:  #1-D: last line of file ends without a newline
+  //==========================================================
+..\User\main.c(215): warning:  #177-D: variable "i"  was declared but never referenced
+      static uint16_t i=0;
+..\User\main.c: 3 warnings, 0 errors
+compiling logo.c...
+compiling lpc177x_8x_lcd.c...
+compiling pwm.c...
+compiling GlobalValue.c...
 compiling use_disp.c...
-..\User\UseDisp\use_disp.c(2045): warning:  #167-D: argument of type "const u8 *" is incompatible with parameter of type "const char *restrict"
+..\User\UseDisp\use_disp.c(2046): warning:  #167-D: argument of type "const u8 *" is incompatible with parameter of type "const char *restrict"
   				strcat(DispBuf,Test_IRUINT[test_value.uint]);
-..\User\UseDisp\use_disp.c(2070): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\User\UseDisp\use_disp.c(2071): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
   			strcat(DispBuf,Disp_Unit[test_value.uint]);
-..\User\UseDisp\use_disp.c(2405): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\User\UseDisp\use_disp.c(2406): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
                   strcat(DispBuf,Disp_Unit[1]);
-..\User\UseDisp\use_disp.c(2606): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+..\User\UseDisp\use_disp.c(2607): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
   	WriteString_16(
 IST1+
 ATA_SPACE1+8, 
 IRSTLINE+
 PACE1*2, DispBuf,  0);
-..\User\UseDisp\use_disp.c(2625): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+..\User\UseDisp\use_disp.c(2626): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
   	WriteString_16(
 IST1+
 ATA_SPACE1+8, 
 IRSTLINE+
 PACE1*3, DispBuf,  0);
-..\User\UseDisp\use_disp.c(2661): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+..\User\UseDisp\use_disp.c(2662): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
   	WriteString_16(
 IST2+
 ATA_SPACE1+10+8, 
 IRSTLINE+
 PACE1*2, DispBuf,  0);
-..\User\UseDisp\use_disp.c(2678): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+..\User\UseDisp\use_disp.c(2679): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
   	WriteString_16(
 IST2+
 ATA_SPACE1+8, 
 IRSTLINE+
 PACE1*3, DispBuf,  0);
-..\User\UseDisp\use_disp.c(2972): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\User\UseDisp\use_disp.c(2973): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
                   strcat(DispBuf,Disp_Unit[1]);
-..\User\UseDisp\use_disp.c(2688): warning:  #177-D: variable "num"  was declared but never referenced
+..\User\UseDisp\use_disp.c(2689): warning:  #177-D: variable "num"  was declared but never referenced
       u8 num=(MAX_SETP[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter]+1)/2;
-..\User\UseDisp\use_disp.c(3008): warning:  #177-D: variable "Black_Select"  was declared but never referenced
+..\User\UseDisp\use_disp.c(3009): warning:  #177-D: variable "Black_Select"  was declared but never referenced
   	vu32 Black_Select;
-..\User\UseDisp\use_disp.c(3096): warning:  #177-D: variable "i"  was declared but never referenced
+..\User\UseDisp\use_disp.c(3097): warning:  #177-D: variable "i"  was declared but never referenced
   	vu32 i;
-..\User\UseDisp\use_disp.c(3133): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+..\User\UseDisp\use_disp.c(3134): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
   	WriteString_16(
 IST1+160+160, 
 IRSTLINE+
 PACE1*(list+1), DispBuf,  1);
-..\User\UseDisp\use_disp.c(3157): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+..\User\UseDisp\use_disp.c(3158): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
           WriteString_16(
 IST1+160, 
 IRSTLINE+
 PACE1*(i+2), DispBuf,  1);
-..\User\UseDisp\use_disp.c(4106): warning:  #167-D: argument of type "const u8 *" is incompatible with parameter of type "const char *"
+..\User\UseDisp\use_disp.c(4107): warning:  #167-D: argument of type "const u8 *" is incompatible with parameter of type "const char *"
   								GUI_DispStringAt(Test_IRUINT[test_value.uint],
 ISP_V_XPOS+50+6*25,
 ISP_V_YPOS+50);
-..\User\UseDisp\use_disp.c(4130): warning:  #167-D: argument of type "const u8 *" is incompatible with parameter of type "const char *"
+..\User\UseDisp\use_disp.c(4131): warning:  #167-D: argument of type "const u8 *" is incompatible with parameter of type "const char *"
   							GUI_DispStringAt(Test_IRUINT[3],
 ISP_V_XPOS+50+6*25,
 ISP_V_YPOS+50);
-..\User\UseDisp\use_disp.c(4158): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *"
+..\User\UseDisp\use_disp.c(4159): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *"
               GUI_DispStringAt(Disp_Unit[1],
 ISP_V_XPOS+50+6*25,
 ISP_V_YPOS+50);
-..\User\UseDisp\use_disp.c(4343): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+..\User\UseDisp\use_disp.c(4344): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
   		WriteString_12(
 IST2+140, 58+i*15, DispBuf,  1);//?????????????€?  ??????????????€????????????
-..\User\UseDisp\use_disp.c(4707): warning:  #111-D: statement is unreachable
+..\User\UseDisp\use_disp.c(4708): warning:  #111-D: statement is unreachable
                   break;
-..\User\UseDisp\use_disp.c(4562): warning:  #177-D: variable "pt1"  was declared but never referenced
+..\User\UseDisp\use_disp.c(4563): warning:  #177-D: variable "pt1"  was declared but never referenced
   	 u16 *pt1;
-..\User\UseDisp\use_disp.c(4751): warning:  #177-D: variable "j"  was declared but never referenced
+..\User\UseDisp\use_disp.c(4752): warning:  #177-D: variable "j"  was declared but never referenced
   	vu16 j,i;
-..\User\UseDisp\use_disp.c(4751): warning:  #177-D: variable "i"  was declared but never referenced
+..\User\UseDisp\use_disp.c(4752): warning:  #177-D: variable "i"  was declared but never referenced
   	vu16 j,i;
-..\User\UseDisp\use_disp.c(4752): warning:  #177-D: variable "pt"  was declared but never referenced
+..\User\UseDisp\use_disp.c(4753): warning:  #177-D: variable "pt"  was declared but never referenced
   	vu8 *pt;
-..\User\UseDisp\use_disp.c(4753): warning:  #177-D: variable "ppt"  was declared but never referenced
+..\User\UseDisp\use_disp.c(4754): warning:  #177-D: variable "ppt"  was declared but never referenced
       uint16_t *ppt;
-..\User\UseDisp\use_disp.c(4993): warning:  #550-D: variable "addr"  was set but never used
+..\User\UseDisp\use_disp.c(4994): warning:  #550-D: variable "addr"  was set but never used
   	LcdAddr_TypeDef addr;//???????????€??????
-..\User\UseDisp\use_disp.c(5634): warning:  #69-D: integer conversion resulted in truncation
+..\User\UseDisp\use_disp.c(5635): warning:  #69-D: integer conversion resulted in truncation
   	lcd_Clear(
 CD_COLOR_TEST_BACK);
-..\User\UseDisp\use_disp.c(6367): warning:  #111-D: statement is unreachable
+..\User\UseDisp\use_disp.c(6368): warning:  #111-D: statement is unreachable
   			break;
-..\User\UseDisp\use_disp.c(6374): warning:  #223-D: function "Uart0_Send" declared implicitly
+..\User\UseDisp\use_disp.c(6375): warning:  #223-D: function "Uart0_Send" declared implicitly
   	Uart0_Send(0x02);//??????
-..\User\UseDisp\use_disp.c(6168): warning:  #550-D: variable "set_arc"  was set but never used
+..\User\UseDisp\use_disp.c(6169): warning:  #550-D: variable "set_arc"  was set but never used
   	vu8 set_arc;//?????????????????????
-..\User\UseDisp\use_disp.c(6541): warning:  #177-D: variable "keynum"  was declared but never referenced
+..\User\UseDisp\use_disp.c(6542): warning:  #177-D: variable "keynum"  was declared but never referenced
   	vu32 keynum=0;
 ..\User\UseDisp\use_disp.c: 29 warnings, 0 errors
+compiling CPLD.c...
+..\User\CPLD.c(43): warning:  #177-D: variable "i"  was declared but never referenced
+  	uint32_t i;
+..\User\CPLD.c(316): warning:  #1-D: last line of file ends without a newline
+  }
+..\User\CPLD.c: 2 warnings, 0 errors
+compiling spi_da_ad.c...
+..\User\Key/key.h(13): warning:  #47-D: incompatible redefinition of macro "TICKS_PER_SEC"  (declared at line 92 of "..\Libraries\Drivers\include\debug_frmwrk.h")
+  #define TICKS_PER_SEC 100	//????????????????????100x10mS(T0)=1S
+..\User\spi_ad_da\spi_da_ad.c(557): warning:  #223-D: function "abs" declared implicitly
+  	if(abs(Voltage-LastVoltage)<2)//????????????
+..\User\spi_ad_da\spi_da_ad.c(580): warning:  #223-D: function "abs" declared implicitly
+  	if(abs(Current-LastCurrent)<2)//????????????
+..\User\spi_ad_da\spi_da_ad.c: 3 warnings, 0 errors
+compiling scpi-def.c...
+..\User\scpi-def.c(583): warning:  #223-D: function "Uart0_Send" declared implicitly
+      Uart0_Send(0xa1);
+..\User\scpi-def.c(584): warning:  #223-D: function "PLC_OutProg" declared implicitly
+  		PLC_OutProg();//??PLC????
+..\User\scpi-def.c(594): warning:  #223-D: function "Beep_Off" declared implicitly
+  			Beep_Off();
+..\User\scpi-def.c(597): warning:  #223-D: function "V_DA_out" declared implicitly
+              V_DA_out(0);
+..\User\scpi-def.c(598): warning:  #223-D: function "Sing_out_C" declared implicitly
+              Sing_out_C(0);
+..\User\scpi-def.c(600): warning:  #223-D: function "FRB_out" declared implicitly
+              FRB_out(0);
+..\User\scpi-def.c(601): warning:  #223-D: function "Uart0_Send" declared implicitly
+              Uart0_Send(0xa0);
+..\User\scpi-def.c(901): warning:  #550-D: variable "res"  was set but never used
+          scpi_expr_result_t res;
+..\User\scpi-def.c(894): warning:  #550-D: variable "array"  was set but never used
+      scpi_channel_value_t array[MAXROW * MAXCOL]; /* array which holds values in order (2D) */
+..\User\scpi-def.c: 9 warnings, 0 errors
+compiling Debug.c...
+..\Libraries\Drivers\include\debug_frmwrk.h(92): warning:  #47-D: incompatible redefinition of macro "TICKS_PER_SEC"  (declared at line 13 of "..\User\key/key.h")
+  #define TICKS_PER_SEC 1000	//????????????????????100x10mS(T0)=1S
+..\User\Test\Debug.h(28): warning:  #1-D: last line of file ends without a newline
+  //==========================================================
+..\User\Test\Debug.c(85): warning:  #177-D: variable "key"  was declared but never referenced
+  	u8 key;
+..\User\Test\Debug.c(237): warning:  #111-D: statement is unreachable
+  				break;
+..\User\Test\Debug.c(247): warning:  #111-D: statement is unreachable
+  				break;
+..\User\Test\Debug.c(202): warning:  #177-D: variable "key"  was declared but never referenced
+  	u8 key;
+..\User\Test\Debug.c(341): warning:  #111-D: statement is unreachable
+                      break;
+..\User\Test\Debug.c(295): warning:  #177-D: variable "key"  was declared but never referenced
+  	u8 key;
+..\User\Test\Debug.c(453): warning:  #111-D: statement is unreachable
+                      break;
+..\User\Test\Debug.c(401): warning:  #177-D: variable "key"  was declared but never referenced
+  	u8 key;
+..\User\Test\Debug.c(571): warning:  #111-D: statement is unreachable
+                      break;
+..\User\Test\Debug.c(518): warning:  #177-D: variable "key"  was declared but never referenced
+  	u8 key;
+..\User\Test\Debug.c(877): warning:  #111-D: statement is unreachable
+  			break;
+..\User\Test\Debug.c(1291): warning:  #111-D: statement is unreachable
+  				break;
+..\User\Test\Debug.c(734): warning:  #550-D: variable "dat"  was set but never used
+  	vu16 dat;
+..\User\Test\Debug.c(735): warning:  #177-D: variable "temp"  was declared but never referenced
+  	vu32 temp;
+..\User\Test\Debug.c(739): warning:  #177-D: variable "f_upper"  was declared but never referenced
+  	bool f_upper=FALSE;//??????????????????
+..\User\Test\Debug.c(740): warning:  #177-D: variable "f_below"  was declared but never referenced
+  	bool f_below=FALSE;//??????????????????
+..\User\Test\Debug.c(741): warning:  #177-D: variable "f_switch"  was declared but never referenced
+  	bool f_switch=FALSE;//??????????????????
+..\User\Test\Debug.c(747): warning:  #550-D: variable "ad_high"  was set but never used
+  	vu16 ad_high;//AD?€???????
+..\User\Test\Debug.c(748): warning:  #550-D: variable "ad_low"  was set but never used
+  	vu16 ad_low;//AD?€???????
+..\User\Test\Debug.c(749): warning:  #550-D: variable "TestTime"  was set but never used
+      u16 TestTime;
+..\User\Test\Debug.c: 22 warnings, 0 errors
+compiling core_cm3.c...
+compiling test.c...
+..\Libraries\Drivers\include\debug_frmwrk.h(92): warning:  #47-D: incompatible redefinition of macro "TICKS_PER_SEC"  (declared at line 13 of "..\User\key/key.h")
+  #define TICKS_PER_SEC 1000	//????????????????????100x10mS(T0)=1S
+..\User\Test\test.c(202): warning:  #177-D: variable "temp"  was declared but never referenced
+  	u8 temp[4];
+..\User\Test\test.c(203): warning:  #177-D: variable "FlashID"  was declared but never referenced
+  		u32 FlashID;
+..\User\Test\test.c(777): warning:  #177-D: variable "key"  was declared but never referenced
+  	vu8 key;
+..\User\Test\test.c(873): warning:  #550-D: variable "Range_IR"  was set but never used
+      u8 Range_IR=0;
+..\User\Test\test.c(881): warning:  #550-D: variable "temp"  was set but never used
+  	vu32 temp;
+..\User\Test\test.c(882): warning:  #177-D: variable "value"  was declared but never referenced
+    float value;
+..\User\Test\test.c(883): warning:  #177-D: variable "F_x"  was declared but never referenced
+    float F_x;
+..\User\Test\test.c(1768): warning:  #177-D: variable "pt"  was declared but never referenced
+      vu16 *pt;
+..\User\Test\test.c(1769): warning:  #177-D: variable "list"  was declared but never referenced
+  	u8 list=1;//????????0  ??????1??
+..\User\Test\test.c(1770): warning:  #177-D: variable "line"  was declared but never referenced
+      u8 line=0;//??
+..\User\Test\test.c(1777): warning:  #177-D: variable "select_num"  was declared but never referenced
+      u8 select_num=0;
+..\User\Test\test.c(4397): warning:  #177-D: variable "select_num"  was declared but never referenced
+      u8 select_num=0;
+..\User\Test\test.c(5079): warning:  #177-D: variable "list"  was declared but never referenced
+  	u8 list=0;//??
+..\User\Test\test.c(5081): warning:  #177-D: variable "item"  was declared but never referenced
+      u8 item=0;
+..\User\Test\test.c(6772): warning:  #177-D: variable "i"  was declared but never referenced
+  	u8 i;
+..\User\Test\test.c(6773): warning:  #177-D: variable "key"  was declared but never referenced
+  	u8 key;
+..\User\Test\test.c(6775): warning:  #177-D: variable "item"  was declared but never referenced
+  	u8 item;
+..\User\Test\test.c(6776): warning:  #550-D: variable "time"  was set but never used
+  	u16 time;//????????????
+..\User\Test\test.c: 19 warnings, 0 errors
+compiling system_LPC177x_8x.c...
+compiling lpc177x_8x_gpio.c...
+compiling lpc177x_8x_systick.c...
+compiling lpc177x_8x_clkpwr.c...
+compiling lpc177x_8x_uart.c...
+compiling lpc177x_8x_pinsel.c...
+compiling lpc177x_8x_eeprom.c...
+..\Libraries\Drivers\source\lpc177x_8x_eeprom.c(109): warning:  #1441-D: nonstandard cast on lvalue
+  			
+PC_EEPROM -> WDATA = *(((uint8_t *)data)++);
+..\Libraries\Drivers\source\lpc177x_8x_eeprom.c(119): warning:  #1441-D: nonstandard cast on lvalue
+  			
+PC_EEPROM -> WDATA = *(((uint16_t *)data)++);
+..\Libraries\Drivers\source\lpc177x_8x_eeprom.c(129): warning:  #1441-D: nonstandard cast on lvalue
+  			
+PC_EEPROM -> WDATA = *(((uint32_t *)data)++);
+..\Libraries\Drivers\source\lpc177x_8x_eeprom.c(198): warning:  #1441-D: nonstandard cast on lvalue
+  			 *(((uint8_t *)data)++) = (uint8_t)(LPC_EEPROM -> RDATA);
+..\Libraries\Drivers\source\lpc177x_8x_eeprom.c(208): warning:  #1441-D: nonstandard cast on lvalue
+  			 *(((uint16_t *)data)++) = (uint16_t)(LPC_EEPROM -> RDATA);
+..\Libraries\Drivers\source\lpc177x_8x_eeprom.c(217): warning:  #1441-D: nonstandard cast on lvalue
+  			 *(((uint32_t *)data)++) = (uint32_t)(LPC_EEPROM ->RDATA);
+..\Libraries\Drivers\source\lpc177x_8x_eeprom.c: 6 warnings, 0 errors
+compiling lpc177x_8x_rtc.c...
+compiling debug_frmwrk.c...
+..\User\Key/key.h(13): warning:  #47-D: incompatible redefinition of macro "TICKS_PER_SEC"  (declared at line 92 of "..\Libraries\Drivers\include\debug_frmwrk.h")
+  #define TICKS_PER_SEC 100	//????????????????????100x10mS(T0)=1S
+..\Libraries\Drivers\source\debug_frmwrk.c(98): warning:  #177-D: variable "i"  was declared but never referenced
+  	u8 i,temp;
+..\Libraries\Drivers\source\debug_frmwrk.c(891): warning:  #177-D: variable "pt"  was declared but never referenced
+      Send_Testvalue_Typedef *pt;
+..\Libraries\Drivers\source\debug_frmwrk.c(1143): warning:  #223-D: function "PLC_OutProg" declared implicitly
+  				PLC_OutProg();//??PLC????
+..\Libraries\Drivers\source\debug_frmwrk.c(1153): warning:  #223-D: function "V_DA_out" declared implicitly
+  						V_DA_out(0);
+..\Libraries\Drivers\source\debug_frmwrk.c(1154): warning:  #223-D: function "Sing_out_C" declared implicitly
+  						Sing_out_C(0);
+..\Libraries\Drivers\source\debug_frmwrk.c(1155): warning:  #223-D: function "Short_out" declared implicitly
+  						Short_out(0);
+..\Libraries\Drivers\source\debug_frmwrk.c(1156): warning:  #223-D: function "FRB_out" declared implicitly
+  						FRB_out(0);
+..\Libraries\Drivers\source\debug_frmwrk.c(1199): warning:  #223-D: function "V_DA_out" declared implicitly
+  				V_DA_out(0);
+..\Libraries\Drivers\source\debug_frmwrk.c(1200): warning:  #223-D: function "Sing_out_C" declared implicitly
+  				Sing_out_C(0);
+..\Libraries\Drivers\source\debug_frmwrk.c(1201): warning:  #223-D: function "Short_out" declared implicitly
+  				Short_out(0);
+..\Libraries\Drivers\source\debug_frmwrk.c(1202): warning:  #223-D: function "FRB_out" declared implicitly
+  				FRB_out(0);
+..\Libraries\Drivers\source\debug_frmwrk.c(1376): warning:  #940-D: missing return statement at end of non-void function "Uart3_Process" 
+  }
+..\Libraries\Drivers\source\debug_frmwrk.c(954): warning:  #177-D: variable "lenth"  was declared but never referenced
+  	u8 lenth = 0;
+..\Libraries\Drivers\source\debug_frmwrk.c(955): warning:  #177-D: variable "recbuf"  was declared but never referenced
+  	u8 recbuf[30];
+..\Libraries\Drivers\source\debug_frmwrk.c(1387): warning:  #177-D: variable "count"  was declared but never referenced
+  	 static vu8 count = 0;
+..\Libraries\Drivers\source\debug_frmwrk.c(1388): warning:  #177-D: variable "dat"  was declared but never referenced
+  	 uint8_t Status,dat;
+..\Libraries\Drivers\source\debug_frmwrk.c(1418): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+  		SCPI_Input(&scpi_context, &Res, 1);
+..\Libraries\Drivers\source\debug_frmwrk.c(1401): warning:  #550-D: variable "Status"  was set but never used
+  	uint8_t Status,Res;
+..\Libraries\Drivers\source\debug_frmwrk.c(1536): warning:  #177-D: variable "crec"  was declared but never referenced
+      u8 crec[6];
+..\Libraries\Drivers\source\debug_frmwrk.c(1537): warning:  #177-D: variable "csend"  was declared but never referenced
+      u8 *csend;
+..\Libraries\Drivers\source\debug_frmwrk.c(1538): warning:  #177-D: variable "sendbuf"  was declared but never referenced
+      static u8 *sendbuf;
+..\Libraries\Drivers\source\debug_frmwrk.c(1539): warning:  #177-D: variable "sendlen"  was declared but never referenced
+      u8 sendlen;
+..\Libraries\Drivers\source\debug_frmwrk.c(1540): warning:  #177-D: variable "recrc"  was declared but never referenced
+      static u16 recrc;
+..\Libraries\Drivers\source\debug_frmwrk.c(1541): warning:  #177-D: variable "scrc"  was declared but never referenced
+      static u16 scrc;
+..\Libraries\Drivers\source\debug_frmwrk.c(1542): warning:  #177-D: variable "i"  was declared but never referenced
+      u8 i;
+..\Libraries\Drivers\source\debug_frmwrk.c(1787): warning:  #223-D: function "PLC_OutProg" declared implicitly
+  				PLC_OutProg();//??PLC????
+..\Libraries\Drivers\source\debug_frmwrk.c(1800): warning:  #223-D: function "V_DA_out" declared implicitly
+  						V_DA_out(0);
+..\Libraries\Drivers\source\debug_frmwrk.c(1801): warning:  #223-D: function "Sing_out_C" declared implicitly
+  						Sing_out_C(0);
+..\Libraries\Drivers\source\debug_frmwrk.c(1802): warning:  #223-D: function "Short_out" declared implicitly
+  						Short_out(0);
+..\Libraries\Drivers\source\debug_frmwrk.c(1803): warning:  #223-D: function "FRB_out" declared implicitly
+  						FRB_out(0);
+..\Libraries\Drivers\source\debug_frmwrk.c(1846): warning:  #223-D: function "V_DA_out" declared implicitly
+  				V_DA_out(0);
+..\Libraries\Drivers\source\debug_frmwrk.c(1847): warning:  #223-D: function "Sing_out_C" declared implicitly
+  				Sing_out_C(0);
+..\Libraries\Drivers\source\debug_frmwrk.c(1848): warning:  #223-D: function "Short_out" declared implicitly
+  				Short_out(0);
+..\Libraries\Drivers\source\debug_frmwrk.c(1849): warning:  #223-D: function "FRB_out" declared implicitly
+  				FRB_out(0);
+..\Libraries\Drivers\source\debug_frmwrk.c: 35 warnings, 0 errors
+compiling lpc177x_8x_pwm.c...
+compiling lpc177x_8x_ssp.c...
+compiling lpc177x_8x_emc.c...
+compiling usbhost_fat.c...
+compiling usbhost_ms.c...
+compiling usbhost_lpc17xx.c...
+compiling diskio.c...
+compiling error.c...
+compiling fifo.c...
+compiling expression.c...
+compiling GUIConf.c...
+compiling ieee488.c...
+compiling LCDConf.c...
+compiling AT45DB.c...
+compiling ff.c...
+compiling lexer.c...
+compiling minimal.c...
+compiling units.c...
+compiling utils.c...
+compiling parser.c...
+..\libscpi\src\parser.c(520): warning:  #1293-D: assignment in condition
+      while ((quote = strnpbrk(data, len, "\""))) {
+..\libscpi\src\parser.c(578): warning:  #1293-D: assignment in condition
+          while ((quote = strnpbrk(data[i], len[i], "\""))) {
+..\libscpi\src\parser.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=166634 RO-data=127978 RW-data=816 ZI-data=9504  
+Program Size: Code=166630 RO-data=127982 RW-data=816 ZI-data=9504  
 FromELF: creating hex file...
 After Build - User command #1: C:\Keil_v5\ARM\ARMCC\bin\fromelf.exe --bin  -o ..\update\update.bin Output\project.axf
-".\Output\project.axf" - 0 Error(s), 29 Warning(s).
+".\Output\project.axf" - 0 Error(s), 136 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -144,7 +415,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.6.0
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:04
 </pre>
 </body>
 </html>
