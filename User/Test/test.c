@@ -1375,155 +1375,158 @@ void Test_Process(void)
 		}
 		else
 		{
-			//零值处理和计算电阻值
-			switch(Test_mid.set_item)//参数项
+			if(f_disp==TRUE)
 			{
-				case ACW_SETUP://耐压
-				case DCW_SETUP:
-					//档位换算
-//					if(Range==1)
-						Test_Value.I_R=Current;
-//                    if(Range==0)//大电流档 比较最大值
-//                    {
-                        if(Test_mid.set_item==1)
-                            dat=DCW_CURRENT_MAX;
-                        else
-                            dat=ACW_CURRENT_MAX;
-//                    }
-					if(Test_Value.I_R>dat)//最大值判别
-						Test_Value.I_R=TEST_VALUE_OVER;//电阻溢出
+				//零值处理和计算电阻值
+				switch(Test_mid.set_item)//参数项
+				{
+					case ACW_SETUP://耐压
+					case DCW_SETUP:
+						//档位换算
+	//					if(Range==1)
+							Test_Value.I_R=Current;
+	//                    if(Range==0)//大电流档 比较最大值
+	//                    {
+													if(Test_mid.set_item==1)
+															dat=DCW_CURRENT_MAX;
+													else
+															dat=ACW_CURRENT_MAX;
+	//                    }
+						if(Test_Value.I_R>dat)//最大值判别
+							Test_Value.I_R=TEST_VALUE_OVER;//电阻溢出
 
-//					if(f_switch==FALSE)
-                    if(GetSystemMessage()==MSG_TEST )
-                    {
-                        if(Test_Value.Time>=SORT_TIME_MIN)//判别延时
-						{
-							if(U9001_Save_sys.U9001_Testconfg.comp_setp != 0)
+	//					if(f_switch==FALSE)
+											if(GetSystemMessage()==MSG_TEST )
+											{
+													if(Test_Value.Time>=SORT_TIME_MIN)//判别延时
 							{
-								if(U9001_Save_sys.U9001_save.current_step < U9001_Save_sys.U9001_Testconfg.comp_setp)
+								if(U9001_Save_sys.U9001_Testconfg.comp_setp != 0)
 								{
+									if(U9001_Save_sys.U9001_save.current_step < U9001_Save_sys.U9001_Testconfg.comp_setp)
+									{
+										f_sort=TRUE;//分选标志
+									}
+								}else{
 									f_sort=TRUE;//分选标志
 								}
-							}else{
-								f_sort=TRUE;//分选标志
 							}
-						}
-                    }
-					break;
-	
-				case IR_SETUP:
-					//档位换算
-                   
-					if(Current)//电流值非零
-					{
-						temp=Voltage;//电压值
-//						//最大值判别
-						if((Range==5)&&(Resistance>IR_RESISTANCE_MAX))//最大值判别
-							Resistance=TEST_VALUE_OVER;//电阻溢出
-						Test_Value.I_R=Resistance;
-					}
-					else
-					{
-							Resistance=TEST_VALUE_OVER;//电阻溢出
-              Test_Value.I_R=Resistance;
-					}
-					switch(Range)
-					{
-							case 1:
-									
-									Test_Value.I_R/=100;
-									break;
-							case 2:
-									Test_Value.I_R/=100;
-									break;
-							case 3:
-									Test_Value.I_R/=10;
-									break;
-							case 4:
-//                            Test_Value.I_R*=10;
-									break;
-							case 5:
-									Test_Value.I_R*=10;
-									break;
-							default:
-									break;
-					
-					}
-					if(Test_Value.I_R == TEST_VALUE_OVER)
-					{
-						Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Test_Value.I_R;
-					}else{
-						if(Range <5)
+											}
+						break;
+		
+					case IR_SETUP:
+						//档位换算
+										 
+						if(Current)//电流值非零
 						{
-							if(Range == 4 && 
-								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit == 2)//4档单位为G时放大倍数按5档单独处理
-							{
-								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Test_Value.I_R/10;
-							}else{
-								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Test_Value.I_R*100;
-							}
-						}else{
-							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Test_Value.I_R/10;
+							temp=Voltage;//电压值
+	//						//最大值判别
+							if((Range==5)&&(Resistance>IR_RESISTANCE_MAX))//最大值判别
+								Resistance=TEST_VALUE_OVER;//电阻溢出
+							Test_Value.I_R=Resistance;
 						}
-					}
-					break;
-                case PA_SETUP:
+						else
+						{
+								Resistance=TEST_VALUE_OVER;//电阻溢出
+								Test_Value.I_R=Resistance;
+						}
+						switch(Range)
+						{
+								case 1:
+										
+										Test_Value.I_R/=100;
+										break;
+								case 2:
+										Test_Value.I_R/=100;
+										break;
+								case 3:
+										Test_Value.I_R/=10;
+										break;
+								case 4:
+	//                            Test_Value.I_R*=10;
+										break;
+								case 5:
+										Test_Value.I_R*=10;
+										break;
+								default:
+										break;
+						
+						}
+						if(Test_Value.I_R == TEST_VALUE_OVER)
+						{
+							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Test_Value.I_R;
+						}else{
+							if(Range <5)
+							{
+								if(Range == 4 && 
+									Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit == 2)//4档单位为G时放大倍数按5档单独处理
+								{
+									Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Test_Value.I_R/10;
+								}else{
+									Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Test_Value.I_R*100;
+								}
+							}else{
+								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Test_Value.I_R/10;
+							}
+						}
+						break;
+									case PA_SETUP:
 
-					break;
-                case OS_SETUP:
-                    if(Current)//电流值非零
-					{
-						temp=Voltage;//电压值
-//						//最大值判别
-						if((Range==5)&&(Resistance>IR_RESISTANCE_MAX))//最大值判别
-							Resistance=TEST_VALUE_OVER;//电阻溢出
-					}
-					else
-					{
-						Resistance=0;//电阻溢出
-                        Test_Value.I_R=0;
-					}
+						break;
+									case OS_SETUP:
+											if(Current)//电流值非零
+						{
+							temp=Voltage;//电压值
+	//						//最大值判别
+							if((Range==5)&&(Resistance>IR_RESISTANCE_MAX))//最大值判别
+								Resistance=TEST_VALUE_OVER;//电阻溢出
+						}
+						else
+						{
+							Resistance=0;//电阻溢出
+													Test_Value.I_R=0;
+						}
 
-//                    F_x=Test_Value.I_R;
-//                     switch(Range)
-//                    {
-//                         case 0:
-//                             
-//                             break;
-//                        case 1:
-//                            
-//                            F_x*=10;
-//                            break;
-//                        case 2:
-//                            F_x*=100;
-//                            break;
-//                        case 3:
-//                            F_x*=1000;
-//                            break;
-//                        case 4:
-//                            F_x*=100000;
-//                            break;
-//                        case 5:
-//                            F_x*=1000000;
-//                            break;
-//                        default:
-//                            break;
-//                    
-//                    }
+	//                    F_x=Test_Value.I_R;
+	//                     switch(Range)
+	//                    {
+	//                         case 0:
+	//                             
+	//                             break;
+	//                        case 1:
+	//                            
+	//                            F_x*=10;
+	//                            break;
+	//                        case 2:
+	//                            F_x*=100;
+	//                            break;
+	//                        case 3:
+	//                            F_x*=1000;
+	//                            break;
+	//                        case 4:
+	//                            F_x*=100000;
+	//                            break;
+	//                        case 5:
+	//                            F_x*=1000000;
+	//                            break;
+	//                        default:
+	//                            break;
+	//                    
+	//                    }
 
-//                    value=1.0/(376.8*F_x);
-//                    value/=1.45f;
-//					Test_Value.I_R=value*1e11;
-////                    Test_Value.I_R=value*1e15;
-//                    Test_Value.I_R*=10;
-//                    Test_Value.I_R/=14;
-//					value=F_x;
-//					Test_Value.I_R=value;
-//					Test_Value.I_R/=23;
-//                    Resistance=Test_Value.I_R;
-                    break;
-				default:
-					break;
+	//                    value=1.0/(376.8*F_x);
+	//                    value/=1.45f;
+	//					Test_Value.I_R=value*1e11;
+	////                    Test_Value.I_R=value*1e15;
+	//                    Test_Value.I_R*=10;
+	//                    Test_Value.I_R/=14;
+	//					value=F_x;
+	//					Test_Value.I_R=value;
+	//					Test_Value.I_R/=23;
+	//                    Resistance=Test_Value.I_R;
+											break;
+					default:
+						break;
+				}
 			}
 		}
         
