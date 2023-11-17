@@ -243,7 +243,7 @@ void  GPIO_IRQHandler(void)
 //        Sing_out_C(0);
 //        Short_out(0);
 //        FRB_out(0);
-//      Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_flag=GetSystemMessage();
+//      Save_TestValue[U9001_save[U9001_Save_sys.currentgroup].[U9001_save[U9001_Save_sys.currentgroup]_sys.currentgroup]_sys.U9001_save[U9001_Save_sys.currentgroup].[U9001_save[U9001_Save_sys.currentgroup]_sys.currentgroup].current_step-1].text_flag=GetSystemMessage();
 //      SetSystemStatus(SYS_STATUS_TEST_PAUSE);
 }
 

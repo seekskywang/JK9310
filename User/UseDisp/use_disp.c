@@ -132,7 +132,7 @@ const char VERSION_Tab1[][2][32]=
 const char SYS_NAME_Tab[][2][32]=
 {
 //    {"耐压测试仪","HIPOT TESTER"},
-    {"Ver.1.024","Ver.1.024"},
+    {"Ver.1.025","Ver.1.025"},
     {"www.JK17.com","www.JK17.com"},
     {"0519-85563477","0519-85563477"},
 
@@ -156,6 +156,7 @@ const char SYS_NAME_Tab[][2][32]=
 //1.022主参数绝缘电阻显示单位加上Ω显示
 //1.023关闭GIF失败
 //1.024修正设置下降时间后上位机数据和下位机不一致问题
+//1.025增加组别选择保存，上限10组
 const char SYS_SetTime_Tab[][2][15]=
 {
 	{"日期：","OFF"},
@@ -186,7 +187,7 @@ const char Idel_Tab[][11][2][14]=
 
 const char SetupACButton_Tab[][2][5][14]=
 {
-    {{"测量设置","测量配置","系统设置","     ","        ",},{"DISP","CONFIG","SYSSET","     ","   "}},
+    {{"测量设置","测量配置","系统设置","组别+  ","组别-  ",},{"DISP","CONFIG","SYSSET","     ","   "}},
     {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ADD  ","  DEL  ","  COPY  ","  PREV  ","  NEXT  "}},
     {{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "},{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "}},
     {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","      "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
@@ -206,7 +207,7 @@ const char SetupACButton_Tab[][2][5][14]=
 
 const char SetupOSButton_Tab[][2][5][14]=
 {
-    {{"测量设置","测量配置","系统设置","   ","    "},{"DISP","CONFIG","SYSSET","     ","   "}},
+    {{"测量设置","测量配置","系统设置","组别+  ","组别-  ",},{"DISP","CONFIG","SYSSET","     ","   "}},
     {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ADD  ","  DEL  ","  COPY  ","  PREV  ","  NEXT  "}},
     {{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "},{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "}},
     {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
@@ -217,7 +218,7 @@ const char SetupOSButton_Tab[][2][5][14]=
 
 const char SetupPAButton_Tab[][2][5][14]=
 {
-	{{"测量设置","测量配置","系统设置","   ","    "},{"DISP","CONFIG","SYSSET","     ","   "}},
+	{{"测量设置","测量配置","系统设置","组别+  ","组别-  ",},{"DISP","CONFIG","SYSSET","     ","   "}},
     {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ADD  ","  DEL  ","  COPY  ","  PREV  ","  NEXT  "}},
     {{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "},{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "}},
     {{"      ","      ","       ","        ","        "},{"    ","     ","      ","      ","        "}},
@@ -229,7 +230,7 @@ const char SetupPAButton_Tab[][2][5][14]=
 
 const char SetupACButton_Tab1[][2][5][14]=
 {
-    {{"测量设置","测量配置","系统设置","     ","        ",},{"DISP","CONFIG","SYSSET","     ","   "}},
+    {{"测量设置","测量配置","系统设置","组别+  ","组别-  ",},{"DISP","CONFIG","SYSSET","     ","   "}},
     {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ADD  ","  DEL  ","  COPY  ","  PREV  ","  NEXT  "}},
     {{"   AC   ","        ","        ","   OS   ","   PA   "},{"   AC   ","        ","        ","   OS   ","   PA   "}},
     {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","      "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
@@ -249,7 +250,7 @@ const char SetupACButton_Tab1[][2][5][14]=
 
 const char SetupOSButton_Tab1[][2][5][14]=
 {
-    {{"测量设置","测量配置","系统设置","   ","    "},{"DISP","CONFIG","SYSSET","     ","   "}},
+    {{"测量设置","测量配置","系统设置","组别+  ","组别-  ",},{"DISP","CONFIG","SYSSET","     ","   "}},
     {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ADD  ","  DEL  ","  COPY  ","  PREV  ","  NEXT  "}},
     {{"   AC   ","        ","        ","   OS   ","   PA   "},{"   AC   ","        ","        ","   OS   ","   PA   "}},
     {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
@@ -260,7 +261,7 @@ const char SetupOSButton_Tab1[][2][5][14]=
 
 const char SetupPAButton_Tab1[][2][5][14]=
 {
-	{{"测量设置","测量配置","系统设置","   ","    "},{"DISP","CONFIG","SYSSET","     ","   "}},
+	{{"测量设置","测量配置","系统设置","组别+  ","组别-  ",},{"DISP","CONFIG","SYSSET","     ","   "}},
     {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ADD  ","  DEL  ","  COPY  ","  PREV  ","  NEXT  "}},
     {{"   AC   ","        ","        ","   OS   ","   PA   "},{"   AC   ","        ","        ","   OS   ","   PA   "}},
     {{"      ","      ","       ","        ","        "},{"    ","     ","      ","      ","        "}},
@@ -291,7 +292,7 @@ const char SysSetButton_Tab[][2][5][14]=
 };
 const char SetupDCButton_Tab[][2][5][14]=
 {
-    {{"测量设置","测量配置","系统设置","        ","        "},{"DISP","CONFIG","SYSSET","     ","   "}},
+    {{"测量设置","测量配置","系统设置","组别+  ","组别-  ",},{"DISP","CONFIG","SYSSET","     ","   "}},
     {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ADD  ","  DEL  ","  COPY  ","  PREV  ","  NEXT  "}},
     {{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "},{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "}},
     {{"  ↑↑++  ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
@@ -308,7 +309,7 @@ const char SetupDCButton_Tab[][2][5][14]=
 
 const char SetupIRButton_Tab[][2][5][14]=
 {
-    {{"测量设置","测量配置","系统设置","   ","    "},{"DISP","CONFIG","SYSSET","     ","   "}},
+    {{"测量设置","测量配置","系统设置","组别+  ","组别-  ",},{"DISP","CONFIG","SYSSET","     ","   "}},
     {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ADD  ","  DEL  ","  COPY  ","  PREV  ","  NEXT  "}},
     {{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "},{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "}},
     {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
@@ -1873,7 +1874,7 @@ void Disp_SYS_Set_Item(void)
 	Disp_mainitem(3);
     GUI_SetColor(White);
 	GUI_SetBkColor(LCD_COLOR_TEST_BACK);
-//    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter=1;
+//    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter=1;
     for(i=0;i<7;i++)
     {
         if(i<4)
@@ -1905,22 +1906,31 @@ void Disp_Test_Set_Item(void)
 	Disp_mainitem(1);
     GUI_SetColor(White);
 	GUI_SetBkColor(LCD_COLOR_TEST_BACK);
-//    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter=1;
+//    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter=1;
 //    num=(sizeof(Setup_Tab[0])/(sizeof(Setup_Tab[0][0])));
-    num=MAX_SETP[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+    num=MAX_SETP[U9001_Save_sys.
+		U9001_save[U9001_Save_sys.currentgroup].
+		U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].
+		parameter];
     for(i=0;i<num;i++)
     {
         if(i%2==0)
         {
-            GUI_DispStringAt(Setup_Tab[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter][i][U9001_Save_sys.U9001_SYS.language],LIST1, FIRSTLINE+SPACE1*((i/2)));
+					GUI_DispStringAt(Setup_Tab[U9001_Save_sys.
+					U9001_save[U9001_Save_sys.currentgroup].
+					U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+					current_step].parameter][i][U9001_Save_sys.U9001_SYS.language],
+					LIST1, FIRSTLINE+SPACE1*((i/2)));
 
         }
         else
         {
-
-            
-             GUI_DispStringAt(Setup_Tab[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter][i][U9001_Save_sys.U9001_SYS.language],LIST2, FIRSTLINE+SPACE1*(i-1)/2);
-            
+    
+					GUI_DispStringAt(Setup_Tab[U9001_Save_sys.
+					U9001_save[U9001_Save_sys.currentgroup].
+					U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+					current_step].parameter][i][U9001_Save_sys.U9001_SYS.language],
+					LIST2, FIRSTLINE+SPACE1*(i-1)/2);           
             
         }	
     }
@@ -1948,9 +1958,11 @@ void Disp_Test_List(u8 i)
     
     GUI_DispStringAt(DispBuf,80,40+20*(i));//TEST_UNIT
     
-		if(U9001_Save_sys.U9001_save.all_step == 2)
+		if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step == 2)
 		{
-			if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter == IR)
+			if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+				U9001_Setup[U9001_Save_sys.
+				U9001_save[U9001_Save_sys.currentgroup].current_step].parameter == IR)
 			{
 				memset(sendbuff1,0,20);
 				memcpy(sendbuff1,DispBuf,4);
@@ -1960,7 +1972,7 @@ void Disp_Test_List(u8 i)
 				memcpy(sendbuff,DispBuf,4);
 				strcat(sendbuff,"kV;");
 			}
-//			if(U9001_Save_sys.U9001_save.current_step == 2)
+//			if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step == 2)
 //			{
 //				memset(sendbuff1,0,20);
 //				memcpy(sendbuff1,DispBuf,4);
@@ -1981,7 +1993,7 @@ void Disp_Test_List(u8 i)
 //    {  
 //        test_value=IntToStr(Resistance);
 //        //                Hex_Format(test_value.num,test_value.dot,4,0);
-//        Hex_Format(test_value.num,Test_dot[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter][Range],4,0);
+//        Hex_Format(test_value.num,Test_dot[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter][Range],4,0);
 //    }
 //    if(Test_mid.set_item==IR_SETUP)//Test_IRUINT
 //    {
@@ -1989,7 +2001,9 @@ void Disp_Test_List(u8 i)
 //    }else if((Test_mid.set_item==ACW_SETUP)||(Test_mid.set_item==DCW_SETUP))
 //        strcat(DispBuf,"mA ");
 //    GUI_DispStringAt(DispBuf,160,40+20*(i));
-    switch(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter)
+    switch(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+			U9001_Setup[U9001_Save_sys.
+			U9001_save[U9001_Save_sys.currentgroup].current_step].parameter)
     {
         case AC:
         case DC:
@@ -2004,11 +2018,15 @@ void Disp_Test_List(u8 i)
 		//                        Hex_Format(test_value.num,1,3,0);
 						 if(U9001_Save_sys.U9001_Testconfg.clear == 1)
 						 {
-							 if(Test_Value.I_R < U9001_Save_sys.U9001_save.clearvalue[U9001_Save_sys.U9001_save.current_step-1])
+							 if(Test_Value.I_R < U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								 clearvalue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								 current_step-1])
 							 {
 								 Test_Value.I_R = 0;
 							 }else{
-								 Test_Value.I_R -= U9001_Save_sys.U9001_save.clearvalue[U9001_Save_sys.U9001_save.current_step-1];
+								 Test_Value.I_R -= U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								 clearvalue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								 current_step-1];
 							 }
 						 }
 						 if(Range==1)
@@ -2097,6 +2115,12 @@ void Disp_Idel_list(void)
     UnitNum_typedef Disp_Value;
 	Disp_Fastbutton(1);
     Disp_mainitem(5);//Test_List_Tab
+		GUI_SetColor(LCD_COLOR_TEST_BACK);
+		GUI_FillRect(200,3,370,24);
+		GUI_SetTextMode(GUI_TEXTMODE_TRANS);
+		GUI_SetColor(GUI_WHITE);
+		sprintf(DispBuf,"Group %0.2d",U9001_Save_sys.currentgroup+1);
+		GUI_DispStringAt(DispBuf,200,3);//显示组别
     GUI_SetColor(GUI_WHITE);
     GUI_SetFont(&GUI_FontGUI_FONTXBFFON16);
     for(i=0;i<3;i++)
@@ -2105,25 +2129,27 @@ void Disp_Idel_list(void)
     
     }
     GUI_SetFont(&GUI_Font20_ASCII);
-    for(i=0;i<U9001_Save_sys.U9001_save.all_step;i++)
+    for(i=0;i<U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step;i++)
     {
         GUI_DispDecAt(i+1,20,40+20*(i+1),2);
         
-        GUI_DispStringAt(TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],50,40+20*(i+1));
+        GUI_DispStringAt(TestPara[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+				U9001_Setup[i+1].parameter],50,40+20*(i+1));
     }
     GUI_SetColor(GUI_LIGHTYELLOW);
     GUI_SetFont(&GUI_FontGUI_FONTXBFFON16);
-    for(i=0;i<U9001_Save_sys.U9001_save.all_step;i++)
+    for(i=0;i<U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step;i++)
     {
-        Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[i+1].V_out,3,4,FALSE);
+        Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[i+1].V_out,3,4,FALSE);
         strcat(DispBuf,"kV");
         GUI_DispStringAt(DispBuf,80,40+20*(i+1));//TEST_UNIT
         
-        Disp_Value=IntToStr_mA(U9001_Save_sys.U9001_save.U9001_Setup[i+1].Upper);
+        Disp_Value=IntToStr_mA(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[i+1].Upper);
         Hex_Format(Disp_Value.num,Disp_Value.dot,4,FALSE);
-        if((U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter==AC)||(U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter==DC))
+        if((U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[i+1].parameter==AC)||
+					(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[i+1].parameter==DC))
             strcat(DispBuf,TEST_UNIT[1][0]);
-        else if(U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter==IR)
+        else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[i+1].parameter==IR)
         {
             strcat(DispBuf,TEST_UNIT[Disp_Value.uint][1]);
         }
@@ -2142,39 +2168,69 @@ void Disp_Idel_Item(void)
     
 	Disp_Fastbutton(1);
 	Disp_mainitem(0);
+	GUI_SetColor(LCD_COLOR_TEST_BACK);
+		GUI_FillRect(200,3,370,24);
+		GUI_SetTextMode(GUI_TEXTMODE_TRANS);
+		GUI_SetColor(GUI_WHITE);
+		sprintf(DispBuf,"Group %0.2d",U9001_Save_sys.currentgroup+1);
+		GUI_DispStringAt(DispBuf,200,3);//显示组别
     GUI_SetColor(GUI_WHITE);
 	GUI_SetBkColor(LCD_COLOR_TEST_BACK);
+	
     for(i=0;i<(sizeof(Idel_Tab[0])/(sizeof(Idel_Tab[0][0])));i++)
     {
         if((i%2)==0)
         {
           
-            GUI_DispStringAt(Idel_Tab[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter][i][U9001_Save_sys.U9001_SYS.language],LIST1, FIRSTLINE+SPACE1*((i+1)/2));
+					GUI_DispStringAt(Idel_Tab[U9001_Save_sys.
+					U9001_save[U9001_Save_sys.currentgroup].
+					U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+					current_step].parameter][i][U9001_Save_sys.U9001_SYS.language],
+					LIST1, FIRSTLINE+SPACE1*((i+1)/2));
         }
         else
         {
         
-             GUI_DispStringAt(Idel_Tab[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter][i][U9001_Save_sys.U9001_SYS.language],LIST2, FIRSTLINE+SPACE1*((i-1)/2));
+				  GUI_DispStringAt(Idel_Tab[U9001_Save_sys.
+					U9001_save[U9001_Save_sys.currentgroup].
+					U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+					current_step].parameter][i][U9001_Save_sys.U9001_SYS.language],
+					LIST2, FIRSTLINE+SPACE1*((i-1)/2));
             
         }	
     }
     GUI_SetColor(GUI_WHITE);
-    sprintf(DispBuf,"%d/%d",U9001_Save_sys.U9001_save.current_step,U9001_Save_sys.U9001_save.all_step);
+    sprintf(DispBuf,"%d/%d",U9001_Save_sys.
+		U9001_save[U9001_Save_sys.currentgroup].
+		current_step,U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step);
     GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE);//显示步骤
-    GUI_DispStringAt(TestPara[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter],LISTVALUE2,FIRSTLINE+0*SPACE1);//参数
-    switch(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter)
+    GUI_DispStringAt(TestPara[U9001_Save_sys.
+		U9001_save[U9001_Save_sys.currentgroup].
+		U9001_Setup[U9001_Save_sys.
+		U9001_save[U9001_Save_sys.currentgroup].current_step].parameter],
+		LISTVALUE2,FIRSTLINE+0*SPACE1);//参数
+    switch(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+			U9001_Setup[U9001_Save_sys.
+		U9001_save[U9001_Save_sys.currentgroup].current_step].parameter)
     {
         case AC:
     
     
-            Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out,3,4,FALSE);
+					Hex_Format(U9001_Save_sys.
+					U9001_save[U9001_Save_sys.currentgroup].
+					U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+					current_step].V_out,3,4,FALSE);
             strcat(DispBuf,"kV");
             GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+SPACE1);//电压
-            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time)
+            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+							U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+							current_step].time)
             {
-                Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time,1,4,FALSE);
-                strcat(DispBuf,"s");
-                GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+2*SPACE1);//测试时间
+							Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+							U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+							current_step].time,1,4,FALSE);
+							strcat(DispBuf,"s");
+							GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+2*SPACE1);//测试时间
             }
             else//
             {
@@ -2182,16 +2238,29 @@ void Disp_Idel_Item(void)
             }
              if(U9001_Save_sys.U9001_Testconfg.ARC_mode)//等级
             {
-                if((U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc>0)&&(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc<=9))
-                    GUI_DispDecAt(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc,LISTVALUE1,FIRSTLINE+3*SPACE1,1);
+                if((U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[U9001_Save_sys.
+									U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc>0)&&
+									(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									current_step].range_arc<=9))
+										GUI_DispDecAt(U9001_Save_sys.
+										U9001_save[U9001_Save_sys.currentgroup].
+										U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+										current_step].range_arc,LISTVALUE1,FIRSTLINE+3*SPACE1,1);
                 else
                     GUI_DispStringAt(Switch_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+3*SPACE1);
             }
             else
             {
-                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc)
+                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									current_step].range_arc)
                 {
-                    Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc,1,3,FALSE);
+                    Hex_Format(U9001_Save_sys.
+										U9001_save[U9001_Save_sys.currentgroup].
+										U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+										current_step].range_arc,1,3,FALSE);
                     strcat(DispBuf,"mA");
                     
                     GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+3*SPACE1);
@@ -2201,15 +2270,23 @@ void Disp_Idel_Item(void)
                     GUI_DispStringAt(Switch_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+3*SPACE1);
             }
             
-//             Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num,U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.dot,4,FALSE);
-            Disp_Value=IntToStr_mA(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper);
+//             Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper.num,U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper.dot,4,FALSE);
+            Disp_Value=IntToStr_mA(U9001_Save_sys.
+						U9001_save[U9001_Save_sys.currentgroup].
+						U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+						current_step].Upper);
             Hex_Format(Disp_Value.num,Disp_Value.dot,4,FALSE);
             strcat(DispBuf,TEST_UNIT[1][0]);
             GUI_DispStringAt(DispBuf,LISTVALUE2,FIRSTLINE+1*SPACE1);//上限
             
-             if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower)
+             if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+							 U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+							 current_step].lower)
             {
-                Disp_Value=IntToStr_mA(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower);
+                Disp_Value=IntToStr_mA(U9001_Save_sys.
+								U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								current_step].lower);
                 Hex_Format(Disp_Value.num,Disp_Value.dot,4,FALSE);
                 strcat(DispBuf,TEST_UNIT[1][0]);
                
@@ -2232,12 +2309,18 @@ void Disp_Idel_Item(void)
         case DC:
             
     
-            Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out,3,4,FALSE);
+            Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+						U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+						current_step].V_out,3,4,FALSE);
             strcat(DispBuf,"kV");
             GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+SPACE1);//电压
-            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time)
+            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+							U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+							current_step].time)
             {
-                Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time,1,4,FALSE);
+                Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								current_step].time,1,4,FALSE);
                 strcat(DispBuf,"s");
                 GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+2*SPACE1);//测试时间
             }
@@ -2245,9 +2328,9 @@ void Disp_Idel_Item(void)
             {
                 GUI_DispStringAt(Continue_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+2*SPACE1);//测试时间
             }
-//            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time!=0)
+//            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time!=0)
 //            {
-//                Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time,1,4,FALSE);
+//                Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time,1,4,FALSE);
 //                strcat(DispBuf,"s");
 //                GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+3*SPACE1);//缓升时间时间 
 //            }
@@ -2257,9 +2340,9 @@ void Disp_Idel_Item(void)
 //                GUI_DispStringAt(Switch_Tab[0][U9001_save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+3*SPACE1);
 //            }
     
-//            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time!=0)
+//            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time!=0)
 //            {
-//                Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time,1,4,FALSE);
+//                Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time,1,4,FALSE);
 //                strcat(DispBuf,"s");
 //                GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+4*SPACE1);//下降时间时间 
 //            }
@@ -2268,24 +2351,32 @@ void Disp_Idel_Item(void)
 //            
 //                GUI_DispStringAt(Switch_Tab[0][U9001_save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+4*SPACE1);
 //            }
-//            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check)
+//            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check)
 //            {
-//                Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check,1,4,FALSE);
+//                Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check,1,4,FALSE);
 //                strcat(DispBuf,"uA");
 //                GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+5*SPACE1);//检测
 //            
 //            }
 //            else
-//                GUI_DispStringAt(Switch_Tab[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check][U9001_save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+5*SPACE1);
-            Disp_Value=IntToStr_mA(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper);
+//                GUI_DispStringAt(Switch_Tab[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check][U9001_save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+5*SPACE1);
+            Disp_Value=IntToStr_mA(U9001_Save_sys.
+						U9001_save[U9001_Save_sys.currentgroup].
+						U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+						current_step].Upper);
             Hex_Format(Disp_Value.num,Disp_Value.dot,4,FALSE);
             strcat(DispBuf,TEST_UNIT[1][0]);
 
             GUI_DispStringAt(DispBuf,LISTVALUE2,FIRSTLINE+1*SPACE1);//上限
     
-            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower)
+            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+							U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+							current_step].lower)
             {
-                Disp_Value=IntToStr_mA(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower);
+                Disp_Value=IntToStr_mA(U9001_Save_sys.
+							U9001_save[U9001_Save_sys.currentgroup].
+							U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+							current_step].lower);
                 
                 Hex_Format(Disp_Value.num,Disp_Value.dot,4,FALSE);
                 strcat(DispBuf,TEST_UNIT[1][0]);
@@ -2296,18 +2387,35 @@ void Disp_Idel_Item(void)
             
              if(U9001_Save_sys.U9001_Testconfg.ARC_mode)//电弧等级
             {
-                if((U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc>0)&&(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc<=9))
-                    GUI_DispDecAt(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc,LISTVALUE1,FIRSTLINE+3*SPACE1,1);
+                if((U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									current_step].range_arc>0)&&
+								(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								current_step].range_arc<=9))
+                    GUI_DispDecAt(U9001_Save_sys.
+								U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								current_step].range_arc,LISTVALUE1,FIRSTLINE+3*SPACE1,1);
                 else
                     GUI_DispStringAt(Switch_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+3*SPACE1);
             }
             else
             {
-                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc)
+                if(U9001_Save_sys.
+									U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								current_step].range_arc)
                 {
-                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc>200)
-                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc=200;
-                    Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc,1,3,FALSE);
+                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+											U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+											current_step].range_arc>200)
+                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+											U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+											current_step].range_arc=200;
+                    Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+										U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+										current_step].range_arc,1,3,FALSE);
                     strcat(DispBuf,"mA");
                     GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+3*SPACE1);
                 
@@ -2315,9 +2423,9 @@ void Disp_Idel_Item(void)
                 else
                     GUI_DispStringAt(Switch_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+3*SPACE1);
             }
-//            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last)
+//            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last)
 //            {
-//                Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last,2,4,FALSE);
+//                Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last,2,4,FALSE);
 //                strcat(DispBuf,"s");
 //                GUI_DispStringAt(DispBuf,LISTVALUE2,4*SPACE1);
 //            }else
@@ -2338,12 +2446,18 @@ void Disp_Idel_Item(void)
             GUI_DispStringAt("s",DISP_V_XPOS+140-40,DISP_V_YPOS+100+23);
             break;
         case IR:
-            Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out,3,4,FALSE);
+            Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+					U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+					current_step].V_out,3,4,FALSE);
             strcat(DispBuf,"kV");
             GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+SPACE1);//电压
-            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time)
+            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+							U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+							current_step].time)
             {
-                Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time,1,4,FALSE);
+                Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								current_step].time,1,4,FALSE);
                 strcat(DispBuf,"s");
                 GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+2*SPACE1);//测试时间
             }
@@ -2352,9 +2466,13 @@ void Disp_Idel_Item(void)
                 GUI_DispStringAt(Continue_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+2*SPACE1);//测试时间
             }
 
-           if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper)
+           if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+						 U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+						current_step].Upper)
            {
-                Disp_Value=IntToStr(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper);
+                Disp_Value=IntToStr(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								current_step].Upper);
                 Hex_Format(Disp_Value.num,Disp_Value.dot,4,FALSE);
                 strcat(DispBuf,TEST_UNIT[Disp_Value.uint][1]);
 
@@ -2363,14 +2481,16 @@ void Disp_Idel_Item(void)
            else
                GUI_DispStringAt(Switch_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE2,FIRSTLINE+1*SPACE1);
           
-            Disp_Value=IntToStr(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower);
+            Disp_Value=IntToStr(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+					 U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+					 current_step].lower);
             Hex_Format(Disp_Value.num,Disp_Value.dot,4,FALSE);
             strcat(DispBuf,TEST_UNIT[Disp_Value.uint][1]);
             GUI_DispStringAt(DispBuf,LISTVALUE2,FIRSTLINE+2*SPACE1);//下限
            
-//            GUI_DispStringAt(Setup_Range_Tab[U9001_save_sys.U9001_SYS.language][U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc],LISTVALUE2,3*SPACE1);
+//            GUI_DispStringAt(Setup_Range_Tab[U9001_save_sys.U9001_SYS.language][U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc],LISTVALUE2,3*SPACE1);
 //       
-//           GUI_DispStringAt(Switch_Tab[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last][U9001_save_sys.U9001_SYS.language],LISTVALUE2,4*SPACE1);
+//           GUI_DispStringAt(Switch_Tab[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last][U9001_save_sys.U9001_SYS.language],LISTVALUE2,4*SPACE1);
              GUI_SetColor(GUI_YELLOW);
             GUI_SetBkColor(LCD_COLOR_TEST_BACK);
             GUI_SetTextMode(GUI_TEXTMODE_NORMAL);
@@ -2384,24 +2504,40 @@ void Disp_Idel_Item(void)
             GUI_DispStringAt("s",DISP_V_XPOS+140-40,DISP_V_YPOS+100+23);
             break;
         case OS:
-            sprintf(DispBuf,"%3d%%",U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower);
+            sprintf(DispBuf,"%3d%%",U9001_Save_sys.
+						U9001_save[U9001_Save_sys.currentgroup].
+						U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+						current_step].lower);
             GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+SPACE1);
-            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>=100)
+            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+							U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+							current_step].Upper>=100)
             {
-                sprintf(DispBuf,"%3d%%",U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper);
+                sprintf(DispBuf,"%3d%%",U9001_Save_sys.
+								U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								current_step].Upper);
                 GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+2*SPACE1);
             }
             else
                GUI_DispStringAt(Switch_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+2*SPACE1); 
             
-            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last)
+            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+							U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+							current_step].equa_last)
             {
-//                Disp_Value=FToStr(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last);
-				if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last >= 1000)
+//                Disp_Value=FToStr(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last);
+				if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+					U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+					current_step].equa_last >= 1000)
 				{
-					Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last/10,2,4,0);
+					Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+					U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+					current_step].equa_last/10,2,4,0);
 				}else{
-					Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last,3,4,0);
+					Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+					U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+					current_step].equa_last,3,4,0);
 				}
                 
                 strcat(DispBuf,Disp_Unit[1]);
@@ -2424,11 +2560,17 @@ void Disp_Idel_Item(void)
         case PA:
              GUI_DispStringAt("PAUSE",LISTVALUE1,FIRSTLINE+SPACE1);
 		
-			GUI_DispStringAt(Switch_Tab[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check]
+			GUI_DispStringAt(Switch_Tab[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+				U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+				current_step].check]
 							[U9001_Save_sys.U9001_SYS.language],LISTVALUE2,FIRSTLINE+1*SPACE1);
-			if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time)
+			if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+				U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+				current_step].time)
             {
-                Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time,1,4,FALSE);
+                Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+							U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+							current_step].time,1,4,FALSE);
                 strcat(DispBuf,"s");
                 GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+2*SPACE1);//测试时间
             }
@@ -2458,7 +2600,7 @@ void Disp_Test_SetConfig_Item(void)
 	Disp_mainitem(2);
     GUI_SetColor(White);
 	GUI_SetBkColor(LCD_COLOR_TEST_BACK);
-//    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter=1;
+//    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter=1;
     for(i=0;i<(sizeof(SetupConfig_Tab)/(sizeof(SetupConfig_Tab[0])));i++)
     {
         if((i%2)==0)
@@ -2687,9 +2829,15 @@ void DispSet_value(uint8_t list)
 {
 	vu32 i;
 //	vu32 Black_Select;
-    u8 num=(MAX_SETP[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter]+1)/2;
+    u8 num=(MAX_SETP[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter]+1)/2;
     UnitNum_typedef Disp_Value;
-    for(i=1;i<MAX_SETP[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter]+1;i++)
+		GUI_SetColor(LCD_COLOR_TEST_BACK);
+		GUI_FillRect(200,3,370,24);
+		GUI_SetTextMode(GUI_TEXTMODE_TRANS);
+		GUI_SetColor(GUI_WHITE);
+		sprintf(DispBuf,"Group %0.2d",U9001_Save_sys.currentgroup+1);
+		GUI_DispStringAt(DispBuf,200,3);//显示组别
+    for(i=1;i<MAX_SETP[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter]+1;i++)
     {
         if(i==list)
         {
@@ -2709,20 +2857,20 @@ void DispSet_value(uint8_t list)
     }
     GUI_SetTextMode(GUI_TEXTMODE_TRANS);
     GUI_SetColor(GUI_WHITE);
-    sprintf(DispBuf,"%d/%d",U9001_Save_sys.U9001_save.current_step,U9001_Save_sys.U9001_save.all_step);
+    sprintf(DispBuf,"%d/%d",U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step,U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step);
     GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE);//显示步骤
-    GUI_DispStringAt(TestPara[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter],LISTVALUE2,FIRSTLINE+0*SPACE1);//参数
-    switch(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter)
+    GUI_DispStringAt(TestPara[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter],LISTVALUE2,FIRSTLINE+0*SPACE1);//参数
+    switch(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter)
     {
         case AC:
     
     
-            Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out,3,4,FALSE);
+            Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out,3,4,FALSE);
             strcat(DispBuf,"kV");
             GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+SPACE1);//电压
-            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time)
+            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time)
             {
-                Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time,1,4,FALSE);
+                Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time,1,4,FALSE);
                 strcat(DispBuf,"s");
                 GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+2*SPACE1);//测试时间
             }
@@ -2730,9 +2878,9 @@ void DispSet_value(uint8_t list)
             {
                 GUI_DispStringAt(Continue_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+2*SPACE1);//连续测试
             }
-            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time!=0)
+            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time!=0)
             {
-                Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time,1,4,FALSE);
+                Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time,1,4,FALSE);
                 strcat(DispBuf,"s");
                 GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+3*SPACE1);//缓升时间时间 
             }
@@ -2742,9 +2890,9 @@ void DispSet_value(uint8_t list)
                 GUI_DispStringAt(Switch_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+3*SPACE1);
             }
     
-            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time!=0)
+            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time!=0)
             {
-                Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time,1,4,FALSE);
+                Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time,1,4,FALSE);
                 strcat(DispBuf,"s");
                 GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+4*SPACE1);//下降时间时间 
             }
@@ -2756,14 +2904,14 @@ void DispSet_value(uint8_t list)
 
     
 	
-            Disp_Value=IntToStr_mA(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper);
+            Disp_Value=IntToStr_mA(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper);
            Hex_Format(Disp_Value.num,Disp_Value.dot,4,FALSE);
             strcat(DispBuf,TEST_UNIT[1][0]);
             GUI_DispStringAt(DispBuf,LISTVALUE2,FIRSTLINE+1*SPACE1);//上限
     
-            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower)
+            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower)
             {
-                Disp_Value=IntToStr_mA(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower);
+                Disp_Value=IntToStr_mA(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower);
                 Hex_Format(Disp_Value.num,Disp_Value.dot,4,FALSE);
                 strcat(DispBuf,TEST_UNIT[1][0]);
                
@@ -2773,18 +2921,18 @@ void DispSet_value(uint8_t list)
                 GUI_DispStringAt(Switch_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE2,FIRSTLINE+2*SPACE1);
             if(U9001_Save_sys.U9001_Testconfg.ARC_mode)//等级
             {
-                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc>9)
-                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc=9;
-                if((U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc>0)&&(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc<=9))
-                    GUI_DispDecAt(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc,LISTVALUE2,FIRSTLINE+3*SPACE1,1);
+                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc>9)
+                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc=9;
+                if((U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc>0)&&(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc<=9))
+                    GUI_DispDecAt(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc,LISTVALUE2,FIRSTLINE+3*SPACE1,1);
                 else
                     GUI_DispStringAt(Switch_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE2,FIRSTLINE+3*SPACE1);
             }
             else
             {
-                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc)
+                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc)
                 {
-                    Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc,1,3,FALSE);
+                    Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc,1,3,FALSE);
                     strcat(DispBuf,"mA");
                     
                     GUI_DispStringAt(DispBuf,LISTVALUE2,FIRSTLINE+3*SPACE1);
@@ -2798,12 +2946,12 @@ void DispSet_value(uint8_t list)
         case DC:
             
     
-            Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out,3,4,FALSE);
+            Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out,3,4,FALSE);
             strcat(DispBuf,"kV");
             GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+SPACE1);//电压
-            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time)
+            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time)
             {
-                Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time,1,4,FALSE);
+                Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time,1,4,FALSE);
                 strcat(DispBuf,"s");
                 GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+2*SPACE1);//测试时间
             }
@@ -2811,9 +2959,9 @@ void DispSet_value(uint8_t list)
             {
                 GUI_DispStringAt(Continue_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+2*SPACE1);//测试时间
             }
-            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time!=0)
+            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time!=0)
             {
-                Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time,1,4,FALSE);
+                Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time,1,4,FALSE);
                 strcat(DispBuf,"s");
                 GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+3*SPACE1);//缓升时间时间 
             }
@@ -2823,9 +2971,9 @@ void DispSet_value(uint8_t list)
                 GUI_DispStringAt(Switch_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+3*SPACE1);
             }
     
-            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time!=0)
+            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time!=0)
             {
-                Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time,1,4,FALSE);
+                Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time,1,4,FALSE);
                 strcat(DispBuf,"s");
                 GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+4*SPACE1);//下降时间时间 
             }
@@ -2834,26 +2982,26 @@ void DispSet_value(uint8_t list)
             
                 GUI_DispStringAt(Switch_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+4*SPACE1);
             }
-            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check)
+            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check)
             {
-                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check>=3500)
-                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=3500;
-                Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check,1,4,FALSE);
+                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check>=3500)
+                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check=3500;
+                Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check,1,4,FALSE);
                 strcat(DispBuf,"uA");
                 GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+5*SPACE1);//检测
             
             }
             else
-                GUI_DispStringAt(Switch_Tab[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+5*SPACE1);
-            Disp_Value=IntToStr_mA(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper);
+                GUI_DispStringAt(Switch_Tab[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+5*SPACE1);
+            Disp_Value=IntToStr_mA(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper);
             
             Hex_Format(Disp_Value.num,Disp_Value.dot,4,FALSE);
             strcat(DispBuf,TEST_UNIT[1][0]);//strcat(DispBuf,TEST_UNIT[1][0]);
             GUI_DispStringAt(DispBuf,LISTVALUE2,FIRSTLINE+1*SPACE1);//上限
     
-            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower)
+            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower)
             {
-                Disp_Value=IntToStr_mA(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower);
+                Disp_Value=IntToStr_mA(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower);
                 Hex_Format(Disp_Value.num,Disp_Value.dot,4,FALSE);
                 strcat(DispBuf,TEST_UNIT[1][0]);
                 GUI_DispStringAt(DispBuf,LISTVALUE2,FIRSTLINE+2*SPACE1);//下限
@@ -2863,18 +3011,18 @@ void DispSet_value(uint8_t list)
             
              if(U9001_Save_sys.U9001_Testconfg.ARC_mode)//电弧等级
             {
-                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc>9)
-                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc=9;
-                if((U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc>0)&&(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc<=9))
-                    GUI_DispDecAt(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc,LISTVALUE2,FIRSTLINE+3*SPACE1,1);
+                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc>9)
+                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc=9;
+                if((U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc>0)&&(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc<=9))
+                    GUI_DispDecAt(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc,LISTVALUE2,FIRSTLINE+3*SPACE1,1);
                 else
                     GUI_DispStringAt(Switch_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE2,FIRSTLINE+3*SPACE1);
             }
             else
             {
-                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc)
+                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc)
                 {
-                    Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc,1,4,FALSE);
+                    Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc,1,4,FALSE);
                     strcat(DispBuf,"mA");
                     GUI_DispStringAt(DispBuf,LISTVALUE2,FIRSTLINE+3*SPACE1);
                 
@@ -2882,9 +3030,9 @@ void DispSet_value(uint8_t list)
                 else
                     GUI_DispStringAt(Switch_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE2,FIRSTLINE+3*SPACE1);
             }
-            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last)
+            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last)
             {
-                Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last,1,4,FALSE);
+                Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last,1,4,FALSE);
                 strcat(DispBuf,"s");
                 GUI_DispStringAt(DispBuf,LISTVALUE2,FIRSTLINE+4*SPACE1);
             }else
@@ -2893,12 +3041,12 @@ void DispSet_value(uint8_t list)
             }
             break;
         case IR:
-            Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out,3,4,FALSE);
+            Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out,3,4,FALSE);
             strcat(DispBuf,"kV");
             GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+SPACE1);//电压
-            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time)
+            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time)
             {
-                Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time,1,4,FALSE);
+                Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time,1,4,FALSE);
                 strcat(DispBuf,"s");
                 GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+2*SPACE1);//测试时间
             }
@@ -2906,9 +3054,9 @@ void DispSet_value(uint8_t list)
             {
                 GUI_DispStringAt(Continue_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+2*SPACE1);//测试时间
             }
-            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time!=0)
+            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time!=0)
             {
-                Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time,1,4,FALSE);
+                Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time,1,4,FALSE);
                 strcat(DispBuf,"s");
                 GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+3*SPACE1);//缓升时间时间 
             }
@@ -2918,9 +3066,9 @@ void DispSet_value(uint8_t list)
                 GUI_DispStringAt(Switch_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+3*SPACE1);
             }
     
-            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time!=0)
+            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time!=0)
             {
-                Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time,1,4,FALSE);
+                Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time,1,4,FALSE);
                 strcat(DispBuf,"s");
                 GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+4*SPACE1);//下降时间时间 
             }
@@ -2929,9 +3077,9 @@ void DispSet_value(uint8_t list)
             
                 GUI_DispStringAt(Switch_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+4*SPACE1);
             }
-           if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper)
+           if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper)
            {
-                Disp_Value=IntToStr(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper);
+                Disp_Value=IntToStr(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper);
                 Hex_Format(Disp_Value.num,Disp_Value.dot,4,FALSE);
                 strcat(DispBuf,TEST_UNIT[Disp_Value.uint][1]);
 
@@ -2940,35 +3088,35 @@ void DispSet_value(uint8_t list)
            else
                GUI_DispStringAt(Switch_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE2,FIRSTLINE+1*SPACE1);
           
-            Disp_Value=IntToStr(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower);
+            Disp_Value=IntToStr(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower);
             Hex_Format(Disp_Value.num,Disp_Value.dot,4,FALSE);
             strcat(DispBuf,TEST_UNIT[Disp_Value.uint][1]);
             GUI_DispStringAt(DispBuf,LISTVALUE2,FIRSTLINE+2*SPACE1);//下限
            
-            GUI_DispStringAt(Setup_Range_Tab[U9001_Save_sys.U9001_SYS.language][U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc],LISTVALUE2,FIRSTLINE+3*SPACE1);
+            GUI_DispStringAt(Setup_Range_Tab[U9001_Save_sys.U9001_SYS.language][U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc],LISTVALUE2,FIRSTLINE+3*SPACE1);
        
-           GUI_DispStringAt(Switch_Tab[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check][U9001_Save_sys.U9001_SYS.language],LISTVALUE2,FIRSTLINE+4*SPACE1);
+           GUI_DispStringAt(Switch_Tab[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check][U9001_Save_sys.U9001_SYS.language],LISTVALUE2,FIRSTLINE+4*SPACE1);
             
             break;
         case OS:
-            sprintf(DispBuf,"%3d%%",U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower);
+            sprintf(DispBuf,"%3d%%",U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower);
             GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+SPACE1);
-            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>=100)
+            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>=100)
             {
-                sprintf(DispBuf,"%3d%%",U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper);
+                sprintf(DispBuf,"%3d%%",U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper);
                 GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+2*SPACE1);
             }
             else
                GUI_DispStringAt(Switch_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE+2*SPACE1); 
             
-            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last)
+            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last)
             {
-//                Disp_Value=FToStr(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last);
-				if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last >= 1000)
+//                Disp_Value=FToStr(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last);
+				if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last >= 1000)
 				{
-					Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last/10,2,4,0);
+					Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last/10,2,4,0);
 				}else{
-					Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last,3,4,0);
+					Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last,3,4,0);
 				}
                 
                 strcat(DispBuf,Disp_Unit[1]);
@@ -2980,11 +3128,11 @@ void DispSet_value(uint8_t list)
         case PA:
             GUI_DispStringAt("PAUSE",LISTVALUE1,FIRSTLINE+SPACE1);
 		
-			GUI_DispStringAt(Switch_Tab[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check]
+			GUI_DispStringAt(Switch_Tab[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check]
 							[U9001_Save_sys.U9001_SYS.language],LISTVALUE2,FIRSTLINE+1*SPACE1);
-			if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time)
+			if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time)
             {
-                Hex_Format(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time,1,4,FALSE);
+                Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time,1,4,FALSE);
                 strcat(DispBuf,"s");
                 GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+2*SPACE1);//测试时间
             }
@@ -2999,7 +3147,7 @@ void DispSet_value(uint8_t list)
     
     }
     
-    dispSetupButtonvalue(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter, list);
+    dispSetupButtonvalue(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter, list);
     //增加最下面的提示
 
 }
@@ -3302,7 +3450,7 @@ void Disp_SysSet_value(uint8_t list)
     GUI_SetTextMode(GUI_TEXTMODE_TRANS);
     GUI_SetColor(GUI_WHITE);
    
-//    sprintf(DispBuf,"%d/%d",U9001_Save_sys.U9001_save.current_step,U9001_Save_sys.U9001_save.all_step);
+//    sprintf(DispBuf,"%d/%d",U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step,U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step);
     GUI_DispStringAt(Sys_SetValue[0][U9001_Save_sys.U9001_SYS.language][U9001_Save_sys.U9001_SYS.language],LISTVALUE1,FIRSTLINE);//语言
     GUI_DispStringAt(Sys_SetValue[1][U9001_Save_sys.U9001_SYS.language][U9001_Save_sys.U9001_SYS.pass_beep],LISTVALUE1,FIRSTLINE+1*SPACE1);//合格讯响
     GUI_DispStringAt(Sys_SetValue[2][U9001_Save_sys.U9001_SYS.language][U9001_Save_sys.U9001_SYS.fail_beep],LISTVALUE1,FIRSTLINE+2*SPACE1);//合格讯响
@@ -3979,14 +4127,14 @@ void Disp_Testvalue(u8 test)
 {
     UnitNum_typedef test_value;
     GUI_SetColor(GUI_WHITE);
-    sprintf(DispBuf,"%d/%d",U9001_Save_sys.U9001_save.current_step,U9001_Save_sys.U9001_save.all_step);
+    sprintf(DispBuf,"%d/%d",U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step,U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step);
     GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE);//显示步骤
-    GUI_DispStringAt(TestPara[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter],LISTVALUE2,FIRSTLINE+0*SPACE1);//参数
+    GUI_DispStringAt(TestPara[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter],LISTVALUE2,FIRSTLINE+0*SPACE1);//参数
     GUI_SetBkColor(LCD_COLOR_TEST_BACK);
     GUI_SetColor(GUI_LIGHTYELLOW);
     GUI_SetTextMode(GUI_TEXTMODE_NORMAL);
     GUI_SetFont(&GUI_FontGUI_FONTXBFFON50);
-    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter!=PA)
+    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter!=PA)
     {
          if(test==1)
         {
@@ -3998,9 +4146,9 @@ void Disp_Testvalue(u8 test)
         }
     }
     
-		if(U9001_Save_sys.U9001_save.all_step == 2)
+		if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step == 2)
 		{
-			if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter == IR)
+			if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter == IR)
 			{
 				memset(sendbuff1,0,20);
 				memcpy(sendbuff1,DispBuf,4);
@@ -4010,7 +4158,7 @@ void Disp_Testvalue(u8 test)
 				memcpy(sendbuff,DispBuf,4);
 				strcat(sendbuff,"kV;");
 			}
-//			if(U9001_Save_sys.U9001_save.current_step == 2)
+//			if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step == 2)
 //			{
 //				memset(sendbuff1,0,20);
 //				memcpy(sendbuff1,DispBuf,4);
@@ -4027,7 +4175,7 @@ void Disp_Testvalue(u8 test)
 		}
 		
     GUI_DispStringAt(DispBuf,DISP_V_XPOS+50,DISP_V_YPOS);
-    switch(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter)
+    switch(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter)
     {
         case AC:
         case DC:
@@ -4046,11 +4194,11 @@ void Disp_Testvalue(u8 test)
 //                        Hex_Format(test_value.num,1,3,0);
 								 if(U9001_Save_sys.U9001_Testconfg.clear == 1)
 								 {
-									 if(Test_Value.I_R < U9001_Save_sys.U9001_save.clearvalue[U9001_Save_sys.U9001_save.current_step-1])
+									 if(Test_Value.I_R < U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].clearvalue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1])
 									 {
 										 Test_Value.I_R = 0;
 									 }else{
-										 Test_Value.I_R -= U9001_Save_sys.U9001_save.clearvalue[U9001_Save_sys.U9001_save.current_step-1];
+										 Test_Value.I_R -= U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].clearvalue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1];
 									 }
 								 }
 									if(Range==1)
@@ -4093,7 +4241,7 @@ void Disp_Testvalue(u8 test)
 					{
 							if(Test_Value.I_R==0xffff*10){
 								memcpy(DispBuf,"UPPER       ",12);
-//								if(U9001_Save_sys.U9001_save.all_step == 1)
+//								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step == 1)
 //									strcat(sendbuff,">9999");
 //								else
 									strcat(sendbuff1,">9999");
@@ -4106,15 +4254,15 @@ void Disp_Testvalue(u8 test)
 								GUI_FillRect(DISP_V_XPOS+50,DISP_V_YPOS+50,DISP_V_XPOS+50+150,DISP_V_YPOS+50+62);
 								GUI_SetColor(GUI_LIGHTYELLOW);
 								GUI_DispStringAt(Test_IRUINT[test_value.uint],DISP_V_XPOS+50+6*25,DISP_V_YPOS+50);
-//								if(U9001_Save_sys.U9001_save.all_step == 1)
+//								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step == 1)
 //									strcat(sendbuff,(char*)DispBuf);
 //								else
 									strcat(sendbuff1,(char*)DispBuf);
 							}
-//							if(U9001_Save_sys.U9001_save.all_step == 1)
+//							if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step == 1)
 //								strcat(sendbuff,(char*)"M;");
 //							else
-							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit=test_value.uint;
+							Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].text_unit=test_value.uint;
 							if(test_value.uint == 0)
 							{
 								strcat(sendbuff1,(char*)"k;");
@@ -4555,6 +4703,7 @@ const u32 Set_PA_Compvalue[][2]=
     {0,100},
     {0,0},
     {0,35000000},
+		{0,1},
 };
 
 void SetDate_Comp(void)
@@ -4571,69 +4720,400 @@ void SetDate_Comp(void)
 			&& U9001_Save_sys.version != 3){
 				U9001_Save_sys.version = 1; 
 		}
-    if(U9001_Save_sys.U9001_save.all_step>MAX_TEXT_STEP)
-        U9001_Save_sys.U9001_save.all_step=1;
-    if(U9001_Save_sys.U9001_save.current_step>U9001_Save_sys.U9001_save.all_step || U9001_Save_sys.U9001_save.current_step==0)
-        U9001_Save_sys.U9001_save.current_step=1;
-    if(U9001_Save_sys.U9001_save.start_step>U9001_Save_sys.U9001_save.current_step || U9001_Save_sys.U9001_save.start_step==0)
-        U9001_Save_sys.U9001_save.start_step=1;
+    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step>MAX_TEXT_STEP)
+        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step=1;
+    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step>U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step || U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step==0)
+        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step=1;
+    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].start_step>U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step || U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].start_step==0)
+        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].start_step=1;
     for(i=0;i<MAX_TEXT_STEP;i++)
     {
-        if(U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter>4)
-            U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter=0;
-      pt=(u32*)&U9001_Save_sys.U9001_save.U9001_Setup[i+1];
-       switch(U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter)//项目
+        if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[i+1].parameter>4)
+            U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[i+1].parameter=0;
+      pt=(u32*)&U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[i+1];
+       switch(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[i+1].parameter)//项目
         {
             case IR_SETUP://绝缘电阻测试
-                for(j=0;j<9;j++)
-                {
-                     if((*(pt+j)>Set_IR_Compvalue[j][1])/*||(*(pt+j)<Set_IR_Compvalue[j][0])*/)
-                    {
-                        *(pt+j)=Set_IR_Compvalue[j][1];
-                    }else if((*(pt+j)<Set_IR_Compvalue[j][0])){
-						if(j==3)
 						{
-							*(pt+j)=0;
-						}else{
-							*(pt+j)=Set_IR_Compvalue[j][0];
-						}
-					}
-                }
+							if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].parameter > Set_IR_Compvalue[0][1])
+							{
+								U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].parameter = Set_IR_Compvalue[0][1];
+							}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].parameter < Set_IR_Compvalue[0][0])
+							{
+								U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].parameter = Set_IR_Compvalue[0][0];
+							}
+							if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].V_out > Set_IR_Compvalue[1][1])
+							{
+								U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].V_out = Set_IR_Compvalue[1][1];
+							}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].V_out < Set_IR_Compvalue[1][0])
+							{
+								U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].V_out = Set_IR_Compvalue[1][0];
+							}
+							if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].Upper > Set_IR_Compvalue[2][1])
+							{
+								U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].Upper = Set_IR_Compvalue[2][1];
+							}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].Upper < Set_IR_Compvalue[2][0])
+							{
+								U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].Upper = Set_IR_Compvalue[2][0];
+							}
+							if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].time > Set_IR_Compvalue[3][1])
+							{
+								U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].time = Set_IR_Compvalue[3][1];
+							}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].time < Set_IR_Compvalue[3][0])
+							{
+								U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].time = 0;
+							}
+							if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].lower > Set_IR_Compvalue[4][1])
+							{
+								U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].lower = Set_IR_Compvalue[4][1];
+							}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].lower < Set_IR_Compvalue[4][0])
+							{
+								U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].lower = Set_IR_Compvalue[4][0];
+							}
+							if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].rise_time > Set_IR_Compvalue[5][1])
+							{
+								U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].rise_time = Set_IR_Compvalue[5][1];
+							}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].rise_time < Set_IR_Compvalue[5][0])
+							{
+								U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].rise_time = Set_IR_Compvalue[5][0];
+							}
+							if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].range_arc > Set_IR_Compvalue[6][1])
+							{
+								U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].range_arc = Set_IR_Compvalue[6][1];
+							}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].range_arc < Set_IR_Compvalue[6][0])
+							{
+								U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].range_arc = Set_IR_Compvalue[6][0];
+							}
+							if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].drop_time > Set_IR_Compvalue[7][1])
+							{
+								U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].drop_time = Set_IR_Compvalue[7][1];
+							}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].drop_time < Set_IR_Compvalue[7][0])
+							{
+								U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].drop_time = Set_IR_Compvalue[7][0];
+							}
+							if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].equa_last > Set_IR_Compvalue[8][1])
+							{
+								U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].equa_last = Set_IR_Compvalue[8][1];
+							}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].equa_last < Set_IR_Compvalue[8][0])
+							{
+								U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].equa_last = Set_IR_Compvalue[8][0];
+							}
+							if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].check > Set_IR_Compvalue[9][1])
+							{
+								U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].check = Set_IR_Compvalue[9][1];
+							}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].check < Set_IR_Compvalue[9][0])
+							{
+								U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].check = Set_IR_Compvalue[9][0];
+							}
+//							for(j=0;j<9;j++)
+//							{
+//								if((*(pt+j)>Set_IR_Compvalue[j][1])/*||(*(pt+j)<Set_IR_Compvalue[j][0])*/)
+//								{
+//										*(pt+j)=Set_IR_Compvalue[j][1];
+//								}else if((*(pt+j)<Set_IR_Compvalue[j][0])){
+//								if(j==3)
+//								{
+//									*(pt+j)=0;
+//								}else{
+//									*(pt+j)=Set_IR_Compvalue[j][0];
+//								}
+//							}
+//							}
                 
-                break;
+						}break;
 
             case ACW_SETUP://耐压测试
 							if(SOFTWARE_VERSION==1)
 							{
-                for(j=0;j<9;j++)
-                {
-									 if((*(pt+j)>Set_ACW_Compvalue[j][1])/*||(*(pt+j)<Set_ACW_Compvalue[j][0])*/)
-									 {
-									   *(pt+j)=Set_ACW_Compvalue[j][1];
-									 }else if((*(pt+j)<Set_ACW_Compvalue[j][0])){
-										 if(j==3)
-										 {
-											 *(pt+j)=0;
-										 }else{
-											 *(pt+j)=Set_ACW_Compvalue[j][0];
-										 }
-									}
-                }
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].parameter > Set_ACW_Compvalue[0][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].parameter = Set_ACW_Compvalue[0][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].parameter < Set_ACW_Compvalue[0][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].parameter = Set_ACW_Compvalue[0][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].V_out > Set_ACW_Compvalue[1][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].V_out = Set_ACW_Compvalue[1][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].V_out < Set_ACW_Compvalue[1][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].V_out = Set_ACW_Compvalue[1][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].Upper > Set_ACW_Compvalue[2][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].Upper = Set_ACW_Compvalue[2][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].Upper < Set_ACW_Compvalue[2][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].Upper = Set_ACW_Compvalue[2][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].time > Set_ACW_Compvalue[3][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].time = Set_ACW_Compvalue[3][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].time < Set_ACW_Compvalue[3][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].time = 0;
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].lower > Set_ACW_Compvalue[4][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].lower = Set_ACW_Compvalue[4][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].lower < Set_ACW_Compvalue[4][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].lower = Set_ACW_Compvalue[4][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].rise_time > Set_ACW_Compvalue[5][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].rise_time = Set_ACW_Compvalue[5][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].rise_time < Set_ACW_Compvalue[5][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].rise_time = Set_ACW_Compvalue[5][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].range_arc > Set_ACW_Compvalue[6][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].range_arc = Set_ACW_Compvalue[6][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].range_arc < Set_ACW_Compvalue[6][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].range_arc = Set_ACW_Compvalue[6][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].drop_time > Set_ACW_Compvalue[7][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].drop_time = Set_ACW_Compvalue[7][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].drop_time < Set_ACW_Compvalue[7][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].drop_time = Set_ACW_Compvalue[7][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].equa_last > Set_ACW_Compvalue[8][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].equa_last = Set_ACW_Compvalue[8][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].equa_last < Set_ACW_Compvalue[8][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].equa_last = Set_ACW_Compvalue[8][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].check > Set_ACW_Compvalue[9][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].check = Set_ACW_Compvalue[9][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].check < Set_ACW_Compvalue[9][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].check = Set_ACW_Compvalue[9][0];
+								}
+//                for(j=0;j<9;j++)
+//                {
+//									 if((*(pt+j)>Set_ACW_Compvalue[j][1])/*||(*(pt+j)<Set_ACW_Compvalue[j][0])*/)
+//									 {
+//									   *(pt+j)=Set_ACW_Compvalue[j][1];
+//									 }else if((*(pt+j)<Set_ACW_Compvalue[j][0])){
+//										 if(j==3)
+//										 {
+//											 *(pt+j)=0;
+//										 }else{
+//											 *(pt+j)=Set_ACW_Compvalue[j][0];
+//										 }
+//									}
+//                }
 							}else if(SOFTWARE_VERSION==2||SOFTWARE_VERSION==3){
-								for(j=0;j<9;j++)
-                {
-									 if((*(pt+j)>Set_ACW_Compvalue1[j][1])/*||(*(pt+j)<Set_ACW_Compvalue[j][0])*/)
-									 {
-									   *(pt+j)=Set_ACW_Compvalue1[j][1];
-									 }else if((*(pt+j)<Set_ACW_Compvalue1[j][0])){
-										 if(j==3)
-										 {
-											 *(pt+j)=0;
-										 }else{
-											 *(pt+j)=Set_ACW_Compvalue1[j][0];
-										 }
-									}
-                }
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].parameter > Set_ACW_Compvalue1[0][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].parameter = Set_ACW_Compvalue1[0][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].parameter < Set_ACW_Compvalue1[0][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].parameter = Set_ACW_Compvalue1[0][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].V_out > Set_ACW_Compvalue1[1][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].V_out = Set_ACW_Compvalue1[1][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].V_out < Set_ACW_Compvalue1[1][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].V_out = Set_ACW_Compvalue1[1][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].Upper > Set_ACW_Compvalue1[2][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].Upper = Set_ACW_Compvalue1[2][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].Upper < Set_ACW_Compvalue1[2][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].Upper = Set_ACW_Compvalue1[2][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].time > Set_ACW_Compvalue1[3][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].time = Set_ACW_Compvalue1[3][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].time < Set_ACW_Compvalue1[3][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].time = 0;
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].lower > Set_ACW_Compvalue1[4][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].lower = Set_ACW_Compvalue1[4][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].lower < Set_ACW_Compvalue1[4][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].lower = Set_ACW_Compvalue1[4][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].rise_time > Set_ACW_Compvalue1[5][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].rise_time = Set_ACW_Compvalue1[5][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].rise_time < Set_ACW_Compvalue1[5][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].rise_time = Set_ACW_Compvalue1[5][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].range_arc > Set_ACW_Compvalue1[6][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].range_arc = Set_ACW_Compvalue1[6][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].range_arc < Set_ACW_Compvalue1[6][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].range_arc = Set_ACW_Compvalue1[6][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].drop_time > Set_ACW_Compvalue1[7][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].drop_time = Set_ACW_Compvalue1[7][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].drop_time < Set_ACW_Compvalue1[7][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].drop_time = Set_ACW_Compvalue1[7][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].equa_last > Set_ACW_Compvalue1[8][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].equa_last = Set_ACW_Compvalue1[8][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].equa_last < Set_ACW_Compvalue1[8][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].equa_last = Set_ACW_Compvalue1[8][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].check > Set_ACW_Compvalue1[9][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].check = Set_ACW_Compvalue1[9][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].check < Set_ACW_Compvalue1[9][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].check = Set_ACW_Compvalue1[9][0];
+								}
+//								for(j=0;j<9;j++)
+//                {
+//									 if((*(pt+j)>Set_ACW_Compvalue1[j][1])/*||(*(pt+j)<Set_ACW_Compvalue[j][0])*/)
+//									 {
+//									   *(pt+j)=Set_ACW_Compvalue1[j][1];
+//									 }else if((*(pt+j)<Set_ACW_Compvalue1[j][0])){
+//										 if(j==3)
+//										 {
+//											 *(pt+j)=0;
+//										 }else{
+//											 *(pt+j)=Set_ACW_Compvalue1[j][0];
+//										 }
+//									}
+//                }
 							}
                 
             break;
@@ -4641,70 +5121,510 @@ void SetDate_Comp(void)
             case DCW_SETUP://
 							if(SOFTWARE_VERSION==1)
 							{
-                for(j=0;j<10;j++)
-                {
-									if((*(pt+j)>Set_DCW_Compvalue[j][1])/*||(*(pt+j)<Set_DCW_Compvalue[j][0])*/)
-									{
-											*(pt+j)=Set_DCW_Compvalue[j][1];
-									}else if((*(pt+j)<Set_DCW_Compvalue[j][0])){
-										if(j==3)
-										{
-											*(pt+j)=0;
-										}else{
-											*(pt+j)=Set_DCW_Compvalue[j][0];
-										}
-									}
-                }
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].parameter > Set_DCW_Compvalue[0][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].parameter = Set_DCW_Compvalue[0][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].parameter < Set_DCW_Compvalue[0][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].parameter = Set_DCW_Compvalue[0][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].V_out > Set_DCW_Compvalue[1][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].V_out = Set_DCW_Compvalue[1][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].V_out < Set_DCW_Compvalue[1][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].V_out = Set_DCW_Compvalue[1][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].Upper > Set_DCW_Compvalue[2][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].Upper = Set_DCW_Compvalue[2][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].Upper < Set_DCW_Compvalue[2][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].Upper = Set_DCW_Compvalue[2][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].time > Set_DCW_Compvalue[3][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].time = Set_DCW_Compvalue[3][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].time < Set_DCW_Compvalue[3][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].time = 0;
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].lower > Set_DCW_Compvalue[4][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].lower = Set_DCW_Compvalue[4][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].lower < Set_DCW_Compvalue[4][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].lower = Set_DCW_Compvalue[4][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].rise_time > Set_DCW_Compvalue[5][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].rise_time = Set_DCW_Compvalue[5][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].rise_time < Set_DCW_Compvalue[5][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].rise_time = Set_DCW_Compvalue[5][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].range_arc > Set_DCW_Compvalue[6][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].range_arc = Set_DCW_Compvalue[6][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].range_arc < Set_DCW_Compvalue[6][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].range_arc = Set_DCW_Compvalue[6][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].drop_time > Set_DCW_Compvalue[7][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].drop_time = Set_DCW_Compvalue[7][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].drop_time < Set_DCW_Compvalue[7][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].drop_time = Set_DCW_Compvalue[7][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].equa_last > Set_DCW_Compvalue[8][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].equa_last = Set_DCW_Compvalue[8][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].equa_last < Set_DCW_Compvalue[8][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].equa_last = Set_DCW_Compvalue[8][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].check > Set_DCW_Compvalue[9][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].check = Set_DCW_Compvalue[9][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].check < Set_DCW_Compvalue[9][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].check = Set_DCW_Compvalue[9][0];
+								}
+//                for(j=0;j<10;j++)
+//                {
+//									if((*(pt+j)>Set_DCW_Compvalue[j][1])/*||(*(pt+j)<Set_DCW_Compvalue[j][0])*/)
+//									{
+//											*(pt+j)=Set_DCW_Compvalue[j][1];
+//									}else if((*(pt+j)<Set_DCW_Compvalue[j][0])){
+//										if(j==3)
+//										{
+//											*(pt+j)=0;
+//										}else{
+//											*(pt+j)=Set_DCW_Compvalue[j][0];
+//										}
+//									}
+//                }
 							}else if(SOFTWARE_VERSION==2||SOFTWARE_VERSION==3){
-								for(j=0;j<10;j++)
-                {
-									if((*(pt+j)>Set_DCW_Compvalue1[j][1])/*||(*(pt+j)<Set_DCW_Compvalue[j][0])*/)
-									{
-											*(pt+j)=Set_DCW_Compvalue1[j][1];
-									}else if((*(pt+j)<Set_DCW_Compvalue1[j][0])){
-										if(j==3)
-										{
-											*(pt+j)=0;
-										}else{
-											*(pt+j)=Set_DCW_Compvalue1[j][0];
-										}
-									}
-                }
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].parameter > Set_DCW_Compvalue1[0][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].parameter = Set_DCW_Compvalue1[0][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].parameter < Set_DCW_Compvalue1[0][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].parameter = Set_DCW_Compvalue1[0][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].V_out > Set_DCW_Compvalue1[1][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].V_out = Set_DCW_Compvalue1[1][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].V_out < Set_DCW_Compvalue1[1][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].V_out = Set_DCW_Compvalue1[1][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].Upper > Set_DCW_Compvalue1[2][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].Upper = Set_DCW_Compvalue1[2][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].Upper < Set_DCW_Compvalue1[2][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].Upper = Set_DCW_Compvalue1[2][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].time > Set_DCW_Compvalue1[3][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].time = Set_DCW_Compvalue1[3][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].time < Set_DCW_Compvalue1[3][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].time = 0;
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].lower > Set_DCW_Compvalue1[4][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].lower = Set_DCW_Compvalue1[4][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].lower < Set_DCW_Compvalue1[4][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].lower = Set_DCW_Compvalue1[4][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].rise_time > Set_DCW_Compvalue1[5][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].rise_time = Set_DCW_Compvalue1[5][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].rise_time < Set_DCW_Compvalue1[5][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].rise_time = Set_DCW_Compvalue1[5][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].range_arc > Set_DCW_Compvalue1[6][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].range_arc = Set_DCW_Compvalue1[6][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].range_arc < Set_DCW_Compvalue1[6][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].range_arc = Set_DCW_Compvalue1[6][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].drop_time > Set_DCW_Compvalue1[7][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].drop_time = Set_DCW_Compvalue1[7][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].drop_time < Set_DCW_Compvalue1[7][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].drop_time = Set_DCW_Compvalue1[7][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].equa_last > Set_DCW_Compvalue1[8][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].equa_last = Set_DCW_Compvalue1[8][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].equa_last < Set_DCW_Compvalue1[8][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].equa_last = Set_DCW_Compvalue1[8][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].check > Set_DCW_Compvalue1[9][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].check = Set_DCW_Compvalue1[9][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].check < Set_DCW_Compvalue1[9][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].check = Set_DCW_Compvalue1[9][0];
+								}
+//								for(j=0;j<10;j++)
+//                {
+//									if((*(pt+j)>Set_DCW_Compvalue1[j][1])/*||(*(pt+j)<Set_DCW_Compvalue[j][0])*/)
+//									{
+//											*(pt+j)=Set_DCW_Compvalue1[j][1];
+//									}else if((*(pt+j)<Set_DCW_Compvalue1[j][0])){
+//										if(j==3)
+//										{
+//											*(pt+j)=0;
+//										}else{
+//											*(pt+j)=Set_DCW_Compvalue1[j][0];
+//										}
+//									}
+//                }
 							}
             break;
 
             case OS_SETUP://
-                 for(j=0;j<9;j++)
-                {
-                     if((*(pt+j)>Set_OS_Compvalue[j][1])/*||(*(pt+j)<Set_OS_Compvalue[j][0])*/)
-                    {
-                        *(pt+j)=Set_OS_Compvalue[j][1];
-                    }else if((*(pt+j)<Set_OS_Compvalue[j][0])){
+							if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].parameter > Set_OS_Compvalue[0][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].parameter = Set_OS_Compvalue[0][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].parameter < Set_OS_Compvalue[0][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].parameter = Set_OS_Compvalue[0][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].V_out > Set_OS_Compvalue[1][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].V_out = Set_OS_Compvalue[1][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].V_out < Set_OS_Compvalue[1][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].V_out = Set_OS_Compvalue[1][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].Upper > Set_OS_Compvalue[2][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].Upper = Set_OS_Compvalue[2][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].Upper < Set_OS_Compvalue[2][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].Upper = Set_OS_Compvalue[2][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].time > Set_OS_Compvalue[3][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].time = Set_OS_Compvalue[3][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].time < Set_OS_Compvalue[3][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].time = Set_OS_Compvalue[3][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].lower > Set_OS_Compvalue[4][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].lower = Set_OS_Compvalue[4][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].lower < Set_OS_Compvalue[4][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].lower = Set_OS_Compvalue[4][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].rise_time > Set_OS_Compvalue[5][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].rise_time = Set_OS_Compvalue[5][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].rise_time < Set_OS_Compvalue[5][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].rise_time = Set_OS_Compvalue[5][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].range_arc > Set_OS_Compvalue[6][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].range_arc = Set_OS_Compvalue[6][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].range_arc < Set_OS_Compvalue[6][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].range_arc = Set_OS_Compvalue[6][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].drop_time > Set_OS_Compvalue[7][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].drop_time = Set_OS_Compvalue[7][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].drop_time < Set_OS_Compvalue[7][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].drop_time = Set_OS_Compvalue[7][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].equa_last > Set_OS_Compvalue[8][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].equa_last = Set_OS_Compvalue[8][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].equa_last < Set_OS_Compvalue[8][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].equa_last = Set_OS_Compvalue[8][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].check > Set_OS_Compvalue[9][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].check = Set_OS_Compvalue[9][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].check < Set_OS_Compvalue[9][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].check = Set_OS_Compvalue[9][0];
+								}
+//                 for(j=0;j<9;j++)
+//                {
+//                     if((*(pt+j)>Set_OS_Compvalue[j][1])/*||(*(pt+j)<Set_OS_Compvalue[j][0])*/)
+//                    {
+//                        *(pt+j)=Set_OS_Compvalue[j][1];
+//                    }else if((*(pt+j)<Set_OS_Compvalue[j][0])){
+////						if(j==3)
+////						{
+////							*(pt+j)=0;
+////						}else{
+//							*(pt+j)=Set_OS_Compvalue[j][0];
+////						}
+//					}
+//                }
+                break;
+
+            case PA_SETUP://无测试项目
+							if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[i+1].parameter > Set_PA_Compvalue[0][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].parameter = Set_PA_Compvalue[0][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].parameter < Set_PA_Compvalue[0][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].parameter = Set_PA_Compvalue[0][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].V_out > Set_PA_Compvalue[1][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].V_out = Set_PA_Compvalue[1][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].V_out < Set_PA_Compvalue[1][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].V_out = Set_PA_Compvalue[1][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].Upper > Set_PA_Compvalue[2][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].Upper = Set_PA_Compvalue[2][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].Upper < Set_PA_Compvalue[2][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].Upper = Set_PA_Compvalue[2][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].time > Set_PA_Compvalue[3][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].time = Set_PA_Compvalue[3][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].time < Set_PA_Compvalue[3][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].time = 0;
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].lower > Set_PA_Compvalue[4][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].lower = Set_PA_Compvalue[4][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].lower < Set_PA_Compvalue[4][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].lower = Set_PA_Compvalue[4][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].rise_time > Set_PA_Compvalue[5][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].rise_time = Set_PA_Compvalue[5][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].rise_time < Set_PA_Compvalue[5][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].rise_time = Set_PA_Compvalue[5][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].range_arc > Set_PA_Compvalue[6][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].range_arc = Set_PA_Compvalue[6][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].range_arc < Set_PA_Compvalue[6][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].range_arc = Set_PA_Compvalue[6][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].drop_time > Set_PA_Compvalue[7][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].drop_time = Set_PA_Compvalue[7][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].drop_time < Set_PA_Compvalue[7][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].drop_time = Set_PA_Compvalue[7][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].equa_last > Set_PA_Compvalue[8][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].equa_last = Set_PA_Compvalue[8][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].equa_last < Set_PA_Compvalue[8][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].equa_last = Set_PA_Compvalue[8][0];
+								}
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].check > Set_PA_Compvalue[9][1])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].check = Set_PA_Compvalue[9][1];
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].check < Set_PA_Compvalue[9][0])
+								{
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[i+1].check = Set_PA_Compvalue[9][0];
+								}
+//							for(j=0;j<9;j++)
+//                {
+//                     if((*(pt+j)>Set_PA_Compvalue[j][1])/*||(*(pt+j)<Set_DCW_Compvalue[j][0])*/)
+//                    {
+//                        *(pt+j)=Set_PA_Compvalue[j][1];
+//                    }else if((*(pt+j)<Set_PA_Compvalue[j][0])){
 //						if(j==3)
 //						{
 //							*(pt+j)=0;
 //						}else{
-							*(pt+j)=Set_OS_Compvalue[j][0];
+//							*(pt+j)=Set_PA_Compvalue[j][0];
 //						}
-					}
-                }
-                break;
-
-            case PA_SETUP://无测试项目
-				 for(j=0;j<9;j++)
-                {
-                     if((*(pt+j)>Set_PA_Compvalue[j][1])/*||(*(pt+j)<Set_DCW_Compvalue[j][0])*/)
-                    {
-                        *(pt+j)=Set_PA_Compvalue[j][1];
-                    }else if((*(pt+j)<Set_PA_Compvalue[j][0])){
-						if(j==3)
-						{
-							*(pt+j)=0;
-						}else{
-							*(pt+j)=Set_PA_Compvalue[j][0];
-						}
-					}
-                }
+//					}
+//                }
                 break;
                 break;
 
@@ -4729,14 +5649,14 @@ void SetDate_Comp(void)
 //{
 //    u8 i,j;
 //    u32 *pt;
-//    if(U9001_Save_sys.U9001_save.all_step>MAX_TEXT_STEP)
-//        U9001_Save_sys.U9001_save.all_step=1;
-//    if(U9001_Save_sys.U9001_save.current_step>U9001_Save_sys.U9001_save.all_step)
-//        U9001_Save_sys.U9001_save.current_step=1;
+//    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step>MAX_TEXT_STEP)
+//        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step=1;
+//    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step>U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step)
+//        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step=1;
 //    
 //    for(i=0;i<MAX_TEXT_STEP;i++)
 //    {
-//        pt=(u32*)&U9001_Save_sys.U9001_save.U9001_Setup[i];
+//        pt=(u32*)&U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[i];
 //        for(j=0;j<9;j++)
 //        {
 //            if(*(pt+j)>Set_DateFileCompvalue[j][1])
@@ -6135,11 +7055,11 @@ void ARC_out(u8 start)//0  停止  1  启动
         _4094_databuff[1]&=0xC0;
         if(U9001_Save_sys.U9001_Testconfg.ARC_mode)//等级模式
         {
-            _4094_databuff[1]|=ARC_Range[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc];
+            _4094_databuff[1]|=ARC_Range[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc];
         }else
         {
-            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc)
-                _4094_databuff[1]|=(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc-1)/5;
+            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc)
+                _4094_databuff[1]|=(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc-1)/5;
             else
                 _4094_databuff[1]|=ARC_Range[0];//arc最大值
         }
@@ -6173,11 +7093,11 @@ void Test_Init(void)
 	SetSystemMessage(MSG_RAMP);//系统信息-缓升
 
 	//读取设置值
-	set_item=U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter;//当前参数
-	set_out=U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out;//设置的输出
-	set_ramp=U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time;//缓升或延时时间
-    set_drop=U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time;
-	set_arc=U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc;//电弧等级
+	set_item=U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter;//当前参数
+	set_out=U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out;//设置的输出
+	set_ramp=U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time;//缓升或延时时间
+    set_drop=U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time;
+	set_arc=U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc;//电弧等级
     Short_out(1);//short中断比较设置
     GFI_out();//GFI中断比较设置
     ARC_out(1);//ARC中断比较设置
@@ -6937,11 +7857,11 @@ void Disp_DelayTime(u8 item)
 }
 void Disp_Comp(void)
 {
-    GUI_DispStringAt(DISP_COMP[Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_flag][U9001_Save_sys.U9001_SYS.language],260,60+20*(U9001_Save_sys.U9001_save.current_step-1));
+    GUI_DispStringAt(DISP_COMP[Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].text_flag][U9001_Save_sys.U9001_SYS.language],260,60+20*(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1));
 }
 
 void Disp_CompTest(void)
 {
-    GUI_DispStringAt(DISP_COMP[Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_flag][U9001_Save_sys.U9001_SYS.language],260,250);
+    GUI_DispStringAt(DISP_COMP[Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].text_flag][U9001_Save_sys.U9001_SYS.language],260,250);
 }
 

@@ -459,13 +459,16 @@ void Idem_Process(void)
 	{
 		if(U9001_Save_sys.U9001_Testconfg.start_setp == 0)
 		{
-			U9001_Save_sys.U9001_save.current_step=1;
+			U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step=1;
 		}else{
-			U9001_Save_sys.U9001_save.current_step = U9001_Save_sys.U9001_save.start_step;
+			U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step = 
+			U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].start_step;
 		}
 	}
 	
-    Test_mid.set_item=U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter;//当前参数
+    Test_mid.set_item=U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+	U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+	current_step].parameter;//当前参数
 	pageflag = 0;//测量显示
 	Uart0_Send(0x02);//关灯
 	PLC_OutOff();//关PLC启动
@@ -489,7 +492,7 @@ void Idem_Process(void)
 			GUI_SetColor(LCD_COLOR_TEST_BACK);
 			GUI_FillRect(0,24,380,270);
 			GUI_SetColor(GUI_WHITE);
-			if(U9001_Save_sys.U9001_save.disp)
+			if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].disp)
 			{
 				pageflag = 1;//列表显示
         Disp_Idel_list();
@@ -514,11 +517,11 @@ void Idem_Process(void)
 				memcpy(sendbuff1,"0.00",4);
 				strcat(sendbuff1,"kV;");
 //			}
-			if(U9001_Save_sys.U9001_save.U9001_Setup[1].parameter == IR)
+			if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].parameter == IR)
 			{
 				strcat(sendbuff1,"  0.0");
 				strcat(sendbuff1,"M;");
-				if(U9001_Save_sys.U9001_save.all_step == 2)
+				if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step == 2)
 				{
 					strcat(sendbuff,"0.00");
 					strcat(sendbuff,"mA;");
@@ -526,7 +529,7 @@ void Idem_Process(void)
 			}else{
 				strcat(sendbuff,"0.00");
 				strcat(sendbuff,"mA;");
-				if(U9001_Save_sys.U9001_save.all_step == 2)
+				if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step == 2)
 				{
 					strcat(sendbuff1,"  0.0");
 					strcat(sendbuff1,"M;");
@@ -643,12 +646,12 @@ void Idem_Process(void)
                 case Key_F1://
 					Key_Beep();
                     DISP_FLAG=TRUE;
-					U9001_Save_sys.U9001_save.disp=0;
+					U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].disp=0;
 					break;
                 case Key_F2://
 					Key_Beep();
                     DISP_FLAG=TRUE;
-					U9001_Save_sys.U9001_save.disp=1;
+					U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].disp=1;
 					break;
 				case Key_F5://
 //					SetSystemStatus(SYS_STATUS_RANGE);
@@ -823,7 +826,7 @@ void Finsh_Process(void)
 
 		if(READ_START()==0)
         {
-            U9001_Save_sys.U9001_save.current_step=1;
+            U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step=1;
             SetSystemStatus(SYS_STATUS_START);
             SetSystemMessage(MSG_TEST);
             Uart0_Send(0xa1);
@@ -896,21 +899,32 @@ void Test_Process(void)
 //	Check_Parameter_Limit(StepIndex);//当前步骤的参数设置值检查
 
 	//更新设置值
-	Test_mid.set_item=U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter;//当前参数
+	Test_mid.set_item=U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+	U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+	current_step].parameter;//当前参数
 	if(Test_mid.set_item == OS_SETUP)
 	{
-		Test_mid.set_high=(float)U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last*
-		((float)U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper/100.0);;//设置的上限
+		Test_mid.set_high=(float)U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+			U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last*
+		((float)U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+			U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper/100.0);;//设置的上限
 		
-		Test_mid.set_low=(float)U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last*
-		((float)U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower/100.0);//设置的下限
+		Test_mid.set_low=(float)U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+			U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last*
+		((float)U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+			U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower/100.0);//设置的下限
 	}else{
-		Test_mid.set_high=U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper;//设置的上限
-		Test_mid.set_low=U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower;//设置的下限
+		Test_mid.set_high=U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+		U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper;//设置的上限
+		Test_mid.set_low=U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+		U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower;//设置的下限
 	}
-    Test_mid.set_ramp=U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time;
-    Test_mid.set_time=U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time;
-    Test_mid.set_drop=U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time;
+    Test_mid.set_ramp=U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+	U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time;
+    Test_mid.set_time=U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+	U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time;
+    Test_mid.set_drop=U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+	U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time;
 	//更新设置值
 
 	//设置值处理
@@ -1092,7 +1106,7 @@ void Test_Process(void)
 					SetSystemMessage(MSG_TEST);//系统信息-满载测试
 					f_msgdisp=TRUE;//消息显示标志
 				}
-				Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_flag=GetSystemMessage();
+				Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].text_flag=GetSystemMessage();
 //				if(Test_mid.set_item==IR_SETUP)
 //				{
 //					if(Current)//电流值非零
@@ -1118,7 +1132,7 @@ void Test_Process(void)
 			{
 				TestOut=FullOut;//测试输出值计算
 				
-				Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_flag=GetSystemMessage();
+				Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].text_flag=GetSystemMessage();
 				if(Test_mid.set_item==IR_SETUP)
 				{
 					if(Current)//电流值非零
@@ -1126,11 +1140,11 @@ void Test_Process(void)
 						temp=Voltage;//电压值 
 //						//最大值判别
 						if((Range==5)&&(Resistance>IR_RESISTANCE_MAX))//最大值判别
-							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=TEST_VALUE_OVER;//电阻溢出
+							Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_value=TEST_VALUE_OVER;//电阻溢出
 					}
 					else
 					{
-							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=TEST_VALUE_OVER;//电阻溢出
+							Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_value=TEST_VALUE_OVER;//电阻溢出
 					}
 //					if(Range <5)
 //						Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Test_Value.I_R*100;
@@ -1140,18 +1154,18 @@ void Test_Process(void)
 				}else{
 					if(Range==0)
 					{						
-						Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit=1;
-						Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Current*10;
+						Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].text_unit=1;
+						Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_value=Current*10;
 					}else if(Range==1){
-						Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit=1;
-						Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Current;
+						Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].text_unit=1;
+						Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_value=Current;
 					}else if(Range==2){
-						Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit=0;
-						Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Current*100;
+						Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].text_unit=0;
+						Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_value=Current*100;
 					}
 				}
-					Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_vot=Test_Value.Vol;
-					Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_time=Test_Value.Time;
+					Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_vot=Test_Value.Vol;
+					Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_time=Test_Value.Time;
 				if(Test_mid.set_time>0)//测试时间为0，连续测试
 				{
 					
@@ -1159,15 +1173,19 @@ void Test_Process(void)
 					{
 						if(clearflag == 1)
 						{
-							U9001_Save_sys.U9001_save.clearvalue[U9001_Save_sys.U9001_save.current_step-1]=Test_Value.I_R;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+							clearvalue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+							current_step-1]=Test_Value.I_R;
 						}
 						if(osgetflag == 1)
 						{
 							if(Range <= 2)
 							{
-								U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last=Test_Value.I_R*10;
+								U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last=Test_Value.I_R*10;
 							}else{
-								U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last=Test_Value.I_R;
+								U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last=Test_Value.I_R;
 							}
 						}
 //                        if(Test_mid.set_item==OS_SETUP)
@@ -1183,7 +1201,7 @@ void Test_Process(void)
                     
             SetSystemMessage(MSG_PASS);
 						PLC_OutPass();
-            Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_flag=GetSystemMessage();
+            Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].text_flag=GetSystemMessage();
 						if(Test_mid.set_item==IR_SETUP)
             {
 							if(Current)//电流值非零
@@ -1191,11 +1209,11 @@ void Test_Process(void)
 								temp=Voltage;//电压值
 		//						//最大值判别
 								if((Range==5)&&(Resistance>IR_RESISTANCE_MAX))//最大值判别
-									Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=TEST_VALUE_OVER;//电阻溢出
+									Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_value=TEST_VALUE_OVER;//电阻溢出
 							}
 							else
 							{
-									Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=TEST_VALUE_OVER;//电阻溢出
+									Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_value=TEST_VALUE_OVER;//电阻溢出
 							}
 //							if(Range <5)
 //								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Test_Value.I_R*100;
@@ -1205,18 +1223,18 @@ void Test_Process(void)
 						}else{
 							if(Range==0)
 							{						
-								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit=1;
-								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Current*10;
+								Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].text_unit=1;
+								Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_value=Current*10;
 							}else if(Range==1){
-								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit=1;
-								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Current;
+								Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].text_unit=1;
+								Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_value=Current;
 							}else if(Range==2){
-								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit=0;
-								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Current*100;
+								Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].text_unit=0;
+								Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_value=Current*100;
 							}
 						}
-              Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_vot=Test_Value.Vol;
-							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_time=Test_Value.Time;
+              Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_vot=Test_Value.Vol;
+							Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_time=Test_Value.Time;
                         Test_Value.Time=0;
                         
                         if(Test_mid.set_drop)//下降时间
@@ -1301,7 +1319,7 @@ void Test_Process(void)
                 }
                 if(Test_Value.Time>=Test_mid.set_drop)//缓升时间判别
                 {
-										Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_time+=Test_Value.Time;
+										Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_time+=Test_Value.Time;
                     Test_Value.Time=0;//测试时间清零
 //                    Test_Value.Vol=0;
                     SetSystemStatus(SYS_STATUS_TEST_PAUSE);//测试暂停状态
@@ -1315,7 +1333,7 @@ void Test_Process(void)
 										testflag=0;
 //                    Uart0_Send(0xa4);
                 }
-								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_flag=GetSystemMessage();
+								Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].text_flag=GetSystemMessage();
   
             }
 			
@@ -1402,7 +1420,7 @@ void Test_Process(void)
 							{
 								if(U9001_Save_sys.U9001_Testconfg.comp_setp != 0)
 								{
-									if(U9001_Save_sys.U9001_save.current_step < U9001_Save_sys.U9001_Testconfg.comp_setp)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step < U9001_Save_sys.U9001_Testconfg.comp_setp)
 									{
 										f_sort=TRUE;//分选标志
 									}
@@ -1453,19 +1471,19 @@ void Test_Process(void)
 						}
 						if(Test_Value.I_R == TEST_VALUE_OVER)
 						{
-							Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Test_Value.I_R;
+							Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_value=Test_Value.I_R;
 						}else{
 							if(Range <5)
 							{
 								if(Range == 4 && 
-									Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit == 2)//4档单位为G时放大倍数按5档单独处理
+									Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].text_unit == 2)//4档单位为G时放大倍数按5档单独处理
 								{
-									Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Test_Value.I_R/10;
+									Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_value=Test_Value.I_R/10;
 								}else{
-									Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Test_Value.I_R*100;
+									Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_value=Test_Value.I_R*100;
 								}
 							}else{
-								Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=Test_Value.I_R/10;
+								Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_value=Test_Value.I_R/10;
 							}
 						}
 						break;
@@ -1623,11 +1641,11 @@ void Test_Process(void)
 			Sing_out_C(0);
 			Short_out(0);
 			FRB_out(0);
-      Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_flag=GetSystemMessage();
-      Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_value=dat;
-			Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].text_unit=test_value.uint;
-			Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_time=Test_Value.Time;
-      Save_TestValue[U9001_Save_sys.U9001_save.current_step-1].Text_vot=Test_Value.Vol;
+      Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].text_flag=GetSystemMessage();
+      Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_value=dat;
+			Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].text_unit=test_value.uint;
+			Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_time=Test_Value.Time;
+      Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_vot=Test_Value.Vol;
 			F_Fail=TRUE;//测试失败标志
 			PLC_OutFail();
 			SetSystemStatus(SYS_STATUS_TEST_PAUSE);//系统状态-测试暂停
@@ -1639,8 +1657,8 @@ void Test_Process(void)
 
 		if(f_disp==TRUE)//显示更新
 		{
-			if(U9001_Save_sys.U9001_save.disp)
-					Disp_Test_List(U9001_Save_sys.U9001_save.current_step);
+			if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].disp)
+					Disp_Test_List(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step);
 			else
 			Disp_Testvalue(1); 
 			f_disp=FALSE;//显示更新
@@ -1809,7 +1827,8 @@ void Setup_Process(void)
 ////                line=item-list*(MAX_SETP[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter]+1)/2;
 //                
 //            }
-			inputselnum=ITEM_S[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter][item];
+			inputselnum=ITEM_S[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+			U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter][item];
             if(disp_all)
             {
 //                
@@ -1884,7 +1903,9 @@ void Setup_Process(void)
 									DISP_FLAG=TRUE;
 								}
 							}else{
-								if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter == OS_SETUP)
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+									U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].
+									parameter == OS_SETUP)
 								{
 									if(item == 4)
 									{
@@ -1899,7 +1920,9 @@ void Setup_Process(void)
 										Disp_Pre_Uint(inputselnum);
 										DISP_FLAG=TRUE;
 									}
-								}else if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter == PA_SETUP){
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+								U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].
+								parameter == PA_SETUP){
 									if(item == 5)
 									{
 										memset(Disp_buff,0,6);
@@ -1942,130 +1965,148 @@ void Setup_Process(void)
 //								
 //								break;
                             case 1:
-                                if(U9001_Save_sys.U9001_save.all_step<10)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step<10)
                                 {
-                                    U9001_Save_sys.U9001_save.all_step++;
-                                    U9001_Save_sys.U9001_save.current_step++;
+                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step++;
+                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step++;
                                     disp_all=1;
                                     SetDate_Comp();
                                 }
                                 break;
                             case 2:
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter=0;
-								U9001_Save_sys.U9001_save.clearvalue[U9001_Save_sys.U9001_save.current_step-1]=0;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+														U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+														current_step].parameter=0;
+								U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].clearvalue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1]=0;
                                 SetDate_Comp();
                                 disp_all=1;
                                 break;
                             case 3:
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+																	U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+																	current_step].parameter==OS_SETUP)
                                 {
                                     
-                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=10;
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>=100)
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=100;
+                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+																	U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+																	current_step].lower+=10;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+																			U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+																		current_step].lower>=100)
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+																		U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+																		current_step].lower=100;
                                 }
                                 else
                                 {
-                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out+=100;
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out>Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out=Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+																	U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+																	current_step].V_out+=100;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+																			U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+																		current_step].V_out>Hign_Vout[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+																		U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])//
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+																		U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+																		current_step].V_out=Hign_Vout[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+																		U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter];
                                 }
                                 break;
                             case 4:
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR_SETUP)
 								{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 10000)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper < 10000)
 									{
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=100;
 									}else{
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=1000;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=1000;
 									}
-								}else if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP){
-									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last=0;
-								}else if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==PA_SETUP){
-									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=0;
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==OS_SETUP){
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last=0;
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==PA_SETUP){
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check=0;
 								}
 								else{
-                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
+                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=100;
 								}
 								SetDate_Comp();
 //                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
 //                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
                                 break;
                             case 5:
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==OS_SETUP)
                                 {
                                     
-                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>=500)
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=500;
+                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=100;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>=500)
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=500;
                                 }
                                 else{
-									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time+=10;
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time+=10;
 									SetDate_Comp();
 								}
 								
-    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num>High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
-    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num=High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+    //                            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper.num>High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper.num=High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter];
                                 break;
                             case 6:
-								if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR_SETUP)
 								{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower < 10000)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower < 10000)
 									{
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=100;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=100;
 									}else{
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=1000;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=1000;
 									}
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>
-									   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper
-									&& U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper!= 0)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>
+									   U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper
+									&& U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper!= 0)
 									{
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower
-									   =U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower
+									   =U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper;
 									}
 								}else{
-									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=100;
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>
-									   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper)
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=100;
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>
+									   U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper)
 									{
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper;
 									}
 								}
 								SetDate_Comp();
                                 break;
                             case 7:
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time+=10;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time+=10;
 								SetDate_Comp();
                                 break;
                             case 8: 
-                                 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR)
+                                 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR)
                                 {
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc<MAX_R_RANGE)
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc++;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc<MAX_R_RANGE)
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc++;
                                 }
                                 else
-                                 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc++;
+                                 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc++;
 								SetDate_Comp();
                                 break;
                             case 9:
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time+=10;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time+=10;
 								SetDate_Comp();
                                 break;
                             case 10:
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==DC)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==DC)
                                 {
-                                   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last+=10; 
+                                   U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last+=10; 
                                 }else
                                 {
-                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=0;
+                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check=0;
                                 }
 								SetDate_Comp();
                                 break;
                             case 11:
                                 
-                                   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check+=10;
+                                   U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check+=10;
 									SetDate_Comp();
                                 break;
                             default:
@@ -2082,12 +2123,12 @@ void Setup_Process(void)
                                 
                                 break;
                             case 1:
-                                if(U9001_Save_sys.U9001_save.all_step<10)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step<10)
                                 {
 									if(presscount>LKEY1)//步进计数器
 									{
-										U9001_Save_sys.U9001_save.all_step++;
-										U9001_Save_sys.U9001_save.current_step++;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step++;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step++;
 										DISP_FLAG=TRUE;
 									}
                                     disp_all=1;
@@ -2095,270 +2136,270 @@ void Setup_Process(void)
                                 }
                                 break;
                             case 2:
-//                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter=0;
-//								U9001_Save_sys.U9001_save.clearvalue[U9001_Save_sys.U9001_save.current_step-1]=0;
+//                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter=0;
+//								U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].clearvalue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1]=0;
 //                                SetDate_Comp();
 //								DISP_FLAG=TRUE;
 //                                disp_all=1;
                                 break;
                             case 3:
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==OS_SETUP)
                                 {
                                     
 									if(presscount>LKEY3)//步进计数器
 									{
 										Key_Beep();
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=30;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=30;
 										DISP_FLAG=TRUE;
 									}
 									else if(presscount>LKEY2)//步进计数器
 									{
 										Key_Beep();
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=20;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=20;
 										DISP_FLAG=TRUE;
 									}
 									else if(presscount>LKEY1)//步进计数器
 									{
 										Key_Beep();
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=10;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=10;
 										DISP_FLAG=TRUE;
 									}
-//                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=10;
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>=100)
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=100;
+//                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=10;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>=100)
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=100;
                                 }
                                 else
                                 {
 									if(presscount>LKEY3)//步进计数器
 									{
 										Key_Beep();
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out+=300;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out+=300;
 										DISP_FLAG=TRUE;
 									}
 									else if(presscount>LKEY2)//步进计数器
 									{
 										Key_Beep();
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out+=200;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out+=200;
 										DISP_FLAG=TRUE;
 									}
 									else if(presscount>LKEY1)//步进计数器
 									{
 										Key_Beep();
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out+=100;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out+=100;
 										DISP_FLAG=TRUE;
 									}
-//                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out+=100;
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out>Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out=Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+//                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out+=100;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out>Hign_Vout[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])//
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out=Hign_Vout[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter];
                                 }
                                 break;
                             case 4:
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR_SETUP)
 								{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 10000)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper < 10000)
 									{
 										if(presscount>LKEY3)//步进计数器
 										{
 											Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=300;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=300;
 											DISP_FLAG=TRUE;
 										}
 										else if(presscount>LKEY2)//步进计数器
 										{
 											Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=200;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=200;
 											DISP_FLAG=TRUE;
 										}
 										else if(presscount>LKEY1)//步进计数器
 										{
 											Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=100;
 											DISP_FLAG=TRUE;
 										}
-//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
+//										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=100;
 									}else{
 										if(presscount>LKEY3)//步进计数器
 										{
 											Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=3000;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=3000;
 											DISP_FLAG=TRUE;
 										}
 										else if(presscount>LKEY2)//步进计数器
 										{
 											Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=2000;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=2000;
 											DISP_FLAG=TRUE;
 										}
 										else if(presscount>LKEY1)//步进计数器
 										{
 											Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=1000;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=1000;
 											DISP_FLAG=TRUE;
 										}
-//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=1000;
+//										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=1000;
 									}
 								}
-//								else if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP){
-//									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last=0;
+//								else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==OS_SETUP){
+//									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last=0;
 //									DISP_FLAG=TRUE;
-//								}else if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==PA_SETUP){
-//									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=0;
+//								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==PA_SETUP){
+//									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check=0;
 //									DISP_FLAG=TRUE;
 //								}
 								else{
 									if(presscount>LKEY3)//步进计数器
 									{
 										Key_Beep();
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=300;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=300;
 										DISP_FLAG=TRUE;
 									}
 									else if(presscount>LKEY2)//步进计数器
 									{
 										Key_Beep();
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=200;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=200;
 										DISP_FLAG=TRUE;
 									}
 									else if(presscount>LKEY1)//步进计数器
 									{
 										Key_Beep();
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=100;
 										DISP_FLAG=TRUE;
 									}
-//                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
+//                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=100;
 								}
 								SetDate_Comp();
-//                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
-//                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+//                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])//
+//                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter];
                                 break;
                             case 5:
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==OS_SETUP)
                                 {
 									
                                     if(presscount>LKEY3)//步进计数器
 									{
 										Key_Beep();
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=300;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=300;
 										DISP_FLAG=TRUE;
 									}
 									else if(presscount>LKEY2)//步进计数器
 									{
 										Key_Beep();
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=200;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=200;
 										DISP_FLAG=TRUE;
 									}
 									else if(presscount>LKEY1)//步进计数器
 									{
 										Key_Beep();
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=100;
 										DISP_FLAG=TRUE;
 									}
-//                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>=500)
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=500;
+//                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=100;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>=500)
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=500;
                                 }
                                 else{
 									if(presscount>LKEY3)//步进计数器
 									{
 										Key_Beep();
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time+=30;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time+=30;
 										DISP_FLAG=TRUE;
 									}
 									else if(presscount>LKEY2)//步进计数器
 									{
 										Key_Beep();
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time+=20;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time+=20;
 										DISP_FLAG=TRUE;
 									}
 									else if(presscount>LKEY1)//步进计数器
 									{
 										Key_Beep();
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time+=10;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time+=10;
 										DISP_FLAG=TRUE;
 									}
-//									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time+=10;
+//									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time+=10;
 									SetDate_Comp();
 								}
 								
-    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num>High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
-    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num=High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+    //                            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper.num>High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper.num=High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter];
                                 break;
                             case 6:
-								if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR_SETUP)
 								{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower < 10000)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower < 10000)
 									{
 										if(presscount>LKEY3)//步进计数器
 										{
 											Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=300;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=300;
 											DISP_FLAG=TRUE;
 										}
 										else if(presscount>LKEY2)//步进计数器
 										{
 											Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=200;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=200;
 											DISP_FLAG=TRUE;
 										}
 										else if(presscount>LKEY1)//步进计数器
 										{
 											Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=100;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=100;
 											DISP_FLAG=TRUE;
 										}
-//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=100;
+//										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=100;
 									}else{
 										if(presscount>LKEY3)//步进计数器
 										{
 											Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=3000;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=3000;
 											DISP_FLAG=TRUE;
 										}
 										else if(presscount>LKEY2)//步进计数器
 										{
 											Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=2000;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=2000;
 											DISP_FLAG=TRUE;
 										}
 										else if(presscount>LKEY1)//步进计数器
 										{
 											Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=1000;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=1000;
 											DISP_FLAG=TRUE;
 										}
-//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=1000;
+//										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=1000;
 									}
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>
-									   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper
-									&& U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper!= 0)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>
+									   U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper
+									&& U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper!= 0)
 									{
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower
-									   =U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower
+									   =U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper;
 									}
 								}else{
 									if(presscount>LKEY3)//步进计数器
 									{
 										Key_Beep();
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=300;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=300;
 										DISP_FLAG=TRUE;
 									}
 									else if(presscount>LKEY2)//步进计数器
 									{
 										Key_Beep();
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=200;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=200;
 										DISP_FLAG=TRUE;
 									}
 									else if(presscount>LKEY1)//步进计数器
 									{
 										Key_Beep();
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=100;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=100;
 										DISP_FLAG=TRUE;
 									}
-//									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=100;
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>
-									   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper)
+//									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=100;
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>
+									   U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper)
 									{
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper;
 									}
 								}
 								SetDate_Comp();
@@ -2367,32 +2408,32 @@ void Setup_Process(void)
 								if(presscount>LKEY3)//步进计数器
 								{
 									Key_Beep();
-									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time+=30;
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time+=30;
 									DISP_FLAG=TRUE;
 								}
 								else if(presscount>LKEY2)//步进计数器
 								{
 									Key_Beep();
-									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time+=20;
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time+=20;
 									DISP_FLAG=TRUE;
 								}
 								else if(presscount>LKEY1)//步进计数器
 								{
 									Key_Beep();
-									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time+=10;
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time+=10;
 									DISP_FLAG=TRUE;
 								}
-//                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time+=10;
+//                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time+=10;
 								SetDate_Comp();
                                 break;
                             case 8: 
-                                 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR)
+                                 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR)
                                 {
 									if(presscount>LKEY1)//步进计数器
 									{
 										Key_Beep();
-										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc<MAX_R_RANGE)
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc++;
+										if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc<MAX_R_RANGE)
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc++;
 										DISP_FLAG=TRUE;
 									}
                                 }
@@ -2400,7 +2441,7 @@ void Setup_Process(void)
 									if(presscount>LKEY1)//步进计数器
 									{
 										Key_Beep();
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc++;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc++;
 										DISP_FLAG=TRUE;
 									}
 								}
@@ -2411,23 +2452,23 @@ void Setup_Process(void)
 								{
 									DISP_FLAG=TRUE;
 									Key_Beep();
-									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time+=10;
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time+=10;
 								}
 								SetDate_Comp();
                                 break;
                             case 10:
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==DC)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==DC)
                                 {
 									if(presscount>LKEY1)//步进计数器
 									{
 										DISP_FLAG=TRUE;
 										Key_Beep();
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last+=10; 
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last+=10; 
 									}
                                 }
 //								else
 //                                {
-//                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=0;
+//                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check=0;
 //                                }
 								SetDate_Comp();
                                 break;
@@ -2436,7 +2477,7 @@ void Setup_Process(void)
 								  {
 									  DISP_FLAG=TRUE;
 									  Key_Beep();
-									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check+=10;
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check+=10;
 								  }
 									SetDate_Comp();
                                 break;
@@ -2454,12 +2495,12 @@ void Setup_Process(void)
                                 SetSystemStatus(SYS_STATUS_CLEAR);
                                 break;
                             case 1:
-                                if(U9001_Save_sys.U9001_save.all_step>1)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step>1)
                                 {
 									DISP_FLAG=TRUE;
-                                    U9001_Save_sys.U9001_save.all_step--;
-                                    if(U9001_Save_sys.U9001_save.current_step>1)
-                                        U9001_Save_sys.U9001_save.current_step--;
+                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step--;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step>1)
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step--;
                                     disp_all=1;
                                 
                                 }
@@ -2468,26 +2509,26 @@ void Setup_Process(void)
 																if(SOFTWARE_VERSION != 0x03)
 																{
 																	DISP_FLAG=TRUE;
-																	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter=1;
+																	U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter=1;
 																	SetDate_Comp();
 																	disp_all=1;
 																}
                                 break;
                             case 3:
-                                 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
+                                 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==OS_SETUP)
                                 {
                                     
-                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower++;
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>=100)
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=100;
+                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower++;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>=100)
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=100;
 									else
 										DISP_FLAG=TRUE;
                                 }
                                 else
 								{
-                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out+=1;
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out>Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out=Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out+=1;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out>Hign_Vout[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])//
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out=Hign_Vout[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter];
 									else
 										DISP_FLAG=TRUE;
                                 }
@@ -2496,157 +2537,157 @@ void Setup_Process(void)
 
                                 break;
                             case 4:
-								if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR_SETUP)
 								{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 10000)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper < 10000)
 									{
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=1;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=1;
 										DISP_FLAG=TRUE;
 									}else{
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=100;
 										DISP_FLAG=TRUE;
 									}
 									
-								}else if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP){
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==OS_SETUP){
 									osgetflag = 1;
 									osgetstart = 1;
 									SetSystemStatus(SYS_STATUS_IDEM);
 									
-								}else if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==PA_SETUP){
-									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=1;
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==PA_SETUP){
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check=1;
 									DISP_FLAG=TRUE;
 								}else{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 2000)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper < 2000)
 									{
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=1;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=1;
 										DISP_FLAG=TRUE;
 									}else{
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=10;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=10;
 										DISP_FLAG=TRUE;
 									}
 								}
                                  
 								SetDate_Comp();
-    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
-    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+    //                            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter];
                                 break;
                             case 5:
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==OS_SETUP)
                                 {
                                     
-                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=10;
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper<100)
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=100;
+                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=10;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper<100)
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=100;
 									else
 										DISP_FLAG=TRUE;
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>=500)
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=500;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>=500)
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=500;
 									else
 										DISP_FLAG=TRUE;
                                 }
                                 else{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter == ACW_SETUP
-									 ||U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter == IR_SETUP
-									 ||U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter == PA_SETUP)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter == ACW_SETUP
+									 ||U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter == IR_SETUP
+									 ||U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter == PA_SETUP)
 									{
-										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time == 0)
+										if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time == 0)
 										{
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time = 3;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time = 3;
 											DISP_FLAG=TRUE;
 										}else{
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time+=1;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time+=1;
 											DISP_FLAG=TRUE;
 										}
-									}else if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter == DCW_SETUP){
-										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time == 0)
+									}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter == DCW_SETUP){
+										if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time == 0)
 										{
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time = 2;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time = 2;
 											DISP_FLAG=TRUE;
 										}else{
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time+=1;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time+=1;
 											DISP_FLAG=TRUE;
 										}
 									}
 									
 									SetDate_Comp();
 								}
-    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num>High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
-    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num=High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+    //                            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper.num>High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper.num=High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter];
                                 break;
                             case 6:
-								if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR_SETUP)
 								{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower < 10000)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower < 10000)
 									{
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=1;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=1;
 										DISP_FLAG=TRUE;
 									}else{
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=100;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=100;
 										DISP_FLAG=TRUE;
 									}
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>
-									   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper
-									&& U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper!= 0)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>
+									   U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper
+									&& U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper!= 0)
 									{
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower
-									   =U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower
+									   =U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper;
 									}
 								}else{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower < 2000)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower < 2000)
 									{
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=1;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=1;
 										DISP_FLAG=TRUE;
 									}else{
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=10;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=10;
 										DISP_FLAG=TRUE;
 									}
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>
-									   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>
+									   U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper)
 									{
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper;
 									}
 								}
 								SetDate_Comp();
                                 break;
                             case 7:
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time+=1;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time+=1;
 								DISP_FLAG=TRUE;
 								SetDate_Comp();
                                 break;
                             case 8:
-//                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR)
+//                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR)
 //                                {
 									DISP_FLAG=TRUE;
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc)
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc--;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc)
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc--;
 //									else
 										
 //                                }
 //                                else
-//                                 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc++;
+//                                 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc++;
 									SetDate_Comp();
                                 break;
                             case 9:
 								DISP_FLAG=TRUE;
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time+=1;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time+=1;
 								SetDate_Comp();
                                 break;
                             case 10:
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==DC)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==DC)
                                 {
-                                   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last+=1; 
+                                   U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last+=1; 
 									DISP_FLAG=TRUE;
                                 }else
                                 {
-                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=1;
+                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check=1;
 									DISP_FLAG=TRUE;
                                 }
 								SetDate_Comp();
                                 break;
                             case 11:
                                 
-                                   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check+=1;
+                                   U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check+=1;
 									DISP_FLAG=TRUE;
 									SetDate_Comp();
                                 break;
@@ -2663,37 +2704,37 @@ void Setup_Process(void)
                                 SetSystemStatus(SYS_STATUS_CLEAR);
                                 break;
 //                            case 1:
-//                                if(U9001_Save_sys.U9001_save.all_step>1)
+//                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step>1)
 //                                {
-//                                    U9001_Save_sys.U9001_save.all_step--;
-//                                    if(U9001_Save_sys.U9001_save.current_step>1)
-//                                        U9001_Save_sys.U9001_save.current_step--;
+//                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step--;
+//                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step>1)
+//                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step--;
 //                                    disp_all=1;
 //                                
 //                                }
 //                                break;
 //                            case 2:
-//                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter=1;
+//                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter=1;
 //                                SetDate_Comp();
 //                                disp_all=1;
 //                                break;
                             case 3:
-                                 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
+                                 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==OS_SETUP)
                                 {
                                     if(presscount>LKEY2)//步进计数器
 									{
 										Key_Beep();
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=10;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=10;
 										
 									}
 									else if(presscount>LKEY1)//步进计数器
 									{
 										Key_Beep();
-										 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower++;
+										 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower++;
 									}
-//                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower++;
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>=100)
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=100;
+//                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower++;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>=100)
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=100;
 									else
 										DISP_FLAG=TRUE;
                                 }
@@ -2702,16 +2743,16 @@ void Setup_Process(void)
 									if(presscount>LKEY2)//步进计数器
 									{
 										Key_Beep();
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out+=10;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out+=10;
 									}
 									else if(presscount>LKEY1)//步进计数器
 									{
 										Key_Beep();
-										 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out++;
+										 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out++;
 									}
-//                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out+=1;
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out>Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out=Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+//                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out+=1;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out>Hign_Vout[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])//
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out=Hign_Vout[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter];
 									else
 										DISP_FLAG=TRUE;
                                 }
@@ -2720,221 +2761,221 @@ void Setup_Process(void)
 
                                 break;
                             case 4:
-								if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR_SETUP)
 								{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 10000)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper < 10000)
 									{
 										if(presscount>LKEY2)//步进计数器
 										{
 											Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=10;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=10;
 											DISP_FLAG=TRUE;
 										}
 										else if(presscount>LKEY1)//步进计数器
 										{
 											Key_Beep();
-											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper++;
+											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper++;
 											DISP_FLAG=TRUE;
 										}
-//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=1;
+//										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=1;
 									}else{
 										if(presscount>LKEY2)//步进计数器
 										{
 											Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=1000;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=1000;
 											DISP_FLAG=TRUE;
 										}
 										else if(presscount>LKEY1)//步进计数器
 										{
 											Key_Beep();
-											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
+											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=100;
 											DISP_FLAG=TRUE;
 										}
-//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
+//										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=100;
 									}
 									
-								}else if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP){
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==OS_SETUP){
 									osgetflag = 1;
 									osgetstart = 1;
 									SetSystemStatus(SYS_STATUS_IDEM);
 									
-								}else if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==PA_SETUP){
-									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=1;
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==PA_SETUP){
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check=1;
 									
 								}else{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 2000)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper < 2000)
 									{
 										if(presscount>LKEY2)//步进计数器
 										{
 											Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=10;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=10;
 											DISP_FLAG=TRUE;
 										}
 										else if(presscount>LKEY1)//步进计数器
 										{
 											Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=1;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=1;
 											DISP_FLAG=TRUE;
 										}
-//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=1;
+//										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=1;
 									}else{
 										if(presscount>LKEY2)//步进计数器
 										{
 											Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=100;
 											DISP_FLAG=TRUE;
 										}
 										else if(presscount>LKEY1)//步进计数器
 										{
 											Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=10;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=10;
 											DISP_FLAG=TRUE;
 										}
-//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=10;
+//										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=10;
 									}
 								}
                                  
 								SetDate_Comp();
-    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
-    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+    //                            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter];
                                 break;
                             case 5:
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==OS_SETUP)
                                 {
                                     if(presscount>LKEY2)//步进计数器
 									{
 										Key_Beep();
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=100;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=100;
 									}
 									else if(presscount>LKEY1)//步进计数器
 									{
 										Key_Beep();
-										 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=10;
+										 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=10;
 									}
-//                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=10;
-//                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper<100)
-//                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=100;
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>=500)
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=500;
+//                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=10;
+//                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper<100)
+//                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=100;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>=500)
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=500;
 									else
 										DISP_FLAG=TRUE;
                                 }
                                 else{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter == ACW_SETUP
-									 ||U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter == IR_SETUP
-									 ||U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter == PA_SETUP)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter == ACW_SETUP
+									 ||U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter == IR_SETUP
+									 ||U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter == PA_SETUP)
 									{
-										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time == 0)
+										if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time == 0)
 										{
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time = 3;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time = 3;
 											DISP_FLAG=TRUE;
 										}else{
 											if(presscount>LKEY1)//步进计数器
 											{
 												Key_Beep();
-												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time+=1;
+												 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time+=1;
 												DISP_FLAG=TRUE;
 											}
-//											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time+=1;
+//											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time+=1;
 										}
-									}else if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter == DCW_SETUP){
-										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time == 0)
+									}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter == DCW_SETUP){
+										if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time == 0)
 										{
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time = 2;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time = 2;
 											DISP_FLAG=TRUE;
 										}else{
 											if(presscount>LKEY1)//步进计数器
 											{
 												Key_Beep();
-												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time+=1;
+												 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time+=1;
 												DISP_FLAG=TRUE;
 											}
-//											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time+=1;
+//											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time+=1;
 										}
 									}
 									
 									SetDate_Comp();
 								}
-    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num>High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
-    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num=High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+    //                            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper.num>High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper.num=High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter];
                                 break;
                             case 6:
-								if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR_SETUP)
 								{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower < 10000)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower < 10000)
 									{
 										if(presscount>LKEY2)//步进计数器
 										{
 											Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=10;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=10;
 											DISP_FLAG=TRUE;
 										}
 										else if(presscount>LKEY1)//步进计数器
 										{
 											Key_Beep();
-											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=1;
+											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=1;
 											DISP_FLAG=TRUE;
 										}
-//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=1;
+//										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=1;
 									}else{
 										if(presscount>LKEY2)//步进计数器
 										{
 											Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=1000;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=1000;
 											DISP_FLAG=TRUE;
 										}
 										else if(presscount>LKEY1)//步进计数器
 										{
 											Key_Beep();
-											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=100;
+											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=100;
 											DISP_FLAG=TRUE;
 										}
-//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=100;
+//										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=100;
 									}
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>
-									   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper
-									&& U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper!= 0)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>
+									   U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper
+									&& U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper!= 0)
 									{
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower
-									   =U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower
+									   =U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper;
 										DISP_FLAG=TRUE;
 									}
 								}else{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 2000)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper < 2000)
 									{
 										if(presscount>LKEY2)//步进计数器
 										{
 											Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=10;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=10;
 											DISP_FLAG=TRUE;
 										}
 										else if(presscount>LKEY1)//步进计数器
 										{
 											Key_Beep();
-											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=1;
+											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=1;
 											DISP_FLAG=TRUE;
 										}
-//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=1;
+//										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=1;
 									}else{
 										if(presscount>LKEY2)//步进计数器
 										{
 											Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=100;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=100;
 											DISP_FLAG=TRUE;
 										}
 										else if(presscount>LKEY1)//步进计数器
 										{
 											Key_Beep();
-											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=10;
+											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=10;
 											DISP_FLAG=TRUE;
 										}
-//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper+=10;
+//										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper+=10;
 									}
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>
-									   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>
+									   U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper)
 									{
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper;
 										DISP_FLAG=TRUE;
 									}
 								}
@@ -2944,7 +2985,7 @@ void Setup_Process(void)
 								if(presscount>LKEY1)//步进计数器
 								{
 									Key_Beep();
-									 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower+=1;
+									 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower+=1;
 									DISP_FLAG=TRUE;
 								}
 //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time+=1;
@@ -2957,36 +2998,36 @@ void Setup_Process(void)
 								{
 									DISP_FLAG=TRUE;
 									Key_Beep();
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc)
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc--;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc)
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc--;
 										
 								}
 //                                }
 //                                else
-//                                 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc++;
+//                                 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc++;
 									SetDate_Comp();
                                 break;
                             case 9:
 								if(presscount>LKEY1)//步进计数器
 								{
 									Key_Beep();
-									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time+=1;
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time+=1;
 									DISP_FLAG=TRUE;
 								}
 								SetDate_Comp();
                                 break;
                             case 10:
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==DC)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==DC)
                                 {
 									if(presscount>LKEY1)//步进计数器
 									{
 										Key_Beep();
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last+=1; 
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last+=1; 
 										DISP_FLAG=TRUE;
 									}
                                 }else
                                 {
-//                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=1;
+//                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check=1;
                                 }
 								SetDate_Comp();
                                 break;
@@ -2994,7 +3035,7 @@ void Setup_Process(void)
                                 if(presscount>LKEY1)//步进计数器
 								{
 									Key_Beep();
-                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check+=1;
+                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check+=1;
 									DISP_FLAG=TRUE;
 								}
 									SetDate_Comp();
@@ -3014,11 +3055,11 @@ void Setup_Process(void)
                                 break;
                             case 1:
 
-                            if(U9001_Save_sys.U9001_save.current_step<U9001_Save_sys.U9001_save.all_step)
+                            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step<U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step)
                             {
                                 disp_all=1;
-                                U9001_Save_sys.U9001_save.current_step++;
-                                memcpy(&U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step],&U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step+1],sizeof(U9001_Setup_Typedef));
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step++;
+                                memcpy(&U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step],&U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step+1],sizeof(U9001_Setup_Typedef));
                                 DISP_FLAG=TRUE;
                             }
                                 
@@ -3026,65 +3067,65 @@ void Setup_Process(void)
                             case 2:
 															if(SOFTWARE_VERSION != 0x03)
 																{
-																	U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter=2;
+																	U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter=2;
 																	SetDate_Comp();
 																	disp_all=1;
 																	DISP_FLAG=TRUE;
 																}
                                 break;
                             case 3:
-                                 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
+                                 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==OS_SETUP)
                                 {
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>10)
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower--;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>10)
+																			U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower--;
                                 }
                                 else
-								U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out--;
-								SetDate_Comp();
-								DISP_FLAG=TRUE;
-    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out>Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
-    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out=Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out--;
+									SetDate_Comp();
+									DISP_FLAG=TRUE;
+    //                            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out>Hign_Vout[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out=Hign_Vout[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter];
                                 break;
                             case 4:
 								
-								if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR_SETUP)
 								{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 10000)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper < 10000)
 									{
-										 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>1)
+										 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>1)
 										 {
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=1;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=1;
 											 DISP_FLAG=TRUE;
 										 }
 										 else{
-											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=1;
 										 }
 									 }else{
-//										 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>100)
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=100;
+//										 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>100)
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=100;
 										DISP_FLAG=TRUE; 
 //										 else
-//											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+//											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=1;
 									 }
 								}else{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 2000)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper < 2000)
 									{
-										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>1)
+										if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>1)
 										{
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=1;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=1;
 											DISP_FLAG=TRUE;
 										}
 										 else{
-											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=1;
 										 }
 									}else{
-										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>10)
+										if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>10)
 										{
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=10;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=10;
 											DISP_FLAG=TRUE;
 										}
 										 else{
-											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=10;
+											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=10;
 										 }
 									}
                                     
@@ -3093,106 +3134,106 @@ void Setup_Process(void)
                             
                             
                             
-    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
-    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+    //                            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter];
                                 break;
                              case 5:
-                                 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
+                                 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==OS_SETUP)
                                 {
 									DISP_FLAG=TRUE;
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>=100)
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=10;
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper<100)
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=0;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>=100)
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=10;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper<100)
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=0;
                                 }
                                 else
                                 {
 									DISP_FLAG=TRUE;
-                                 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time>1)
-                                  U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time--;
+                                 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time>1)
+                                  U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time--;
 								 SetDate_Comp();
                              }
 								
     //                             else
-    //                                 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time=0;
-    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num>High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
-    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num=High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+    //                                 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time=0;
+    //                            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper.num>High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper.num=High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter];
                                 break;
                             case 6:
-								if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR_SETUP)
 								{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower < 10000)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower < 10000)
 									{
-										 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>1)
+										 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>1)
 										 {
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=1;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=1;
 											 DISP_FLAG=TRUE;
 										 }
 										 else{
-											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=1;
+											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=1;
 											 
 										 }
 									 }else{
-//										 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>100)
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=100;
+//										 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>100)
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=100;
 											DISP_FLAG=TRUE;
 //										 else
-//											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+//											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=1;
 									 }
 								}else{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 2000)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper < 2000)
 									{
 										DISP_FLAG=TRUE;
-										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>1)
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=1;
+										if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>1)
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=1;
 										else
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=0;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=0;
 									}else{
 										DISP_FLAG=TRUE;
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=10;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=10;
 									}
 								}
                                     
                                 break;
                             case 7:
 								DISP_FLAG=TRUE;
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time)
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time--;
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time)
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time--;
                                 break;
                             case 8:
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR)
                                 {
 									DISP_FLAG=TRUE;
-									 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc=0;
-//                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc)
-//                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc--;
+									 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc=0;
+//                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc)
+//                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc--;
                                 }
     //                            else
-    //                             U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc--;
+    //                             U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc--;
                                 break;
                             case 9:
 								DISP_FLAG=TRUE;
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time)
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time--;
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time)
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time--;
                                 break;
                             case 10:
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==DC)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==DC)
                                 {
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last)
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last)
 									{
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last--; 
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last--; 
 										DISP_FLAG=TRUE;
 									}
                                 }else
                                 {
-                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=1;
+                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check=1;
 									DISP_FLAG=TRUE;
                                 }
                                 break;
                             case 11:
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check)
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check)
 									{
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check--;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check--;
 										DISP_FLAG=TRUE;
 									}
 										
@@ -3228,15 +3269,15 @@ void Setup_Process(void)
 //                                disp_all=1;
 //                                break;
                             case 3:
-                                 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
+                                 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==OS_SETUP)
                                 {
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>10)
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>10)
 									{
 										if(presscount>LKEY1)//步进计数器
 										{
 											DISP_FLAG=TRUE;
 											Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower--;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower--;
 										}
 									}
                                 }
@@ -3245,98 +3286,98 @@ void Setup_Process(void)
 									{
 										DISP_FLAG=TRUE;
 										Key_Beep();
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out-=10;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out-=10;
 									}else if(presscount>LKEY1)//步进计数器
 									{
 										DISP_FLAG=TRUE;
 										Key_Beep();
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out--;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out--;
 									}
 								}
 								SetDate_Comp();
-    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out>Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
-    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out=Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+    //                            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out>Hign_Vout[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out=Hign_Vout[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter];
                                 break;
                             case 4:
 								
-								if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR_SETUP)
 								{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 10000)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper < 10000)
 									{
 										if(presscount>LKEY2)//步进计数器
 										{
 											DISP_FLAG=TRUE;
 											Key_Beep();
-											 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>10)
-												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=10;
+											 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>10)
+												U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=10;
 											 else
-												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+												 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=1;
 										}else if(presscount>LKEY1)//步进计数器
 										{
 											DISP_FLAG=TRUE;
 											Key_Beep();
-											 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>1)
-												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=1;
+											 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>1)
+												U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=1;
 											 else
-												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+												 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=1;
 										}
 										
 									 }else{
-//										 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>100)
+//										 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>100)
 											if(presscount>LKEY2)//步进计数器
 											{
 												DISP_FLAG=TRUE;
 												Key_Beep();
-												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=1000;
+												U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=1000;
 											}else if(presscount>LKEY1)//步进计数器
 											{
 												DISP_FLAG=TRUE;
 												Key_Beep();
-												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=100;
+												 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=100;
 											}
 //										 else
-//											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+//											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=1;
 									 }
 								}else{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 2000)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper < 2000)
 									{
 										if(presscount>LKEY2)//步进计数器
 										{
 											DISP_FLAG=TRUE;
 											Key_Beep();
-											 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>10)
-												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=10;
+											 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>10)
+												U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=10;
 											 else
-												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+												 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=1;
 										}else if(presscount>LKEY1)//步进计数器
 										{
 											DISP_FLAG=TRUE;
 											Key_Beep();
-											 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>1)
-												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=1;
+											 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>1)
+												U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=1;
 											 else
-												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+												 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=1;
 										}
-//										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>1)
-//											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=1;
+//										if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>1)
+//											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=1;
 //										 else
-//											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+//											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=1;
 									}else{
 										if(presscount>LKEY2)//步进计数器
 										{
 											DISP_FLAG=TRUE;
 											Key_Beep();
-											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=100;
+											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=100;
 										}else if(presscount>LKEY1)//步进计数器
 										{
 											DISP_FLAG=TRUE;
 											Key_Beep();
-											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=10;
+											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=10;
 										}
-//										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>10)
-//											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=10;
+//										if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>10)
+//											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=10;
 //										 else
-//											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=10;
+//											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=10;
 									}
                                     
 								}
@@ -3344,25 +3385,25 @@ void Setup_Process(void)
                             
                             
                             
-    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
-    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+    //                            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter];
                                 break;
                              case 5:
-                                 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
+                                 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==OS_SETUP)
                                 {
 									if(presscount>LKEY1)//步进计数器
 									{
 										DISP_FLAG=TRUE;
 										Key_Beep();
-										 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>=100)
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=10;
-										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper<100)
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=0;
+										 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>=100)
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=10;
+										if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper<100)
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=0;
 									}
-//                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>=100)
-//                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=10;
-//                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper<100)
-//                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=0;
+//                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>=100)
+//                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=10;
+//                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper<100)
+//                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=0;
                                 }
                                 else
                                 {
@@ -3370,90 +3411,90 @@ void Setup_Process(void)
 									{
 										DISP_FLAG=TRUE;
 										Key_Beep();
-										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time>1)
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time--;
+										if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time>1)
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time--;
 									}
 									 SetDate_Comp();
 								 }
 								
     //                             else
-    //                                 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time=0;
-    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num>High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
-    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num=High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+    //                                 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time=0;
+    //                            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper.num>High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper.num=High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter];
                                 break;
                             case 6:
-								if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR_SETUP)
 								{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower < 10000)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower < 10000)
 									{
 										if(presscount>LKEY2)//步进计数器
 										{
 											DISP_FLAG=TRUE;
 											Key_Beep();
-											 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>10)
-												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=10;
+											 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>10)
+												U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=10;
 											 else
-												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=1;
+												 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=1;
 										}else if(presscount>LKEY1)//步进计数器
 										{
 											DISP_FLAG=TRUE;
 											Key_Beep();
-											if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>1)
-												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=1;
+											if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>1)
+												U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=1;
 											 else
-												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=1;
+												 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=1;
 										}
-//										 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>1)
-//											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=1;
+//										 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>1)
+//											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=1;
 //										 else
-//											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=1;
+//											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=1;
 									 }else{
 										 if(presscount>LKEY2)//步进计数器
 										{
 											DISP_FLAG=TRUE;
 											Key_Beep();
-											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=1000;
+											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=1000;
 										}else if(presscount>LKEY1)//步进计数器
 										{
 											DISP_FLAG=TRUE;
 											Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=100;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=100;
 										}
-//										 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>100)
+//										 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>100)
 											
-//											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+//											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=1;
 									 }
 								}else{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 2000)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper < 2000)
 									{
 										if(presscount>LKEY2)//步进计数器
 										{
 											DISP_FLAG=TRUE;
 											Key_Beep();
-											 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>10)
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=10;
+											 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>10)
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=10;
 										else
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=0;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=0;
 										}else if(presscount>LKEY1)//步进计数器
 										{
 											DISP_FLAG=TRUE;
 											Key_Beep();
-											if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>1)
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=1;
+											if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>1)
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=1;
 										else
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=0;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=0;
 										}
 									}else{
 										if(presscount>LKEY2)//步进计数器
 										{
 											DISP_FLAG=TRUE;
 											Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=100;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=100;
 										}else if(presscount>LKEY1)//步进计数器
 										{
 											DISP_FLAG=TRUE;
 											Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=10;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=10;
 										}
 										
 									}
@@ -3465,42 +3506,42 @@ void Setup_Process(void)
 								{
 									DISP_FLAG=TRUE;
 									Key_Beep();
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time)
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time--;
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time)
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time--;
 								}
                                 break;
                             case 8:
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR)
                                 {
 									DISP_FLAG=TRUE;
-									 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc=0;
-//                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc)
-//                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc--;
+									 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc=0;
+//                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc)
+//                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc--;
                                 }
     //                            else
-    //                             U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc--;
+    //                             U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc--;
                                 break;
                             case 9:
 								if(presscount>LKEY1)//步进计数器
 								{
 									DISP_FLAG=TRUE;
 									Key_Beep();
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time)
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time--;
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time)
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time--;
 								}
                                 break;
                             case 10:
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==DC)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==DC)
                                 {
 									DISP_FLAG=TRUE;
 									if(presscount>LKEY1)//步进计数器
 									{
 										Key_Beep();
-										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last)
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last--; 
+										if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last)
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last--; 
 									}
                                 }else{
-//                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=1;
+//                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check=1;
                                 }
                                 break;
                             case 11:
@@ -3508,8 +3549,8 @@ void Setup_Process(void)
 								{
 									DISP_FLAG=TRUE;
 									Key_Beep();
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check)
-                                   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check--;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check)
+                                   U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check--;
 								}
                                 
                                 break;
@@ -3519,162 +3560,166 @@ void Setup_Process(void)
                         }
                         break;
                     case Key_F4:
-						Key_Beep();
-						presscount=0;
+											Key_Beep();
+											presscount=0;
                         switch(item)//第几项
                         {
                             case 0:
-                                SetSystemStatus(SYS_STATUS_SYS);
-                                break;
+															
+															if(U9001_Save_sys.currentgroup < 9)
+																U9001_Save_sys.currentgroup ++;
+															DISP_FLAG=TRUE;
+															disp_all=1;
+														break;
                             case 1:
                                 
-                                if(U9001_Save_sys.U9001_save.current_step>1)
-                                    U9001_Save_sys.U9001_save.current_step--;
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step>1)
+                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step--;
                                 disp_all=1;
 								DISP_FLAG=TRUE;
                                 
                                 break;
                             case 2:
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter=3;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter=3;
                                 SetDate_Comp();
 								disp_all=1;
 								DISP_FLAG=TRUE;
                                 break;
                             case 3:
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==OS_SETUP)
                                 {
                                     DISP_FLAG=TRUE;
-                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=10;
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower<=10)
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=10;
+                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=10;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower<=10)
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=10;
                                 }
                                 else
                                 {
 									DISP_FLAG=TRUE;
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out>=150)
-                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out-=100;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out>=150)
+                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out-=100;
                                 }
-    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out>Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
-    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out=Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+    //                            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out>Hign_Vout[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out=Hign_Vout[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter];
                                 break;
                             case 4:
-								if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR_SETUP)
 								{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 10000)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper < 10000)
 									{
 										DISP_FLAG=TRUE;
-										 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>100)
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=100;
+										 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>100)
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=100;
 										 else
-											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=1;
 									 }else{
-//										 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>1000)
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=1000;
+//										 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>1000)
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=1000;
 //										 else
-//											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+//											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=1;
 									 }
 								}else{
 									DISP_FLAG=TRUE;
-                                   if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>100)
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=100;
+                                   if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>100)
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=100;
 									else
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=1;
 								}
                                 
                                 
-    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
-    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+    //                            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter];
                                 break;
                             case 5:
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==OS_SETUP)
                                 {
 									DISP_FLAG=TRUE;
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>=100)
-                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=100;
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper<100)
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=0;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>=100)
+                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=100;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper<100)
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=0;
                                 }
                                 else
                                 {
 									DISP_FLAG=TRUE;
-                                     if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time>10)
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time-=10;
+                                     if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time>10)
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time-=10;
                                      else
-                                         U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time=0;
+                                         U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time=0;
 									 SetDate_Comp();
                                  }
 								
-    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num>High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
-    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num=High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+    //                            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper.num>High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper.num=High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter];
                                 break;
                             case 6:
-								if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR_SETUP)
 								{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower < 10000)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower < 10000)
 									{
 										DISP_FLAG=TRUE;
-										 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>100)
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=100;
+										 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>100)
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=100;
 										 else
-											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=1;
+											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=1;
 									 }else{
 										 DISP_FLAG=TRUE;
-//										 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>1000)
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=1000;
+//										 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>1000)
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=1000;
 //										 else
-//											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+//											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=1;
 									 }
 								}else{
 									DISP_FLAG=TRUE;
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>100)
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=100;
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>100)
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=100;
 									else
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=0;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=0;
 								}
                                 break;
                             case 7:
 								DISP_FLAG=TRUE;
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time>10)
-                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time-=10;
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time>10)
+                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time-=10;
                                 else
-                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time=0;
+                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time=0;
                                 break;
                             case 8:
 								DISP_FLAG=TRUE;
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR)
                                 {
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc)
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc--;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc)
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc--;
                                 }
     //                            else
-    //                             U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc--;
+    //                             U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc--;
                                 break;
                             case 9:
 								DISP_FLAG=TRUE;
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time>10)
-                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time-=10;
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time>10)
+                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time-=10;
                                 else
-                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time=0;
+                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time=0;
                                 break;
                             case 10:
 								DISP_FLAG=TRUE;
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==DC)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==DC)
                                 {
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last>10)
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last-=10; 
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last>10)
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last-=10; 
                                     else
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last=0;
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last=0;
                                 }else
                                 {
-                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=1;
+                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check=1;
                                 }
                                 break;
                             case 11:
 								DISP_FLAG=TRUE;
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check>10)
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check-=10;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check>10)
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check-=10;
                                     else
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=0;
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check=0;
                                 
                                 break;
                             default:
@@ -3688,7 +3733,7 @@ void Setup_Process(void)
                         switch(item)//第几项
                         {
                             case 0:
-                                SetSystemStatus(SYS_STATUS_SYS);
+//                                SetSystemStatus(SYS_STATUS_SYS);
                                 break;
 //                            case 1:
 //                                if(presscount>LKEY1)
@@ -3706,126 +3751,126 @@ void Setup_Process(void)
 //								disp_all=1;
 //                                break;
                             case 3:
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==OS_SETUP)
                                 {
                                      if(presscount>LKEY1)
 									 {
 										 DISP_FLAG=TRUE;
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=10;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=10;
 									 }
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower<=10)
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=10;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower<=10)
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=10;
                                 }
                                 else
                                 {
 									 if(presscount>LKEY3)
 									 {
 										 DISP_FLAG=TRUE;
-										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out>=150)
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out-=300;
+										if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out>=150)
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out-=300;
 									 }else if(presscount>LKEY2){
 										 DISP_FLAG=TRUE;
-										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out>=150)
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out-=200;
+										if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out>=150)
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out-=200;
 									 }else if(presscount>LKEY1){
 										 DISP_FLAG=TRUE;
-										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out>=150)
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out-=100;
+										if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out>=150)
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out-=100;
 									 }
                                 }
-    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out>Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
-    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out=Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+    //                            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out>Hign_Vout[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out=Hign_Vout[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter];
                                 break;
                             case 4:
-								if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR_SETUP)
 								{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper < 10000)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper < 10000)
 									{
 										 if(presscount>LKEY3)
 										 {
 											 DISP_FLAG=TRUE;
 											 Key_Beep();
-											if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>300)
-												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=300;
+											if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>300)
+												U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=300;
 											else
-												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+												U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=1;
 										 }else if(presscount>LKEY2){
 											 DISP_FLAG=TRUE;
 											 Key_Beep();
-											if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>200)
-												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=200;
+											if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>200)
+												U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=200;
 											else
-												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+												U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=1;
 										 }else if(presscount>LKEY1){
 											 DISP_FLAG=TRUE;
 											 Key_Beep();
-											if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>100)
-												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=100;
+											if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>100)
+												U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=100;
 											else
-												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+												U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=1;
 										 }
 										 
 									 }else{
-//										 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>1000)
+//										 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>1000)
 										 if(presscount>LKEY3)
 										 {
 											 DISP_FLAG=TRUE;
 											 Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=3000;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=3000;
 										 }else if(presscount>LKEY2){
 											 DISP_FLAG=TRUE;
 											 Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=2000;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=2000;
 										 }else if(presscount>LKEY1){
 											 DISP_FLAG=TRUE;
 											 Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=1000;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=1000;
 										 }
 											
 //										 else
-//											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+//											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=1;
 									 }
 								}else{
 									if(presscount>LKEY3)
 									 {
 										 DISP_FLAG=TRUE;
 										 Key_Beep();
-										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>300)
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=300;
+										if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>300)
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=300;
 										else
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=1;
 									 }else if(presscount>LKEY2){
 										 DISP_FLAG=TRUE;
 										 Key_Beep();
-										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>200)
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=200;
+										if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>200)
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=200;
 										else
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=1;
 									 }else if(presscount>LKEY1){
 										 DISP_FLAG=TRUE;
 										 Key_Beep();
-										  if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>100)
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=100;
+										  if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>100)
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=100;
 										else
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=1;
 									 }
                                  
 								}
                                 
                                 
-    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
-    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+    //                            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter];
                                 break;
                             case 5:
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==OS_SETUP)
                                 {
 									if(presscount>LKEY1){
 										DISP_FLAG=TRUE;
 										Key_Beep();
-										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>=100)
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper-=100;
-										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper<100)
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=0;
+										if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>=100)
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper-=100;
+										if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper<100)
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=0;
 									}
                                 }
                                 else
@@ -3833,44 +3878,44 @@ void Setup_Process(void)
 									if(presscount>LKEY1){
 										DISP_FLAG=TRUE;
 										Key_Beep();
-										 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time>10)
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time-=10;
+										 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time>10)
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time-=10;
 										 else
-											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time=0;
+											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time=0;
 									 }
 									 SetDate_Comp();
                                  }
 								
-    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num>High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
-    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper.num=High_Upper[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+    //                            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper.num>High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper.num=High_Upper[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter];
                                 break;
                             case 6:
-								if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR_SETUP)
 								{
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower < 10000)
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower < 10000)
 									{
 										if(presscount>LKEY3)
 										 {
 											 DISP_FLAG=TRUE;
 											 Key_Beep();
-											if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>300)
-												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=300;
+											if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>300)
+												U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=300;
 											 else
-												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=1;
+												 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=1;
 										 }else if(presscount>LKEY2){
 											 DISP_FLAG=TRUE;
 											 Key_Beep();
-											if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>200)
-												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=200;
+											if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>200)
+												U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=200;
 											 else
-												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=1;
+												 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=1;
 										 }else if(presscount>LKEY1){
 											 DISP_FLAG=TRUE;
 											 Key_Beep();
-											if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>100)
-												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=100;
+											if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>100)
+												U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=100;
 											 else
-												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=1;
+												 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=1;
 										 }
 										 
 									 }else{
@@ -3878,108 +3923,108 @@ void Setup_Process(void)
 										 {
 											 DISP_FLAG=TRUE;
 											 Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=3000;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=3000;
 										 }else if(presscount>LKEY2){
 											 DISP_FLAG=TRUE;
 											 Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=2000;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=2000;
 										 }else if(presscount>LKEY1){
 											 DISP_FLAG=TRUE;
 											 Key_Beep();
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=1000;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=1000;
 										 }
-//										 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper>1000)
-//											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=1000;
+//										 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper>1000)
+//											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=1000;
 //										 else
-//											 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=1;
+//											 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=1;
 									 }
 								}else{
 									if(presscount>LKEY3)
 										 {
 											 DISP_FLAG=TRUE;
 											 Key_Beep();
-											if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>300)
-												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=300;
+											if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>300)
+												U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=300;
 											 else
-												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=0;
+												 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=0;
 										 }else if(presscount>LKEY2){
 											 DISP_FLAG=TRUE;
 											 Key_Beep();
-											if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>200)
-												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=200;
+											if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>200)
+												U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=200;
 											 else
-												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=0;
+												 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=0;
 										 }else if(presscount>LKEY1){
 											 DISP_FLAG=TRUE;
 											 Key_Beep();
-											if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>100)
-												U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=100;
+											if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>100)
+												U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=100;
 											 else
-												 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=0;
+												 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=0;
 										 }
-//									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower>100)
-//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower-=100;
+//									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower>100)
+//										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower-=100;
 //									else
-//										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=0;
+//										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=0;
 								}
                                 break;
                             case 7:
 								if(presscount>LKEY1){
 									DISP_FLAG=TRUE;
 									Key_Beep();
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time>10)
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time-=10;
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time>10)
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time-=10;
 									else
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time=0;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time=0;
 								}
                                 break;
                             case 8:
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR)
                                 {
 									if(presscount>LKEY1){
 										DISP_FLAG=TRUE;
 										Key_Beep();
-										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc)
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc--;
+										if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc)
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc--;
 									}
                                 }
     //                            else
-    //                             U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc--;
+    //                             U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc--;
                                 break;
                             case 9:
 								if(presscount>LKEY1){
 									DISP_FLAG=TRUE;
 									Key_Beep();
-									if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time>10)
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time-=10;
+									if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time>10)
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time-=10;
 									else
-										U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time=0;
+										U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time=0;
 								}
                                 break;
                             case 10:
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==DC)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==DC)
                                 {
 									if(presscount>LKEY1){
 										DISP_FLAG=TRUE;
 										Key_Beep();
-										if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last>10)
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last-=10; 
+										if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last>10)
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last-=10; 
 										else
-											U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last=0;
+											U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last=0;
 									}
                                 }else
                                 {
-//                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=1;
+//                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check=1;
                                 }
                                 break;
                             case 11:
 								if(presscount>LKEY1){
 									DISP_FLAG=TRUE;
 									Key_Beep();
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check>10)
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check-=10;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check>10)
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check-=10;
                                     else
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=0;
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check=0;
 								}
                                 
                                 break;
@@ -3992,76 +4037,80 @@ void Setup_Process(void)
                         switch(item)//第几项
                         {
                             case 0:
-                                
-                                break;
+															Key_Beep();
+															DISP_FLAG=TRUE;
+															disp_all=1;
+															if(U9001_Save_sys.currentgroup > 0)
+																U9001_Save_sys.currentgroup --;
+														break;
                             case 1:
 								Key_Beep();
 								DISP_FLAG=TRUE;
-                                 if(U9001_Save_sys.U9001_save.current_step<U9001_Save_sys.U9001_save.all_step)
-                                    U9001_Save_sys.U9001_save.current_step++;
+                                 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step<U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step)
+                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step++;
                                  SetDate_Comp();
                                  disp_all=1;
                                 break;
                             case 2:
 								Key_Beep();
                                 DISP_FLAG=TRUE;
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter=4;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter=4;
                                 SetDate_Comp();
                             disp_all=1;
                                 break;
                             case 3:
-    //                          U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out+=100;
-    //                            if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out>Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])//
-    //                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out=Hign_Vout[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+    //                          U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out+=100;
+    //                            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out>Hign_Vout[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])//
+    //                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out=Hign_Vout[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter];
                                 break;
                             case 4:
 								Key_Beep();
 								DISP_FLAG=TRUE;
-								if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter == IR_SETUP)
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter == IR_SETUP)
 								{
-									U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=0;
+									U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=0;
 								}
                                 break;
                             case 5:
 								Key_Beep();
 								DISP_FLAG=TRUE;
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time=0;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time=0;
                                 break;
                             case 6:
 								Key_Beep();
 								DISP_FLAG=TRUE;
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=0;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=0;
                                 break;
                             case 7:
 								Key_Beep();
 								DISP_FLAG=TRUE;
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time=0;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time=0;
                                 break;
                             case 8:
 								Key_Beep();
 								DISP_FLAG=TRUE;
-                                 if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR)
+                                 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR)
                                 {
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc)
-                                        U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc--;
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc)
+                                        U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc--;
                                 }
                                 else
-                                 U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc=0;
+                                 U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc=0;
                                 break;
                             case 9:
 								Key_Beep();
 								DISP_FLAG=TRUE;
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time=0;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time=0;
                                 break;
                             case 10:
 								Key_Beep();
 								DISP_FLAG=TRUE;
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last=0;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last=0;
                             break;
                             case 11:
 								Key_Beep();
 								DISP_FLAG=TRUE;
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=0;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check=0;
                                 break;
                             
                         }
@@ -4088,15 +4137,15 @@ void Setup_Process(void)
 						Key_Beep();
                         if(item%2 == 1)
 						{
-							if(item>=MAX_SETP[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])
+							if(item>=MAX_SETP[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])
 							{
-//								if(item>MAX_SETP[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])
+//								if(item>MAX_SETP[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])
 //								{
 //									
 //								}else{
 //									DISP_FLAG=TRUE;
 //								}
-								item=MAX_SETP[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+								item=MAX_SETP[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter];
 							}else{
 								item++;
 								DISP_FLAG=TRUE;
@@ -4104,26 +4153,28 @@ void Setup_Process(void)
 							
 						}							
                     break;
-                    case Key_LEFT:
+						case Key_LEFT:
 						Key_Beep();
-                        if(item%2 == 0)
+						if(item != 0 && item%2 == 0)
 						{
 							DISP_FLAG=TRUE;
 							item--;
-						}                  
-                    break;
-                    case Key_DOWN:
+						}else if(item == 0){
+							
+						}							
+						break;
+						case Key_DOWN:
 						Key_Beep();
 //						DISP_FLAG=TRUE;
-						if(item>=MAX_SETP[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])
+						if(item>=MAX_SETP[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])
 						{
-//								if(item>MAX_SETP[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter])
+//								if(item>MAX_SETP[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter])
 //								{
 //									
 //								}else{
 //									DISP_FLAG=TRUE;
 //								}
-							item=MAX_SETP[U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter];
+							item=MAX_SETP[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter];
 						}else{
 							if(item != 0)
 							{
@@ -4219,59 +4270,59 @@ void Setup_Process(void)
                         switch(item)
                         {
                             case 3://电压设置
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out=setvalue;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out=setvalue;
 								SetDate_Comp();
                                 break;
                             case 4:
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==OS_SETUP)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==OS_SETUP)
                                 {
 //                                   if(setvalue >= 1)
 //								   {
-//									   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last=setvalue*1e2;
+//									   U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last=setvalue*1e2;
 //								   }else{
-									   U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last=setvalue*1e3;
+									   U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last=setvalue*1e3;
 //								   }
                                 }
                                 else
                                 {
-                                    if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+                                    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR_SETUP)
                                         setvalue*=10;
-                                    U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=setvalue;
+                                    U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=setvalue;
                                 }
 								SetDate_Comp();
                             break;
                             case 5:
                                 setvalue*=10;
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].time=setvalue;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time=setvalue;
 								SetDate_Comp();
                                 break;
                             case 6:
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR_SETUP)
                                 setvalue*=10;
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=setvalue;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=setvalue;
 								SetDate_Comp();
                                 break;
                             case 7:
                                 setvalue*=10;
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].rise_time=setvalue;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].rise_time=setvalue;
 								SetDate_Comp();
                                 break;
                             case 8:
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc=setvalue;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc=setvalue;
 								SetDate_Comp();
                                 break;
                             case 9:
                                 setvalue*=10;
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time=setvalue;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time=setvalue;
 								SetDate_Comp();
                                 break;
                             case 10:
 								setvalue*=10;
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].equa_last=setvalue;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].equa_last=setvalue;
 								SetDate_Comp();
                                 break;
                             case 11:
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=setvalue*10;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check=setvalue*10;
 								SetDate_Comp();
                                 break;
                                 
@@ -4286,38 +4337,38 @@ void Setup_Process(void)
                         switch(item)
                         {
                             case 3://电压设置
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].V_out=setvalue*1000;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out=setvalue*1000;
 								SetDate_Comp();
                                 break;
                             case 4:
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR_SETUP)
                                 {
                                     setvalue*=10;
                                 }
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper=setvalue*1000;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].Upper=setvalue*1000;
 								SetDate_Comp();
                             break;
                             
                             case 6:
-                                if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter==IR_SETUP)
+                                if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter==IR_SETUP)
                                 {
                                     setvalue*=10;
                                 }
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].lower=setvalue*1000;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].lower=setvalue*1000;
 								SetDate_Comp();
                                 break;
                             
                             case 8:
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].range_arc=setvalue*10;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].range_arc=setvalue*10;
 								SetDate_Comp();
                                 break;
                             case 9:
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].drop_time=setvalue;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].drop_time=setvalue;
 								SetDate_Comp();
                                 break;
                            
                             case 11:
-                                U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].check=setvalue*10000;
+                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].check=setvalue*10000;
 								SetDate_Comp();
                                 break;
                             default:
@@ -4380,7 +4431,7 @@ void Setup_Process(void)
 	Range=Tft_5520.Set_Value[Tft_5520.Group].Range-1;
 	else
 		Range=MAX_R_RANGE-1;
-	U9001_Save_sys.U9001_save.start_step = U9001_Save_sys.U9001_save.current_step;
+	U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].start_step = U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step;
 	Savetoeeprom();
 //	Save_fileDate(0);
 //	lcd_Clear(LCD_COLOR_TEST_BACK);
@@ -4628,7 +4679,7 @@ void Setup_config_Process(void)
 							DISP_FLAG=TRUE;
 							Key_Beep();
 							*(pt+(item-1))=0;
-							U9001_Save_sys.U9001_save.disp=1;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].disp=1;
 							clearflag=1;
 							clearstart=1;
 							SetSystemStatus(SYS_STATUS_IDEM);
@@ -6741,7 +6792,7 @@ void Start_Process(void)
 //		PLC_OutProg();//开PLC启动
 
 		//系统状态更新
-        if(U9001_Save_sys.U9001_save.U9001_Setup[1].parameter!=OS)
+        if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].parameter!=OS)
             SetSoftTimer(TEST_SOFTTIMER,U9001_Save_sys.U9001_Testconfg.delay_time*10);//设置按键延时周期(即软定时器设置)
 				
         while (!GetSoftTimerOut(TEST_SOFTTIMER)) //计时未到
@@ -6781,7 +6832,7 @@ void TestPause_Process(void)
 
 	f_disp=FALSE;//显示标志
     ARC_out(0);
-    if(U9001_Save_sys.U9001_save.disp)//显示分选结果
+    if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].disp)//显示分选结果
         Disp_Comp();
 //    else
 //		Disp_CompTest();
@@ -6801,7 +6852,7 @@ void TestPause_Process(void)
 	}else{
 		if(U9001_Save_sys.U9001_Testconfg.comp_setp == 0)
 		{
-			if(U9001_Save_sys.U9001_save.current_step<U9001_Save_sys.U9001_save.all_step)
+			if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step<U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step)
 			{
 				switch(U9001_Save_sys.U9001_Testconfg.fail_mode)
 				{
@@ -6819,19 +6870,19 @@ void TestPause_Process(void)
 							
 							return;
 						}else{
-							U9001_Save_sys.U9001_save.current_step++;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step++;
 							SetSystemMessage(MSG_WAIT);
 						}
 						break;
 					case 1:
-						U9001_Save_sys.U9001_save.current_step++;
+						U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step++;
 						SetSystemMessage(MSG_WAIT);
 						break;
 					case 2:
 						SetSystemMessage(MSG_WAIT);
 						break;
 					case 3:
-						U9001_Save_sys.U9001_save.current_step++;
+						U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step++;
 						SetSystemMessage(MSG_WAIT);
 						break;
 					default:
@@ -6900,8 +6951,8 @@ void TestPause_Process(void)
 				
 			}
 		}else{
-			if(U9001_Save_sys.U9001_save.current_step<U9001_Save_sys.U9001_Testconfg.comp_setp && 
-			   U9001_Save_sys.U9001_save.current_step<U9001_Save_sys.U9001_save.all_step)
+			if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step<U9001_Save_sys.U9001_Testconfg.comp_setp && 
+			   U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step<U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step)
 			{
 				switch(U9001_Save_sys.U9001_Testconfg.fail_mode)
 				{
@@ -6918,19 +6969,19 @@ void TestPause_Process(void)
 							SetSystemStatus(SYS_STATUS_FINISH);//测试结束 
 							return;
 						}else{
-							U9001_Save_sys.U9001_save.current_step++;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step++;
 							SetSystemMessage(MSG_WAIT);
 						}
 						break;
 					case 1:
-						U9001_Save_sys.U9001_save.current_step++;
+						U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step++;
 						SetSystemMessage(MSG_WAIT);
 						break;
 					case 2:
 						SetSystemMessage(MSG_WAIT);
 						break;
 					case 3:
-						U9001_Save_sys.U9001_save.current_step++;
+						U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step++;
 						SetSystemMessage(MSG_WAIT);
 						break;
 					default:
@@ -7040,7 +7091,7 @@ void TestPause_Process(void)
 		if(GetSoftTimerOut(DELAY_SOFTTIMER)&&(pass_flag==1))
 		{
 			SetSystemStatus(SYS_STATUS_TEST);//系统状态-测试开始，连接下一个步骤
-            if(U9001_Save_sys.U9001_save.disp==0)
+            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].disp==0)
             {
                 GUI_Clear();
                 Disp_IdelButton();

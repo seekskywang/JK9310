@@ -119,11 +119,6 @@
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
-          <Key>DLGUARM</Key>
-          <Name>€?w??€?w??</Name>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
           <Key>PWSTATINFO</Key>
           <Name>200,50,700</Name>
         </SetRegEntry>
@@ -338,175 +333,165 @@
         <Ww>
           <count>34</count>
           <WinNumber>1</WinNumber>
-          <ItemText>U9001_Save_sys.U9001_save.clearvalue,0x0A</ItemText>
+          <ItemText>FullOut,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>35</count>
           <WinNumber>1</WinNumber>
-          <ItemText>FullOut,0x0A</ItemText>
+          <ItemText>Voltage,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>36</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Voltage,0x0A</ItemText>
+          <ItemText>Current,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>37</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Current,0x0A</ItemText>
+          <ItemText>dat,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>38</count>
           <WinNumber>1</WinNumber>
-          <ItemText>dat,0x0A</ItemText>
+          <ItemText>Test_Value,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>39</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Test_Value,0x0A</ItemText>
+          <ItemText>_4094_databuff</ItemText>
         </Ww>
         <Ww>
           <count>40</count>
           <WinNumber>1</WinNumber>
-          <ItemText>_4094_databuff</ItemText>
+          <ItemText>cpld_value,0x10</ItemText>
         </Ww>
         <Ww>
           <count>41</count>
           <WinNumber>1</WinNumber>
-          <ItemText>cpld_value,0x10</ItemText>
+          <ItemText>value</ItemText>
         </Ww>
         <Ww>
           <count>42</count>
           <WinNumber>1</WinNumber>
-          <ItemText>value</ItemText>
+          <ItemText>F_x</ItemText>
         </Ww>
         <Ww>
           <count>43</count>
           <WinNumber>1</WinNumber>
-          <ItemText>F_x</ItemText>
+          <ItemText>Resistance,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>44</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Resistance,0x0A</ItemText>
+          <ItemText>jieguo,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>45</count>
           <WinNumber>1</WinNumber>
-          <ItemText>jieguo,0x0A</ItemText>
+          <ItemText>Cvalue</ItemText>
         </Ww>
         <Ww>
           <count>46</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Cvalue</ItemText>
+          <ItemText>Test_mid,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>47</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Test_mid,0x0A</ItemText>
+          <ItemText>keyvalue</ItemText>
         </Ww>
         <Ww>
           <count>48</count>
           <WinNumber>1</WinNumber>
-          <ItemText>keyvalue</ItemText>
+          <ItemText>TestOut,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>49</count>
           <WinNumber>1</WinNumber>
-          <ItemText>U9001_Save_sys.U9001_save.U9001_Setup,0x0A</ItemText>
+          <ItemText>_4094_databuff,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>50</count>
           <WinNumber>1</WinNumber>
-          <ItemText>TestOut,0x0A</ItemText>
+          <ItemText>Test_Value.I_R,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>51</count>
           <WinNumber>1</WinNumber>
-          <ItemText>_4094_databuff,0x0A</ItemText>
+          <ItemText>Test_Value.I_R,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>52</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Test_Value.I_R,0x0A</ItemText>
+          <ItemText>Resistance,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>53</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Test_Value.I_R,0x0A</ItemText>
+          <ItemText>Save_TestValue,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>54</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Resistance,0x0A</ItemText>
+          <ItemText>Sys_SetValue</ItemText>
         </Ww>
         <Ww>
           <count>55</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Save_TestValue,0x0A</ItemText>
+          <ItemText>U9001_Save_sys,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>56</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Sys_SetValue</ItemText>
+          <ItemText>ComBuf3</ItemText>
         </Ww>
         <Ww>
           <count>57</count>
           <WinNumber>1</WinNumber>
-          <ItemText>U9001_Save_sys,0x0A</ItemText>
+          <ItemText>sendbuff</ItemText>
         </Ww>
         <Ww>
           <count>58</count>
           <WinNumber>1</WinNumber>
-          <ItemText>ComBuf3</ItemText>
+          <ItemText>sendbuff1</ItemText>
         </Ww>
         <Ww>
           <count>59</count>
           <WinNumber>1</WinNumber>
-          <ItemText>sendbuff</ItemText>
+          <ItemText>DispBuf</ItemText>
         </Ww>
         <Ww>
           <count>60</count>
           <WinNumber>1</WinNumber>
-          <ItemText>sendbuff1</ItemText>
+          <ItemText>Range</ItemText>
         </Ww>
         <Ww>
           <count>61</count>
           <WinNumber>1</WinNumber>
-          <ItemText>DispBuf</ItemText>
+          <ItemText>Save_TestValue,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>62</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Range</ItemText>
+          <ItemText>Resistance,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>63</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Save_TestValue,0x0A</ItemText>
+          <ItemText>Test_Value.I_R,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>64</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Resistance,0x0A</ItemText>
+          <ItemText>stepbuf</ItemText>
         </Ww>
         <Ww>
           <count>65</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Test_Value.I_R,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>66</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>stepbuf</ItemText>
-        </Ww>
-        <Ww>
-          <count>67</count>
-          <WinNumber>1</WinNumber>
           <ItemText>Range</ItemText>
         </Ww>
         <Ww>
-          <count>68</count>
+          <count>66</count>
           <WinNumber>1</WinNumber>
           <ItemText>test_value.uint</ItemText>
         </Ww>
@@ -620,45 +605,35 @@
         <Ww>
           <count>21</count>
           <WinNumber>2</WinNumber>
-          <ItemText>U9001_Save_sys.U9001_save.current_step,0x0A</ItemText>
+          <ItemText>setvalue</ItemText>
         </Ww>
         <Ww>
           <count>22</count>
           <WinNumber>2</WinNumber>
-          <ItemText>setvalue</ItemText>
+          <ItemText>savesize,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>23</count>
           <WinNumber>2</WinNumber>
-          <ItemText>savesize,0x0A</ItemText>
+          <ItemText>value,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>24</count>
           <WinNumber>2</WinNumber>
-          <ItemText>U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].Upper,0x0A</ItemText>
+          <ItemText>dat,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>25</count>
           <WinNumber>2</WinNumber>
-          <ItemText>value,0x0A</ItemText>
+          <ItemText>rangedelay</ItemText>
         </Ww>
         <Ww>
           <count>26</count>
           <WinNumber>2</WinNumber>
-          <ItemText>dat,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>27</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>rangedelay</ItemText>
-        </Ww>
-        <Ww>
-          <count>28</count>
-          <WinNumber>2</WinNumber>
           <ItemText>NumBox.Min,0x0A</ItemText>
         </Ww>
         <Ww>
-          <count>29</count>
+          <count>27</count>
           <WinNumber>2</WinNumber>
           <ItemText>ComBuf3.rec</ItemText>
         </Ww>
@@ -695,7 +670,7 @@
         <aPa1>0</aPa1>
         <AscS4>0</AscS4>
         <aSer4>0</aSer4>
-        <StkLoc>0</StkLoc>
+        <StkLoc>1</StkLoc>
         <TrcWin>0</TrcWin>
         <newCpu>0</newCpu>
         <uProt>0</uProt>

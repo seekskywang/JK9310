@@ -684,16 +684,16 @@ typedef struct
 }UnitNum_typedef;
 typedef struct
 {
-    u32 parameter;
-    u32 V_out;
+    u8 parameter;
+    u16 V_out;
     u32 Upper;
 //    u16 Upper;
-    u32 time;
+    u16 time;
     u32 lower;
-    u32 rise_time;
-    u32 range_arc;
-    u32 drop_time;
-    u32 equa_last;
+    u16 rise_time;
+    u16 range_arc;
+    u16 drop_time;
+    u16 equa_last;
     u32 check;
     
 
@@ -773,11 +773,12 @@ typedef struct
 typedef struct 
 {
    
-    U9001_SYS_Typedef U9001_SYS;
-    U9001_Testconfg_Typedef U9001_Testconfg;
-	U9001_save_Typedef U9001_save;
+	U9001_SYS_Typedef U9001_SYS;
+	U9001_Testconfg_Typedef U9001_Testconfg;
+	U9001_save_Typedef U9001_save[10];
 	u8 jkflag;
 	u8 version;
+	u16 currentgroup;//当前组别
 //    U9001_Calibrate_TypeDef U9001_Calibrate;
 }U9001_Save_sysTypedef;
 extern U9001_Save_sysTypedef U9001_Save_sys;

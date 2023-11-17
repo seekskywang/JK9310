@@ -906,9 +906,9 @@ void UartResJK1(void)
 {
 	u8 i;
 	char stepbuf[50];
-	if(U9001_Save_sys.U9001_save.all_step == 1)//单项
+	if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step == 1)//单项
 	{
-		if(U9001_Save_sys.U9001_save.U9001_Setup[1].parameter != IR)
+		if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].parameter != IR)
 		{
 			sprintf(Resbuf,"%.2fkV;%.2fmA;%s",
 			(double)Save_TestValue[0].Text_vot/1000,//电压
@@ -925,18 +925,18 @@ void UartResJK1(void)
 	}else{
 		
 	}
-//	else if(U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter == OS){//OS模式
+//	else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[i+1].parameter == OS){//OS模式
 //		sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,%.1fnF,%.1fs;",
 //		i+1,
-//		TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],//模式
+//		TestPara[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[i+1].parameter],//模式
 //		SEND_COMP[Save_TestValue[i].text_flag][1],//分选结果
 //		(double)Save_TestValue[i].Text_vot/1000,//电压
 //		(double)Save_TestValue[i].Text_value/10,//电容
 //		(double)Save_TestValue[i].Text_time/10);//测试时间
-//	}else if(U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter == IR){//绝缘模式
+//	}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[i+1].parameter == IR){//绝缘模式
 //		sprintf(stepbuf,"STEP%02d,%s,%s,%.3fkV,%.3f%sΩ,%.1fs;",
 //		i+1,
-//		TestPara[U9001_Save_sys.U9001_save.U9001_Setup[i+1].parameter],//模式
+//		TestPara[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[i+1].parameter],//模式
 //		SEND_COMP[Save_TestValue[i].text_flag][1],//分选结果
 //		(double)Save_TestValue[i].Text_vot/1000,//电压
 //		(double)Save_TestValue[i].Text_value/1000,//内阻
@@ -1000,7 +1000,9 @@ vu8 Uart3_Process(void)
 						memcpy(strbuff,"ARC ",5);
 						break;
 					case MSG_SHORT://过流报警
-						if(U9001_Save_sys.U9001_save.U9001_Setup[U9001_Save_sys.U9001_save.current_step].parameter == IR)
+						if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+							U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+							current_step].parameter == IR)
 							memcpy(strbuff,"LOW ",5);
 						else
 							memcpy(strbuff,"HIGH",5);
@@ -1013,9 +1015,9 @@ vu8 Uart3_Process(void)
 				
 				
 
-				if(U9001_Save_sys.U9001_save.all_step == 2)//W-I I-W
+				if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step == 2)//W-I I-W
 				{
-//					if(U9001_Save_sys.U9001_save.current_step == 1)
+//					if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step == 1)
 //					{
 						memset(ComBuf3.send.buf,0,40);
 		//				ComBuf3.send.buf[0]=0xAA;
@@ -1026,18 +1028,18 @@ vu8 Uart3_Process(void)
 	//						memcpy(&ComBuf3.send.buf[0],sendbuff,14);
 							strcat((char*)ComBuf3.send.buf,(char*)strbuff);
 						}else{
-							if(U9001_Save_sys.U9001_save.current_step == 1)
+							if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step == 1)
 							{
 								strcat((char*)ComBuf3.send.buf,(char*)sendbuff);
 	//							memcpy(&ComBuf3.send.buf[0],sendbuff,14);
-								if(U9001_Save_sys.U9001_save.U9001_Setup[2].parameter == IR)
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].parameter == IR)
 								{
 									strcat((char*)ComBuf3.send.buf,(char*)strbuff);
-								}else if(U9001_Save_sys.U9001_save.U9001_Setup[1].parameter == IR){
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].parameter == IR){
 									strcat((char*)ComBuf3.send.buf,"----");
 								}
 							}else{
-								if(U9001_Save_sys.U9001_save.U9001_Setup[2].parameter == IR)
+								if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].parameter == IR)
 								{
 									if(sendbuff[13] == 0x3b)
 									{
@@ -1047,7 +1049,7 @@ vu8 Uart3_Process(void)
 									}
 //									strcat((char*)sendbuff,"PASS");
 									memcpy(&ComBuf3.send.buf[0],sendbuff,18);
-								}else if(U9001_Save_sys.U9001_save.U9001_Setup[1].parameter == IR){
+								}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].parameter == IR){
 //									strcat((char*)sendbuff,"mA;");
 									if(sendbuff[13] == 0x3b)
 									{
@@ -1068,20 +1070,20 @@ vu8 Uart3_Process(void)
 						
 						strcat((char*)ComBuf3.send.buf,";");
 						strcat((char*)ComBuf3.send.buf,(char*)sendbuff1);
-						if(U9001_Save_sys.U9001_save.current_step == 1)
+						if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step == 1)
 						{
 	//						strcat((char*)ComBuf3.send.buf,"----");
-							if(U9001_Save_sys.U9001_save.U9001_Setup[2].parameter == IR)
+							if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].parameter == IR)
 							{
 								strcat((char*)ComBuf3.send.buf,"----");
-							}else if(U9001_Save_sys.U9001_save.U9001_Setup[1].parameter == IR){
+							}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].parameter == IR){
 								strcat((char*)ComBuf3.send.buf,(char*)strbuff);
 							}
 						}else{
-							if(U9001_Save_sys.U9001_save.U9001_Setup[2].parameter == IR)
+							if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].parameter == IR)
 							{
 								strcat((char*)ComBuf3.send.buf,(char*)strbuff);
-							}else if(U9001_Save_sys.U9001_save.U9001_Setup[1].parameter == IR){
+							}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].parameter == IR){
 								strcat((char*)ComBuf3.send.buf,"PASS");
 							}
 							
@@ -1110,7 +1112,7 @@ vu8 Uart3_Process(void)
 						memset(ComBuf3.send.buf,0,40);
 		//				ComBuf3.send.buf[0]=0xAA;
 		//				ComBuf3.send.begin=FALSE;
-						if(U9001_Save_sys.U9001_save.U9001_Setup[1].parameter == IR)
+						if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].parameter == IR)
 							memcpy(&ComBuf3.send.buf[0],sendbuff1,14);
 						else
 							memcpy(&ComBuf3.send.buf[0],sendbuff,14);
@@ -1212,22 +1214,22 @@ vu8 Uart3_Process(void)
 				switch(sec_king)
 				{
 					case 0x00:
-						U9001_Save_sys.U9001_save.all_step = 1;
-						U9001_Save_sys.U9001_save.U9001_Setup[1].parameter = AC;
+						U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step = 1;
+						U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].parameter = AC;
 						break;
 					case 0x01:
-						U9001_Save_sys.U9001_save.all_step = 1;
-						U9001_Save_sys.U9001_save.U9001_Setup[1].parameter = IR;
+						U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step = 1;
+						U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].parameter = IR;
 						break;
 					case 0x10:
-						U9001_Save_sys.U9001_save.all_step = 2;
-						U9001_Save_sys.U9001_save.U9001_Setup[1].parameter = AC;
-						U9001_Save_sys.U9001_save.U9001_Setup[2].parameter = IR;
+						U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step = 2;
+						U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].parameter = AC;
+						U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].parameter = IR;
 						break;
 					case 0x11:
-						U9001_Save_sys.U9001_save.all_step = 2;
-						U9001_Save_sys.U9001_save.U9001_Setup[1].parameter = IR;
-						U9001_Save_sys.U9001_save.U9001_Setup[2].parameter = AC;
+						U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step = 2;
+						U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].parameter = IR;
+						U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].parameter = AC;
 						break;
 					default:
 						break;
@@ -1239,46 +1241,46 @@ vu8 Uart3_Process(void)
 //				Disp_Idle_Menu();//显示待测界面
 				break;
 			case FRAME_DATA://数据帧
-				U9001_Save_sys.U9001_save.current_step = str[1]-1;
+				U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step = str[1]-1;
 
 				switch(sec_king)
 				{
 					case 0xAC:
-						if(U9001_Save_sys.U9001_save.all_step == 2 && U9001_Save_sys.U9001_save.U9001_Setup[2].parameter == IR)
+						if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step == 2 && U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].parameter == IR)
 						{
-							U9001_Save_sys.U9001_save.U9001_Setup[1].parameter = AC;
-							U9001_Save_sys.U9001_save.U9001_Setup[1].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
-							U9001_Save_sys.U9001_save.U9001_Setup[1].Upper = (u16)BCDtoHex1(str[4],1)*1000+BCDtoHex1(str[5],1)*10;
-							U9001_Save_sys.U9001_save.U9001_Setup[1].lower = (u16)BCDtoHex1(str[6],1)*1000+BCDtoHex1(str[7],1)*10;
-							U9001_Save_sys.U9001_save.U9001_Setup[1].rise_time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
-							U9001_Save_sys.U9001_save.U9001_Setup[1].time = (u16)BCDtoHex1(str[10],1)*100+BCDtoHex1(str[11],1);
-							U9001_Save_sys.U9001_save.U9001_Setup[1].range_arc = str[12];
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].parameter = AC;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].Upper = (u16)BCDtoHex1(str[4],1)*1000+BCDtoHex1(str[5],1)*10;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].lower = (u16)BCDtoHex1(str[6],1)*1000+BCDtoHex1(str[7],1)*10;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].rise_time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].time = (u16)BCDtoHex1(str[10],1)*100+BCDtoHex1(str[11],1);
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].range_arc = str[12];
 							if(str[13]==0x50)
 								U9001_Save_sys.U9001_Testconfg.hz=0;
 							else
 								U9001_Save_sys.U9001_Testconfg.hz=1;
 							break;
-						}else if(U9001_Save_sys.U9001_save.all_step == 2 && U9001_Save_sys.U9001_save.U9001_Setup[1].parameter == IR){
-							U9001_Save_sys.U9001_save.U9001_Setup[2].parameter = AC;
-							U9001_Save_sys.U9001_save.U9001_Setup[2].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
-							U9001_Save_sys.U9001_save.U9001_Setup[2].Upper = (u16)BCDtoHex1(str[4],1)*1000+BCDtoHex1(str[5],1)*10;
-							U9001_Save_sys.U9001_save.U9001_Setup[2].lower = (u16)BCDtoHex1(str[6],1)*1000+BCDtoHex1(str[7],1)*10;
-							U9001_Save_sys.U9001_save.U9001_Setup[2].rise_time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
-							U9001_Save_sys.U9001_save.U9001_Setup[2].time = (u16)BCDtoHex1(str[10],1)*100+BCDtoHex1(str[11],1);
-							U9001_Save_sys.U9001_save.U9001_Setup[2].range_arc = str[12];
+						}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step == 2 && U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].parameter == IR){
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].parameter = AC;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].Upper = (u16)BCDtoHex1(str[4],1)*1000+BCDtoHex1(str[5],1)*10;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].lower = (u16)BCDtoHex1(str[6],1)*1000+BCDtoHex1(str[7],1)*10;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].rise_time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].time = (u16)BCDtoHex1(str[10],1)*100+BCDtoHex1(str[11],1);
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].range_arc = str[12];
 							if(str[13]==0x50)
 								U9001_Save_sys.U9001_Testconfg.hz=0;
 							else
 								U9001_Save_sys.U9001_Testconfg.hz=1;
 							
-						}else if(U9001_Save_sys.U9001_save.all_step == 1){
-							U9001_Save_sys.U9001_save.U9001_Setup[1].parameter = AC;
-							U9001_Save_sys.U9001_save.U9001_Setup[1].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
-							U9001_Save_sys.U9001_save.U9001_Setup[1].Upper = (u16)BCDtoHex1(str[4],1)*1000+BCDtoHex1(str[5],1)*10;
-							U9001_Save_sys.U9001_save.U9001_Setup[1].lower = (u16)BCDtoHex1(str[6],1)*1000+BCDtoHex1(str[7],1)*10;
-							U9001_Save_sys.U9001_save.U9001_Setup[1].rise_time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
-							U9001_Save_sys.U9001_save.U9001_Setup[1].time = (u16)BCDtoHex1(str[10],1)*100+BCDtoHex1(str[11],1);
-							U9001_Save_sys.U9001_save.U9001_Setup[1].range_arc = str[12];
+						}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step == 1){
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].parameter = AC;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].Upper = (u16)BCDtoHex1(str[4],1)*1000+BCDtoHex1(str[5],1)*10;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].lower = (u16)BCDtoHex1(str[6],1)*1000+BCDtoHex1(str[7],1)*10;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].rise_time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].time = (u16)BCDtoHex1(str[10],1)*100+BCDtoHex1(str[11],1);
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].range_arc = str[12];
 							if(str[13]==0x50)
 								U9001_Save_sys.U9001_Testconfg.hz=0;
 							else
@@ -1286,34 +1288,34 @@ vu8 Uart3_Process(void)
 						}
 					break;
 					case 0xDC:
-						if(U9001_Save_sys.U9001_save.all_step == 2 && U9001_Save_sys.U9001_save.U9001_Setup[2].parameter == IR)
+						if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step == 2 && U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].parameter == IR)
 						{
-							U9001_Save_sys.U9001_save.U9001_Setup[1].parameter = DC;
-							U9001_Save_sys.U9001_save.U9001_Setup[1].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
-							U9001_Save_sys.U9001_save.U9001_Setup[1].Upper = (u16)BCDtoHex1(str[4],1)*1000+BCDtoHex1(str[5],1)*10;
-							U9001_Save_sys.U9001_save.U9001_Setup[1].lower = (u16)BCDtoHex1(str[6],1)*1000+BCDtoHex1(str[7],1)*10;
-							U9001_Save_sys.U9001_save.U9001_Setup[1].rise_time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
-							U9001_Save_sys.U9001_save.U9001_Setup[1].time = (u16)BCDtoHex1(str[10],1)*100+BCDtoHex1(str[11],1);
-							U9001_Save_sys.U9001_save.U9001_Setup[1].range_arc = str[12];
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].parameter = DC;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].Upper = (u16)BCDtoHex1(str[4],1)*1000+BCDtoHex1(str[5],1)*10;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].lower = (u16)BCDtoHex1(str[6],1)*1000+BCDtoHex1(str[7],1)*10;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].rise_time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].time = (u16)BCDtoHex1(str[10],1)*100+BCDtoHex1(str[11],1);
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].range_arc = str[12];
 
-						}else if(U9001_Save_sys.U9001_save.all_step == 2 && U9001_Save_sys.U9001_save.U9001_Setup[1].parameter == IR){
-							U9001_Save_sys.U9001_save.U9001_Setup[2].parameter = DC;
-							U9001_Save_sys.U9001_save.U9001_Setup[2].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
-							U9001_Save_sys.U9001_save.U9001_Setup[2].Upper = (u16)BCDtoHex1(str[4],1)*1000+BCDtoHex1(str[5],1)*10;
-							U9001_Save_sys.U9001_save.U9001_Setup[2].lower = (u16)BCDtoHex1(str[6],1)*1000+BCDtoHex1(str[7],1)*10;
-							U9001_Save_sys.U9001_save.U9001_Setup[2].rise_time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
-							U9001_Save_sys.U9001_save.U9001_Setup[2].time = (u16)BCDtoHex1(str[10],1)*100+BCDtoHex1(str[11],1);
-							U9001_Save_sys.U9001_save.U9001_Setup[2].range_arc = str[12];
+						}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step == 2 && U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].parameter == IR){
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].parameter = DC;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].Upper = (u16)BCDtoHex1(str[4],1)*1000+BCDtoHex1(str[5],1)*10;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].lower = (u16)BCDtoHex1(str[6],1)*1000+BCDtoHex1(str[7],1)*10;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].rise_time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].time = (u16)BCDtoHex1(str[10],1)*100+BCDtoHex1(str[11],1);
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].range_arc = str[12];
 
 							
-						}else if(U9001_Save_sys.U9001_save.all_step == 1){
-							U9001_Save_sys.U9001_save.U9001_Setup[1].parameter = DC;
-							U9001_Save_sys.U9001_save.U9001_Setup[1].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
-							U9001_Save_sys.U9001_save.U9001_Setup[1].Upper = (u16)BCDtoHex1(str[4],1)*1000+BCDtoHex1(str[5],1)*10;
-							U9001_Save_sys.U9001_save.U9001_Setup[1].lower = (u16)BCDtoHex1(str[6],1)*1000+BCDtoHex1(str[7],1)*10;
-							U9001_Save_sys.U9001_save.U9001_Setup[1].rise_time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
-							U9001_Save_sys.U9001_save.U9001_Setup[1].time = (u16)BCDtoHex1(str[10],1)*100+BCDtoHex1(str[11],1);
-							U9001_Save_sys.U9001_save.U9001_Setup[1].range_arc = str[12];
+						}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step == 1){
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].parameter = DC;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].Upper = (u16)BCDtoHex1(str[4],1)*1000+BCDtoHex1(str[5],1)*10;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].lower = (u16)BCDtoHex1(str[6],1)*1000+BCDtoHex1(str[7],1)*10;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].rise_time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].time = (u16)BCDtoHex1(str[10],1)*100+BCDtoHex1(str[11],1);
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].range_arc = str[12];
 
 						}
 
@@ -1326,25 +1328,25 @@ vu8 Uart3_Process(void)
 //						SaveData.Setup.Arc=str[12];
 						break;
 					case 0xAD:
-						if(U9001_Save_sys.U9001_save.all_step == 2 && U9001_Save_sys.U9001_save.U9001_Setup[2].parameter == IR)
+						if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step == 2 && U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].parameter == IR)
 						{
-							U9001_Save_sys.U9001_save.U9001_Setup[2].parameter = IR;
-							U9001_Save_sys.U9001_save.U9001_Setup[2].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
-							U9001_Save_sys.U9001_save.U9001_Setup[2].Upper = (u16)BCDtoHex1(str[4],1)*100+BCDtoHex1(str[5],1)*1;
-							U9001_Save_sys.U9001_save.U9001_Setup[2].lower = (u16)BCDtoHex1(str[6],1)*100+BCDtoHex1(str[7],1)*1;
-							U9001_Save_sys.U9001_save.U9001_Setup[2].time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
-						}else if(U9001_Save_sys.U9001_save.all_step == 2 && U9001_Save_sys.U9001_save.U9001_Setup[1].parameter == IR){
-							U9001_Save_sys.U9001_save.U9001_Setup[1].parameter = IR;
-							U9001_Save_sys.U9001_save.U9001_Setup[1].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
-							U9001_Save_sys.U9001_save.U9001_Setup[1].Upper = (u16)BCDtoHex1(str[4],1)*100+BCDtoHex1(str[5],1)*1;
-							U9001_Save_sys.U9001_save.U9001_Setup[1].lower = (u16)BCDtoHex1(str[6],1)*100+BCDtoHex1(str[7],1)*1;
-							U9001_Save_sys.U9001_save.U9001_Setup[1].time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);							
-						}else if(U9001_Save_sys.U9001_save.all_step == 1){
-							U9001_Save_sys.U9001_save.U9001_Setup[1].parameter = IR;
-							U9001_Save_sys.U9001_save.U9001_Setup[1].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
-							U9001_Save_sys.U9001_save.U9001_Setup[1].Upper = (u16)BCDtoHex1(str[4],1)*100+BCDtoHex1(str[5],1)*1;
-							U9001_Save_sys.U9001_save.U9001_Setup[1].lower = (u16)BCDtoHex1(str[6],1)*100+BCDtoHex1(str[7],1)*1;
-							U9001_Save_sys.U9001_save.U9001_Setup[1].time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].parameter = IR;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].Upper = (u16)BCDtoHex1(str[4],1)*100+BCDtoHex1(str[5],1)*1;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].lower = (u16)BCDtoHex1(str[6],1)*100+BCDtoHex1(str[7],1)*1;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
+						}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step == 2 && U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].parameter == IR){
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].parameter = IR;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].Upper = (u16)BCDtoHex1(str[4],1)*100+BCDtoHex1(str[5],1)*1;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].lower = (u16)BCDtoHex1(str[6],1)*100+BCDtoHex1(str[7],1)*1;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);							
+						}else if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].all_step == 1){
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].parameter = IR;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].V_out = (u16)BCDtoHex1(str[2],1)*1000+BCDtoHex1(str[3],1)*10;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].Upper = (u16)BCDtoHex1(str[4],1)*100+BCDtoHex1(str[5],1)*1;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].lower = (u16)BCDtoHex1(str[6],1)*100+BCDtoHex1(str[7],1)*1;
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].time = (u16)BCDtoHex1(str[8],1)*100+BCDtoHex1(str[9],1);
 
 						}
 //					SaveData.Setup.I_Volt=(u16)BCDtoHex1(str[2],1)*100+BCDtoHex1(str[3],1);
@@ -1570,7 +1572,7 @@ static uint8_t MODS_ReadRegValue(uint16_t reg_addr, uint8_t *reg_value)
 	{
         case SLAVE_REG_P00:
 //			C_SW(1);
-			value=U9001_Save_sys.U9001_save.U9001_Setup[1].parameter+1;
+			value=U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[1].parameter+1;
 			break;
 		case SLAVE_REG_P01:
 			value=Save_TestValue[0].Text_vot;
@@ -1588,7 +1590,7 @@ static uint8_t MODS_ReadRegValue(uint16_t reg_addr, uint8_t *reg_value)
 			break;
 		case SLAVE_REG_P05:
 //			C_SW(1);
-			value=U9001_Save_sys.U9001_save.U9001_Setup[2].parameter+1;
+			value=U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[2].parameter+1;
 			break;
 		case SLAVE_REG_P06:
 			value=Save_TestValue[1].Text_vot;
@@ -1606,7 +1608,7 @@ static uint8_t MODS_ReadRegValue(uint16_t reg_addr, uint8_t *reg_value)
 			break;
 		case SLAVE_REG_P10:
 //			C_SW(1);
-			value=U9001_Save_sys.U9001_save.U9001_Setup[3].parameter+1;
+			value=U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[3].parameter+1;
 			break;
 		case SLAVE_REG_P11:
 			value=Save_TestValue[2].Text_vot;
@@ -1624,7 +1626,7 @@ static uint8_t MODS_ReadRegValue(uint16_t reg_addr, uint8_t *reg_value)
 			break;
 		case SLAVE_REG_P15:
 //			C_SW(1);
-			value=U9001_Save_sys.U9001_save.U9001_Setup[4].parameter+1;
+			value=U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[4].parameter+1;
 			break;
 		case SLAVE_REG_P16:
 			value=Save_TestValue[3].Text_vot;
@@ -1642,7 +1644,7 @@ static uint8_t MODS_ReadRegValue(uint16_t reg_addr, uint8_t *reg_value)
 			break;
 		case SLAVE_REG_P20:
 //			C_SW(1);
-			value=U9001_Save_sys.U9001_save.U9001_Setup[5].parameter+1;
+			value=U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[5].parameter+1;
 			break;
 		case SLAVE_REG_P21:
 			value=Save_TestValue[4].Text_vot;
@@ -1660,7 +1662,7 @@ static uint8_t MODS_ReadRegValue(uint16_t reg_addr, uint8_t *reg_value)
 			break;
 		case SLAVE_REG_P25:
 //			C_SW(1);
-			value=U9001_Save_sys.U9001_save.U9001_Setup[6].parameter+1;
+			value=U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[6].parameter+1;
 			break;
 		case SLAVE_REG_P26:
 			value=Save_TestValue[5].Text_vot;
@@ -1678,7 +1680,7 @@ static uint8_t MODS_ReadRegValue(uint16_t reg_addr, uint8_t *reg_value)
 			break;
 		case SLAVE_REG_P30:
 //			C_SW(1);
-			value=U9001_Save_sys.U9001_save.U9001_Setup[7].parameter+1;
+			value=U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[7].parameter+1;
 			break;
 		case SLAVE_REG_P31:
 			value=Save_TestValue[6].Text_vot;
@@ -1696,7 +1698,7 @@ static uint8_t MODS_ReadRegValue(uint16_t reg_addr, uint8_t *reg_value)
 			break;
 		case SLAVE_REG_P35:
 //			C_SW(1);
-			value=U9001_Save_sys.U9001_save.U9001_Setup[8].parameter+1;
+			value=U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[8].parameter+1;
 			break;
 		case SLAVE_REG_P36:
 			value=Save_TestValue[7].Text_vot;
@@ -1714,7 +1716,7 @@ static uint8_t MODS_ReadRegValue(uint16_t reg_addr, uint8_t *reg_value)
 			break;
 		case SLAVE_REG_P40:
 //			C_SW(1);
-			value=U9001_Save_sys.U9001_save.U9001_Setup[9].parameter+1;
+			value=U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[9].parameter+1;
 			break;
 		case SLAVE_REG_P41:
 			value=Save_TestValue[8].Text_vot;
@@ -1732,7 +1734,7 @@ static uint8_t MODS_ReadRegValue(uint16_t reg_addr, uint8_t *reg_value)
 			break;
 		case SLAVE_REG_P45:
 //			C_SW(1);
-			value=U9001_Save_sys.U9001_save.U9001_Setup[10].parameter+1;
+			value=U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[10].parameter+1;
 			break;
 		case SLAVE_REG_P46:
 			value=Save_TestValue[9].Text_vot;

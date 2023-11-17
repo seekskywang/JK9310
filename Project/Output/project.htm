@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Output\project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Output\project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Thu Sep 28 13:00:23 2023
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Wed Nov 15 09:03:24 2023
 <BR><P>
 <H3>Maximum Stack Usage =        632 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -753,7 +753,7 @@ Global Symbols
 <LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DispSetConfig_value
 <LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DispSet_value
 <LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Test_value
-<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
+<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
 <LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_list
 <LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Test_List
 <LI><a href="#[21f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BCD_Int
@@ -788,7 +788,7 @@ Global Symbols
 <LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DispSetup_ConfigButtonvalue
 <LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dispSetupButtonvalue
 <LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Test_SetConfig_Item
-<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
+<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
 <LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_list
 <LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Test_Set_Item
 <LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_SYS_Set_Item
@@ -877,7 +877,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Sys
 <LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Test_SetConfig_Item
-<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
+<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
 <LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_list
 <LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Test_Set_Item
 <LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_SYS_Set_Item
@@ -968,7 +968,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Use_SysSetProcess
 </UL>
 
-<P><STRONG><a name="[147]"></a>Disp_Test_Set_Item</STRONG> (Thumb, 318 bytes, Stack size 16 bytes, use_disp.o(.text))
+<P><STRONG><a name="[147]"></a>Disp_Test_Set_Item</STRONG> (Thumb, 406 bytes, Stack size 16 bytes, use_disp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = Disp_Test_Set_Item &rArr; Disp_Fastbutton &rArr; GUI_DrawGradientRoundedV &rArr; _DrawGradientRounded &rArr; GUI_GetColor &rArr; GUI_Lock &rArr; GUI_DEVICE_UnlinkTaskDevices
 </UL>
 <BR>[Calls]<UL><LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SetColor
@@ -1013,11 +1013,11 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Testvalue
 <LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DispSet_value
-<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
+<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
 <LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Test_List
 </UL>
 
-<P><STRONG><a name="[14f]"></a>Disp_Test_List</STRONG> (Thumb, 846 bytes, Stack size 16 bytes, use_disp.o(.text))
+<P><STRONG><a name="[14f]"></a>Disp_Test_List</STRONG> (Thumb, 978 bytes, Stack size 16 bytes, use_disp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = Disp_Test_List &rArr; disp_TestMSG &rArr; GUI_DispStringAt &rArr; GUI_DispString &rArr; GUI__DispLine &rArr; WM__InitIVRSearch &rArr; WM__GetNextIVR &rArr; WM__ActivateClipRect &rArr; _SetClipRectUserIntersect &rArr; LCD_SetClipRectEx &rArr; GUI__IntersectRects
 </UL>
 <BR>[Calls]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SetTextMode
@@ -1044,28 +1044,32 @@ Global Symbols
 <LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 </UL>
 <BR>[Called By]<UL><LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DispSet_value
-<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
+<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
 <LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_list
 </UL>
 
-<P><STRONG><a name="[154]"></a>Disp_Idel_list</STRONG> (Thumb, 532 bytes, Stack size 16 bytes, use_disp.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = Disp_Idel_list &rArr; GUI_DispDecAt &rArr; GUI_DispStringAt &rArr; GUI_DispString &rArr; GUI__DispLine &rArr; WM__InitIVRSearch &rArr; WM__GetNextIVR &rArr; WM__ActivateClipRect &rArr; _SetClipRectUserIntersect &rArr; LCD_SetClipRectEx &rArr; GUI__IntersectRects
+<P><STRONG><a name="[154]"></a>Disp_Idel_list</STRONG> (Thumb, 728 bytes, Stack size 16 bytes, use_disp.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 264 + Unknown Stack Size
+<LI>Call Chain = Disp_Idel_list &rArr; GUI_DispDecAt &rArr; GUI_DispStringAt &rArr; GUI_DispString &rArr; GUI__DispLine &rArr; WM__InitIVRSearch &rArr; WM__GetNextIVR &rArr; WM__ActivateClipRect &rArr; _SetClipRectUserIntersect &rArr; LCD_SetClipRectEx &rArr; GUI__IntersectRects
 </UL>
-<BR>[Calls]<UL><LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SetFont
+<BR>[Calls]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SetTextMode
+<LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SetFont
 <LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SetColor
+<LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_FillRect
 <LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispStringAt
-<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispDecAt
-<LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispCharAt
+<LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispDecAt
+<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispCharAt
 <LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntToStr_mA
 <LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_mainitem
 <LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Fastbutton
 <LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hex_Format
 <LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcat
+<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Idem_Process
 </UL>
 
-<P><STRONG><a name="[157]"></a>Disp_Idel_Item</STRONG> (Thumb, 2650 bytes, Stack size 16 bytes, use_disp.o(.text))
+<P><STRONG><a name="[158]"></a>Disp_Idel_Item</STRONG> (Thumb, 4134 bytes, Stack size 16 bytes, use_disp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 264 + Unknown Stack Size
 <LI>Call Chain = Disp_Idel_Item &rArr; GUI_DispDecAt &rArr; GUI_DispStringAt &rArr; GUI_DispString &rArr; GUI__DispLine &rArr; WM__InitIVRSearch &rArr; WM__GetNextIVR &rArr; WM__ActivateClipRect &rArr; _SetClipRectUserIntersect &rArr; LCD_SetClipRectEx &rArr; GUI__IntersectRects
 </UL>
@@ -1073,15 +1077,16 @@ Global Symbols
 <LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SetFont
 <LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SetColor
 <LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SetBkColor
+<LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_FillRect
 <LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispStringAt
-<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispDecAt
+<LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispDecAt
 <LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntToStr_mA
 <LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntToStr
 <LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_mainitem
 <LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Fastbutton
 <LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hex_Format
 <LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcat
-<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
+<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TestPause_Process
 <LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Idem_Process
@@ -1099,14 +1104,14 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Setup_config_Process
 </UL>
 
-<P><STRONG><a name="[15a]"></a>Disp_Test_value</STRONG> (Thumb, 654 bytes, Stack size 16 bytes, use_disp.o(.text), UNUSED)
+<P><STRONG><a name="[15a]"></a>Disp_Test_value</STRONG> (Thumb, 570 bytes, Stack size 16 bytes, use_disp.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hex_Format
 <LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WriteString_16
 <LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PutChar
 <LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_DrawRect
 </UL>
 
-<P><STRONG><a name="[15b]"></a>dispSetupButtonvalue</STRONG> (Thumb, 534 bytes, Stack size 24 bytes, use_disp.o(.text))
+<P><STRONG><a name="[15b]"></a>dispSetupButtonvalue</STRONG> (Thumb, 598 bytes, Stack size 24 bytes, use_disp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = dispSetupButtonvalue &rArr; Disp_Fastbutton &rArr; GUI_DrawGradientRoundedV &rArr; _DrawGradientRounded &rArr; GUI_GetColor &rArr; GUI_Lock &rArr; GUI_DEVICE_UnlinkTaskDevices
 </UL>
 <BR>[Calls]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SetTextMode
@@ -1118,7 +1123,7 @@ Global Symbols
 <LI><a href="#[256]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CalTest_Process
 </UL>
 
-<P><STRONG><a name="[15c]"></a>DispSet_value</STRONG> (Thumb, 3248 bytes, Stack size 24 bytes, use_disp.o(.text))
+<P><STRONG><a name="[15c]"></a>DispSet_value</STRONG> (Thumb, 5350 bytes, Stack size 24 bytes, use_disp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 288 + Unknown Stack Size
 <LI>Call Chain = DispSet_value &rArr; dispSetupButtonvalue &rArr; Disp_Fastbutton &rArr; GUI_DrawGradientRoundedV &rArr; _DrawGradientRounded &rArr; GUI_GetColor &rArr; GUI_Lock &rArr; GUI_DEVICE_UnlinkTaskDevices
 </UL>
@@ -1126,18 +1131,18 @@ Global Symbols
 <LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SetColor
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_FillRect
 <LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispStringAt
-<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispDecAt
+<LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispDecAt
 <LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dispSetupButtonvalue
 <LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntToStr_mA
 <LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntToStr
 <LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hex_Format
 <LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcat
-<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
+<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Setup_Process
 </UL>
 
-<P><STRONG><a name="[15d]"></a>DispSetup_ConfigButtonvalue</STRONG> (Thumb, 154 bytes, Stack size 24 bytes, use_disp.o(.text))
+<P><STRONG><a name="[15d]"></a>DispSetup_ConfigButtonvalue</STRONG> (Thumb, 156 bytes, Stack size 24 bytes, use_disp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = DispSetup_ConfigButtonvalue &rArr; Disp_Fastbutton &rArr; GUI_DrawGradientRoundedV &rArr; _DrawGradientRounded &rArr; GUI_GetColor &rArr; GUI_Lock &rArr; GUI_DEVICE_UnlinkTaskDevices
 </UL>
 <BR>[Calls]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SetTextMode
@@ -1196,11 +1201,11 @@ Global Symbols
 <LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_DrawRect
 </UL>
 
-<P><STRONG><a name="[163]"></a>Disp_Set_Time</STRONG> (Thumb, 590 bytes, Stack size 64 bytes, use_disp.o(.text), UNUSED)
+<P><STRONG><a name="[163]"></a>Disp_Set_Time</STRONG> (Thumb, 578 bytes, Stack size 64 bytes, use_disp.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTC_GetFullTime
 <LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WriteString_16
 <LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_DrawRect
-<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
+<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
 
 <P><STRONG><a name="[165]"></a>dispSYSSetButtonvalue</STRONG> (Thumb, 146 bytes, Stack size 24 bytes, use_disp.o(.text))
@@ -1221,7 +1226,7 @@ Global Symbols
 <LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SetColor
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_FillRect
 <LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispStringAt
-<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispDecAt
+<LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispDecAt
 <LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dispSYSSetButtonvalue
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Use_SysSetProcess
@@ -1233,7 +1238,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_UserCheck_Item
 </UL>
 
-<P><STRONG><a name="[168]"></a>Disp_UserCheck_Item</STRONG> (Thumb, 154 bytes, Stack size 8 bytes, use_disp.o(.text), UNUSED)
+<P><STRONG><a name="[168]"></a>Disp_UserCheck_Item</STRONG> (Thumb, 114 bytes, Stack size 8 bytes, use_disp.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Usercheck_Screen
 <LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WriteString_16
 </UL>
@@ -1265,7 +1270,7 @@ Global Symbols
 <LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WriteString_16
 </UL>
 
-<P><STRONG><a name="[16e]"></a>Disp_SysLine</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, use_disp.o(.text), UNUSED)
+<P><STRONG><a name="[16e]"></a>Disp_SysLine</STRONG> (Thumb, 106 bytes, Stack size 16 bytes, use_disp.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_DrawLine
 </UL>
 
@@ -1314,7 +1319,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[219]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Avg_Set_Num
 </UL>
 
-<P><STRONG><a name="[177]"></a>Input_Set_Cov</STRONG> (Thumb, 244 bytes, Stack size 56 bytes, use_disp.o(.text), UNUSED)
+<P><STRONG><a name="[177]"></a>Input_Set_Cov</STRONG> (Thumb, 174 bytes, Stack size 56 bytes, use_disp.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
 <LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
 <LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2uiz
@@ -1325,7 +1330,7 @@ Global Symbols
 <LI><a href="#[215]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Set_CompNum
 </UL>
 
-<P><STRONG><a name="[178]"></a>Input_Set_CovPre</STRONG> (Thumb, 76 bytes, Stack size 40 bytes, use_disp.o(.text), UNUSED)
+<P><STRONG><a name="[178]"></a>Input_Set_CovPre</STRONG> (Thumb, 140 bytes, Stack size 40 bytes, use_disp.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
 <LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
 <LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
@@ -1351,7 +1356,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Testvalue
 </UL>
 
-<P><STRONG><a name="[17e]"></a>Disp_Testvalue</STRONG> (Thumb, 1150 bytes, Stack size 16 bytes, use_disp.o(.text))
+<P><STRONG><a name="[17e]"></a>Disp_Testvalue</STRONG> (Thumb, 1390 bytes, Stack size 16 bytes, use_disp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 240 + Unknown Stack Size
 <LI>Call Chain = Disp_Testvalue &rArr; disp_TestMSG &rArr; GUI_DispStringAt &rArr; GUI_DispString &rArr; GUI__DispLine &rArr; WM__InitIVRSearch &rArr; WM__GetNextIVR &rArr; WM__ActivateClipRect &rArr; _SetClipRectUserIntersect &rArr; LCD_SetClipRectEx &rArr; GUI__IntersectRects
 </UL>
@@ -1367,7 +1372,7 @@ Global Symbols
 <LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hex_Format
 <LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 <LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcat
-<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
+<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Test_Process
 <LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Idem_Process
@@ -1396,7 +1401,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WriteString_16
 </UL>
 
-<P><STRONG><a name="[188]"></a>Disp_Range_DispSecondUnit</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, use_disp.o(.text), UNUSED)
+<P><STRONG><a name="[188]"></a>Disp_Range_DispSecondUnit</STRONG> (Thumb, 210 bytes, Stack size 16 bytes, use_disp.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WriteString_16
 </UL>
 
@@ -1405,7 +1410,7 @@ Global Symbols
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WriteString_12
 </UL>
 
-<P><STRONG><a name="[18a]"></a>Disp_Set_Unit_16</STRONG> (Thumb, 202 bytes, Stack size 24 bytes, use_disp.o(.text), UNUSED)
+<P><STRONG><a name="[18a]"></a>Disp_Set_Unit_16</STRONG> (Thumb, 36 bytes, Stack size 24 bytes, use_disp.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WriteString_16
 </UL>
 
@@ -1476,8 +1481,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Power_Process
 </UL>
 
-<P><STRONG><a name="[1f3]"></a>SetDate_Comp</STRONG> (Thumb, 900 bytes, Stack size 12 bytes, use_disp.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = SetDate_Comp
+<P><STRONG><a name="[1f3]"></a>SetDate_Comp</STRONG> (Thumb, 11598 bytes, Stack size 8 bytes, use_disp.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = SetDate_Comp
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Use_SysSetProcess
 <LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Setup_Process
@@ -1493,7 +1498,7 @@ Global Symbols
 <LI><a href="#[2aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Process
 </UL>
 
-<P><STRONG><a name="[1f4]"></a>SetData_High_Low_Comp</STRONG> (Thumb, 230 bytes, Stack size 0 bytes, use_disp.o(.text))
+<P><STRONG><a name="[1f4]"></a>SetData_High_Low_Comp</STRONG> (Thumb, 274 bytes, Stack size 0 bytes, use_disp.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Power_Process
 </UL>
 
@@ -1507,7 +1512,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowFontCN_40_55
 </UL>
 
-<P><STRONG><a name="[196]"></a>ListBox_Setup</STRONG> (Thumb, 292 bytes, Stack size 32 bytes, use_disp.o(.text), UNUSED)
+<P><STRONG><a name="[196]"></a>ListBox_Setup</STRONG> (Thumb, 334 bytes, Stack size 32 bytes, use_disp.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Read_WithTimeOut
 <LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Beep
 <LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WriteString_16
@@ -1515,7 +1520,7 @@ Global Symbols
 <LI><a href="#[197]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 </UL>
 
-<P><STRONG><a name="[19a]"></a>Number_Setup</STRONG> (Thumb, 458 bytes, Stack size 56 bytes, use_disp.o(.text), UNUSED)
+<P><STRONG><a name="[19a]"></a>Number_Setup</STRONG> (Thumb, 414 bytes, Stack size 56 bytes, use_disp.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Read_WithTimeOut
 <LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Beep
 </UL>
@@ -1544,7 +1549,7 @@ Global Symbols
 
 <P><STRONG><a name="[525]"></a>Time_Set_Cov_num</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, use_disp.o(.text), UNUSED)
 
-<P><STRONG><a name="[1a4]"></a>disp_Numtouch</STRONG> (Thumb, 506 bytes, Stack size 24 bytes, use_disp.o(.text), UNUSED)
+<P><STRONG><a name="[1a4]"></a>disp_Numtouch</STRONG> (Thumb, 542 bytes, Stack size 24 bytes, use_disp.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WriteString_16
 <LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD429_PutPixel
 <LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_DrawRect
@@ -1552,7 +1557,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Input_Num
 </UL>
 
-<P><STRONG><a name="[1a5]"></a>Input_Num</STRONG> (Thumb, 1082 bytes, Stack size 72 bytes, use_disp.o(.text), UNUSED)
+<P><STRONG><a name="[1a5]"></a>Input_Num</STRONG> (Thumb, 1072 bytes, Stack size 72 bytes, use_disp.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Read_WithTimeOut
 <LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disp_Numtouch
 <LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Test_Set_Item
@@ -1572,7 +1577,7 @@ Global Symbols
 <LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Abroat_Process
 </UL>
 
-<P><STRONG><a name="[1a8]"></a>Disp_IdelButton</STRONG> (Thumb, 156 bytes, Stack size 16 bytes, use_disp.o(.text))
+<P><STRONG><a name="[1a8]"></a>Disp_IdelButton</STRONG> (Thumb, 128 bytes, Stack size 16 bytes, use_disp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = Disp_IdelButton &rArr; GUI_SetTextMode &rArr; GUI_Lock &rArr; GUI_DEVICE_UnlinkTaskDevices
 </UL>
 <BR>[Calls]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SetTextMode
@@ -1643,7 +1648,7 @@ Global Symbols
 <LI><a href="#[2ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MODS_WriteRegValue
 </UL>
 
-<P><STRONG><a name="[1b0]"></a>ARC_out</STRONG> (Thumb, 158 bytes, Stack size 8 bytes, use_disp.o(.text))
+<P><STRONG><a name="[1b0]"></a>ARC_out</STRONG> (Thumb, 246 bytes, Stack size 8 bytes, use_disp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = ARC_out &rArr; Out_4094 &rArr; Set_Spi_out &rArr; GPIO_SetValue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Out_4094
@@ -1655,7 +1660,7 @@ Global Symbols
 <LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Abroat_Process
 </UL>
 
-<P><STRONG><a name="[1b1]"></a>Test_Init</STRONG> (Thumb, 968 bytes, Stack size 48 bytes, use_disp.o(.text))
+<P><STRONG><a name="[1b1]"></a>Test_Init</STRONG> (Thumb, 1090 bytes, Stack size 48 bytes, use_disp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 116<LI>Call Chain = Test_Init &rArr; Uart0_Send &rArr; UARTPutChar &rArr; UART_Send
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart0_Send
@@ -1681,7 +1686,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Get_Result
 </UL>
 
-<P><STRONG><a name="[1b7]"></a>Get_Result</STRONG> (Thumb, 582 bytes, Stack size 24 bytes, use_disp.o(.text))
+<P><STRONG><a name="[1b7]"></a>Get_Result</STRONG> (Thumb, 704 bytes, Stack size 24 bytes, use_disp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = Get_Result &rArr; __aeabi_ddiv
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jisuandianzu
@@ -1696,7 +1701,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Test_Process
 </UL>
 
-<P><STRONG><a name="[1bd]"></a>InputNum</STRONG> (Thumb, 346 bytes, Stack size 32 bytes, use_disp.o(.text))
+<P><STRONG><a name="[1bd]"></a>InputNum</STRONG> (Thumb, 232 bytes, Stack size 32 bytes, use_disp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = InputNum &rArr; GUI_DrawGradientRoundedV &rArr; _DrawGradientRounded &rArr; GUI_GetColor &rArr; GUI_Lock &rArr; GUI_DEVICE_UnlinkTaskDevices
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SetPenSize
@@ -1711,7 +1716,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Pre_Uint
 </UL>
 
-<P><STRONG><a name="[1c1]"></a>Disp_NumKeyboard_Set</STRONG> (Thumb, 748 bytes, Stack size 88 bytes, use_disp.o(.text), UNUSED)
+<P><STRONG><a name="[1c1]"></a>Disp_NumKeyboard_Set</STRONG> (Thumb, 802 bytes, Stack size 88 bytes, use_disp.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Beep
 <LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WriteString_16
 <LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_DrawRect
@@ -1736,7 +1741,7 @@ Global Symbols
 <LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Setup_Process
 </UL>
 
-<P><STRONG><a name="[1c3]"></a>disp_Inputnum</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, use_disp.o(.text))
+<P><STRONG><a name="[1c3]"></a>disp_Inputnum</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, use_disp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = disp_Inputnum &rArr; GUI_DispStringAt &rArr; GUI_DispString &rArr; GUI__DispLine &rArr; WM__InitIVRSearch &rArr; WM__GetNextIVR &rArr; WM__ActivateClipRect &rArr; _SetClipRectUserIntersect &rArr; LCD_SetClipRectEx &rArr; GUI__IntersectRects
 </UL>
 <BR>[Calls]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SetTextMode
@@ -1772,7 +1777,7 @@ Global Symbols
 <LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Start_Process
 </UL>
 
-<P><STRONG><a name="[1c7]"></a>Disp_Comp</STRONG> (Thumb, 66 bytes, Stack size 8 bytes, use_disp.o(.text))
+<P><STRONG><a name="[1c7]"></a>Disp_Comp</STRONG> (Thumb, 94 bytes, Stack size 8 bytes, use_disp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = Disp_Comp &rArr; GUI_DispStringAt &rArr; GUI_DispString &rArr; GUI__DispLine &rArr; WM__InitIVRSearch &rArr; WM__GetNextIVR &rArr; WM__ActivateClipRect &rArr; _SetClipRectUserIntersect &rArr; LCD_SetClipRectEx &rArr; GUI__IntersectRects
 </UL>
 <BR>[Calls]<UL><LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispStringAt
@@ -1780,7 +1785,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TestPause_Process
 </UL>
 
-<P><STRONG><a name="[1c8]"></a>Disp_CompTest</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, use_disp.o(.text), UNUSED)
+<P><STRONG><a name="[1c8]"></a>Disp_CompTest</STRONG> (Thumb, 64 bytes, Stack size 8 bytes, use_disp.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispStringAt
 </UL>
 
@@ -2159,7 +2164,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[f9]"></a>Idem_Process</STRONG> (Thumb, 922 bytes, Stack size 8 bytes, test.o(.text))
+<P><STRONG><a name="[f9]"></a>Idem_Process</STRONG> (Thumb, 1044 bytes, Stack size 8 bytes, test.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 272 + Unknown Stack Size
 <LI>Call Chain = Idem_Process &rArr; Disp_Idel_Item &rArr; GUI_DispDecAt &rArr; GUI_DispStringAt &rArr; GUI_DispString &rArr; GUI__DispLine &rArr; WM__InitIVRSearch &rArr; WM__GetNextIVR &rArr; WM__ActivateClipRect &rArr; _SetClipRectUserIntersect &rArr; LCD_SetClipRectEx &rArr; GUI__IntersectRects
 </UL>
@@ -2177,7 +2182,7 @@ Global Symbols
 <LI><a href="#[203]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Time
 <LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Savetoeeprom
 <LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Testvalue
-<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
+<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
 <LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_list
 <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disp_TestMSG
 <LI><a href="#[1ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;V_DA_out
@@ -2206,7 +2211,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[fb]"></a>Finsh_Process</STRONG> (Thumb, 138 bytes, Stack size 8 bytes, test.o(.text))
+<P><STRONG><a name="[fb]"></a>Finsh_Process</STRONG> (Thumb, 152 bytes, Stack size 8 bytes, test.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = Finsh_Process &rArr; Uart0_Send &rArr; UARTPutChar &rArr; UART_Send
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;All_LedOff
@@ -2224,7 +2229,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[f2]"></a>Test_Process</STRONG> (Thumb, 3784 bytes, Stack size 104 bytes, test.o(.text))
+<P><STRONG><a name="[f2]"></a>Test_Process</STRONG> (Thumb, 4792 bytes, Stack size 104 bytes, test.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 344 + Unknown Stack Size
 <LI>Call Chain = Test_Process &rArr; Disp_Testvalue &rArr; disp_TestMSG &rArr; GUI_DispStringAt &rArr; GUI_DispString &rArr; GUI__DispLine &rArr; WM__InitIVRSearch &rArr; WM__GetNextIVR &rArr; WM__ActivateClipRect &rArr; _SetClipRectUserIntersect &rArr; LCD_SetClipRectEx &rArr; GUI__IntersectRects
 </UL>
@@ -2265,8 +2270,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[f4]"></a>Setup_Process</STRONG> (Thumb, 21168 bytes, Stack size 64 bytes, test.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 512 + Unknown Stack Size
+<P><STRONG><a name="[f4]"></a>Setup_Process</STRONG> (Thumb, 42802 bytes, Stack size 56 bytes, test.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 504 + Unknown Stack Size
 <LI>Call Chain = Setup_Process &rArr; atof &rArr; __strtod_int &rArr; _local_sscanf &rArr; _scanf_real &rArr; _scanf_really_real &rArr; _fp_value &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
 </UL>
 <BR>[Calls]<UL><LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Beep
@@ -2294,7 +2299,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[fc]"></a>Setup_config_Process</STRONG> (Thumb, 1964 bytes, Stack size 64 bytes, test.o(.text))
+<P><STRONG><a name="[fc]"></a>Setup_config_Process</STRONG> (Thumb, 1978 bytes, Stack size 64 bytes, test.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 512<LI>Call Chain = Setup_config_Process &rArr; atof &rArr; __strtod_int &rArr; _local_sscanf &rArr; _scanf_real &rArr; _scanf_really_real &rArr; _fp_value &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
 </UL>
 <BR>[Calls]<UL><LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Beep
@@ -2322,7 +2327,7 @@ Global Symbols
 <LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HW_KeyScsn
 </UL>
 
-<P><STRONG><a name="[f8]"></a>Sys_Process</STRONG> (Thumb, 200 bytes, Stack size 8 bytes, test.o(.text))
+<P><STRONG><a name="[f8]"></a>Sys_Process</STRONG> (Thumb, 158 bytes, Stack size 8 bytes, test.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 272<LI>Call Chain = Sys_Process &rArr; DispSYSConfig_value &rArr; dispSYSButtonvalue &rArr; Disp_Fastbutton &rArr; GUI_DrawGradientRoundedV &rArr; _DrawGradientRounded &rArr; GUI_GetColor &rArr; GUI_Lock &rArr; GUI_DEVICE_UnlinkTaskDevices
 </UL>
 <BR>[Calls]<UL><LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Beep
@@ -2334,7 +2339,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[f6]"></a>Use_SysSetProcess</STRONG> (Thumb, 774 bytes, Stack size 56 bytes, test.o(.text))
+<P><STRONG><a name="[f6]"></a>Use_SysSetProcess</STRONG> (Thumb, 806 bytes, Stack size 56 bytes, test.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 336<LI>Call Chain = Use_SysSetProcess &rArr; Disp_SysSet_value &rArr; dispSYSSetButtonvalue &rArr; Disp_Fastbutton &rArr; GUI_DrawGradientRoundedV &rArr; _DrawGradientRounded &rArr; GUI_GetColor &rArr; GUI_Lock &rArr; GUI_DEVICE_UnlinkTaskDevices
 </UL>
 <BR>[Calls]<UL><LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Beep
@@ -2363,7 +2368,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
 
-<P><STRONG><a name="[212]"></a>Input_compvalue</STRONG> (Thumb, 1574 bytes, Stack size 144 bytes, test.o(.text), UNUSED)
+<P><STRONG><a name="[212]"></a>Input_compvalue</STRONG> (Thumb, 1584 bytes, Stack size 144 bytes, test.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_button_Num_Input
 <LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PutChar
 <LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_DrawRect
@@ -2430,7 +2435,7 @@ Global Symbols
 <LI><a href="#[1a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Beep_Off
 </UL>
 
-<P><STRONG><a name="[21b]"></a>Inttofloat</STRONG> (Thumb, 148 bytes, Stack size 48 bytes, test.o(.text), UNUSED)
+<P><STRONG><a name="[21b]"></a>Inttofloat</STRONG> (Thumb, 126 bytes, Stack size 48 bytes, test.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
 <LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
 <LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
@@ -2462,7 +2467,7 @@ Global Symbols
 <LI><a href="#[213]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 </UL>
 
-<P><STRONG><a name="[21f]"></a>BCD_Int</STRONG> (Thumb, 312 bytes, Stack size 32 bytes, test.o(.text), UNUSED)
+<P><STRONG><a name="[21f]"></a>BCD_Int</STRONG> (Thumb, 366 bytes, Stack size 32 bytes, test.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hex_Format
 <LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdrcmple
 <LI><a href="#[213]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
@@ -2490,7 +2495,7 @@ Global Symbols
 
 <P><STRONG><a name="[530]"></a>Debug_jisuan</STRONG> (Thumb, 66 bytes, Stack size 0 bytes, test.o(.text), UNUSED)
 
-<P><STRONG><a name="[223]"></a>Fft_Dci</STRONG> (Thumb, 324 bytes, Stack size 40 bytes, test.o(.text), UNUSED)
+<P><STRONG><a name="[223]"></a>Fft_Dci</STRONG> (Thumb, 218 bytes, Stack size 40 bytes, test.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 <LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
 <LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
@@ -2516,7 +2521,7 @@ Global Symbols
 <LI><a href="#[227]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
 
-<P><STRONG><a name="[228]"></a>Test_cleardata</STRONG> (Thumb, 298 bytes, Stack size 16 bytes, test.o(.text), UNUSED)
+<P><STRONG><a name="[228]"></a>Test_cleardata</STRONG> (Thumb, 420 bytes, Stack size 16 bytes, test.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
 <LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_big_HZ
 <LI><a href="#[194]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Range
@@ -2527,7 +2532,7 @@ Global Symbols
 <LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ClearValue
 </UL>
 
-<P><STRONG><a name="[fd]"></a>Start_Process</STRONG> (Thumb, 138 bytes, Stack size 8 bytes, test.o(.text))
+<P><STRONG><a name="[fd]"></a>Start_Process</STRONG> (Thumb, 156 bytes, Stack size 8 bytes, test.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = Start_Process &rArr; Disp_DelayTime &rArr; disp_DelayMSG &rArr; GUI_DispStringAt &rArr; GUI_DispString &rArr; GUI__DispLine &rArr; WM__InitIVRSearch &rArr; WM__GetNextIVR &rArr; WM__ActivateClipRect &rArr; _SetClipRectUserIntersect &rArr; LCD_SetClipRectEx &rArr; GUI__IntersectRects
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart0_Send
@@ -2543,7 +2548,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[f7]"></a>TestPause_Process</STRONG> (Thumb, 1210 bytes, Stack size 16 bytes, test.o(.text))
+<P><STRONG><a name="[f7]"></a>TestPause_Process</STRONG> (Thumb, 1428 bytes, Stack size 16 bytes, test.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 280 + Unknown Stack Size
 <LI>Call Chain = TestPause_Process &rArr; Disp_Idel_Item &rArr; GUI_DispDecAt &rArr; GUI_DispStringAt &rArr; GUI_DispString &rArr; GUI__DispLine &rArr; WM__InitIVRSearch &rArr; WM__GetNextIVR &rArr; WM__ActivateClipRect &rArr; _SetClipRectUserIntersect &rArr; LCD_SetClipRectEx &rArr; GUI__IntersectRects
 </UL>
@@ -2557,7 +2562,7 @@ Global Symbols
 <LI><a href="#[1b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ARC_out
 <LI><a href="#[1af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Short_out
 <LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_IdelButton
-<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
+<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
 <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disp_TestMSG
 <LI><a href="#[1ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;V_DA_out
 <LI><a href="#[205]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PLC_OutProg
@@ -3131,14 +3136,14 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Read_WithTimeOut
 </UL>
 
-<P><STRONG><a name="[25b]"></a>UartRes</STRONG> (Thumb, 2832 bytes, Stack size 136 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[25b]"></a>UartRes</STRONG> (Thumb, 3344 bytes, Stack size 136 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 272 + Unknown Stack Size
 <LI>Call Chain = UartRes &rArr; __2sprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
 <LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 <LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcat
-<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
+<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReadRes
 </UL>
@@ -3841,11 +3846,11 @@ Global Symbols
 
 <P><STRONG><a name="[547]"></a>Uart_Process</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, debug_frmwrk.o(.text), UNUSED)
 
-<P><STRONG><a name="[2a9]"></a>UartResJK1</STRONG> (Thumb, 224 bytes, Stack size 96 bytes, debug_frmwrk.o(.text), UNUSED)
+<P><STRONG><a name="[2a9]"></a>UartResJK1</STRONG> (Thumb, 256 bytes, Stack size 96 bytes, debug_frmwrk.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
 <LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 <LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcat
-<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
+<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
 
 <P><STRONG><a name="[1b5]"></a>Uart0_Send</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, debug_frmwrk.o(.text))
@@ -3866,7 +3871,7 @@ Global Symbols
 <LI><a href="#[2ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MODS_WriteRegValue
 </UL>
 
-<P><STRONG><a name="[2aa]"></a>Uart3_Process</STRONG> (Thumb, 3476 bytes, Stack size 88 bytes, debug_frmwrk.o(.text))
+<P><STRONG><a name="[2aa]"></a>Uart3_Process</STRONG> (Thumb, 5094 bytes, Stack size 88 bytes, debug_frmwrk.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 156<LI>Call Chain = Uart3_Process &rArr; Uart0_Send &rArr; UARTPutChar &rArr; UART_Send
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart0_Send
@@ -5239,14 +5244,14 @@ Global Symbols
 <P><STRONG><a name="[367]"></a>scpiParser_parseProgramData</STRONG> (Thumb, 152 bytes, Stack size 40 bytes, parser.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = scpiParser_parseProgramData &rArr; scpiLex_DecimalNumericProgramData &rArr; skipExponent &rArr; skipNumbers &rArr; __rt_ctype_table
 </UL>
-<BR>[Calls]<UL><LI><a href="#[356]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_ProgramExpression
-<LI><a href="#[353]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_ArbitraryBlockProgramData
-<LI><a href="#[351]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_StringProgramData
-<LI><a href="#[349]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_NondecimalNumericData
+<BR>[Calls]<UL><LI><a href="#[349]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_NondecimalNumericData
 <LI><a href="#[343]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_SuffixProgramData
 <LI><a href="#[33f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_CharacterProgramData
 <LI><a href="#[33b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_WhiteSpace
 <LI><a href="#[316]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_DecimalNumericProgramData
+<LI><a href="#[356]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_ProgramExpression
+<LI><a href="#[353]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_ArbitraryBlockProgramData
+<LI><a href="#[351]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_StringProgramData
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCPI_Parameter
 <LI><a href="#[368]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiParser_parseAllProgramData
@@ -5264,13 +5269,13 @@ Global Symbols
 <P><STRONG><a name="[369]"></a>scpiParser_detectProgramMessageUnit</STRONG> (Thumb, 200 bytes, Stack size 48 bytes, parser.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = scpiParser_detectProgramMessageUnit &rArr; scpiParser_parseAllProgramData &rArr; scpiParser_parseProgramData &rArr; scpiLex_DecimalNumericProgramData &rArr; skipExponent &rArr; skipNumbers &rArr; __rt_ctype_table
 </UL>
-<BR>[Calls]<UL><LI><a href="#[357]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_Semicolon
-<LI><a href="#[33e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_ProgramHeader
+<BR>[Calls]<UL><LI><a href="#[33e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_ProgramHeader
 <LI><a href="#[33b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_WhiteSpace
 <LI><a href="#[31a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_IsEos
 <LI><a href="#[368]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiParser_parseAllProgramData
 <LI><a href="#[36a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invalidateToken
 <LI><a href="#[358]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_NewLine
+<LI><a href="#[357]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_Semicolon
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCPI_Input
 <LI><a href="#[36b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCPI_Parse
@@ -6043,8 +6048,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_locale
 </UL>
-<BR>[Called By]<UL><LI><a href="#[353]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_ArbitraryBlockProgramData
-<LI><a href="#[33f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_CharacterProgramData
+<BR>[Called By]<UL><LI><a href="#[33f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_CharacterProgramData
 <LI><a href="#[352]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isNonzeroDigit
 <LI><a href="#[344]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;skipHexNum
 <LI><a href="#[33a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;skipProgramMnemonic
@@ -6054,6 +6058,7 @@ Global Symbols
 <LI><a href="#[3bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compareStrAndNum
 <LI><a href="#[3bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;patternSeparatorShortPos
 <LI><a href="#[3af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;skipWhitespace
+<LI><a href="#[353]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_ArbitraryBlockProgramData
 <LI><a href="#[3d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__strtoull
 <LI><a href="#[3d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__strtoll
 <LI><a href="#[3d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tolower
@@ -6072,7 +6077,7 @@ Global Symbols
 
 <P><STRONG><a name="[576]"></a>_ll_udiv</STRONG> (Thumb, 238 bytes, Stack size 48 bytes, lludivv7m.o(.text), UNUSED)
 
-<P><STRONG><a name="[158]"></a>__2sprintf</STRONG> (Thumb, 34 bytes, Stack size 32 bytes, noretval__2sprintf.o(.text))
+<P><STRONG><a name="[155]"></a>__2sprintf</STRONG> (Thumb, 34 bytes, Stack size 32 bytes, noretval__2sprintf.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136 + Unknown Stack Size
 <LI>Call Chain = __2sprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -6082,7 +6087,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Testvalue
 <LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Set_Time
 <LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DispSet_value
-<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
+<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
+<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_list
 <LI><a href="#[25b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UartRes
 <LI><a href="#[2a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UartResJK1
 </UL>
@@ -6221,7 +6227,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Testvalue
 <LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DispSetConfig_value
 <LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DispSet_value
-<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
+<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
 <LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_list
 <LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Test_List
 <LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Idem_Process
@@ -6430,12 +6436,12 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[3ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2snprintf
-<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
+<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
 
 <P><STRONG><a name="[3f]"></a>_sputc</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, _sputc.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[3b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2snprintf
-<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
+<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> noretval__2sprintf.o(.text)
 </UL>
@@ -7059,7 +7065,7 @@ Global Symbols
 <P><STRONG><a name="[43d]"></a>GUI_AddDecShift</STRONG> (Thumb, 142 bytes, Stack size 20 bytes, gui_adddecshift.o(i.GUI_AddDecShift))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = GUI_AddDecShift
 </UL>
-<BR>[Called By]<UL><LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispDecAt
+<BR>[Called By]<UL><LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispDecAt
 </UL>
 
 <P><STRONG><a name="[4ac]"></a>GUI_CalcColorDist</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, gui_calccolordist.o(i.GUI_CalcColorDist))
@@ -7165,7 +7171,7 @@ Global Symbols
 <LI><a href="#[467]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SelectLayer
 </UL>
 
-<P><STRONG><a name="[156]"></a>GUI_DispCharAt</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, gui_dispchar.o(i.GUI_DispCharAt))
+<P><STRONG><a name="[157]"></a>GUI_DispCharAt</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, gui_dispchar.o(i.GUI_DispCharAt))
 <BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = GUI_DispCharAt &rArr; CL_DispChar &rArr; WM__InitIVRSearch &rArr; WM__GetNextIVR &rArr; WM__ActivateClipRect &rArr; _SetClipRectUserIntersect &rArr; LCD_SetClipRectEx &rArr; GUI__IntersectRects
 </UL>
 <BR>[Calls]<UL><LI><a href="#[402]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CL_DispChar
@@ -7175,7 +7181,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_list
 </UL>
 
-<P><STRONG><a name="[155]"></a>GUI_DispDecAt</STRONG> (Thumb, 34 bytes, Stack size 32 bytes, gui_val.o(i.GUI_DispDecAt))
+<P><STRONG><a name="[156]"></a>GUI_DispDecAt</STRONG> (Thumb, 34 bytes, Stack size 32 bytes, gui_val.o(i.GUI_DispDecAt))
 <BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = GUI_DispDecAt &rArr; GUI_DispStringAt &rArr; GUI_DispString &rArr; GUI__DispLine &rArr; WM__InitIVRSearch &rArr; WM__GetNextIVR &rArr; WM__ActivateClipRect &rArr; _SetClipRectUserIntersect &rArr; LCD_SetClipRectEx &rArr; GUI__IntersectRects
 </UL>
 <BR>[Calls]<UL><LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispStringAt
@@ -7183,7 +7189,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_SysSet_value
 <LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DispSet_value
-<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
+<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
 <LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_list
 </UL>
 
@@ -7219,7 +7225,7 @@ Global Symbols
 <LI><a href="#[40a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_Unlock
 <LI><a href="#[409]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_Lock
 </UL>
-<BR>[Called By]<UL><LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispDecAt
+<BR>[Called By]<UL><LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispDecAt
 <LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_CompTest
 <LI><a href="#[1c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Comp
 <LI><a href="#[1c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_DelayTime
@@ -7232,7 +7238,7 @@ Global Symbols
 <LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DispSetConfig_value
 <LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DispSet_value
 <LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Test_SetConfig_Item
-<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
+<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
 <LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_list
 <LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Test_List
 <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disp_TestMSG
@@ -7319,6 +7325,8 @@ Global Symbols
 <LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_SysSet_value
 <LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DispSetConfig_value
 <LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DispSet_value
+<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
+<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_list
 <LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_mainitem
 <LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Use_SysSetProcess
 <LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Setup_config_Process
@@ -7474,7 +7482,7 @@ Global Symbols
 <LI><a href="#[1c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DrawLine
 <LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DrawGradientRoundedV
 <LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispStringAt
-<LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispCharAt
+<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispCharAt
 <LI><a href="#[1ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_UC_SetEncodeUTF8
 <LI><a href="#[446]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_SetUserClipRect
 <LI><a href="#[43e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_GetFontDistY
@@ -7617,7 +7625,7 @@ Global Symbols
 <LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Sys
 <LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DispSetup_ConfigButtonvalue
 <LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Test_SetConfig_Item
-<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
+<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
 <LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Test_List
 <LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Test_Set_Item
 <LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_SYS_Set_Item
@@ -7655,7 +7663,7 @@ Global Symbols
 <LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DispSet_value
 <LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dispSetupButtonvalue
 <LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Test_SetConfig_Item
-<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
+<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
 <LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_list
 <LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Test_List
 <LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Test_Set_Item
@@ -7690,7 +7698,7 @@ Global Symbols
 <LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Pre_Uint
 <LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InputNum
 <LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Testvalue
-<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
+<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
 <LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_list
 <LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Test_List
 <LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_mainitem
@@ -7734,7 +7742,8 @@ Global Symbols
 <LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DispSetup_ConfigButtonvalue
 <LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DispSet_value
 <LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dispSetupButtonvalue
-<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
+<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_Item
+<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Idel_list
 <LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Test_List
 <LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_Fastset_Disp
 <LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Disp_mainitem
@@ -7809,7 +7818,7 @@ Global Symbols
 <LI><a href="#[1c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DrawLine
 <LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DrawGradientRoundedV
 <LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispStringAt
-<LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispCharAt
+<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispCharAt
 <LI><a href="#[1ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_UC_SetEncodeUTF8
 <LI><a href="#[446]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_SetUserClipRect
 <LI><a href="#[43e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_GetFontDistY
@@ -9420,7 +9429,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[82]"></a>PageSet</STRONG> (Thumb, 142 bytes, Stack size 24 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[82]"></a>PageSet</STRONG> (Thumb, 166 bytes, Stack size 24 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = PageSet &rArr; SCPI_ParamCharacters &rArr; SCPI_Parameter &rArr; SCPI_ErrorPush &rArr; SCPI_ErrorPushEx &rArr; SCPI_ErrorEmit &rArr; SCPI_RegSetBits &rArr; SCPI_RegSet &rArr; regUpdateSTB &rArr;  SCPI_RegSetBits (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[260]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCPI_ParamCharacters
@@ -9428,7 +9437,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[83]"></a>VoltageAcQ1</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[83]"></a>VoltageAcQ1</STRONG> (Thumb, 74 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 240 + Unknown Stack Size
 <LI>Call Chain = VoltageAcQ1 &rArr; SCPI_ResultDouble &rArr; SCPI_DoubleToStr &rArr; __2snprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -9437,7 +9446,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[84]"></a>VoltageAcS1</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[84]"></a>VoltageAcS1</STRONG> (Thumb, 108 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = VoltageAcS1 &rArr; SCPI_ParamUInt32 &rArr; ParamSignUInt32 &rArr; SCPI_Parameter &rArr; SCPI_ErrorPush &rArr; SCPI_ErrorPushEx &rArr; SCPI_ErrorEmit &rArr; SCPI_RegSetBits &rArr; SCPI_RegSet &rArr; regUpdateSTB &rArr;  SCPI_RegSetBits (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetDate_Comp
@@ -9447,7 +9456,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[85]"></a>CUpperAcQ1</STRONG> (Thumb, 198 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[85]"></a>CUpperAcQ1</STRONG> (Thumb, 206 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 240 + Unknown Stack Size
 <LI>Call Chain = CUpperAcQ1 &rArr; SCPI_ResultFloat &rArr; SCPI_FloatToStr &rArr; __2snprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -9457,7 +9466,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[86]"></a>CUpperAcS1</STRONG> (Thumb, 150 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[86]"></a>CUpperAcS1</STRONG> (Thumb, 238 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 528<LI>Call Chain = CUpperAcS1 &rArr; SCPI_ParamFloat &rArr; SCPI_ParamToFloat &rArr; strToFloat &rArr; strtof &rArr; __strtod_int &rArr; _local_sscanf &rArr; _scanf_real &rArr; _scanf_really_real &rArr; _fp_value &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetDate_Comp
@@ -9469,7 +9478,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[87]"></a>CLOWAcQ1</STRONG> (Thumb, 116 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[87]"></a>CLOWAcQ1</STRONG> (Thumb, 254 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 240 + Unknown Stack Size
 <LI>Call Chain = CLOWAcQ1 &rArr; SCPI_ResultFloat &rArr; SCPI_FloatToStr &rArr; __2snprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -9479,7 +9488,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[88]"></a>CLOWAcS1</STRONG> (Thumb, 150 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[88]"></a>CLOWAcS1</STRONG> (Thumb, 238 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 528<LI>Call Chain = CLOWAcS1 &rArr; SCPI_ParamFloat &rArr; SCPI_ParamToFloat &rArr; strToFloat &rArr; strtof &rArr; __strtod_int &rArr; _local_sscanf &rArr; _scanf_real &rArr; _scanf_really_real &rArr; _fp_value &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetDate_Comp
@@ -9491,7 +9500,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[89]"></a>TTIMQ1</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[89]"></a>TTIMQ1</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 240 + Unknown Stack Size
 <LI>Call Chain = TTIMQ1 &rArr; SCPI_ResultFloat &rArr; SCPI_FloatToStr &rArr; __2snprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -9501,7 +9510,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[8a]"></a>TTIMS1</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[8a]"></a>TTIMS1</STRONG> (Thumb, 112 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 528<LI>Call Chain = TTIMS1 &rArr; SCPI_ParamFloat &rArr; SCPI_ParamToFloat &rArr; strToFloat &rArr; strtof &rArr; __strtod_int &rArr; _local_sscanf &rArr; _scanf_real &rArr; _scanf_really_real &rArr; _fp_value &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetDate_Comp
@@ -9512,7 +9521,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[8b]"></a>RTIMQ1</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[8b]"></a>RTIMQ1</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 240 + Unknown Stack Size
 <LI>Call Chain = RTIMQ1 &rArr; SCPI_ResultFloat &rArr; SCPI_FloatToStr &rArr; __2snprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -9522,7 +9531,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[8c]"></a>RTIMS1</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[8c]"></a>RTIMS1</STRONG> (Thumb, 112 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 528<LI>Call Chain = RTIMS1 &rArr; SCPI_ParamFloat &rArr; SCPI_ParamToFloat &rArr; strToFloat &rArr; strtof &rArr; __strtod_int &rArr; _local_sscanf &rArr; _scanf_real &rArr; _scanf_really_real &rArr; _fp_value &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetDate_Comp
@@ -9533,7 +9542,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[8d]"></a>FTIMQ1</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[8d]"></a>FTIMQ1</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 240 + Unknown Stack Size
 <LI>Call Chain = FTIMQ1 &rArr; SCPI_ResultFloat &rArr; SCPI_FloatToStr &rArr; __2snprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -9543,7 +9552,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[8e]"></a>FTIMS1</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[8e]"></a>FTIMS1</STRONG> (Thumb, 112 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 528<LI>Call Chain = FTIMS1 &rArr; SCPI_ParamFloat &rArr; SCPI_ParamToFloat &rArr; strToFloat &rArr; strtof &rArr; __strtod_int &rArr; _local_sscanf &rArr; _scanf_real &rArr; _scanf_really_real &rArr; _fp_value &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetDate_Comp
@@ -9554,7 +9563,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[8f]"></a>ARCQ1</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[8f]"></a>ARCQ1</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 240 + Unknown Stack Size
 <LI>Call Chain = ARCQ1 &rArr; SCPI_ResultFloat &rArr; SCPI_FloatToStr &rArr; __2snprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -9564,7 +9573,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[90]"></a>ARCS1</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[90]"></a>ARCS1</STRONG> (Thumb, 138 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 528<LI>Call Chain = ARCS1 &rArr; SCPI_ParamFloat &rArr; SCPI_ParamToFloat &rArr; strToFloat &rArr; strtof &rArr; __strtod_int &rArr; _local_sscanf &rArr; _scanf_real &rArr; _scanf_really_real &rArr; _fp_value &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetDate_Comp
@@ -9583,7 +9592,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[92]"></a>FREQS1</STRONG> (Thumb, 116 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[92]"></a>FREQS1</STRONG> (Thumb, 84 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 528<LI>Call Chain = FREQS1 &rArr; SCPI_ParamFloat &rArr; SCPI_ParamToFloat &rArr; strToFloat &rArr; strtof &rArr; __strtod_int &rArr; _local_sscanf &rArr; _scanf_real &rArr; _scanf_really_real &rArr; _fp_value &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
 </UL>
 <BR>[Calls]<UL><LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Savetoeeprom
@@ -9593,7 +9602,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[93]"></a>OPENQ1</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[93]"></a>OPENQ1</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 240 + Unknown Stack Size
 <LI>Call Chain = OPENQ1 &rArr; SCPI_ResultFloat &rArr; SCPI_FloatToStr &rArr; __2snprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -9602,7 +9611,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[94]"></a>OPENS1</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[94]"></a>OPENS1</STRONG> (Thumb, 110 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 528<LI>Call Chain = OPENS1 &rArr; SCPI_ParamFloat &rArr; SCPI_ParamToFloat &rArr; strToFloat &rArr; strtof &rArr; __strtod_int &rArr; _local_sscanf &rArr; _scanf_real &rArr; _scanf_really_real &rArr; _fp_value &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetDate_Comp
@@ -9613,7 +9622,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[95]"></a>SHORTQ1</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[95]"></a>SHORTQ1</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 240 + Unknown Stack Size
 <LI>Call Chain = SHORTQ1 &rArr; SCPI_ResultFloat &rArr; SCPI_FloatToStr &rArr; __2snprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -9622,7 +9631,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[96]"></a>SHORTS1</STRONG> (Thumb, 128 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[96]"></a>SHORTS1</STRONG> (Thumb, 210 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 528<LI>Call Chain = SHORTS1 &rArr; SCPI_ParamFloat &rArr; SCPI_ParamToFloat &rArr; strToFloat &rArr; strtof &rArr; __strtod_int &rArr; _local_sscanf &rArr; _scanf_real &rArr; _scanf_really_real &rArr; _fp_value &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
 </UL>
 <BR>[Calls]<UL><LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Savetoeeprom
@@ -9641,7 +9650,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[98]"></a>StopT</STRONG> (Thumb, 286 bytes, Stack size 8 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[98]"></a>StopT</STRONG> (Thumb, 318 bytes, Stack size 8 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = StopT &rArr; Uart0_Send &rArr; UARTPutChar &rArr; UART_Send
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart0_Send
@@ -9654,7 +9663,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[99]"></a>SetStep</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[99]"></a>SetStep</STRONG> (Thumb, 74 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = SetStep &rArr; SCPI_ParamUInt32 &rArr; ParamSignUInt32 &rArr; SCPI_Parameter &rArr; SCPI_ErrorPush &rArr; SCPI_ErrorPushEx &rArr; SCPI_ErrorEmit &rArr; SCPI_RegSetBits &rArr; SCPI_RegSet &rArr; regUpdateSTB &rArr;  SCPI_RegSetBits (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Savetoeeprom
@@ -9663,7 +9672,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[9a]"></a>SetTSteps</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[9a]"></a>SetTSteps</STRONG> (Thumb, 74 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = SetTSteps &rArr; SCPI_ParamUInt32 &rArr; ParamSignUInt32 &rArr; SCPI_Parameter &rArr; SCPI_ErrorPush &rArr; SCPI_ErrorPushEx &rArr; SCPI_ErrorEmit &rArr; SCPI_RegSetBits &rArr; SCPI_RegSet &rArr; regUpdateSTB &rArr;  SCPI_RegSetBits (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Savetoeeprom
@@ -9672,7 +9681,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[9b]"></a>ACMode</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[9b]"></a>ACMode</STRONG> (Thumb, 82 bytes, Stack size 8 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = ACMode &rArr; SCPI_ResultCharacters &rArr; writeDelimiter &rArr; writeData
 </UL>
 <BR>[Calls]<UL><LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Savetoeeprom
@@ -9680,7 +9689,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[9c]"></a>DCMode</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[9c]"></a>DCMode</STRONG> (Thumb, 82 bytes, Stack size 8 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = DCMode &rArr; SCPI_ResultCharacters &rArr; writeDelimiter &rArr; writeData
 </UL>
 <BR>[Calls]<UL><LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Savetoeeprom
@@ -9688,7 +9697,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[9d]"></a>IRMode</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[9d]"></a>IRMode</STRONG> (Thumb, 82 bytes, Stack size 8 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = IRMode &rArr; SCPI_ResultCharacters &rArr; writeDelimiter &rArr; writeData
 </UL>
 <BR>[Calls]<UL><LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Savetoeeprom
@@ -9696,7 +9705,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[9e]"></a>OSMode</STRONG> (Thumb, 80 bytes, Stack size 8 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[9e]"></a>OSMode</STRONG> (Thumb, 82 bytes, Stack size 8 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = OSMode &rArr; SCPI_ResultCharacters &rArr; writeDelimiter &rArr; writeData
 </UL>
 <BR>[Calls]<UL><LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Savetoeeprom
@@ -9715,7 +9724,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[a0]"></a>VoltageDcQ1</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[a0]"></a>VoltageDcQ1</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 240 + Unknown Stack Size
 <LI>Call Chain = VoltageDcQ1 &rArr; SCPI_ResultDouble &rArr; SCPI_DoubleToStr &rArr; __2snprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -9779,7 +9788,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> scpi-def.o(.constdata)
 </UL>
-<P><STRONG><a name="[80]"></a>TEST_Chanlst</STRONG> (Thumb, 412 bytes, Stack size 192 bytes, scpi-def.o(.text))
+<P><STRONG><a name="[80]"></a>TEST_Chanlst</STRONG> (Thumb, 442 bytes, Stack size 192 bytes, scpi-def.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 592<LI>Call Chain = TEST_Chanlst &rArr; SCPI_ExprChannelListEntry &rArr; channelRange &rArr; channelSpec &rArr; SCPI_ParamToInt32 &rArr; ParamSignToUInt32 &rArr; SCPI_ErrorPush &rArr; SCPI_ErrorPushEx &rArr; SCPI_ErrorEmit &rArr; SCPI_RegSetBits &rArr; SCPI_RegSet &rArr; regUpdateSTB &rArr;  SCPI_RegSetBits (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[26e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCPI_Parameter
@@ -9843,7 +9852,7 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART3_IRQHandler
 </UL>
 
-<P><STRONG><a name="[2ae]"></a>MODS_WriteRegValue</STRONG> (Thumb, 352 bytes, Stack size 16 bytes, debug_frmwrk.o(.text))
+<P><STRONG><a name="[2ae]"></a>MODS_WriteRegValue</STRONG> (Thumb, 394 bytes, Stack size 16 bytes, debug_frmwrk.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = MODS_WriteRegValue &rArr; Uart0_Send &rArr; UARTPutChar &rArr; UART_Send
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart0_Send
@@ -9867,8 +9876,10 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RecHandle
 </UL>
 
-<P><STRONG><a name="[2b2]"></a>MODS_ReadRegValue</STRONG> (Thumb, 658 bytes, Stack size 0 bytes, debug_frmwrk.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[2b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MODS_03H
+<P><STRONG><a name="[2b2]"></a>MODS_ReadRegValue</STRONG> (Thumb, 786 bytes, Stack size 8 bytes, debug_frmwrk.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = MODS_ReadRegValue
+</UL>
+<BR>[Called By]<UL><LI><a href="#[2b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MODS_03H
 </UL>
 
 <P><STRONG><a name="[2b1]"></a>MODS_03H</STRONG> (Thumb, 288 bytes, Stack size 80 bytes, debug_frmwrk.o(.text))
@@ -10037,10 +10048,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[32c]"></a>iseos</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, lexer.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[356]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_ProgramExpression
-<LI><a href="#[353]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_ArbitraryBlockProgramData
-<LI><a href="#[351]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_StringProgramData
-<LI><a href="#[349]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_NondecimalNumericData
+<BR><BR>[Called By]<UL><LI><a href="#[349]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_NondecimalNumericData
 <LI><a href="#[33f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_CharacterProgramData
 <LI><a href="#[354]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;skipProgramExpression
 <LI><a href="#[34d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;skipQuoteProgramData
@@ -10060,18 +10068,21 @@ Local Symbols
 <LI><a href="#[32f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;skipDigit
 <LI><a href="#[32d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;skipWs
 <LI><a href="#[31a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_IsEos
+<LI><a href="#[356]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_ProgramExpression
+<LI><a href="#[353]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_ArbitraryBlockProgramData
+<LI><a href="#[351]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_StringProgramData
 </UL>
 
 <P><STRONG><a name="[336]"></a>ischr</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, lexer.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[356]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_ProgramExpression
-<LI><a href="#[351]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_StringProgramData
-<LI><a href="#[33f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_CharacterProgramData
+<BR><BR>[Called By]<UL><LI><a href="#[33f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_CharacterProgramData
 <LI><a href="#[34d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;skipQuoteProgramData
 <LI><a href="#[33a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;skipProgramMnemonic
 <LI><a href="#[339]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;skipColon
 <LI><a href="#[338]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;skipStar
 <LI><a href="#[337]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;skipSlashDot
 <LI><a href="#[335]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;skipChr
+<LI><a href="#[356]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_ProgramExpression
+<LI><a href="#[351]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_StringProgramData
 </UL>
 
 <P><STRONG><a name="[333]"></a>isplusmn</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, lexer.o(.text))
@@ -10149,9 +10160,7 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[336]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ischr
 <LI><a href="#[32c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iseos
 </UL>
-<BR>[Called By]<UL><LI><a href="#[357]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_Semicolon
-<LI><a href="#[353]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_ArbitraryBlockProgramData
-<LI><a href="#[349]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_NondecimalNumericData
+<BR>[Called By]<UL><LI><a href="#[349]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_NondecimalNumericData
 <LI><a href="#[343]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_SuffixProgramData
 <LI><a href="#[33e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_ProgramHeader
 <LI><a href="#[340]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;skipMantisa
@@ -10159,6 +10168,8 @@ Local Symbols
 <LI><a href="#[319]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_Comma
 <LI><a href="#[317]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_Colon
 <LI><a href="#[358]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_NewLine
+<LI><a href="#[357]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_Semicolon
+<LI><a href="#[353]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scpiLex_ArbitraryBlockProgramData
 </UL>
 
 <P><STRONG><a name="[337]"></a>skipSlashDot</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, lexer.o(.text))
@@ -10709,7 +10720,7 @@ Local Symbols
 <LI><a href="#[406]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__InitIVRSearch
 <LI><a href="#[408]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__GetNextIVR
 </UL>
-<BR>[Called By]<UL><LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispCharAt
+<BR>[Called By]<UL><LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispCharAt
 </UL>
 
 <P><STRONG><a name="[449]"></a>_DrawGradientRounded</STRONG> (Thumb, 260 bytes, Stack size 88 bytes, gui_drawgradientrounded.o(i._DrawGradientRounded))

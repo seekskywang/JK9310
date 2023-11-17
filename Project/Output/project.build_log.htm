@@ -27,51 +27,137 @@ Project File Date:  07/07/2023
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Open1788'
-compiling test.c...
-..\Libraries\Drivers\include\debug_frmwrk.h(92): warning:  #47-D: incompatible redefinition of macro "TICKS_PER_SEC"  (declared at line 13 of "..\User\key/key.h")
-  #define TICKS_PER_SEC 1000	//????????????????????100x10mS(T0)=1S
-..\User\Test\test.c(202): warning:  #177-D: variable "temp"  was declared but never referenced
-  	u8 temp[4];
-..\User\Test\test.c(203): warning:  #177-D: variable "FlashID"  was declared but never referenced
-  		u32 FlashID;
-..\User\Test\test.c(777): warning:  #177-D: variable "key"  was declared but never referenced
-  	vu8 key;
-..\User\Test\test.c(873): warning:  #550-D: variable "Range_IR"  was set but never used
-      u8 Range_IR=0;
-..\User\Test\test.c(881): warning:  #550-D: variable "temp"  was set but never used
-  	vu32 temp;
-..\User\Test\test.c(882): warning:  #177-D: variable "value"  was declared but never referenced
-    float value;
-..\User\Test\test.c(883): warning:  #177-D: variable "F_x"  was declared but never referenced
-    float F_x;
-..\User\Test\test.c(1771): warning:  #177-D: variable "pt"  was declared but never referenced
-      vu16 *pt;
-..\User\Test\test.c(1772): warning:  #177-D: variable "list"  was declared but never referenced
-  	u8 list=1;//????????0  ??????1??
-..\User\Test\test.c(1773): warning:  #177-D: variable "line"  was declared but never referenced
-      u8 line=0;//??
-..\User\Test\test.c(1780): warning:  #177-D: variable "select_num"  was declared but never referenced
-      u8 select_num=0;
-..\User\Test\test.c(4400): warning:  #177-D: variable "select_num"  was declared but never referenced
-      u8 select_num=0;
-..\User\Test\test.c(5082): warning:  #177-D: variable "list"  was declared but never referenced
-  	u8 list=0;//??
-..\User\Test\test.c(5084): warning:  #177-D: variable "item"  was declared but never referenced
-      u8 item=0;
-..\User\Test\test.c(6775): warning:  #177-D: variable "i"  was declared but never referenced
-  	u8 i;
-..\User\Test\test.c(6776): warning:  #177-D: variable "key"  was declared but never referenced
-  	u8 key;
-..\User\Test\test.c(6778): warning:  #177-D: variable "item"  was declared but never referenced
-  	u8 item;
-..\User\Test\test.c(6779): warning:  #550-D: variable "time"  was set but never used
-  	u16 time;//????????????
-..\User\Test\test.c: 19 warnings, 0 errors
+compiling use_disp.c...
+..\User\UseDisp\use_disp.c(2065): warning:  #167-D: argument of type "const u8 *" is incompatible with parameter of type "const char *restrict"
+  				strcat(DispBuf,Test_IRUINT[test_value.uint]);
+..\User\UseDisp\use_disp.c(2090): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
+  			strcat(DispBuf,Disp_Unit[test_value.uint]);
+..\User\UseDisp\use_disp.c(2543): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
+                  strcat(DispBuf,Disp_Unit[1]);
+..\User\UseDisp\use_disp.c(2750): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+  	WriteString_16(
+IST1+
+ATA_SPACE1+8, 
+IRSTLINE+
+PACE1*2, DispBuf,  0);
+..\User\UseDisp\use_disp.c(2769): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+  	WriteString_16(
+IST1+
+ATA_SPACE1+8, 
+IRSTLINE+
+PACE1*3, DispBuf,  0);
+..\User\UseDisp\use_disp.c(2805): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+  	WriteString_16(
+IST2+
+ATA_SPACE1+10+8, 
+IRSTLINE+
+PACE1*2, DispBuf,  0);
+..\User\UseDisp\use_disp.c(2822): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+  	WriteString_16(
+IST2+
+ATA_SPACE1+8, 
+IRSTLINE+
+PACE1*3, DispBuf,  0);
+..\User\UseDisp\use_disp.c(3122): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *restrict"
+                  strcat(DispBuf,Disp_Unit[1]);
+..\User\UseDisp\use_disp.c(2832): warning:  #177-D: variable "num"  was declared but never referenced
+      u8 num=(MAX_SETP[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter]+1)/2;
+..\User\UseDisp\use_disp.c(3158): warning:  #177-D: variable "Black_Select"  was declared but never referenced
+  	vu32 Black_Select;
+..\User\UseDisp\use_disp.c(3246): warning:  #177-D: variable "i"  was declared but never referenced
+  	vu32 i;
+..\User\UseDisp\use_disp.c(3283): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+  	WriteString_16(
+IST1+160+160, 
+IRSTLINE+
+PACE1*(list+1), DispBuf,  1);
+..\User\UseDisp\use_disp.c(3307): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+          WriteString_16(
+IST1+160, 
+IRSTLINE+
+PACE1*(i+2), DispBuf,  1);
+..\User\UseDisp\use_disp.c(4256): warning:  #167-D: argument of type "const u8 *" is incompatible with parameter of type "const char *"
+  								GUI_DispStringAt(Test_IRUINT[test_value.uint],
+ISP_V_XPOS+50+6*25,
+ISP_V_YPOS+50);
+..\User\UseDisp\use_disp.c(4280): warning:  #167-D: argument of type "const u8 *" is incompatible with parameter of type "const char *"
+  							GUI_DispStringAt(Test_IRUINT[3],
+ISP_V_XPOS+50+6*25,
+ISP_V_YPOS+50);
+..\User\UseDisp\use_disp.c(4308): warning:  #167-D: argument of type "const uint8_t *" is incompatible with parameter of type "const char *"
+              GUI_DispStringAt(Disp_Unit[1],
+ISP_V_XPOS+50+6*25,
+ISP_V_YPOS+50);
+..\User\UseDisp\use_disp.c(4493): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "const uint8_t *"
+  		WriteString_12(
+IST2+140, 58+i*15, DispBuf,  1);//?????????????€?  ??????????????€????????????
+..\User\UseDisp\use_disp.c(4838): warning:  #175-D: subscript out of range
+  								U9001_Setup[i+1].check > Set_IR_Compvalue[9][1])
+..\User\UseDisp\use_disp.c(4841): warning:  #175-D: subscript out of range
+  								U9001_Setup[i+1].check = Set_IR_Compvalue[9][1];
+..\User\UseDisp\use_disp.c(4843): warning:  #175-D: subscript out of range
+  								U9001_Setup[i+1].check < Set_IR_Compvalue[9][0])
+..\User\UseDisp\use_disp.c(4846): warning:  #175-D: subscript out of range
+  								U9001_Setup[i+1].check = Set_IR_Compvalue[9][0];
+..\User\UseDisp\use_disp.c(4968): warning:  #175-D: subscript out of range
+  									U9001_Setup[i+1].check > Set_ACW_Compvalue[9][1])
+..\User\UseDisp\use_disp.c(4971): warning:  #175-D: subscript out of range
+  									U9001_Setup[i+1].check = Set_ACW_Compvalue[9][1];
+..\User\UseDisp\use_disp.c(4973): warning:  #175-D: subscript out of range
+  									U9001_Setup[i+1].check < Set_ACW_Compvalue[9][0])
+..\User\UseDisp\use_disp.c(4976): warning:  #175-D: subscript out of range
+  									U9001_Setup[i+1].check = Set_ACW_Compvalue[9][0];
+..\User\UseDisp\use_disp.c(5093): warning:  #175-D: subscript out of range
+  									U9001_Setup[i+1].check > Set_ACW_Compvalue1[9][1])
+..\User\UseDisp\use_disp.c(5096): warning:  #175-D: subscript out of range
+  									U9001_Setup[i+1].check = Set_ACW_Compvalue1[9][1];
+..\User\UseDisp\use_disp.c(5098): warning:  #175-D: subscript out of range
+  									U9001_Setup[i+1].check < Set_ACW_Compvalue1[9][0])
+..\User\UseDisp\use_disp.c(5101): warning:  #175-D: subscript out of range
+  									U9001_Setup[i+1].check = Set_ACW_Compvalue1[9][0];
+..\User\UseDisp\use_disp.c(5477): warning:  #175-D: subscript out of range
+  									U9001_Setup[i+1].check > Set_OS_Compvalue[9][1])
+..\User\UseDisp\use_disp.c(5480): warning:  #175-D: subscript out of range
+  									U9001_Setup[i+1].check = Set_OS_Compvalue[9][1];
+..\User\UseDisp\use_disp.c(5482): warning:  #175-D: subscript out of range
+  									U9001_Setup[i+1].check < Set_OS_Compvalue[9][0])
+..\User\UseDisp\use_disp.c(5485): warning:  #175-D: subscript out of range
+  									U9001_Setup[i+1].check = Set_OS_Compvalue[9][0];
+..\User\UseDisp\use_disp.c(5629): warning:  #111-D: statement is unreachable
+                  break;
+..\User\UseDisp\use_disp.c(4711): warning:  #177-D: variable "j"  was declared but never referenced
+     u8 i,j;
+..\User\UseDisp\use_disp.c(4712): warning:  #550-D: variable "pt"  was set but never used
+     u32 *pt;
+..\User\UseDisp\use_disp.c(4713): warning:  #177-D: variable "pt1"  was declared but never referenced
+  	 u16 *pt1;
+..\User\UseDisp\use_disp.c(5673): warning:  #177-D: variable "j"  was declared but never referenced
+  	vu16 j,i;
+..\User\UseDisp\use_disp.c(5673): warning:  #177-D: variable "i"  was declared but never referenced
+  	vu16 j,i;
+..\User\UseDisp\use_disp.c(5674): warning:  #177-D: variable "pt"  was declared but never referenced
+  	vu8 *pt;
+..\User\UseDisp\use_disp.c(5675): warning:  #177-D: variable "ppt"  was declared but never referenced
+      uint16_t *ppt;
+..\User\UseDisp\use_disp.c(5915): warning:  #550-D: variable "addr"  was set but never used
+  	LcdAddr_TypeDef addr;//???????????€??????
+..\User\UseDisp\use_disp.c(6556): warning:  #69-D: integer conversion resulted in truncation
+  	lcd_Clear(
+CD_COLOR_TEST_BACK);
+..\User\UseDisp\use_disp.c(7289): warning:  #111-D: statement is unreachable
+  			break;
+..\User\UseDisp\use_disp.c(7296): warning:  #223-D: function "Uart0_Send" declared implicitly
+  	Uart0_Send(0x02);//??????
+..\User\UseDisp\use_disp.c(7090): warning:  #550-D: variable "set_arc"  was set but never used
+  	vu8 set_arc;//?????????????????????
+..\User\UseDisp\use_disp.c(7463): warning:  #177-D: variable "keynum"  was declared but never referenced
+  	vu32 keynum=0;
+..\User\UseDisp\use_disp.c: 47 warnings, 0 errors
 linking...
-Program Size: Code=166650 RO-data=127978 RW-data=816 ZI-data=9504  
+Program Size: Code=208290 RO-data=128114 RW-data=816 ZI-data=12472  
 FromELF: creating hex file...
 After Build - User command #1: C:\Keil_v5\ARM\ARMCC\bin\fromelf.exe --bin  -o ..\update\update.bin Output\project.axf
-".\Output\project.axf" - 0 Error(s), 19 Warning(s).
+".\Output\project.axf" - 0 Error(s), 47 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -94,7 +180,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.6.0
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>
