@@ -132,7 +132,7 @@ const char VERSION_Tab1[][2][32]=
 const char SYS_NAME_Tab[][2][32]=
 {
 //    {"耐压测试仪","HIPOT TESTER"},
-    {"Ver.1.025","Ver.1.025"},
+    {"Ver.1.026","Ver.1.026"},
     {"www.JK17.com","www.JK17.com"},
     {"0519-85563477","0519-85563477"},
 
@@ -157,6 +157,7 @@ const char SYS_NAME_Tab[][2][32]=
 //1.023关闭GIF失败
 //1.024修正设置下降时间后上位机数据和下位机不一致问题
 //1.025增加组别选择保存，上限10组
+//1.026绝缘电压上限改成2KV
 const char SYS_SetTime_Tab[][2][15]=
 {
 	{"日期：","OFF"},
@@ -4666,7 +4667,7 @@ const u32 Set_DCW_Compvalue1[][2]=
 const u32 Set_IR_Compvalue[][2]=
 {
     {0,4},
-    {50,1000},
+    {50,2000},
     {0,500000},
     {3,9999},
     {1,500000},
