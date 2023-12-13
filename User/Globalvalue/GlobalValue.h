@@ -753,22 +753,22 @@ typedef struct
 extern U9001_Calibrate_TypeDef U9001_Calibrate;
 typedef struct
 {
-    u16 pass_time;
-    u16 step_time;
-    u16 delay_time;
-    u16 breakover;
-    u16 hz;
-    u16 ARC_mode;
-    u16 comp_setp;
-    u16 start_setp;
-    u16 Autorange;
-    u16 shock;
-    u16 fail_mode;
-    u16 rise_comp;
-    u16 DC50;
-    u16 clear;
-    u16 dis_time;
-    
+	u16 pass_time;
+	u16 step_time;
+	u16 delay_time;
+	u16 breakover;
+	u16 hz;
+	u16 ARC_mode;
+	u16 comp_setp;
+	u16 start_setp;
+	u16 Autorange;
+	u16 shock;
+	u16 fail_mode;
+	u16 rise_comp;
+	u16 DC50;
+	u16 clear;
+	u16 dis_time;
+  u16 step_mode;  
 }U9001_Testconfg_Typedef;
 typedef struct 
 {
@@ -778,6 +778,7 @@ typedef struct
 	U9001_save_Typedef U9001_save[10];
 	u8 jkflag;
 	u8 version;
+	
 	u16 currentgroup;//当前组别
 //    U9001_Calibrate_TypeDef U9001_Calibrate;
 }U9001_Save_sysTypedef;

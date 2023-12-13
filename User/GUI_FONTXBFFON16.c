@@ -12427,7 +12427,30 @@ GUI_CONST_STORAGE unsigned char acGUI_FontGUI_FONTXBFFON16_7EC4[ 42] = { /* code
   ________,________,
   ________,________};
 
-GUI_CONST_STORAGE GUI_CHARINFO GUI_FontGUI_FONTXBFFON16_CharInfo[246] = {
+	GUI_CONST_STORAGE unsigned char acGUI_FontGUI_FONTXBFFON16_624B[ 42] = { /* code 624B */
+  ________,________,
+  ________,________,
+  ________,________,
+  ________,________,
+  ________,__XXXX__,
+  _XXXXXXX,XX______,
+  _______X,________,
+  _______X,________,
+  _______X,________,
+  _XXXXXXX,XXXXXXX_,
+  _______X,________,
+  _______X,________,
+  _______X,________,
+  XXXXXXXX,XXXXXXXX,
+  _______X,________,
+  _______X,________,
+  _______X,________,
+  ___XXXXX,________,
+  ________,________,
+  ________,________,
+  ________,________};
+	
+GUI_CONST_STORAGE GUI_CHARINFO GUI_FontGUI_FONTXBFFON16_CharInfo[247] = {
    {   5,   5,  1, acGUI_FontGUI_FONTXBFFON16_0020 } /* code 0020 */
   ,{   5,   5,  1, acGUI_FontGUI_FONTXBFFON16_0021 } /* code 0021 */
   ,{   7,   7,  1, acGUI_FontGUI_FONTXBFFON16_0022 } /* code 0022 */
@@ -12674,13 +12697,21 @@ GUI_CONST_STORAGE GUI_CHARINFO GUI_FontGUI_FONTXBFFON16_CharInfo[246] = {
   ,{  16,  16,  2, acGUI_FontGUI_FONTXBFFON16_FF1A } /* code FF1A */
 	,{  16,  16,  2, acGUI_FontGUI_FONTXBFFON16_522B } /* code 522B */
   ,{  16,  16,  2, acGUI_FontGUI_FONTXBFFON16_7EC4 } /* code 7EC4 */
+	,{  16,  16,  2, acGUI_FontGUI_FONTXBFFON16_624B } /* code 624B */
+};
+
+GUI_CONST_STORAGE GUI_FONT_PROP GUI_FontGUI_FONTXBFFON16_Prop150 = {
+   0x624B /* first character */
+  ,0x624B /* last character  */
+  ,&GUI_FontGUI_FONTXBFFON16_CharInfo[  246] /* address of first character */
+  ,(GUI_CONST_STORAGE GUI_FONT_PROP *)0 /* pointer to next GUI_FONT_PROP */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP GUI_FontGUI_FONTXBFFON16_Prop149 = {
    0x7EC4 /* first character */
   ,0x7EC4 /* last character  */
   ,&GUI_FontGUI_FONTXBFFON16_CharInfo[245] /* address of first character */
-  ,(GUI_CONST_STORAGE GUI_FONT_PROP *)0 /* pointer to next GUI_FONT_PROP */
+  ,&GUI_FontGUI_FONTXBFFON16_Prop150 /* pointer to next GUI_FONT_PROP */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP GUI_FontGUI_FONTXBFFON16_Prop148 = {

@@ -424,6 +424,7 @@ u16 ParameterLimit[][2]=
     {0,1},
     {0,2},
     {0,10},
+		{0,1},
 };
 //待测界面
 void Idem_Process(void)
@@ -4579,16 +4580,17 @@ void Setup_config_Process(void)
                         case 12:
                         case 13:
                         case 14:
-							DISP_FLAG=TRUE;
-							Key_Beep();
-                            *(pt+(item-1))=0;
-                            break;
+												case 16:
+													DISP_FLAG=TRUE;
+													Key_Beep();
+													*(pt+(item-1))=0;
+												break;
                         case 15:
-							DISP_FLAG=TRUE;
-							Key_Beep();
-                            if(*(pt+(item-1))<ParameterLimit[item-1][1])
-                                *(pt+(item-1))+=1;
-                            break;
+													DISP_FLAG=TRUE;
+													Key_Beep();
+													if(*(pt+(item-1))<ParameterLimit[item-1][1])
+															*(pt+(item-1))+=1;
+												break;
                         
                     }
                     break;
@@ -4624,6 +4626,7 @@ void Setup_config_Process(void)
                         case 12:
                         case 13:
                         case 14:
+												case 16:
 							DISP_FLAG=TRUE;
 							Key_Beep();
                             *(pt+(item-1))=1;
@@ -4895,6 +4898,7 @@ void Setup_config_Process(void)
 							setvalue*=10;
 						}else{
 							input_flag=0;
+							
 							key_count = 0;
 							setvalue =atof((char*)Disp_buff);
 							setvalue+=0.000001f;
@@ -6871,6 +6875,7 @@ void TestPause_Process(void)
 							return;
 						}else{
 							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step++;
+							BeepGap();
 							SetSystemMessage(MSG_WAIT);
 						}
 						break;
@@ -6970,6 +6975,7 @@ void TestPause_Process(void)
 							return;
 						}else{
 							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step++;
+							BeepGap();
 							SetSystemMessage(MSG_WAIT);
 						}
 						break;
@@ -7090,27 +7096,43 @@ void TestPause_Process(void)
 
 		if(GetSoftTimerOut(DELAY_SOFTTIMER)&&(pass_flag==1))
 		{
-			SetSystemStatus(SYS_STATUS_TEST);//系统状态-测试开始，连接下一个步骤
-            if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].disp==0)
-            {
-                GUI_Clear();
-                Disp_IdelButton();
-                Disp_Idel_Item();
-            }
-            Uart0_Send(0xa1);
-						PLC_OutProg();//开PLC启动
+			if(U9001_Save_sys.U9001_Testconfg.step_mode == 0)//自动
+			{
+				SetSystemStatus(SYS_STATUS_TEST);//系统状态-测试开始，连接下一个步骤
+				if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].disp==0)
+				{
+						GUI_Clear();
+						Disp_IdelButton();
+						Disp_Idel_Item();
+				}
+				Uart0_Send(0xa1);
+				PLC_OutProg();//开PLC启动
+			}else if(U9001_Save_sys.U9001_Testconfg.step_mode == 1){//手动
+				if(READ_START() == 0)
+				{
+					SetSystemStatus(SYS_STATUS_TEST);//系统状态-测试开始，连接下一个步骤
+					if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].disp==0)
+					{
+							GUI_Clear();
+							Disp_IdelButton();
+							Disp_Idel_Item();
+					}
+					Uart0_Send(0xa1);
+					PLC_OutProg();//开PLC启动
+				}
+			}
 		}
-        if(READ_STOP()==0)
-        {
+		if(READ_STOP()==0)
+		{
 			Beep_Off();
-            V_DA_out(0);
-            Sing_out_C(0);
-            Short_out(0);
-            FRB_out(0);
-            SetSystemMessage(MSG_PAUSE);//系统信息-暂停测试
-            SetSystemStatus(SYS_STATUS_ABORT);//系统状态-暂停测试
-            Uart0_Send(0xa0);
-        }
+			V_DA_out(0);
+			Sing_out_C(0);
+			Short_out(0);
+			FRB_out(0);
+			SetSystemMessage(MSG_PAUSE);//系统信息-暂停测试
+			SetSystemStatus(SYS_STATUS_ABORT);//系统状态-暂停测试
+			Uart0_Send(0xa0);
+		}
 
 //		Uart_Process();//串口处理
 

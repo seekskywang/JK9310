@@ -132,7 +132,7 @@ const char VERSION_Tab1[][2][32]=
 const char SYS_NAME_Tab[][2][32]=
 {
 //    {"耐压测试仪","HIPOT TESTER"},
-    {"Ver.1.026","Ver.1.026"},
+    {"Ver.1.027","Ver.1.027"},
     {"www.JK17.com","www.JK17.com"},
     {"0519-85563477","0519-85563477"},
 
@@ -158,6 +158,7 @@ const char SYS_NAME_Tab[][2][32]=
 //1.024修正设置下降时间后上位机数据和下位机不一致问题
 //1.025增加组别选择保存，上限10组
 //1.026绝缘电压上限改成2KV
+//1.027增加步骤模式自动手动选项
 const char SYS_SetTime_Tab[][2][15]=
 {
 	{"日期：","OFF"},
@@ -345,6 +346,7 @@ const char SetupConfig_Button_Tab[][2][5][14]=
     {{"  关闭  ","  打开  "," 清零  ","          ","        "},{"   OFF   "," ON ","    ","    ","        "}},
     
     {{"   ↑+ ","   ↓ - ","    ","          ","        "},{"   ↑+ ","   ↓ - ","       ","          ","     "}},
+		{{"  自动  ","  手动  ","    ","          ","        "},{"  AUTO "," MANUAL ","       ","          ","     "}},
  
 };
 
@@ -370,6 +372,13 @@ const char Switch_Tab[][2][8]=
     {"关闭","OFF"},
     {"打开","ON "}
 };
+
+const char StepMode_Tab[][2][8]=
+{
+    {"自动","AUTO"},
+    {"手动","MANUAL"}
+};
+
 const char FailMode_Tab[][2][8]=
 {
     {"停止","OFF"},
@@ -476,7 +485,7 @@ const char SetupConfig_Tab[][2][15]=
     {"判断步骤","STEPJUDGE"},   
     {"放电时间","DISTIME"},
     {"开始步骤","STARTSTEP"},
-   
+    {"步骤模式","STEPMODE"},
 
 };
 
@@ -3235,7 +3244,7 @@ void DispSetConfig_value(uint8_t list)
     {
         GUI_DispStringAt(Switch_Tab[0][U9001_Save_sys.U9001_SYS.language],LISTVALUE2,FIRSTLINE+6*SPACE1);
     }
-    
+     GUI_DispStringAt(StepMode_Tab[*(pt+15)][U9001_Save_sys.U9001_SYS.language],LISTVALUE2,FIRSTLINE+7*SPACE1);
   
     
     DispSetup_ConfigButtonvalue(list);

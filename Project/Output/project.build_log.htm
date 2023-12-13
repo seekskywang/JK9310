@@ -27,8 +27,51 @@ Project File Date:  07/07/2023
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Open1788'
+compiling test.c...
+..\Libraries\Drivers\include\debug_frmwrk.h(92): warning:  #47-D: incompatible redefinition of macro "TICKS_PER_SEC"  (declared at line 13 of "..\User\key/key.h")
+  #define TICKS_PER_SEC 1000	//????????????????????100x10mS(T0)=1S
+..\User\Test\test.c(202): warning:  #177-D: variable "temp"  was declared but never referenced
+  	u8 temp[4];
+..\User\Test\test.c(203): warning:  #177-D: variable "FlashID"  was declared but never referenced
+  		u32 FlashID;
+..\User\Test\test.c(781): warning:  #177-D: variable "key"  was declared but never referenced
+  	vu8 key;
+..\User\Test\test.c(877): warning:  #550-D: variable "Range_IR"  was set but never used
+      u8 Range_IR=0;
+..\User\Test\test.c(885): warning:  #550-D: variable "temp"  was set but never used
+  	vu32 temp;
+..\User\Test\test.c(886): warning:  #177-D: variable "value"  was declared but never referenced
+    float value;
+..\User\Test\test.c(887): warning:  #177-D: variable "F_x"  was declared but never referenced
+    float F_x;
+..\User\Test\test.c(1790): warning:  #177-D: variable "pt"  was declared but never referenced
+      vu16 *pt;
+..\User\Test\test.c(1791): warning:  #177-D: variable "list"  was declared but never referenced
+  	u8 list=1;//????????0  ??????1??
+..\User\Test\test.c(1792): warning:  #177-D: variable "line"  was declared but never referenced
+      u8 line=0;//??
+..\User\Test\test.c(1799): warning:  #177-D: variable "select_num"  was declared but never referenced
+      u8 select_num=0;
+..\User\Test\test.c(4452): warning:  #177-D: variable "select_num"  was declared but never referenced
+      u8 select_num=0;
+..\User\Test\test.c(5137): warning:  #177-D: variable "list"  was declared but never referenced
+  	u8 list=0;//??
+..\User\Test\test.c(5139): warning:  #177-D: variable "item"  was declared but never referenced
+      u8 item=0;
+..\User\Test\test.c(6830): warning:  #177-D: variable "i"  was declared but never referenced
+  	u8 i;
+..\User\Test\test.c(6831): warning:  #177-D: variable "key"  was declared but never referenced
+  	u8 key;
+..\User\Test\test.c(6833): warning:  #177-D: variable "item"  was declared but never referenced
+  	u8 item;
+..\User\Test\test.c(6834): warning:  #550-D: variable "time"  was set but never used
+  	u16 time;//????????????
+..\User\Test\test.c: 19 warnings, 0 errors
+linking...
+Program Size: Code=208418 RO-data=128378 RW-data=820 ZI-data=12468  
+FromELF: creating hex file...
 After Build - User command #1: C:\Keil_v5\ARM\ARMCC\bin\fromelf.exe --bin  -o ..\update\update.bin Output\project.axf
-".\Output\project.axf" - 0 Error(s), 0 Warning(s).
+".\Output\project.axf" - 0 Error(s), 19 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -51,7 +94,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.6.0
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>
