@@ -907,6 +907,7 @@ extern float receive;
 extern uint8_t  F_100ms;//100ms定时标志
 extern uint8_t pageflag;
 extern UnitNum_typedef test_value;
+extern double vdiff;
 //extern  vu16 Voltage;//测试电压
 //extern  vu16 Current;//测试电流
 //extern  vu16 Resistance,xxxx;//测试电阻

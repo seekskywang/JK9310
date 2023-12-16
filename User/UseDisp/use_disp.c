@@ -28,6 +28,7 @@ const u8 MAX_SETP[5]={9,11,10,5,5};
 u32 savesize;
 float RZ;
 float Cvalue;
+double vdiff;
 //=======================================================================
 //项目
 const u8 ItemTab[][15]=
@@ -132,7 +133,7 @@ const char VERSION_Tab1[][2][32]=
 const char SYS_NAME_Tab[][2][32]=
 {
 //    {"耐压测试仪","HIPOT TESTER"},
-    {"Ver.1.027","Ver.1.027"},
+    {"Ver.1.028","Ver.1.028"},
     {"www.JK17.com","www.JK17.com"},
     {"0519-85563477","0519-85563477"},
 
@@ -159,6 +160,7 @@ const char SYS_NAME_Tab[][2][32]=
 //1.025增加组别选择保存，上限10组
 //1.026绝缘电压上限改成2KV
 //1.027增加步骤模式自动手动选项
+//1.028电压误差小于1%显示设置值
 const char SYS_SetTime_Tab[][2][15]=
 {
 	{"日期：","OFF"},
@@ -1963,7 +1965,26 @@ void Disp_Test_List(u8 i)
     GUI_SetBkColor(LCD_COLOR_TEST_BACK);
     GUI_SetFont(&GUI_FontGUI_FONTXBFFON16);
     GUI_SetTextMode(GUI_TEXTMODE_NORMAL);
-    Hex_Format(Test_Value.Vol,3,4,0);
+		if(Test_Value.Vol >= U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+			U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out)
+		{
+			vdiff = ((double)Test_Value.Vol - (double)U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+			U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out)/
+			U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+			U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out;
+		}else if(Test_Value.Vol < U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+			U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out){
+			vdiff = ((double)U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+			U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out - 
+			(double)Test_Value.Vol)/
+			U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+			U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out;
+		}
+    if(vdiff <= 0.01)
+			Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+			U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out,3,4,0);
+		else
+			Hex_Format(Test_Value.Vol,3,4,0);
     strcat(DispBuf,"kV");
     
     GUI_DispStringAt(DispBuf,80,40+20*(i));//TEST_UNIT
@@ -4146,9 +4167,28 @@ void Disp_Testvalue(u8 test)
     GUI_SetFont(&GUI_FontGUI_FONTXBFFON50);
     if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].parameter!=PA)
     {
-         if(test==1)
+        if(test==1)
         {
+					if(Test_Value.Vol >= U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+						U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out)
+					{
+						vdiff = ((double)Test_Value.Vol - (double)U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+						U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out)/
+						U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+						U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out;
+					}else if(Test_Value.Vol < U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+						U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out){
+						vdiff = ((double)U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+						U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out - 
+						(double)Test_Value.Vol)/
+						U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+						U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out;
+					}
     //                Test_Value.Vol=1000;
+					if(vdiff <= 0.01)
+						Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+						U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out,3,4,0);
+					else
             Hex_Format(Test_Value.Vol,3,4,0);
         }else
         {

@@ -1165,7 +1165,13 @@ void Test_Process(void)
 						Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_value=Current*100;
 					}
 				}
-					Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_vot=Test_Value.Vol;
+					if(vdiff < 0.01)
+						Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+						current_step-1].Text_vot = 
+						U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+						U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out;
+					else
+						Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_vot=Test_Value.Vol;
 					Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_time=Test_Value.Time;
 				if(Test_mid.set_time>0)//测试时间为0，连续测试
 				{
@@ -1234,6 +1240,12 @@ void Test_Process(void)
 								Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_value=Current*100;
 							}
 						}
+						if(vdiff < 0.01)
+							Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+							current_step-1].Text_vot = 
+							U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+							U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out;
+						else
               Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_vot=Test_Value.Vol;
 							Save_TestValue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1].Text_time=Test_Value.Time;
                         Test_Value.Time=0;
