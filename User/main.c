@@ -222,9 +222,15 @@ void  GPIO_IRQHandler(void)
        
       }
 	  
+		
     if(GPIO_GetIntStatus(0, 5, 0))//ARCÖÐ¶Ï
       {
-		  SetSystemMessage(MSG_ARC);
+				if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+					U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+				current_step].range_arc != 0)
+			{
+				SetSystemMessage(MSG_ARC);
+			}
 		  GPIO_ClearInt(0, 1<<5);
        
        

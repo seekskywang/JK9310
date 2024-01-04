@@ -133,7 +133,7 @@ const char VERSION_Tab1[][2][32]=
 const char SYS_NAME_Tab[][2][32]=
 {
 //    {"耐压测试仪","HIPOT TESTER"},
-    {"Ver.1.028","Ver.1.028"},
+    {"Ver.1.029","Ver.1.029"},
     {"www.JK17.com","www.JK17.com"},
     {"0519-85563477","0519-85563477"},
 
@@ -161,6 +161,7 @@ const char SYS_NAME_Tab[][2][32]=
 //1.026绝缘电压上限改成2KV
 //1.027增加步骤模式自动手动选项
 //1.028电压误差小于1%显示设置值
+//1.029修正电弧关闭后还报警的bug
 const char SYS_SetTime_Tab[][2][15]=
 {
 	{"日期：","OFF"},
