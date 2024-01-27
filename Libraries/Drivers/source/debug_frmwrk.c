@@ -1413,7 +1413,7 @@ void UART3_IRQHandler(void)//UART3_IRQn
 		}
 		if(g_tModS.RxCount > 7 && g_tModS.RxBuf[1] == 6)
 		{
-			MODS_SendAckOk();
+//			MODS_SendAckOk();
 		}
 	}else if(U9001_Save_sys.U9001_SYS.bussmode == 1){
 		Res=UART_ReceiveByte(LPC_UART3);
@@ -1957,7 +1957,7 @@ static void MODS_06H(void)
 err_ret:
 	if (g_tModS.RspCode == RSP_OK)				/* ÕýÈ·Ó¦´ð */
 	{
-		
+		MODS_SendAckOk();
 	}
 	else
 	{
