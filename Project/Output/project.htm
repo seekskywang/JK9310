@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Output\project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Output\project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Sat Jan 27 08:03:33 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Sat Jan 27 16:31:06 2024
 <BR><P>
 <H3>Maximum Stack Usage =        632 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -486,7 +486,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_lpc177x_8x.o(RESET)
 </UL>
-<P><STRONG><a name="[105]"></a>MODS_Poll</STRONG> (Thumb, 186 bytes, Stack size 8 bytes, timer.o(.text))
+<P><STRONG><a name="[105]"></a>MODS_Poll</STRONG> (Thumb, 188 bytes, Stack size 8 bytes, timer.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 300<LI>Call Chain = MODS_Poll &rArr; RecHandle &rArr; MODS_03H &rArr; MODS_SendWithCRC &rArr; UARTPutChar &rArr; UART_Send
 </UL>
 <BR>[Calls]<UL><LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RecHandle
@@ -531,7 +531,7 @@ Global Symbols
 
 <P><STRONG><a name="[521]"></a>reset_timer</STRONG> (Thumb, 66 bytes, Stack size 0 bytes, timer.o(.text), UNUSED)
 
-<P><STRONG><a name="[109]"></a>init_timer</STRONG> (Thumb, 314 bytes, Stack size 16 bytes, timer.o(.text))
+<P><STRONG><a name="[109]"></a>init_timer</STRONG> (Thumb, 316 bytes, Stack size 16 bytes, timer.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = init_timer
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_EnableIRQ
@@ -9887,7 +9887,7 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[2b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MODS_06H
 </UL>
 
-<P><STRONG><a name="[2b1]"></a>MODS_06H</STRONG> (Thumb, 96 bytes, Stack size 16 bytes, debug_frmwrk.o(.text))
+<P><STRONG><a name="[2b1]"></a>MODS_06H</STRONG> (Thumb, 102 bytes, Stack size 16 bytes, debug_frmwrk.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 236<LI>Call Chain = MODS_06H &rArr; MODS_SendAckOk &rArr; MODS_SendWithCRC &rArr; UARTPutChar &rArr; UART_Send
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BEBufToUint16
@@ -9898,13 +9898,13 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RecHandle
 </UL>
 
-<P><STRONG><a name="[2b4]"></a>MODS_ReadRegValue</STRONG> (Thumb, 784 bytes, Stack size 8 bytes, debug_frmwrk.o(.text))
+<P><STRONG><a name="[2b4]"></a>MODS_ReadRegValue</STRONG> (Thumb, 786 bytes, Stack size 8 bytes, debug_frmwrk.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = MODS_ReadRegValue
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MODS_03H
 </UL>
 
-<P><STRONG><a name="[2b3]"></a>MODS_03H</STRONG> (Thumb, 288 bytes, Stack size 80 bytes, debug_frmwrk.o(.text))
+<P><STRONG><a name="[2b3]"></a>MODS_03H</STRONG> (Thumb, 294 bytes, Stack size 80 bytes, debug_frmwrk.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 284<LI>Call Chain = MODS_03H &rArr; MODS_SendWithCRC &rArr; UARTPutChar &rArr; UART_Send
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BEBufToUint16

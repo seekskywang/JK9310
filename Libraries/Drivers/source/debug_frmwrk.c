@@ -1908,7 +1908,8 @@ err_ret:
 		}
 //         if(usartocflag == 0)
 //         {
-             MODS_SendWithCRC(g_tModS.TxBuf, g_tModS.TxCount);	/* 发送正确应答 */
+		if(g_tModS.RxBuf[0] != 0)
+			 MODS_SendWithCRC(g_tModS.TxBuf, g_tModS.TxCount);	/* 发送正确应答 */
 //         }
 	}
 	else
@@ -1957,7 +1958,8 @@ static void MODS_06H(void)
 err_ret:
 	if (g_tModS.RspCode == RSP_OK)				/* 正确应答 */
 	{
-		MODS_SendAckOk();
+		if(g_tModS.RxBuf[0] != 0)
+			MODS_SendAckOk();
 	}
 	else
 	{

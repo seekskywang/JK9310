@@ -133,7 +133,7 @@ const char VERSION_Tab1[][2][32]=
 const char SYS_NAME_Tab[][2][32]=
 {
 //    {"耐压测试仪","HIPOT TESTER"},
-    {"Ver.1.030","Ver.1.030"},
+    {"Ver.1.032","Ver.1.032"},
     {"www.JK17.com","www.JK17.com"},
     {"0519-85563477","0519-85563477"},
 
@@ -163,6 +163,8 @@ const char SYS_NAME_Tab[][2][32]=
 //1.028电压误差小于1%显示设置值
 //1.029修正电弧关闭后还报警的bug
 //1.030修正485通讯bug
+//1.031增加广播地址启动和停止
+//1.032缩短MODBUS协议报文返回时间
 const char SYS_SetTime_Tab[][2][15]=
 {
 	{"日期：","OFF"},

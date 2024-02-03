@@ -94,7 +94,8 @@ void MODS_Poll(void)
 
 // 	/* ??? (1??¨¦ */
  	addr = g_tModS.RxBuf[0];				/* ?1?? ?? */
- 	if (addr != U9001_Save_sys.U9001_SYS.buss_addr)		 			/* ???????????¡¦??? */
+ 	if (addr != U9001_Save_sys.U9001_SYS.buss_addr
+	&& addr != 0)		 			/* ???????????¡¦??? */
  	{
  		goto err_ret;
  	}
@@ -222,7 +223,7 @@ void TIMER0_IRQHandler (void)
 	if(U9001_Save_sys.U9001_SYS.bussmode == 0)
 	{
 		modscount++;
-		if(modscount > 9)
+		if(modscount > 0)
 		{
 			modscount=0;
 			Tick_10ms ++;
