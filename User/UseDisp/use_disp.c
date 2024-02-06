@@ -118,14 +118,14 @@ const char DELAY_TIMEDISP[][2][16]=
 };
 const char VERSION_Tab[][2][32]=
 {
-    {"JK9310","JK9310"},
+    {"JK9310D","JK9310D"},
     {"JK9320","JK9320"},
 		{"JK9320A","JK9320A"},
 };
 
 const char VERSION_Tab1[][2][32]=
 {
-    {"9310","9310"},
+    {"9310D","9310D"},
     {"9320","9320"},
 		{"9320A","9320A"},
 };
@@ -197,7 +197,7 @@ const char SetupACButton_Tab[][2][5][14]=
 {
     {{"测量设置","测量配置","系统设置","组别+  ","组别-  ",},{"DISP","CONFIG","SYSSET","     ","   "}},
     {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ADD  ","  DEL  ","  COPY  ","  PREV  ","  NEXT  "}},
-    {{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "},{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "}},
+    {{"        ","   DC   ","   IR   ","   OS   ","   PA   "},{"        ","   DC   ","   IR   ","   OS   ","   PA   "}},
     {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","      "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
     {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","      "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
     
@@ -217,7 +217,7 @@ const char SetupOSButton_Tab[][2][5][14]=
 {
     {{"测量设置","测量配置","系统设置","组别+  ","组别-  ",},{"DISP","CONFIG","SYSSET","     ","   "}},
     {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ADD  ","  DEL  ","  COPY  ","  PREV  ","  NEXT  "}},
-    {{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "},{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "}},
+    {{"        ","   DC   ","   IR   ","   OS   ","   PA   "},{"        ","   DC   ","   IR   ","   OS   ","   PA   "}},
     {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
     {{"  清除  ","  获取  ","       ","          ","        "},{"   CLEAR   "," GET ","    ","    ","        "}},
     {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
@@ -228,7 +228,7 @@ const char SetupPAButton_Tab[][2][5][14]=
 {
 	{{"测量设置","测量配置","系统设置","组别+  ","组别-  ",},{"DISP","CONFIG","SYSSET","     ","   "}},
     {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ADD  ","  DEL  ","  COPY  ","  PREV  ","  NEXT  "}},
-    {{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "},{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "}},
+    {{"        ","   DC   ","   IR   ","   OS   ","   PA   "},{"        ","   DC   ","   IR   ","   OS   ","   PA   "}},
     {{"      ","      ","       ","        ","        "},{"    ","     ","      ","      ","        "}},
     {{"  关闭  ","  打开  ","       ","          ","        "},{"   OFF   "," ON ","    ","    ","        "}},
     {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","  连续  "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","CONST"}},
@@ -240,7 +240,7 @@ const char SetupACButton_Tab1[][2][5][14]=
 {
     {{"测量设置","测量配置","系统设置","组别+  ","组别-  ",},{"DISP","CONFIG","SYSSET","     ","   "}},
     {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ADD  ","  DEL  ","  COPY  ","  PREV  ","  NEXT  "}},
-    {{"   AC   ","        ","        ","   OS   ","   PA   "},{"   AC   ","        ","        ","   OS   ","   PA   "}},
+    {{"        ","        ","        ","   OS   ","   PA   "},{"        ","        ","        ","   OS   ","   PA   "}},
     {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","      "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
     {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","      "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
     
@@ -260,7 +260,7 @@ const char SetupOSButton_Tab1[][2][5][14]=
 {
     {{"测量设置","测量配置","系统设置","组别+  ","组别-  ",},{"DISP","CONFIG","SYSSET","     ","   "}},
     {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ADD  ","  DEL  ","  COPY  ","  PREV  ","  NEXT  "}},
-    {{"   AC   ","        ","        ","   OS   ","   PA   "},{"   AC   ","        ","        ","   OS   ","   PA   "}},
+    {{"        ","        ","        ","   OS   ","   PA   "},{"        ","        ","        ","   OS   ","   PA   "}},
     {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
     {{"  清除  ","  获取  ","       ","          ","        "},{"   CLEAR   "," GET ","    ","    ","        "}},
     {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
@@ -271,7 +271,7 @@ const char SetupPAButton_Tab1[][2][5][14]=
 {
 	{{"测量设置","测量配置","系统设置","组别+  ","组别-  ",},{"DISP","CONFIG","SYSSET","     ","   "}},
     {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ADD  ","  DEL  ","  COPY  ","  PREV  ","  NEXT  "}},
-    {{"   AC   ","        ","        ","   OS   ","   PA   "},{"   AC   ","        ","        ","   OS   ","   PA   "}},
+    {{"        ","        ","        ","   OS   ","   PA   "},{"        ","        ","        ","   OS   ","   PA   "}},
     {{"      ","      ","       ","        ","        "},{"    ","     ","      ","      ","        "}},
     {{"  关闭  ","  打开  ","       ","          ","        "},{"   OFF   "," ON ","    ","    ","        "}},
     {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","  连续  "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","CONST"}},
@@ -302,7 +302,7 @@ const char SetupDCButton_Tab[][2][5][14]=
 {
     {{"测量设置","测量配置","系统设置","组别+  ","组别-  ",},{"DISP","CONFIG","SYSSET","     ","   "}},
     {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ADD  ","  DEL  ","  COPY  ","  PREV  ","  NEXT  "}},
-    {{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "},{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "}},
+    {{"        ","   DC   ","   IR   ","   OS   ","   PA   "},{"        ","   DC   ","   IR   ","   OS   ","   PA   "}},
     {{"  ↑↑++  ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
     {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
     {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","  连续  "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","CONST"}},
@@ -319,7 +319,7 @@ const char SetupIRButton_Tab[][2][5][14]=
 {
     {{"测量设置","测量配置","系统设置","组别+  ","组别-  ",},{"DISP","CONFIG","SYSSET","     ","   "}},
     {{"  插入  ","  删除  ","  复制  ","  上步  ","  下步  "},{"  ADD  ","  DEL  ","  COPY  ","  PREV  ","  NEXT  "}},
-    {{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "},{"   AC   ","   DC   ","   IR   ","   OS   ","   PA   "}},
+    {{"        ","   DC   ","   IR   ","   OS   ","   PA   "},{"        ","   DC   ","   IR   ","   OS   ","   PA   "}},
     {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","        "}},
     {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","  关闭  "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","OFF"}},
     {{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","  连续  "},{" ↑↑++ ","  ↑+  ","  ↓ -  ","  ↓↓--  ","CONST"}},
@@ -1986,9 +1986,9 @@ void Disp_Test_List(u8 i)
 		}
     if(vdiff <= 0.01)
 			Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
-			U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out,3,4,0);
+			U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out,3,5,0);
 		else
-			Hex_Format(Test_Value.Vol,3,4,0);
+			Hex_Format(Test_Value.Vol,3,5,0);
     strcat(DispBuf,"kV");
     
     GUI_DispStringAt(DispBuf,80,40+20*(i));//TEST_UNIT
@@ -2015,11 +2015,11 @@ void Disp_Test_List(u8 i)
 //			}
 		}else{
 			memset(sendbuff,0,20);
-			memcpy(sendbuff,DispBuf,4);
+			memcpy(sendbuff,DispBuf,5);
 			strcat(sendbuff,"kV;");
 			
 			memset(sendbuff1,0,20);
-			memcpy(sendbuff1,DispBuf,4);
+			memcpy(sendbuff1,DispBuf,5);
 			strcat(sendbuff1,"kV;");
 		}
 //    if(Resistance==0xffff)
@@ -2346,9 +2346,9 @@ void Disp_Idel_Item(void)
     
             Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
 						U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
-						current_step].V_out,3,4,FALSE);
+						current_step].V_out,3,5,FALSE);
             strcat(DispBuf,"kV");
-            GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+SPACE1);//电压
+            GUI_DispStringAt(DispBuf,LISTVALUE1-16,FIRSTLINE+SPACE1);//电压
             if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
 							U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
 							current_step].time)
@@ -2981,9 +2981,9 @@ void DispSet_value(uint8_t list)
         case DC:
             
     
-            Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out,3,4,FALSE);
+            Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out,3,5,FALSE);
             strcat(DispBuf,"kV");
-            GUI_DispStringAt(DispBuf,LISTVALUE1,FIRSTLINE+SPACE1);//电压
+            GUI_DispStringAt(DispBuf,LISTVALUE1-16,FIRSTLINE+SPACE1);//电压
             if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time)
             {
                 Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].time,1,4,FALSE);
@@ -4191,12 +4191,12 @@ void Disp_Testvalue(u8 test)
     //                Test_Value.Vol=1000;
 					if(vdiff <= 0.01)
 						Hex_Format(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
-						U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out,3,4,0);
+						U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step].V_out,3,5,0);
 					else
-            Hex_Format(Test_Value.Vol,3,4,0);
+            Hex_Format(Test_Value.Vol,3,5,0);
         }else
         {
-            Hex_Format(0,3,4,0);
+            Hex_Format(0,3,5,0);
         }
     }
     
@@ -4220,11 +4220,11 @@ void Disp_Testvalue(u8 test)
 //			}
 		}else{
 			memset(sendbuff,0,20);
-			memcpy(sendbuff,DispBuf,4);
+			memcpy(sendbuff,DispBuf,5);
 			strcat(sendbuff,"kV;");
 			
 			memset(sendbuff1,0,20);
-			memcpy(sendbuff1,DispBuf,4);
+			memcpy(sendbuff1,DispBuf,5);
 			strcat(sendbuff1,"kV;");
 		}
 		
@@ -4692,10 +4692,10 @@ const u32 Set_ACW_Compvalue1[][2]=
 const u32 Set_DCW_Compvalue[][2]=
 {
     {0,4},
-    {50,6000},
-    {1,5000},
+    {50,15000},
+    {1,3000},
     {2,9999},
-    {0,5000},
+    {0,3000},
     {0,9999},
     {0,100},
     {0,9999},
@@ -4706,7 +4706,7 @@ const u32 Set_DCW_Compvalue[][2]=
 const u32 Set_DCW_Compvalue1[][2]=
 {
     {0,4},
-    {50,6000},
+    {50,15000},
     {1,10000},
     {2,9999},
     {0,5000},

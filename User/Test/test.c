@@ -1783,7 +1783,7 @@ void File_Process(void)
 	}
 
 }
-const u16 Hign_Vout[]={5000,6000,2000};
+const u16 Hign_Vout[]={5000,15000,2000};
 const u16 High_Upper[]={12000,600,9999};
 const u8 ITEM_S[][12]=
 {
@@ -1987,12 +1987,12 @@ void Setup_Process(void)
                                 }
                                 break;
                             case 2:
-                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
-														U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
-														current_step].parameter=0;
-								U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].clearvalue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1]=0;
-                                SetDate_Comp();
-                                disp_all=1;
+//                                U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+//														U9001_Setup[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
+//														current_step].parameter=0;
+//								U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].clearvalue[U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].current_step-1]=0;
+//                                SetDate_Comp();
+//                                disp_all=1;
                                 break;
                             case 3:
                                 if(U9001_Save_sys.U9001_save[U9001_Save_sys.currentgroup].
